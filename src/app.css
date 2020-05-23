@@ -1,0 +1,138 @@
+.bg-home {
+  height: 750px;
+}
+
+.bg-indigo {
+  background-color: #0f0e20 !important;
+}
+
+.navbar-bwa {
+  background-color: #0f0e20;
+}
+
+.navbar {
+  padding: 30px 1rem;
+  padding-top: 30px;
+  padding-right: 1rem;
+  padding-bottom: 30px;
+  padding-left: 1rem;
+}
+
+section main {
+  color: #fff;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.navbar-dark .navbar-nav .nav-link {
+  font-size: 0.875rem;
+  color: #fff;
+}
+
+.navbar-nav .nav-link {
+  text-transform: uppercase;
+}
+
+.navbar-dark .navbar-nav .nav-link.btn {
+  color: #8481ab;
+  background-color: #232235;
+}
+
+.navbar-dark .navbar-nav .nav-divider {
+  background-color: #282646;
+}
+.navbar-nav .nav-divider {
+  width: 1px;
+  height: calc(100% - 8px);
+  display: inline-block;
+  margin: 4px 1.25rem;
+}
+
+.navbar .nav-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.text-merriweather {
+  font-family: 'Merriweather', serif;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+}
+
+section main p {
+  color: #8481ab;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  line-height: 1.875rem;
+}
+
+.ss-header {
+  width: 858px;
+}
+
+.bg-home .kampus {
+  height: 135px;
+}
+
+html:not(.no-js) [data-aos^='zoom'][data-aos^='zoom'].aos-animate {
+  opacity: 1;
+  -webkit-transform: translateZ(0) scale(1);
+  transform: translateZ(0) scale(1);
+}
+
+.bwa-tools-home {
+  margin-top: 350px;
+}
+
+.text-merriweather {
+  font-family: 'Merriweather', serif;
+  letter-spacing: 0.2px;
+  font-weight: 600;
+}
+
+.text-indigo-3 {
+  color: #322f56 !important;
+}
+
+.font-weight-medium {
+  font-weight: 500 !important;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #2b50b4;
+  border-color: #2b50b4;
+}
+
+.btn {
+  padding: 0.5625rem 0.875rem calc(0.5625rem - 1px);
+}
+
+@media (min-width: 992px) {
+  .navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: 1.25rem;
+    padding-left: 1.25rem;
+  }
+}
+
+@media (max-width: 575px) {
+  .bwa-tools .main-title {
+    text-align: center;
+  }
+}
