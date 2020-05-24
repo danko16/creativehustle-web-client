@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import ClassNames from 'classnames';
 
 const classList = [
   {
@@ -89,6 +90,7 @@ const classList = [
 
 function ClassList() {
   const [activePage, setActivePage] = useState({
+    totalPage: Math.ceil(classList.length / 9),
     page: 1,
     from: 0,
     to: 9,
@@ -97,11 +99,9 @@ function ClassList() {
     return classList.map((val, index) => {
       return (
         <div
-          className={
-            index >= activePage.from && index < activePage.to
-              ? 'col-11 col-lg-4 mb-4'
-              : 'col-11 col-lg-4 mb-4 d-none'
-          }
+          className={ClassNames('col-11 col-lg-4 mb-4 d-none', {
+            'd-block': index >= activePage.from && index < activePage.to,
+          })}
           key={index}
         >
           <div className="course-card card card__compact card__border">
@@ -117,7 +117,11 @@ function ClassList() {
                 style={{ height: '170px' }}
               >
                 <div className="embed-responsive-item">
-                  <img src="assets/img/ux_brainstorm_thumb.png" className="img img__cover" />
+                  <img
+                    alt="class thumbnail"
+                    src="assets/img/ux_brainstorm_thumb.png"
+                    className="img img__cover"
+                  />
                 </div>
                 <a href="https://www.buildwithangga.com/kelas/ux-brainstorming">
                   <div className="hover-content">
@@ -219,15 +223,16 @@ function ClassList() {
 
   function renderPagination() {
     let paginations = [];
-    const pgLength = Math.max(classList.length / 9);
+    const pgLength = Math.ceil(classList.length / 9);
     for (let i = 0; i < pgLength; i++) {
       const pg = (
         <li
-          className={i + 1 === activePage.page ? 'page-item active' : 'page-item'}
+          className={ClassNames('page-item', { active: i + 1 === activePage.page })}
           aria-current="page"
           key={i}
           onClick={() => {
             setActivePage({
+              totalPage: activePage.totalPage,
               page: i + 1,
               from: i * 9,
               to: (i + 1) * 9,
@@ -251,21 +256,43 @@ function ClassList() {
       </div>
 
       <ul className="pagination" role="navigation">
-        <li className="page-item disabled" aria-disabled="true" aria-label="pagination.previous">
+        <li
+          className={ClassNames('page-item', { disabled: activePage.page === 1 })}
+          aria-label="pagination.previous"
+          onClick={() => {
+            if (activePage.page !== 1) {
+              setActivePage((prevState) => ({
+                totalPage: activePage.totalPage,
+                page: prevState.page - 1,
+                from: prevState.from - 9,
+                to: prevState.to - 9,
+              }));
+            }
+          }}
+        >
           <span className="page-link" aria-hidden="true">
             ‹
           </span>
         </li>
         {renderPagination()}
-        <li className="page-item">
-          <a
-            className="page-link"
-            href="https://www.buildwithangga.com/kelas?page=2"
-            rel="next"
-            aria-label="pagination.next"
-          >
+        <li
+          className={ClassNames('page-item', {
+            disabled: activePage.page === activePage.totalPage,
+          })}
+          onClick={() => {
+            if (activePage.page !== activePage.totalPage) {
+              setActivePage((prevState) => ({
+                totalPage: activePage.totalPage,
+                page: prevState.page + 1,
+                from: prevState.from + 9,
+                to: prevState.to + 9,
+              }));
+            }
+          }}
+        >
+          <span className="page-link" aria-hidden="true">
             ›
-          </a>
+          </span>
         </li>
       </ul>
     </div>

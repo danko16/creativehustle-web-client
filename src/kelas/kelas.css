@@ -83,3 +83,7 @@ section.overlap__2 .container {
   background: #1abc9c;
   color: #065948;
 }
+
+.pagination .page-item {
+  cursor: pointer;
+}

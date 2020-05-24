@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 import './header.css';
@@ -34,9 +34,15 @@ function Header({ children, style }) {
           <div className="collapse navbar-collapse navbar-mobile-bwa" id="navbarSupportedContent">
             <ul className="navbar-nav ml-auto">
               <li className="nav-item ">
-                <Link className="nav-link" to="/kelas">
+                <NavLink
+                  className="nav-link"
+                  to="/kelas"
+                  activeStyle={{
+                    color: '#59abe3',
+                  }}
+                >
                   Kelas
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item ">
                 <a className="nav-link " href="/showcase">
