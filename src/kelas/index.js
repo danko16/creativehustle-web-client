@@ -1,12 +1,14 @@
 import React from 'react';
 import Header from '../shared/header';
+import Footer from '../shared/footer';
+import ClassList from './class-list';
 
 import './kelas.css';
 
 function Kelas() {
   return (
     <div>
-      <Header style={{ height: '500px' }}>
+      <Header style={{ height: '550px' }}>
         <main>
           <div className="container h-100">
             <div className="row align-items-center justify-content-center h-50 pt-5">
@@ -49,6 +51,14 @@ function Kelas() {
           </div>
         </main>
       </Header>
+      <section className="overlap overlap__2 gradient-orange-white">
+        <div className="container">
+          <div className="row justify-content-center">
+            <ClassList />
+          </div>
+        </div>
+      </section>
+      <Footer />
     </div>
   );
 }

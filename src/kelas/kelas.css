@@ -41,3 +41,45 @@ section main hr.worm {
 .search-kelas::placeholder {
     color: #A9A9A9;
 }
+
+section.overlap__2.gradient-orange-white:before {
+    top: 95px;
+}
+
+section.overlap__2 .container {
+  margin-top: -95px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.page-item.active .page-link {
+  z-index: 1;
+  color: #fff;
+  background-color: #2b50b4;
+  border-color: #2b50b4;
+}
+
+.page-link {
+  color: #2b50b4;
+}
+
+
+.badge-kelas {
+  margin-top: -10px;
+  float: right;
+  font-size: 11px;
+  color: #6d5240;
+  background: #f4caae;
+  padding: 5px 10px 5px 10px;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+
+.badge-gratis {
+  background: #1abc9c;
+  color: #065948;
+}
