@@ -30,7 +30,7 @@ function FirstSection() {
                   className="d-none d-sm-block"
                   height="348"
                   alt="tools belajar yang digunakan di buildwithangga"
-                  src="https://www.buildwithangga.com/themes/front/images/alur-belajar-menjadi-designer-dan-developer-buildwithangga.png"
+                  src="assets/img/alur-belajar-menjadi-designer-dan-developer-buildwithangga.png"
                 />
               </div>
             </div>

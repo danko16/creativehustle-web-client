@@ -6,11 +6,7 @@ function FourthSection() {
       <div className="container">
         <div className="row justify-content-center mt-5">
           <div className="col-10 col-lg-4 text-center mb-3">
-            <img
-              height="100"
-              src="https://buildwithangga.com/themes/front/images/logo-google-review-buildwithangga.png"
-              alt=""
-            />
+            <img height="100" src="assets/img/logo-google-review-buildwithangga.png" alt="" />
           </div>
           <div className="col col-12 col-lg-12">
             <div className="row justify-content-center">

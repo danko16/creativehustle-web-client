@@ -56,7 +56,7 @@ section.overlap__2 .container {
 }
 
 .page-item.active .page-link {
-  z-index: 1;
+  z-index: -1;
   color: #fff;
   background-color: #2b50b4;
   border-color: #2b50b4;

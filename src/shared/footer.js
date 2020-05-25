@@ -10,7 +10,7 @@ function Footer() {
               <div className="col-12 col-lg-4">
                 <a className="brand" href="/#">
                   <img
-                    src="https://buildwithangga.com/themes/front/images/logo-bwa.png"
+                    src="assets/logo/logo-bwa.png"
                     width="60"
                     height="60"
                     className="d-inline-block align-top"
@@ -99,12 +99,7 @@ function Footer() {
             © 2019 - 2020 BuildWith Angga • All rights reserved • Love from Jakarta
           </div>
           <div className="col-auto">
-            <img
-              src="https://buildwithangga.com/themes/front/images/monas.svg"
-              height="50"
-              className="ic_monas"
-              alt="ills monas"
-            />
+            <img src="assets/logo/monas.svg" height="50" className="ic_monas" alt="ills monas" />
           </div>
         </div>
       </div>

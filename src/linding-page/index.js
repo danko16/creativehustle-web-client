@@ -36,7 +36,7 @@ function LandingPage() {
                 </p>
                 <img
                   className="ss-header mt-4"
-                  src="assets/logo/pic_header_new.png"
+                  src="assets/img/pic_header_new.png"
                   alt="belajar coding dan design online gratis buildwith angga"
                 />
                 <p className="mt-5 mb-4">
@@ -46,7 +46,7 @@ function LandingPage() {
                 <img
                   className="members-bwa kampus mb-4"
                   alt="member dari setiap kampus yang belajar di buildwithangga"
-                  src="https://www.buildwithangga.com/images/members-campus-companies.png"
+                  src="assets/img/members-campus-companies.png"
                 />
               </div>
             </div>

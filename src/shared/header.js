@@ -11,7 +11,7 @@ function Header({ children, style }) {
         <div className="container">
           <Link className="navbar-brand" to="/">
             <img
-              src="https://www.buildwithangga.com/themes/front/images/logo-bwa.png"
+              src="assets/logo/logo-bwa.png"
               width="40"
               height="40"
               className="d-inline-block align-top"
