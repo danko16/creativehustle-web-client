@@ -152,7 +152,7 @@ function ClassList() {
                   >
                     <div className="embed-responsive-item">
                       <img
-                        src="https://www.buildwithangga.com/themes/front/images/ic_sertifikat_gray.png"
+                        src="assets/icon/ic_sertifikat_gray.png"
                         className="p-1 img__contain"
                         alt=""
                       />
@@ -179,7 +179,7 @@ function ClassList() {
                   >
                     <div className="embed-responsive-item">
                       <img
-                        src="https://www.buildwithangga.com/themes/front/images/ic_konsultasi_gray.png"
+                        src="assets/icon/ic_konsultasi_gray.png"
                         className="p-1 img__contain"
                         alt=""
                       />

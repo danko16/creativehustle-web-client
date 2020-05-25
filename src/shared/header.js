@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
+import Modal from './modal';
 import './header.css';
 
 function Header({ children, style }) {
+  const [displayModal, setDisplayModal] = useState(false);
+
   return (
     <section className="bg-home" style={style}>
+      {displayModal && <Modal setDisplayModal={setDisplayModal} />}
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container">
           <Link className="navbar-brand" to="/">
@@ -63,14 +67,26 @@ function Header({ children, style }) {
                 <span className="nav-divider"></span>
               </li>
               <li className="nav-item ">
-                <a className="nav-link" href="/register">
+                <span
+                  onClick={() => {
+                    setDisplayModal(true);
+                  }}
+                  className="nav-link"
+                  href="/register"
+                  style={{ cursor: 'pointer' }}
+                >
                   Daftar
-                </a>
+                </span>
               </li>
               <li className="nav-item ">
-                <a className="nav-link btn btn-masuk-bwa" href="/login">
+                <span
+                  className="nav-link btn btn-masuk-bwa"
+                  onClick={() => {
+                    setDisplayModal(true);
+                  }}
+                >
                   Masuk
-                </a>
+                </span>
               </li>
             </ul>
           </div>
