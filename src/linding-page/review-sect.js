@@ -1,6 +1,6 @@
 import React from 'react';
 
-function FourthSection() {
+function ReviewSection() {
   return (
     <section className="review-google border-top">
       <div className="container">
@@ -119,4 +119,4 @@ function FourthSection() {
   );
 }
 
-export default FourthSection;
+export default ReviewSection;

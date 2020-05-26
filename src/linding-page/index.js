@@ -5,7 +5,7 @@ import Footer from '../shared/footer';
 import FirstSection from './first-sect';
 import SecondSection from './second-sect';
 import ThirdSection from './third-sect';
-import FourthSection from './fourth-sect';
+import ReviewSection from './review-sect';
 import FifthSection from './fifth-sect';
 import SixthSection from './sixth-sect';
 import SeventhSection from './seventh-sect';
@@ -56,7 +56,7 @@ function LandingPage() {
       <FirstSection />
       <SecondSection />
       <ThirdSection />
-      <FourthSection />
+      <ReviewSection />
       <FifthSection />
       <SixthSection />
       <SeventhSection />

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function FirstSection() {
   return (
@@ -14,12 +15,9 @@ function FirstSection() {
                     Dapatkan jalan shortcut terbaik untuk <br className="desktop" /> memulai karir
                     IT idamanmu
                   </p>
-                  <a
-                    href="https://www.buildwithangga.com/journey"
-                    className="btn btn-primary mt-2 mt-lg-2 font-weight-medium"
-                  >
+                  <Link to="/journey" className="btn btn-primary mt-2 mt-lg-2 font-weight-medium">
                     ARAHKAN SAYA
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

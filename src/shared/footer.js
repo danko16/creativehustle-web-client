@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
@@ -8,7 +9,7 @@ function Footer() {
           <div className="col-11 col-lg-11">
             <div className="row">
               <div className="col-12 col-lg-4">
-                <a className="brand" href="/#">
+                <Link className="brand" to="/">
                   <img
                     src="assets/logo/logo-bwa.png"
                     width="60"
@@ -17,7 +18,7 @@ function Footer() {
                     alt=""
                   />
                   <span className="sr-only">Build with Angga</span>
-                </a>
+                </Link>
                 <p className="mt-4 font-weight-light text-gray-500">
                   Belajar online bersama materi <br className="desktop" />
                   terkait code, design, programming, <br className="desktop" />
@@ -30,20 +31,16 @@ function Footer() {
                     <h5 className="text-indigo-3">Bantuan</h5>
                     <ul className="list-unstyled sitemap">
                       <li>
-                        <a href="https://buildwithangga.com/cara-belajar-online">
-                          Cara Belajar Online
-                        </a>
+                        <Link to="/">Cara Belajar Online</Link>
                       </li>
                       <li>
-                        <a href="https://buildwithangga.com/cara-ikut-kelas">Tata Cara Order</a>
+                        <Link to="/">Tata Cara Order</Link>
                       </li>
                       <li>
-                        <a href="https://buildwithangga.com/cara-ambil-sertifikat">
-                          Cara Dapat Sertifikat
-                        </a>
+                        <Link to="/">Cara Dapat Sertifikat</Link>
                       </li>
                       <li>
-                        <a href="https://buildwithangga.com/kebijakan-privasi">Kebijakan Privasi</a>
+                        <Link to="/">Kebijakan Privasi</Link>
                       </li>
                     </ul>
                   </div>
@@ -51,16 +48,16 @@ function Footer() {
                     <h5 className="text-indigo-3">Explore</h5>
                     <ul className="list-unstyled sitemap">
                       <li>
-                        <a href="https://buildwithangga.com/cek-sertifikat">Cek Sertifikat</a>
+                        <Link to="/">Cek Sertifikat</Link>
                       </li>
                       <li>
-                        <a href="https://buildwithangga.com/biaya-belajar">Biaya Belajar Online</a>
+                        <Link to="/">Biaya Belajar Online</Link>
                       </li>
                       <li>
-                        <a href="https://buildwithangga.com/donasi">Donasi Bersama</a>
+                        <Link to="/">Donasi Bersama</Link>
                       </li>
                       <li>
-                        <a href="mailto:admin@buildwithangga.com">Contact Us</a>
+                        <Link to="/">Contact Us</Link>
                       </li>
                     </ul>
                   </div>
@@ -79,13 +76,31 @@ function Footer() {
                     <h5 className="text-indigo-3">Social</h5>
                     <ul className="list-unstyled sitemap">
                       <li>
-                        <a href="http://instagram.com/buildwithangga">Instagram</a>
+                        <a
+                          rel="noopener noreferrer"
+                          target="_blank"
+                          href="http://instagram.com/buildwithangga"
+                        >
+                          Instagram
+                        </a>
                       </li>
                       <li>
-                        <a href="http://t.me/buildwithangga">Telegram</a>
+                        <a
+                          rel="noopener noreferrer"
+                          target="_blank"
+                          href="http://t.me/buildwithangga"
+                        >
+                          Telegram
+                        </a>
                       </li>
                       <li>
-                        <a href="https://youtube.com/anggarisky">YouTube</a>
+                        <a
+                          rel="noopener noreferrer"
+                          target="_blank"
+                          href="https://youtube.com/anggarisky"
+                        >
+                          YouTube
+                        </a>
                       </li>
                     </ul>
                   </div>
