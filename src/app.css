@@ -78,6 +78,24 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     line-height: 1.375;
 }
 
+
+.form-group__icon i[class*="icon"] {
+  font-size: 18px;
+  padding: 10px 13px;
+  color: #2B50B4;
+}
+
+.form-group__icon:before {
+  border-right: 1px solid #e6e6e6;
+}
+
+.form-control {
+  font-size: 0.875rem;
+  background-color: #FBFBFB;
+  border: 1px solid #EFEFEF;
+}
+
+
 @media (min-width: 992px) {
   .navbar-expand-lg .navbar-nav .nav-link {
     padding-right: 1.25rem;

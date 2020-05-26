@@ -6,11 +6,14 @@ import Modal from './modal';
 import './header.css';
 
 function Header({ children, style }) {
-  const [displayModal, setDisplayModal] = useState(false);
+  const [displayModal, setDisplayModal] = useState({
+    show: false,
+    mode: null,
+  });
 
   return (
     <section className="bg-home" style={style}>
-      {displayModal && <Modal setDisplayModal={setDisplayModal} />}
+      {displayModal.show && <Modal displayModal={displayModal} setDisplayModal={setDisplayModal} />}
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container">
           <Link className="navbar-brand" to="/">
@@ -69,7 +72,10 @@ function Header({ children, style }) {
               <li className="nav-item ">
                 <span
                   onClick={() => {
-                    setDisplayModal(true);
+                    setDisplayModal({
+                      show: true,
+                      type: 'register',
+                    });
                   }}
                   className="nav-link"
                   href="/register"
@@ -82,7 +88,10 @@ function Header({ children, style }) {
                 <span
                   className="nav-link btn btn-masuk-bwa"
                   onClick={() => {
-                    setDisplayModal(true);
+                    setDisplayModal({
+                      show: true,
+                      type: 'login',
+                    });
                   }}
                 >
                   Masuk
