@@ -7,3 +7,19 @@
 .form-control.error-form {
     border-color: red;
 }
+
+.auth-notif-error {
+  padding: 16px;
+  background-color: tomato;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}
+
+.auth-notif-success {
+  padding: 16px;
+  background-color: #33b585;
+  border-radius: 5px;
+  color: white;
+  text-align: center;
+}

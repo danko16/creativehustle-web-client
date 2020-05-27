@@ -1,10 +1,20 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 
+import { register } from '../redux/effects/auth';
+
 import './register.css';
 
-function Register({ setDisplayModal }) {
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+const mapActionToProps = (dispatch) => bindActionCreators({ register }, dispatch);
+
+function Register({ setDisplayModal, register }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -15,8 +25,14 @@ function Register({ setDisplayModal }) {
     password: '',
     repeatPassword: '',
   });
+  //eslint-disable-next-line
+  const [loading, setLoading] = useState(false);
+  const [notification, setNotification] = useState({
+    text: '',
+    isError: false,
+  });
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const nameValid = nameValidation();
     const emailValid = emailValidation();
@@ -24,7 +40,30 @@ function Register({ setDisplayModal }) {
     const repeatValid = repeatPasswordValidation();
 
     if (nameValid && emailValid && passwordValid && repeatValid) {
-      console.log('send registration');
+      setError({});
+      setLoading(true);
+      const response = await register({
+        full_name: name,
+        email,
+        password,
+      });
+      setLoading(false);
+      console.log(response);
+      if (response.status === 200) {
+        setNotification({
+          text: 'Register Berhasil',
+          isError: false,
+        });
+
+        /*setTimeout(() => {
+          history.push('/');
+        }, 2000);*/
+      } else {
+        setNotification({
+          text: response.message,
+          isError: true,
+        });
+      }
     }
   }
 
@@ -113,7 +152,16 @@ function Register({ setDisplayModal }) {
         </span>
         <h1 className="h3 font-weight-bold merriweather mt-4 pt-1">Akun Baru</h1>
         <p className="text-secondary h8 mt-1 mb-1 ">Learn. Build. Share to Make Money.</p>
-
+        {notification.text && (
+          <div
+            className={ClassNames({
+              'auth-notif-error': notification.isError,
+              'auth-notif-success': notification.isError,
+            })}
+          >
+            {notification.text}
+          </div>
+        )}
         <form onSubmit={handleSubmit}>
           <input type="hidden" name="_token" value="SR9dLKREhwyJwnObwAS1Oqr1gL9VYcugcevSHVf5" />
           <div className="form-group form-group__icon mt-4">
@@ -131,7 +179,7 @@ function Register({ setDisplayModal }) {
               aria-describedby="usernameHelp"
               placeholder="Nama Lengkap"
               value={name}
-              onClick={() => {
+              onInputCapture={() => {
                 setError((prevState) => ({
                   ...prevState,
                   name: '',
@@ -165,7 +213,7 @@ function Register({ setDisplayModal }) {
               aria-describedby="emailHelp"
               placeholder="Email Address"
               value={email}
-              onClick={() => {
+              onInputCapture={() => {
                 setError((prevState) => ({
                   ...prevState,
                   email: '',
@@ -198,7 +246,7 @@ function Register({ setDisplayModal }) {
               aria-describedby="passwordHelp"
               placeholder="Password (Min. 8 Karakter)"
               value={password}
-              onClick={() => {
+              onInputCapture={() => {
                 setError((prevState) => ({
                   ...prevState,
                   password: '',
@@ -231,7 +279,7 @@ function Register({ setDisplayModal }) {
               aria-describedby="passwordHelp"
               placeholder="Confirm Password"
               value={repeatPassword}
-              onClick={() => {
+              onInputCapture={() => {
                 setError((prevState) => ({
                   ...prevState,
                   repeatPassword: '',
@@ -292,6 +340,8 @@ function Register({ setDisplayModal }) {
 
 Register.propTypes = {
   setDisplayModal: PropTypes.func,
+  register: PropTypes.func,
+  history: PropTypes.object,
 };
 
-export default Register;
+export default connect(mapStateToProps, mapActionToProps)(Register);
