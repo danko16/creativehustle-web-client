@@ -1,6 +1,7 @@
 export const AUTH_ACTIONS = Object.freeze({
   SET_DATA: 'myapp/auth/set-data',
   LOGIN: 'myapp/auth/login',
+  LOGOUT: 'myapp/auth/logout',
 });
 
 export const authActions = Object.freeze({
@@ -13,12 +14,16 @@ export const authActions = Object.freeze({
     type: AUTH_ACTIONS.LOGIN,
     value,
   }),
+  logout: () => ({
+    type: AUTH_ACTIONS.LOGOUT,
+  }),
 });
 
 const initialState = {
   user: null,
   token: null,
   type: null,
+  online: false,
 };
 
 const reducer = (state = initialState, { type, field, value }) => {
@@ -34,6 +39,15 @@ const reducer = (state = initialState, { type, field, value }) => {
         user: value.user,
         token: value.token,
         type: value.type,
+        online: true,
+      };
+    case AUTH_ACTIONS.LOGOUT:
+      return {
+        ...state,
+        user: null,
+        token: null,
+        type: null,
+        online: false,
       };
     default:
       return state;

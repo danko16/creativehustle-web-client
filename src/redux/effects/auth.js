@@ -1,14 +1,22 @@
 /* eslint-disable no-undef */
-/* eslint-disable no-unused-vars*/
 import authApi from '../api/auth';
 import { authActions } from '../reducers/auth';
 
 export function register(value) {
   return async function (dispatch) {
     try {
-      const data = await authApi.register(value);
+      const { data: response } = await authApi.register(value);
 
-      return data;
+      if (response.status === 200) {
+        const { data } = response;
+        const loginPayload = Object.freeze({
+          token: data.token,
+          user: data.user,
+          type: data.type,
+        });
+        dispatch(authActions.login(loginPayload));
+      }
+      return response;
     } catch (error) {
       if (error.response) {
         return error.response.data;

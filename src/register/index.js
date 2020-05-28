@@ -48,16 +48,11 @@ function Register({ setDisplayModal, register }) {
         password,
       });
       setLoading(false);
-      console.log(response);
       if (response.status === 200) {
         setNotification({
           text: 'Register Berhasil',
           isError: false,
         });
-
-        /*setTimeout(() => {
-          history.push('/');
-        }, 2000);*/
       } else {
         setNotification({
           text: response.message,
@@ -156,7 +151,7 @@ function Register({ setDisplayModal, register }) {
           <div
             className={ClassNames({
               'auth-notif-error': notification.isError,
-              'auth-notif-success': notification.isError,
+              'auth-notif-success': !notification.isError,
             })}
           >
             {notification.text}
@@ -321,12 +316,9 @@ function Register({ setDisplayModal, register }) {
             Buat Akun
           </button>
           <hr />
-          <a
-            href="https://class.buildwithangga.com/redirect/google"
-            className="btn btn-light btn-block"
-          >
+          <a href="/" className="btn btn-light btn-block">
             <img
-              src="https://class.buildwithangga.com/images/buildwithangga_with_google.svg"
+              src="assets/logo/buildwithangga_with_google.svg"
               className="logo-login-google"
               alt="buildwithangga_login_with_google"
             />
