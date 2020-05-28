@@ -6,8 +6,6 @@ import PropTypes from 'prop-types';
 
 import { register } from '../redux/effects/auth';
 
-import './register.css';
-
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });

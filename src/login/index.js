@@ -1,7 +1,78 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import ClassNames from 'classnames';
 
-function Login({ setDisplayModal }) {
+import { login } from '../redux/effects/auth';
+
+const mapActionToProps = (dispatch) => bindActionCreators({ login }, dispatch);
+
+function Login({ setDisplayModal, login }) {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [rememberMe, setRememberMe] = useState(false);
+  //eslint-disable-next-line
+  const [loading, setLoading] = useState(false);
+  const [notification, setNotification] = useState({
+    text: '',
+    isError: false,
+  });
+  const [error, setError] = useState({
+    email: '',
+    password: '',
+  });
+
+  async function handleLogin(e) {
+    e.preventDefault();
+
+    if (loginValidation()) {
+      setError({});
+      setLoading(true);
+      const response = await login({
+        email,
+        password,
+        remember_me: rememberMe,
+        type: 'student',
+      });
+      setLoading(false);
+      if (response.status === 200) {
+        setNotification({
+          text: response.message,
+          isError: false,
+        });
+      } else {
+        setNotification({
+          text: response.message,
+          isError: true,
+        });
+      }
+    }
+  }
+
+  function loginValidation() {
+    let isValid = true;
+    //eslint-disable-next-line
+    const emailFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (!email.match(emailFormat)) {
+      setError((prevState) => ({
+        ...prevState,
+        email: 'Email Tidak valid',
+      }));
+      isValid = false;
+    }
+
+    if (password.length < 8) {
+      setError((prevState) => ({
+        ...prevState,
+        password: 'Panjang password minimal 8 karakter',
+      }));
+      isValid = false;
+    }
+
+    return isValid;
+  }
   return (
     <div className="modal-content row align-items-center justify-content-center">
       <div className="col w-320px">
@@ -20,45 +91,75 @@ function Login({ setDisplayModal }) {
         </span>
         <h1 className="h3 font-weight-bold merriweather mt-4 pt-1">Sign In</h1>
         <p className="text-secondary h8 mt-1 mb-1 ">Masuk untuk melanjutkan belajar</p>
-
-        <form method="POST" id="login" action="https://class.buildwithangga.com/login">
-          <input type="hidden" name="_token" value="VYvfzGgu46dBSPwSk0kWsUfqtdNYufclssPZ5Xrl" />{' '}
+        {notification.text && (
+          <div
+            className={ClassNames({
+              'auth-notif-error': notification.isError,
+              'auth-notif-success': !notification.isError,
+            })}
+          >
+            {notification.text}
+          </div>
+        )}
+        <form onSubmit={handleLogin}>
           <p className="mt-3 mb-1" style={{ fontSize: '14px' }}>
             Email Address
           </p>
           <div className="form-group form-group__icon">
             <i className="material-icons mr-2">album</i>
             <input
-              id="email"
+              onInputCapture={() => {
+                setError((prevState) => ({
+                  ...prevState,
+                  email: '',
+                }));
+              }}
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
               type="email"
               name="email"
-              required=""
               autoComplete="email"
-              autoFocus=""
-              className="form-control "
-              aria-describedby="emailHelp"
+              className={ClassNames('form-control', { 'error-form': error.email })}
               placeholder="Email Address"
             />
           </div>
+          <small
+            className={ClassNames('error-text form-text d-none', {
+              'd-block': error.email,
+            })}
+          >
+            {error.email}
+          </small>
           <p className="mt-3 mb-1" style={{ fontSize: '14px' }}>
             Password
           </p>
           <div className="form-group form-group__icon">
             <i className="material-icons mr-2">lock</i>
             <input
+              onInputCapture={() => {
+                setError((prevState) => ({
+                  ...prevState,
+                  password: '',
+                }));
+              }}
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
               type="password"
               name="password"
-              required=""
               autoComplete="current-password"
-              className="form-control "
-              id="password"
-              aria-describedby="passwordHelp"
+              className={ClassNames('form-control', { 'error-form': error.password })}
               placeholder="Password"
             />
-            <small id="passwordHelp" className="form-text text-muted d-none">
-              Error Helper Text
-            </small>
           </div>
+          <small
+            className={ClassNames('error-text form-text d-none', {
+              'd-block': error.password,
+            })}
+          >
+            {error.password}
+          </small>
           <div className="form-group form-group__icon">
             <a
               href="https://class.buildwithangga.com/password/reset"
@@ -76,6 +177,9 @@ function Login({ setDisplayModal }) {
           </button>
           <div className="form-group form-check mt-3">
             <input
+              onChange={() => {
+                setRememberMe((prevState) => !prevState);
+              }}
               name="remember"
               type="checkbox"
               className="form-check-input"
@@ -124,6 +228,7 @@ function Login({ setDisplayModal }) {
 
 Login.propTypes = {
   setDisplayModal: PropTypes.func,
+  login: PropTypes.func,
 };
 
-export default Login;
+export default connect(null, mapActionToProps)(Login);
