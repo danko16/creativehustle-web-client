@@ -9,4 +9,8 @@ export default Object.freeze({
     Api.post('/auth/login', payload, {
       headers: { 'Content-Type': 'application/json' },
     }),
+  checkAuth: () =>
+    Api.post('/auth/check-auth', {
+      headers: { 'Content-Type': 'application/json' },
+    }),
 });

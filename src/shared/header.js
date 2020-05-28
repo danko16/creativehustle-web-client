@@ -1,15 +1,78 @@
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { isAuthenticated } from '../utils/auth';
 
 import Modal from './modal';
 import './header.css';
 
-function Header({ children, style }) {
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+});
+
+function Header({ children, style, user }) {
   const [displayModal, setDisplayModal] = useState({
     show: false,
     mode: null,
   });
+
+  function userMode() {
+    return (
+      <li className="nav-item ">
+        <div className="header-notifications-trigger">
+          <a href="/">
+            <div className="user-avatar status-online">
+              <img
+                src={user.avatar ? user.avatar : 'assets/img/default-avatar.png'}
+                alt="avatar"
+                width="45"
+                height="45"
+              />
+            </div>
+          </a>
+        </div>
+        <div className="nav-profile-text">
+          <p>{user.name}</p>
+        </div>
+      </li>
+    );
+  }
+
+  function authMode() {
+    return (
+      <>
+        <li className="nav-item ">
+          <span
+            onClick={() => {
+              setDisplayModal({
+                show: true,
+                type: 'register',
+              });
+            }}
+            className="nav-link"
+            href="/register"
+            style={{ cursor: 'pointer' }}
+          >
+            Daftar
+          </span>
+        </li>
+        <li className="nav-item ">
+          <span
+            className="nav-link btn btn-masuk-bwa"
+            onClick={() => {
+              setDisplayModal({
+                show: true,
+                type: 'login',
+              });
+            }}
+          >
+            Masuk
+          </span>
+        </li>
+      </>
+    );
+  }
 
   return (
     <section className="bg-home" style={style}>
@@ -69,34 +132,7 @@ function Header({ children, style }) {
               <li className="nav-item">
                 <span className="nav-divider"></span>
               </li>
-              <li className="nav-item ">
-                <span
-                  onClick={() => {
-                    setDisplayModal({
-                      show: true,
-                      type: 'register',
-                    });
-                  }}
-                  className="nav-link"
-                  href="/register"
-                  style={{ cursor: 'pointer' }}
-                >
-                  Daftar
-                </span>
-              </li>
-              <li className="nav-item ">
-                <span
-                  className="nav-link btn btn-masuk-bwa"
-                  onClick={() => {
-                    setDisplayModal({
-                      show: true,
-                      type: 'login',
-                    });
-                  }}
-                >
-                  Masuk
-                </span>
-              </li>
+              {isAuthenticated() ? userMode() : authMode()}
             </ul>
           </div>
         </div>
@@ -110,6 +146,7 @@ function Header({ children, style }) {
 Header.propTypes = {
   children: PropTypes.element,
   style: PropTypes.object,
+  user: PropTypes.object,
 };
 
-export default Header;
+export default connect(mapStateToProps)(Header);

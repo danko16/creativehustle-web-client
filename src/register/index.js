@@ -51,6 +51,10 @@ function Register({ setDisplayModal, register }) {
           text: 'Register Berhasil',
           isError: false,
         });
+        setDisplayModal({
+          show: false,
+          type: null,
+        });
       } else {
         setNotification({
           text: response.message,

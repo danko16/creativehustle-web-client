@@ -23,7 +23,6 @@ const initialState = {
   user: null,
   token: null,
   type: null,
-  online: false,
 };
 
 const reducer = (state = initialState, { type, field, value }) => {
@@ -39,7 +38,6 @@ const reducer = (state = initialState, { type, field, value }) => {
         user: value.user,
         token: value.token,
         type: value.type,
-        online: true,
       };
     case AUTH_ACTIONS.LOGOUT:
       return {
@@ -47,7 +45,6 @@ const reducer = (state = initialState, { type, field, value }) => {
         user: null,
         token: null,
         type: null,
-        online: false,
       };
     default:
       return state;

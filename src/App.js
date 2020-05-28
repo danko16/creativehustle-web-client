@@ -2,6 +2,9 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { isAuthenticated } from './utils/auth';
+import { Api } from './utils/api';
+import store from './redux';
 
 import LandingPage from './linding-page';
 import Kelas from './kelas';
@@ -11,20 +14,23 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-function App({ auth }) {
-  const isAuthenticated = () => {
-    const now = new Date().getTime() / 1000;
-    try {
-      const { token } = auth;
-      if (now > token.exp) {
-        throw new Error('Token Expired');
-      }
-    } catch (err) {
-      return false;
-    }
-    return true;
-  };
+Api.interceptors.request.use(
+  function (config) {
+    const { auth } = store.getState();
+    const token = auth.token;
 
+    if (token) {
+      config.headers['x-token'] = `Bearer ${token.key}`;
+    }
+
+    return config;
+  },
+  function (error) {
+    return Promise.reject(error);
+  }
+);
+
+function App() {
   //eslint-disable-next-line
   function PrivateRoute({ children, ...rest }) {
     return (

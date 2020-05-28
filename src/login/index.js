@@ -41,6 +41,10 @@ function Login({ setDisplayModal, login }) {
           text: response.message,
           isError: false,
         });
+        setDisplayModal({
+          show: false,
+          type: null,
+        });
       } else {
         setNotification({
           text: response.message,
