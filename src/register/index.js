@@ -1,18 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 
-import { register } from '../redux/effects/auth';
+import { authActions } from '../redux/reducers/auth';
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-const mapActionToProps = (dispatch) => bindActionCreators({ register }, dispatch);
+const mapActionToProps = (dispatch) =>
+  bindActionCreators(
+    { register: authActions.reqRegister, clearMsg: authActions.clearError },
+    dispatch
+  );
 
-function Register({ setDisplayModal, register }) {
+function Register({ setDisplayModal, auth, register, clearMsg }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -30,7 +34,29 @@ function Register({ setDisplayModal, register }) {
     isError: false,
   });
 
-  async function handleSubmit(e) {
+  useEffect(() => {
+    return () => {
+      clearMsg();
+    };
+  }, [clearMsg]);
+
+  useEffect(() => {
+    if (auth.is_authorized && !auth.loading) {
+      setDisplayModal({
+        show: false,
+        type: null,
+      });
+    }
+
+    if (auth.message && !auth.loading) {
+      setNotification({
+        text: auth.message,
+        isError: auth.is_error,
+      });
+    }
+  }, [auth, setDisplayModal]);
+
+  function handleSubmit(e) {
     e.preventDefault();
     const nameValid = nameValidation();
     const emailValid = emailValidation();
@@ -39,28 +65,11 @@ function Register({ setDisplayModal, register }) {
 
     if (nameValid && emailValid && passwordValid && repeatValid) {
       setError({});
-      setLoading(true);
-      const response = await register({
+      register({
         full_name: name,
         email,
         password,
       });
-      setLoading(false);
-      if (response.status === 200) {
-        setNotification({
-          text: 'Register Berhasil',
-          isError: false,
-        });
-        setDisplayModal({
-          show: false,
-          type: null,
-        });
-      } else {
-        setNotification({
-          text: response.message,
-          isError: true,
-        });
-      }
     }
   }
 
@@ -335,7 +344,8 @@ function Register({ setDisplayModal, register }) {
 Register.propTypes = {
   setDisplayModal: PropTypes.func,
   register: PropTypes.func,
-  history: PropTypes.object,
+  clearMsg: PropTypes.func,
+  auth: PropTypes.object,
 };
 
 export default connect(mapStateToProps, mapActionToProps)(Register);

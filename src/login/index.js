@@ -1,19 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 
-import { login } from '../redux/effects/auth';
+import { authActions } from '../redux/reducers/auth';
 
-const mapActionToProps = (dispatch) => bindActionCreators({ login }, dispatch);
+const mapStateToPops = (state) => ({
+  auth: state.auth,
+});
 
-function Login({ setDisplayModal, login }) {
+const mapActionToProps = (dispatch) =>
+  bindActionCreators({ login: authActions.reqLogin, clearMsg: authActions.clearError }, dispatch);
+
+function Login({ setDisplayModal, auth, clearMsg, login }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
-  //eslint-disable-next-line
-  const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState({
     text: '',
     isError: false,
@@ -23,34 +26,39 @@ function Login({ setDisplayModal, login }) {
     password: '',
   });
 
-  async function handleLogin(e) {
+  useEffect(() => {
+    return () => {
+      clearMsg();
+    };
+  }, [clearMsg]);
+
+  useEffect(() => {
+    if (auth.is_authorized && !auth.loading) {
+      setDisplayModal({
+        show: false,
+        type: null,
+      });
+    }
+
+    if (auth.message && !auth.loading) {
+      setNotification({
+        text: auth.message,
+        isError: auth.is_error,
+      });
+    }
+  }, [auth, setDisplayModal]);
+
+  function handleLogin(e) {
     e.preventDefault();
 
     if (loginValidation()) {
       setError({});
-      setLoading(true);
-      const response = await login({
+      login({
         email,
         password,
         remember_me: rememberMe,
         type: 'student',
       });
-      setLoading(false);
-      if (response.status === 200) {
-        setNotification({
-          text: response.message,
-          isError: false,
-        });
-        setDisplayModal({
-          show: false,
-          type: null,
-        });
-      } else {
-        setNotification({
-          text: response.message,
-          isError: true,
-        });
-      }
     }
   }
 
@@ -233,6 +241,8 @@ function Login({ setDisplayModal, login }) {
 Login.propTypes = {
   setDisplayModal: PropTypes.func,
   login: PropTypes.func,
+  clearMsg: PropTypes.func,
+  auth: PropTypes.object,
 };
 
-export default connect(null, mapActionToProps)(Login);
+export default connect(mapStateToPops, mapActionToProps)(Login);

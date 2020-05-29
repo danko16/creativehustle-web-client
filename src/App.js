@@ -2,9 +2,10 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { ConnectedRouter } from 'connected-react-router';
 import { isAuthenticated } from './utils/auth';
 import { Api } from './utils/api';
-import store from './redux';
+import { store, history } from './redux';
 
 import LandingPage from './linding-page';
 import Kelas from './kelas';
@@ -55,19 +56,21 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
-        <Switch>
-          <Route exact path="/">
-            <LandingPage />
-          </Route>
-          <Route path="/kelas">
-            <Kelas />
-          </Route>
-          <PrivateRoute path="/dashboard">
-            <Dashboard />
-          </PrivateRoute>
-        </Switch>
-      </div>
+      <ConnectedRouter history={history}>
+        <div className="App">
+          <Switch>
+            <Route exact path="/">
+              <LandingPage />
+            </Route>
+            <Route path="/kelas">
+              <Kelas />
+            </Route>
+            <PrivateRoute path="/dashboard">
+              <Dashboard />
+            </PrivateRoute>
+          </Switch>
+        </div>
+      </ConnectedRouter>
     </Router>
   );
 }

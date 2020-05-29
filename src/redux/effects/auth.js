@@ -1,53 +1,55 @@
-/* eslint-disable no-undef */
+import { call, put, takeLatest } from 'redux-saga/effects';
+import { push } from 'connected-react-router';
+import { getErrorMessage } from '../../utils/auth';
 import authApi from '../api/auth';
-import { authActions } from '../reducers/auth';
 
-export function register(value) {
-  return async function (dispatch) {
-    try {
-      const { data: response } = await authApi.register(value);
+import { AUTH_ACTIONS, authActions } from '../reducers/auth';
 
-      if (response.status === 200) {
-        const { data } = response;
-        const loginPayload = Object.freeze({
-          token: data.token,
-          user: data.user,
-          type: data.type,
-        });
-        dispatch(authActions.login(loginPayload));
-      }
-      return response;
-    } catch (error) {
-      if (error.response) {
-        return error.response.data;
-      } else {
-        return error;
-      }
+function* register({ value }) {
+  try {
+    const { data: response } = yield call(authApi.register, value);
+
+    const { data } = response;
+    if (data) {
+      const registerPayload = Object.freeze({
+        token: data.token,
+        user: data.user,
+        type: data.type,
+        message: response.message,
+      });
+
+      yield put(authActions.register(registerPayload));
+      yield put(push('/dashboard'));
     }
-  };
+  } catch (e) {
+    yield put(authActions.error(getErrorMessage(e)));
+  }
 }
 
-export function login(value) {
-  return async function (dispatch) {
-    try {
-      const { data: response } = await authApi.login(value);
+function* login({ value }) {
+  try {
+    const { data: response } = yield call(authApi.login, value);
 
-      if (response.status === 200) {
-        const { data } = response;
-        const loginPayload = Object.freeze({
-          token: data.token,
-          user: data.user,
-          type: data.type,
-        });
-        dispatch(authActions.login(loginPayload));
-      }
-      return response;
-    } catch (error) {
-      if (error.response) {
-        return error.response.data;
-      } else {
-        return error;
-      }
+    const { data } = response;
+    if (data) {
+      const loginPayload = Object.freeze({
+        token: data.token,
+        user: data.user,
+        type: data.type,
+        message: response.message,
+      });
+
+      yield put(authActions.login(loginPayload));
+      yield put(push('/dashboard'));
     }
-  };
+  } catch (e) {
+    yield put(authActions.error(getErrorMessage(e)));
+  }
 }
+
+const authSaga = [
+  takeLatest(AUTH_ACTIONS.REQ_LOGIN, login),
+  takeLatest(AUTH_ACTIONS.REQ_REGISTER, register),
+];
+
+export default authSaga;
