@@ -8,6 +8,7 @@ import store from './redux';
 
 import LandingPage from './linding-page';
 import Kelas from './kelas';
+import Dashboard from './dashboard';
 import './app.css';
 
 const mapStateToProps = (state) => ({
@@ -42,7 +43,7 @@ function App() {
           ) : (
             <Redirect
               to={{
-                pathname: '/login',
+                pathname: '/',
                 state: { from: location },
               }}
             />
@@ -62,6 +63,9 @@ function App() {
           <Route path="/kelas">
             <Kelas />
           </Route>
+          <PrivateRoute path="/dashboard">
+            <Dashboard />
+          </PrivateRoute>
         </Switch>
       </div>
     </Router>

@@ -20,21 +20,19 @@ function Header({ children, style, user }) {
   function userMode() {
     return (
       <li className="nav-item ">
-        <div className="header-notifications-trigger">
-          <a href="/">
-            <div className="user-avatar status-online">
-              <img
-                src={user.avatar ? user.avatar : 'assets/img/default-avatar.png'}
-                alt="avatar"
-                width="45"
-                height="45"
-              />
-            </div>
-          </a>
-        </div>
-        <div className="nav-profile-text">
-          <p>{user.name}</p>
-        </div>
+        <Link className="d-flex" to="/dashboard">
+          <div className="user-avatar status-online">
+            <img
+              src={user.avatar ? user.avatar : 'assets/img/default-avatar.png'}
+              alt="avatar"
+              width="45"
+              height="45"
+            />
+          </div>
+          <div className="nav-profile-text align-self-center">
+            <p>{user.name}</p>
+          </div>
+        </Link>
       </li>
     );
   }

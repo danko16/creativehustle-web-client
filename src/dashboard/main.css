@@ -1,0 +1,10 @@
+.dashboard-main {
+  height: 100%;
+  width: calc(100% - 280px);
+  background-color: #fff;
+  position: fixed;
+  top: 66px;
+  left: 280px;
+  overflow-x: hidden;
+  padding: 50px;
+}

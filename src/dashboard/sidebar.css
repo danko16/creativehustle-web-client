@@ -1,0 +1,73 @@
+.sidenav {
+  height: 100%;
+  width: 280px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 1;
+  top: 66px;
+  left: 0;
+  overflow-x: hidden;
+  padding-top: 20px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.dashboard-nav {
+  display: block;
+  padding-bottom: 30px;
+}
+
+.dashboard-nav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 25px 0 0;
+}
+
+.dashboard-nav ul:before {
+  content: attr(data-submenu-title);
+  padding: 0 35px;
+  margin-bottom: 8px;
+  display: block;
+  color: #2a41e8;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.dashboard-nav ul li {
+  display: block;
+  border-left: 3px solid transparent;
+  transition: .3s;
+  line-height: 25px;
+  font-size: 15px;
+}
+
+.dashboard-nav ul li a {
+  color: #707070;
+  display: block;
+  padding: 11px 32px;
+  transition: 0.3s;
+  cursor: pointer;  
+  position: relative;  
+  text-decoration: none;
+}
+
+.dashboard-nav a img {
+  width: 24px;
+}
+
+.dashboard-nav ul li.active, .dashboard-nav ul li.active-submenu, .dashboard-nav ul li:hover {
+  background-color: rgba(42,65,232,.04);
+}
+
+.dashboard-nav ul li.active, .dashboard-nav ul li.active-submenu, .dashboard-nav ul li:hover, .payment-tab-trigger>input:checked~label::before {
+  border-color: #2a41e8;
+}
+
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
