@@ -78,13 +78,6 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
     line-height: 1.375;
 }
 
-
-.form-group__icon i[class*="icon"] {
-  font-size: 18px;
-  padding: 10px 13px;
-  color: #2B50B4;
-}
-
 .form-group__icon:before {
   border-right: 1px solid #e6e6e6;
 }
@@ -119,6 +112,14 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   border-radius: 5px;
   color: white;
   text-align: center;
+}
+
+
+.form-group__icon i[class*='icon'] {
+  position: absolute;
+  padding: 13px 11px;
+  font-size: 24px;  
+  color: #2B50B4;;
 }
 
 @media (min-width: 992px) {

@@ -10,6 +10,9 @@ import { store, history } from './redux';
 import LandingPage from './linding-page';
 import Kelas from './kelas';
 import Dashboard from './dashboard';
+import Talent from './talent';
+import ShowCase from './showcase';
+import Journey from './journey';
 import './app.css';
 
 const mapStateToProps = (state) => ({
@@ -64,6 +67,15 @@ function App() {
             </Route>
             <Route path="/kelas">
               <Kelas />
+            </Route>
+            <Route path="/talent">
+              <Talent />
+            </Route>
+            <Route path="/showcase">
+              <ShowCase />
+            </Route>
+            <Route path="/journey">
+              <Journey />
             </Route>
             <PrivateRoute path="/dashboard">
               <Dashboard />

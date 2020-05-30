@@ -11,12 +11,6 @@ section main hr.worm {
   position: relative;
 }
 
-.form-group__icon i[class*='icon'] {
-  position: absolute;
-  padding: 13px 11px;
-  font-size: 24px;
-  color: #A9A9A9;
-}
 
 .form-group__icon .form-control {
     padding-left: 53px;
