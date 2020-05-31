@@ -21,10 +21,7 @@ function LandingPage() {
             <div className="row align-items-center justify-content-center">
               <div className="col-12 col-lg-10 text-center">
                 <h1 className="d-none d-sm-block header-home text-merriweather">
-                  Build Your <span id="placetextheader">Future Career</span>
-                </h1>
-                <h1 className="d-block d-sm-none title-header-home header-home text-merriweather">
-                  Build Your Future Career
+                  Creative Hustle indehoy
                 </h1>
                 <p className="font-weight-light d-none d-sm-block">
                   Pelajari keahlian baru yang dibutuhkan oleh <br /> startup atau perusahaan IT
