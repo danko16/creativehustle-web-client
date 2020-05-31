@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ConnectedRouter } from 'connected-react-router';
 import { isAuthenticated } from './utils/auth';
 import { Api } from './utils/api';
 import { store, history } from './redux';
+import { authActions } from './redux/reducers/auth';
 
 import LandingPage from './linding-page';
 import Kelas from './kelas';
@@ -18,6 +20,14 @@ import './app.css';
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
+
+const mapActionToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      authFlow: authActions.authFlow,
+    },
+    dispatch
+  );
 
 Api.interceptors.request.use(
   function (config) {
@@ -35,7 +45,10 @@ Api.interceptors.request.use(
   }
 );
 
-function App() {
+function App({ authFlow }) {
+  useEffect(() => {
+    authFlow();
+  }, [authFlow]);
   //eslint-disable-next-line
   function PrivateRoute({ children, ...rest }) {
     return (
@@ -89,6 +102,7 @@ function App() {
 
 App.propTypes = {
   auth: PropTypes.object,
+  authFlow: PropTypes.func,
 };
 
-export default connect(mapStateToProps)(App);
+export default connect(mapStateToProps, mapActionToProps)(App);

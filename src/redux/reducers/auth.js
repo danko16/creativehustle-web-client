@@ -1,4 +1,5 @@
 export const AUTH_ACTIONS = Object.freeze({
+  FLOW: 'myapp/auth/flow',
   SET_DATA: 'myapp/auth/set-data',
   REQ_LOGIN: 'myapp/auth/req-login',
   REQ_REGISTER: 'myapp/auth/req-register',
@@ -10,6 +11,9 @@ export const AUTH_ACTIONS = Object.freeze({
 });
 
 export const authActions = Object.freeze({
+  authFlow: () => ({
+    type: AUTH_ACTIONS.FLOW,
+  }),
   setData: (field, value) => ({
     type: AUTH_ACTIONS.SET_DATA,
     field,
@@ -60,6 +64,7 @@ const reducer = (state = initialState, { type, field, value }) => {
         ...state,
         [field]: value,
       };
+    case AUTH_ACTIONS.FLOW:
     case AUTH_ACTIONS.REQ_LOGIN:
     case AUTH_ACTIONS.REQ_REGISTER:
       return {
