@@ -1,4 +1,5 @@
-import { call, put, take, takeLatest, select } from 'redux-saga/effects';
+import { call, put, take, fork, cancel, takeLatest, select } from 'redux-saga/effects';
+import { eventChannel } from 'redux-saga';
 import { push } from 'connected-react-router';
 import io from 'socket.io-client';
 import { getErrorMessage } from '../../utils/auth';
@@ -8,11 +9,40 @@ import { AUTH_ACTIONS, authActions } from '../reducers/auth';
 
 function connect() {
   const socket = io.connect('http://localhost:3000');
-  return new Promise((resolve) => {
+
+  return new Promise((resolve, reject) => {
     socket.on('connect', () => {
       resolve(socket);
     });
+
+    socket.on('connect_error', () => {
+      setTimeout(function () {
+        socket.close();
+        reject({ type: 'connection', msg: 'Error connecting to server' });
+      }, 5000);
+    });
   });
+}
+
+function subscribe(socket) {
+  return eventChannel((emit) => {
+    socket.on('authenticated', () => {
+      emit(authActions.authenticated());
+    });
+    socket.on('unauthorized', () => {
+      emit(authActions.unauthorized());
+    });
+
+    return () => {};
+  });
+}
+
+function* read(socket) {
+  const channel = yield call(subscribe, socket);
+  while (true) {
+    let action = yield take(channel);
+    yield put(action);
+  }
 }
 
 function* register({ value }) {
@@ -57,27 +87,29 @@ function* login({ value }) {
   }
 }
 
-function* isAllow() {
-  try {
-    yield call(authApi.isAllow);
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
 function* authFlow() {
-  while (true) {
-    const isAuthorized = yield call(isAllow);
-    if (!isAuthorized) {
-      console.log('wait for loggin');
-      yield take([AUTH_ACTIONS.LOGIN, AUTH_ACTIONS.REGISTER]);
+  try {
+    while (true) {
+      const { auth } = yield select();
+      const socket = yield call(connect);
+      socket.emit('authentication', auth.token);
+
+      const task = yield fork(read, socket);
+
+      const action = yield take([AUTH_ACTIONS.AUTHENTICATED, AUTH_ACTIONS.UNAUTHORIZED]);
+
+      if (action.type !== 'authenticated') {
+        yield take([AUTH_ACTIONS.LOGIN, AUTH_ACTIONS.REGISTER]);
+      }
+
+      yield take(AUTH_ACTIONS.LOGOUT);
+      yield cancel(task);
+      socket.emit('logout');
     }
-    const socket = yield call(connect);
-    const { auth } = yield select();
-    socket.emit('authentication', auth.token);
-    console.log('wait for logout');
-    yield take(AUTH_ACTIONS.LOGOUT);
+  } catch (err) {
+    if (err.type === 'connection') {
+      yield put(authActions.logout());
+    }
   }
 }
 

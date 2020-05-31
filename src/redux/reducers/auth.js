@@ -1,4 +1,6 @@
 export const AUTH_ACTIONS = Object.freeze({
+  AUTHENTICATED: 'authenticated',
+  UNAUTHORIZED: 'unauthorized',
   FLOW: 'myapp/auth/flow',
   SET_DATA: 'myapp/auth/set-data',
   REQ_LOGIN: 'myapp/auth/req-login',
@@ -14,6 +16,8 @@ export const authActions = Object.freeze({
   authFlow: () => ({
     type: AUTH_ACTIONS.FLOW,
   }),
+  authenticated: () => ({ type: AUTH_ACTIONS.AUTHENTICATED }),
+  unauthorized: () => ({ type: AUTH_ACTIONS.UNAUTHORIZED }),
   setData: (field, value) => ({
     type: AUTH_ACTIONS.SET_DATA,
     field,
@@ -65,6 +69,8 @@ const reducer = (state = initialState, { type, field, value }) => {
         [field]: value,
       };
     case AUTH_ACTIONS.FLOW:
+    case AUTH_ACTIONS.AUTHENTICATED:
+      return { ...state };
     case AUTH_ACTIONS.REQ_LOGIN:
     case AUTH_ACTIONS.REQ_REGISTER:
       return {
@@ -97,6 +103,7 @@ const reducer = (state = initialState, { type, field, value }) => {
         message: '',
         is_error: false,
       };
+    case AUTH_ACTIONS.UNAUTHORIZED:
     case AUTH_ACTIONS.LOGOUT:
       return {
         ...state,
