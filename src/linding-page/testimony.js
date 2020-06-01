@@ -7,12 +7,11 @@ function Testimony() {
         <div className="col-11">
           <div className="row mb-5">
             <div className="col-12 text-center">
-              <h1 className="text-merriweather mb-3 text-indigo-3">Testimoni Siswa</h1>
+              <h1 className="text-merriweather text-indigo-3">Testimoni Siswa</h1>
               <p className="font-weight-light text-indigo-3">
                 Dengar apa kata mereka tentang belajar di sini
               </p>
             </div>
-            <div className="col-11 col-lg-6"></div>
           </div>
           <div className="row ">
             <div className="col-md-6 col-lg-4 mb-4">

@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../shared/header';
 import Footer from '../shared/footer';
-import ReviewSection from '../linding-page/review-sect';
+import ReviewSection from '../linding-page/top-categories';
 import ClassList from './class-list';
 
 import './kelas.css';
