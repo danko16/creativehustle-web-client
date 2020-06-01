@@ -39,10 +39,6 @@
   align-items: center;
 }
 
-main {
-  padding-top: 66px;
-}
-
 .user-avatar {
   display: inline-block;
   border-radius: 50%;
@@ -173,4 +169,23 @@ ul.user-menu-small-nav li a:hover {
 
 .status-icon.status-online, .status-online:after {
   background-color: #38b653;
+}
+
+.header {  
+  margin-top: 66px;
+  background-color: #3f506b;
+}
+
+.header > .header-content {
+  padding-top: 60px;
+  color: #ffffff;
+}
+
+.header > .header-content p {
+  color: #BFBFBF;
+}
+
+.img-header {
+  width: 500px;
+  padding-bottom: 60px;
 }

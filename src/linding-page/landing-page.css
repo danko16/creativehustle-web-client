@@ -1,48 +1,41 @@
-.course-card {
-  transition: all 0.8s;
-  margin-bottom: 10px;
-}
-.card__compact {
-  padding: 15px;
-  border-radius: 8px;
-}
-.card__border {
-  border: 1px solid #e5e5e5;
+.card {
+  box-shadow: 0 2px 4px 0 rgba(20,23,28,.15);
 }
 
-.card__compact .card-body {
-  padding: 0;
+.course-card.card {
+  border-radius: 0px;
+  transition: .2s ease;
+  box-shadow: 0 1px 3px 0 rgba(20,23,28,.15);
+  
+}
+
+.course-card.card:hover {
+  box-shadow: 0 2px 9px 2px rgba(20,23,28,.15);
+}
+
+.course-card {
+  margin-bottom: 10px;
+}
+
+.card-body {
+  padding: 0 20px 0 20px;
+}
+
+.checked {
+  color: orange;
 }
 
 .card-body hr {
-    border-top: 1px solid #f1f1f1;
+  border-top: 1px solid #f1f1f1;
 }
 
-.card-guide {
-  border: 0 !important;
+.rating {
+  margin-right: 4px;
+  font-size: 15px;
 }
 
-.card-guide-primary {
-  background: #322f56;
-  border-radius: 20px;
-}
-
-.card-guide-primary h6 {
-  color: white;
-}
-.card-guide h6 {
-  font-size: 18px;
-}
-
-.card-guide-primary .h7 {
-  color: #908eab;
-}
-
-.card-guide-primary .btn-primary {
-  background: #3f3c67;
-  border: 0;
-  padding-right: 20px;
-  padding-left: 20px;
+.rating-vote {
+  font-size: 13px;
 }
 
 .img__cover {
@@ -53,63 +46,6 @@
 
 section .thumbnail a {
   cursor: pointer;
-}
-
-section .thumbnail .hover-content {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  display: none;
-  background-color: rgba(15, 14, 32, 0.7);
-  top: 0;
-  left: 0;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  opacity: 0;
-  transition: opacity 0.25s ease-in-out;
-  z-index: 0;
-}
-
-section .thumbnail .hover-content .icon-wrapper {
-  border: 5px solid rgba(255, 255, 255, 0.5);
-  border-radius: 100px;
-  width: 38px;
-  height: 38px;
-}
-
-section .thumbnail .hover-content .icon-wrapper__bigger {
-  width: 42px;
-  height: 42px;
-  -webkit-transform: scale(1.3);
-  transform: scale(1.3);
-}
-
-section .thumbnail .hover-content .icon-wrapper .icon {
-    background-color: #fff;
-    color: #2b50b4;
-    border-radius: 100px;
-    text-align: center;
-    height: 100%;
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    align-items: center;
-    -webkit-justify-content: center;
-    -ms-flex-pack: center;
-    justify-content: center;
-}
-
-section .thumbnail .hover-content .icon-wrapper .icon [class*="icon"] {
-    font-size: 1rem;
 }
 
 section.footer .sitemap {
@@ -127,9 +63,9 @@ section.footer .sitemap a {
 }
 
 .img__contain {
-    object-fit: contain;
-    width: 100%;
-    height: 100%;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .text-review {
@@ -141,7 +77,6 @@ section.footer .sitemap a {
   border-color: #e5e5e5;
   color: #a8a8a8;
 }
-
 
 .bwa-invitation {
   padding-top: 70px;
@@ -158,4 +93,30 @@ section.footer .sitemap a {
   background: var(--indigo-3);
   color: #fff;
   border: 0;
+}
+
+.testimony {
+  padding: 20px;
+}
+
+.testimony .profile {
+  display: flex;
+  margin: 15px 0 0 0;
+}
+
+.testimony .profile img {
+  border-radius: 50%;
+  height: 80px;
+  width: 80px;
+  margin-right: 14px;
+  object-fit: fill;
+}
+
+.testimony .profile P {
+  align-self: center;
+  font-weight: 500;
+}
+
+.testimony .message {
+  font-size: 14px;
 }

@@ -1,15 +1,7 @@
-.bg-home {
-  background-color: #3f506b !important;
-}
 
-section main {
-  color: #ffffff;
+.row {
+  margin: 0;
 }
-
-section main p {
-  color: #BFBFBF;
-}
-
 section .thumbnail {
   border-radius: 4px;
 }
@@ -18,10 +10,6 @@ p {
   margin-top: 0;
   margin-bottom: 1rem;
   line-height: 1.875rem;
-}
-
-.ss-header {
-  width: 858px;
 }
 
 .bg-home .kampus {
@@ -61,7 +49,7 @@ p {
 }
 
 .text-gray-500 {
-  color: #a8a8a8 !important;
+  color: #999999 !important;
 }
 
 h7, .h7 {
@@ -120,6 +108,10 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
   padding: 13px 11px;
   font-size: 24px;  
   color: #2B50B4;;
+}
+
+.container--light-grey {
+  background: #f7f8fa;
 }
 
 @media (min-width: 992px) {

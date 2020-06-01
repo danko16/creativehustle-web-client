@@ -1,19 +1,9 @@
-import { call, put, take, takeLatest, select } from 'redux-saga/effects';
+import { call, put, take, takeLatest } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
-import io from 'socket.io-client';
 import { getErrorMessage } from '../../utils/auth';
 import authApi from '../api/auth';
 
 import { AUTH_ACTIONS, authActions } from '../reducers/auth';
-
-function connect() {
-  const socket = io.connect('http://localhost:3000');
-  return new Promise((resolve) => {
-    socket.on('connect', () => {
-      resolve(socket);
-    });
-  });
-}
 
 function* register({ value }) {
   try {
@@ -73,9 +63,7 @@ function* authFlow() {
       console.log('wait for loggin');
       yield take([AUTH_ACTIONS.LOGIN, AUTH_ACTIONS.REGISTER]);
     }
-    const socket = yield call(connect);
-    const { auth } = yield select();
-    socket.emit('authentication', auth.token);
+
     console.log('wait for logout');
     yield take(AUTH_ACTIONS.LOGOUT);
   }

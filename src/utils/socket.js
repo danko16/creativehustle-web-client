@@ -1,3 +1,4 @@
+/*eslint-disable*/
 import io from 'socket.io-client';
 import { store } from '../redux';
 
@@ -17,9 +18,47 @@ socket.on('error', function (err) {
   console.log(err);
 });
 
-export const loginEmmiter = (data) => {
+const loginEmmiter = (data) => {
   console.log(data);
   socket.emit('authentication', data.token);
 };
+
+function connect() {
+  const socket = io.connect('http://localhost:3000');
+
+  return new Promise((resolve, reject) => {
+    socket.on('connect', () => {
+      resolve(socket);
+    });
+
+    socket.on('connect_error', () => {
+      setTimeout(function () {
+        socket.close();
+        reject({ type: 'connection', msg: 'Error connecting to server' });
+      }, 5000);
+    });
+  });
+}
+
+function subscribe(socket) {
+  return eventChannel((emit) => {
+    socket.on('authenticated', () => {
+      emit(authActions.authenticated());
+    });
+    socket.on('unauthorized', () => {
+      emit(authActions.unauthorized());
+    });
+
+    return () => {};
+  });
+}
+
+function* read(socket) {
+  const channel = yield call(subscribe, socket);
+  while (true) {
+    let action = yield take(channel);
+    yield put(action);
+  }
+}
 
 export default socket;

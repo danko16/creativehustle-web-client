@@ -144,7 +144,7 @@ function Header({ children, style, user }) {
   }
 
   return (
-    <section className="bg-home" style={style}>
+    <section className="header" style={style}>
       {displayModal.show && <Modal displayModal={displayModal} setDisplayModal={setDisplayModal} />}
       <nav className="navbar navbar-expand-lg navbar-dark">
         <div className="container">
