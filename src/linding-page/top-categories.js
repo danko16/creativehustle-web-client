@@ -52,14 +52,14 @@ function TopCategories() {
     ));
   }
   return (
-    <section className="py-5 border-top">
+    <section className="mb-3 border-top">
       <div className="row justify-content-center mt-5">
         <div className="col-11">
-          <div className="row mb-5">
+          <div className="row mb-4">
             <div className="col-12 text-center">
-              <h1 className="text-merriweather mb-3 text-indigo-3">Kategori Popular</h1>
+              <h1 className="text-merriweather mb-2 text-indigo-3">Kategori Popular</h1>
               <p className="font-weight-light text-indigo-3">
-                Jelajahi berbagai macam kategori untuk <br /> meningkatkan karir dan skillmu
+                Jelajahi berbagai macam kategori untuk meningkatkan karir dan skillmu
               </p>
             </div>
           </div>

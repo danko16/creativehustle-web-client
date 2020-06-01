@@ -3,7 +3,7 @@ import React from 'react';
 function Testimony() {
   return (
     <section className="py-5 border-top container--light-grey">
-      <div className="row justify-content-center mt-5 mb-5">
+      <div className="row justify-content-center mt-3 mb-5">
         <div className="col-11">
           <div className="row mb-5">
             <div className="col-12 text-center">

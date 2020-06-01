@@ -2,8 +2,8 @@ import React from 'react';
 
 function FifthSection() {
   return (
-    <section className="bwa-tools border-top mt-7">
-      <div className="container mt-7">
+    <section className="border-top mt-5">
+      <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-lg-12 col-11 d-flex justify-content-start">
             <div className="row main-title justify-content-center">
