@@ -52,8 +52,8 @@ function TopCategories() {
     ));
   }
   return (
-    <section className="mb-3 border-top">
-      <div className="row justify-content-center mt-5">
+    <section className="py-5 border-top">
+      <div className="row justify-content-center">
         <div className="col-11">
           <div className="row mb-4">
             <div className="col-12 text-center">

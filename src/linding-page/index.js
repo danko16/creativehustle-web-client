@@ -6,9 +6,8 @@ import Footer from '../shared/footer';
 import PopularClass from './popular-class';
 import Testimony from './testimony';
 import TopCategories from './top-categories';
-import FifthSection from './fifth-sect';
-import SixthSection from './sixth-sect';
-import SeventhSection from './seventh-sect';
+import RegisterOffer from './register-offer';
+import JobOpportunity from './job-opportunity';
 
 import './landing-page.css';
 
@@ -37,9 +36,8 @@ function LandingPage() {
       <PopularClass />
       <Testimony />
       <TopCategories />
-      <FifthSection />
-      <SixthSection />
-      <SeventhSection />
+      <RegisterOffer />
+      <JobOpportunity />
       <Footer />
     </div>
   );

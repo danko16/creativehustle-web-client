@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
   return (
-    <section className="footer my-5">
+    <section className="border-top footer">
       <div className="container mt-5 pt-4">
         <div className="row justify-content-center">
           <div className="col-11 col-lg-11">

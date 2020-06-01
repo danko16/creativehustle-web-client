@@ -75,9 +75,7 @@ function PopularClass() {
           <a href="/" className="stretched-link">
             <span className="sr-only">title for screen</span>
           </a>
-          <div className="embed-responsive-item">
-            <img src={val.thumbnail} alt="thumbnail kelas" className="img img__cover" />
-          </div>
+          <img src={val.thumbnail} alt="thumbnail kelas" className="img img__cover" />
           <div className="card-body pb-0">
             <h6 className="line-height-1 mb-2 mt-3">{val.title}</h6>
 
