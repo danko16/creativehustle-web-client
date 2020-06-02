@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import { isAuthenticated } from '../utils/auth';
+import { authActions } from '../redux/reducers/auth';
 
 import Modal from './modal';
 import './header.css';
@@ -11,6 +13,8 @@ import './header.css';
 const mapStateToProps = (state) => ({
   user: state.auth.user,
 });
+
+const mapActionToProps = (dispatch) => bindActionCreators({ logout: authActions.logout }, dispatch);
 
 function useOutsideAlerter(ref, setShowDropdown) {
   useEffect(() => {
@@ -26,7 +30,7 @@ function useOutsideAlerter(ref, setShowDropdown) {
   }, [ref, setShowDropdown]);
 }
 
-function Header({ children, style, user }) {
+function Header({ children, style, user, logout }) {
   const [displayModal, setDisplayModal] = useState({
     show: false,
     mode: null,
@@ -52,24 +56,29 @@ function Header({ children, style, user }) {
 
         <ul className="user-menu-small-nav">
           <li>
-            <a href="/dashboard">
+            <Link to="/dashboard">
               <img src="assets/icon/cv.png" width="24" height="24" alt="profil" /> Kelas Saya
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/dashboard">
+            <Link to="/dashboard">
               <img src="assets/icon/account.png" width="24" height="24" alt="profil" /> Profil
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/dashboard">
+            <Link to="/dashboard">
               <img src="assets/icon/settings.png" width="24" height="24" alt="setting" /> Pengaturan
-            </a>
+            </Link>
           </li>
           <li>
-            <a href="/dashboard">
+            <Link
+              onClick={() => {
+                logout();
+              }}
+              to="/"
+            >
               <img src="assets/icon/off.png" width="24" height="24" alt="logout" /> Logout
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
@@ -252,6 +261,7 @@ Header.propTypes = {
   children: PropTypes.element,
   style: PropTypes.object,
   user: PropTypes.object,
+  logout: PropTypes.func,
 };
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapActionToProps)(Header);

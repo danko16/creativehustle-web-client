@@ -35,26 +35,22 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
   });
 
   useEffect(() => {
-    return () => {
-      clearMsg();
-    };
-  }, [clearMsg]);
-
-  useEffect(() => {
-    if (auth.is_authorized && !auth.loading) {
+    if (auth.is_authorized) {
       setDisplayModal({
         show: false,
         type: null,
       });
     }
 
-    if (auth.message && !auth.loading) {
+    if (auth.message) {
       setNotification({
         text: auth.message,
         isError: auth.is_error,
       });
+
+      clearMsg();
     }
-  }, [auth, setDisplayModal]);
+  }, [auth, setDisplayModal, clearMsg]);
 
   function handleSubmit(e) {
     e.preventDefault();

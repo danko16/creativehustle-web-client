@@ -27,12 +27,6 @@ function Login({ setDisplayModal, auth, clearMsg, login }) {
   });
 
   useEffect(() => {
-    return () => {
-      clearMsg();
-    };
-  }, [clearMsg]);
-
-  useEffect(() => {
     if (auth.is_authorized && !auth.loading) {
       setDisplayModal({
         show: false,
@@ -45,8 +39,9 @@ function Login({ setDisplayModal, auth, clearMsg, login }) {
         text: auth.message,
         isError: auth.is_error,
       });
+      clearMsg();
     }
-  }, [auth, setDisplayModal]);
+  }, [auth, setDisplayModal, clearMsg]);
 
   function handleLogin(e) {
     e.preventDefault();
