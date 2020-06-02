@@ -52,7 +52,7 @@
   image-rendering: -webkit-optimize-contrast;
 }
 
-.user-name{
+.user-name {
   font-weight: 500;
   color: #333;
   padding: 2px 0 0 15px;
@@ -62,7 +62,7 @@
 .header-notifications-dropdown {
   width: 300px;
   border-radius: 4px;
-  box-shadow: 0 2px 12px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.12);
   background-color: #fff;
   padding: 0;
   position: absolute;
@@ -70,12 +70,11 @@
   right: -6px;
   text-align: left;
   z-index: 100;
-  transform: scale(.95);
+  transform: scale(0.95);
   opacity: 0;
   visibility: hidden;
-  transition: .3s;
+  transition: 0.3s;
   pointer-events: none;
-  
 }
 
 .header-notifications {
@@ -89,7 +88,6 @@
   pointer-events: all;
 }
 
-
 .user-menu .header-notifications-dropdown:before {
   right: 23px;
 }
@@ -98,7 +96,7 @@
   display: flex;
 }
 .header-notifications-dropdown:before {
-  content: "";
+  content: '';
   position: absolute;
   right: 43px;
   top: -6px;
@@ -127,7 +125,7 @@ ul.user-menu-small-nav li a {
   padding: 6px 0;
   font-size: 14px;
   color: #666;
-  transition: .3s;
+  transition: 0.3s;
 }
 
 ul.user-menu-small-nav li a:hover {
@@ -138,7 +136,8 @@ ul.user-menu-small-nav li a:hover {
   display: flex;
 }
 
-.status-icon.status-online, .status-online:after {
+.status-icon.status-online,
+.status-online:after {
   background-color: #38b653;
 }
 
@@ -152,10 +151,11 @@ ul.user-menu-small-nav li a:hover {
   font-size: 14px;
 }
 
-
-.notification-avatar:after, .status-icon, .user-avatar:after {
+.notification-avatar:after,
+.status-icon,
+.user-avatar:after {
   position: absolute;
-  content: "";
+  content: '';
   height: 12px;
   width: 12px;
   background-color: silver;
@@ -163,15 +163,16 @@ ul.user-menu-small-nav li a:hover {
   right: 0;
   display: block;
   border: 2px solid #fff;
-  box-shadow: 0 2px 3px rgba(0,0,0,.3);
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.3);
   border-radius: 50%;
 }
 
-.status-icon.status-online, .status-online:after {
+.status-icon.status-online,
+.status-online:after {
   background-color: #38b653;
 }
 
-.header {  
+.header {
   margin-top: 66px;
   background-color: #3f506b;
 }
@@ -182,10 +183,142 @@ ul.user-menu-small-nav li a:hover {
 }
 
 .header > .header-content p {
-  color: #BFBFBF;
+  color: #bfbfbf;
 }
 
 .img-header {
-  width: 500px;
   padding-bottom: 60px;
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+}
+
+.search-wrapper {
+  flex-basis: 40%;
+  align-self: center;
+}
+
+.input-group input {
+  height: calc(1.5em + 0.85rem + 2px);
+  padding: 0.375rem 0.75rem;
+  background-color: #98a3b5;
+  border-radius: 0px;
+  border: none;
+  outline: none;
+}
+
+.input-group input::placeholder {
+  font-size: 14px;
+  font-weight: 400;
+  color: #34495e;
+}
+
+.input-group input:focus {
+  background-color: #bac2d1;
+  box-shadow: none;
+}
+
+.input-group-btn {
+  display: flex;
+}
+
+.input-group-btn button {
+  color: #2a41e8;
+  background-color: #98a3b5;
+  padding-right: 10px;
+  padding-left: 10px;
+  border: none;
+}
+
+.stretched-link::after {
+  z-index: 0;
+}
+
+.nav-container {
+  display: flex;
+}
+
+.search-wrapper-sm {
+  display: none;
+}
+
+@media only screen and (min-width: 1600px) {
+  .navbar-collapse .left-nav {
+    margin-left: 3rem;
+  }
+}
+
+@media only screen and (max-width: 1240px) {
+  .navbar-nav .nav-divider {
+    display: none;
+  }
+
+  .navbar-collapse .nav-item a.nav-link,
+  .navbar-collapse .nav-item span.nav-link {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media only screen and (max-width: 991px) {
+  .nav-container {
+    position: relative;
+    display: block;
+  }
+
+  .nav-head {
+    overflow: auto;
+  }
+
+  .search-wrapper {
+    display: none;
+  }
+
+  .nav-container {
+    display: block;
+  }
+
+  .navbar-brand {
+    float: left;
+  }
+
+  .navbar-toggler {
+    float: right;
+    margin-top: 5px;
+  }
+
+  button.navbar-toggler:focus {
+    outline: none;
+  }
+
+  .search-wrapper-sm {
+    position: absolute;
+    display: block;
+    left: 25%;
+    margin-top: 6px;
+    width: 50%;
+  }
+
+  .navbar-collapse .nav-item a.nav-link,
+  .navbar-collapse .nav-item span.nav-link {
+    padding-left: 0px;
+    padding-right: 0px;
+    text-align: center;
+  }
+
+  .navbar-collapse {
+    position: absolute;
+    display: block;
+    background-color: #333f52;
+    margin-top: 7px;
+    padding: 20px;
+    width: calc(100% - 29px);
+    opacity: 0.95;
+    box-shadow: 0 2px 4px 0 rgba(20, 23, 28, 0.15);
+  }
+
+  .navbar-collapse .nav-item {
+    display: block;
+    padding: 5px 0 5px 0;
+  }
 }

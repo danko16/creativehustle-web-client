@@ -143,36 +143,59 @@ function Header({ children, style, user }) {
     );
   }
 
+  function renderSearchInput() {
+    return (
+      <div className="input-group">
+        <input
+          data-purpose="search-input"
+          name="q"
+          maxLength="200"
+          placeholder="Search for anything"
+          autoComplete="off"
+          className="form-control"
+        />
+        <div className="input-group-btn">
+          <button aria-label="Search for anything" type="submit">
+            <span className="fa fa-search"></span>
+          </button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <section className="header" style={style}>
       {displayModal.show && <Modal displayModal={displayModal} setDisplayModal={setDisplayModal} />}
-      <nav className="navbar navbar-expand-lg navbar-dark">
-        <div className="container">
-          <Link className="navbar-brand" to="/">
-            <img
-              src="assets/logo/logo-bwa.png"
-              width="40"
-              height="40"
-              className="d-inline-block align-top"
-              alt="logo buildwithangga"
-            />
-            <span className="sr-only">BuildWith Angga</span>
-          </Link>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span className="navbar-toggler-icon"></span>
-          </button>
+      <nav className="navbar navbar-expand-lg navbar-dark justify-content-center">
+        <div className="col-10 nav-container">
+          <div className="nav-head">
+            <Link className="navbar-brand" to="/">
+              <img
+                src="assets/logo/logo-bwa.png"
+                width="40"
+                height="40"
+                className="d-inline-block align-top"
+                alt="logo buildwithangga"
+              />
+              <span className="sr-only">BuildWith Angga</span>
+            </Link>
+            <div className="search-wrapper-sm">{renderSearchInput()}</div>
+            <button
+              className="navbar-toggler"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </div>
 
-          <div className="collapse navbar-collapse navbar-mobile-bwa" id="navbarSupportedContent">
-            <ul className="navbar-nav ml-auto">
-              <li className="nav-item ">
+          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav">
+              <li className="nav-item left-nav">
                 <NavLink
                   className="nav-link"
                   to="/kelas"
@@ -180,7 +203,7 @@ function Header({ children, style, user }) {
                     color: '#59abe3',
                   }}
                 >
-                  Kelas
+                  Kategori
                 </NavLink>
               </li>
               <li className="nav-item ">
@@ -191,24 +214,16 @@ function Header({ children, style, user }) {
                     color: '#59abe3',
                   }}
                 >
-                  Showcase
+                  Jobs
                 </NavLink>
               </li>
               <li className="nav-item ">
                 <NavLink
-                  className="nav-link "
+                  className="nav-link"
                   to="/talent"
-                  activeStyle={{
-                    color: '#59abe3',
+                  style={{
+                    minWidth: 150,
                   }}
-                >
-                  Talent
-                </NavLink>
-              </li>
-              <li className="nav-item ">
-                <NavLink
-                  className="nav-link "
-                  to="/journey"
                   activeStyle={{
                     color: '#59abe3',
                   }}
@@ -216,6 +231,9 @@ function Header({ children, style, user }) {
                   Alur Belajar
                 </NavLink>
               </li>
+            </ul>
+            <div className="search-wrapper ml-auto mr-auto">{renderSearchInput()}</div>
+            <ul className="navbar-nav">
               <li className="nav-item">
                 <span className="nav-divider"></span>
               </li>

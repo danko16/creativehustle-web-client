@@ -20,9 +20,9 @@ function Footer() {
                   <span className="sr-only">Build with Angga</span>
                 </Link>
                 <p className="mt-4 font-weight-light text-gray-500">
-                  Belajar online bersama materi <br className="desktop" />
-                  terkait code, design, programming, <br className="desktop" />
-                  dan karir di bidang IT.
+                  Belajar online sesuai kebutuhan <br className="desktop" />
+                  industri saat ini dan dapatkan <br className="desktop" />
+                  kesempatan berkarir sesuai passionmu.
                 </p>
               </div>
               <div className="col-12 col-lg-7 offset-lg-1">
@@ -37,7 +37,7 @@ function Footer() {
                         <Link to="/">Tata Cara Order</Link>
                       </li>
                       <li>
-                        <Link to="/">Cara Dapat Sertifikat</Link>
+                        <Link to="/">Cara Melamar Pekerjaan</Link>
                       </li>
                       <li>
                         <Link to="/">Kebijakan Privasi</Link>
@@ -48,7 +48,7 @@ function Footer() {
                     <h5 className="text-indigo-3">Explore</h5>
                     <ul className="list-unstyled sitemap">
                       <li>
-                        <Link to="/">Cek Sertifikat</Link>
+                        <Link to="/">Cek Kategori</Link>
                       </li>
                       <li>
                         <Link to="/">Biaya Belajar Online</Link>
@@ -67,8 +67,8 @@ function Footer() {
                     <h5 className="text-indigo-3">Office</h5>
                     <ul className="list-unstyled sitemap">
                       <li className="line-height-2 font-weight-light">
-                        admin@buildwithangga.com
-                        <br /> Jakarta Selatan, Indonesia
+                        admin@creativehustle.com
+                        <br /> Klaten Selatan, Indonesia
                       </li>
                     </ul>
                   </div>
@@ -111,7 +111,7 @@ function Footer() {
         </div>
         <div className="row justify-content-center align-items-center mt-5 pt-4">
           <div className="col-auto text-gray-500 font-weight-light">
-            © 2019 - 2020 BuildWith Angga • All rights reserved • Love from Jakarta
+            © 2019 - 2020 Creative Hustle • All rights reserved • Love from Klaten
           </div>
           <div className="col-auto">
             <img src="assets/logo/monas.svg" height="50" className="ic_monas" alt="ills monas" />

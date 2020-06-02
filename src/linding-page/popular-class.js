@@ -70,7 +70,7 @@ const popularClasses = [
 function PopularClass() {
   function renderClass() {
     return popularClasses.map((val, index) => (
-      <div className="col-md-5 col-lg-4 col-xl-3 mb-4" key={index}>
+      <div className="col-md-6 col-lg-4 col-xl-3 mb-4" key={index}>
         <div className="course-card card">
           <a href="/" className="stretched-link">
             <span className="sr-only">title for screen</span>
@@ -116,7 +116,7 @@ function PopularClass() {
         </div>
 
         <div className="row mt-5 justify-content-center">
-          <div className="col col-12 col-lg-11">
+          <div className="col col-10">
             <div className="row justify-content-center">{renderClass()}</div>
           </div>
         </div>

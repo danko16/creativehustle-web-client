@@ -20,7 +20,8 @@
   box-shadow: 0 1px 3px 0 rgba(20, 23, 28, 0.15);
 }
 
-.course-card.card:hover, .card:hover {
+.course-card.card:hover,
+.card:hover {
   box-shadow: 0 2px 9px 2px rgba(20, 23, 28, 0.15);
 }
 
@@ -137,11 +138,11 @@ section.footer .sitemap a {
 }
 
 .mentor-assign p {
-  width: 500px;
+  max-width: 500px;
 }
 
 .student-assign p {
-  width: 550px;
+  max-width: 550px;
 }
 
 .student-assign button,
@@ -149,7 +150,7 @@ section.footer .sitemap a {
   margin-top: 12px;
   padding: 24px;
   border-radius: 4px;
-  transition: .2s ease;
+  transition: 0.2s ease;
   border: 1px solid #dedfe0;
   background-color: #19b5fe;
   color: #fff;
@@ -163,21 +164,34 @@ section.footer .sitemap a {
   background-color: #1192cf;
 }
 
-.job .card-body .type span{
+.job .card-body .type span {
   font-size: 13px;
   border-radius: 3px;
   font-weight: 600;
   padding: 0 5px 0 5px;
   border: 2px solid #a8a8a8;
-} 
+}
 
-.job .card-body .desc{
+.job .card-body .desc {
   color: #3455db;
   font-weight: 600;
   font-size: 16px;
-} 
+}
 
-
-.job .card-body .by, .job .card-body .exp, .job .card-body .pos{
+.job .card-body .by,
+.job .card-body .exp,
+.job .card-body .pos {
   font-size: 12px;
+}
+
+@media only screen and (max-width: 992px) {
+  .mentor-assign {
+    border-right: none;
+    border-bottom: 1px solid #dedfe0;
+    padding-bottom: 40px;
+  }
+
+  .student-assign {
+    padding-top: 40px;
+  }
 }

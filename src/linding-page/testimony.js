@@ -4,7 +4,7 @@ function Testimony() {
   return (
     <section className="py-5 border-top container--light-grey">
       <div className="row justify-content-center">
-        <div className="col-11">
+        <div className="col-10">
           <div className="row mb-5">
             <div className="col-12 text-center">
               <h1 className="text-merriweather text-indigo-3">Testimoni Siswa</h1>
@@ -13,7 +13,7 @@ function Testimony() {
               </p>
             </div>
           </div>
-          <div className="row ">
+          <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4 mb-4">
               <div className="card testimony">
                 <div className="profile">

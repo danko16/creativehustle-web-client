@@ -54,7 +54,7 @@ function TopCategories() {
   return (
     <section className="py-5 border-top">
       <div className="row justify-content-center">
-        <div className="col-11">
+        <div className="col-10">
           <div className="row mb-4">
             <div className="col-12 text-center">
               <h1 className="text-merriweather mb-2 text-indigo-3">Kategori Popular</h1>
@@ -64,7 +64,7 @@ function TopCategories() {
             </div>
           </div>
 
-          <div className="row">{renderCategories()}</div>
+          <div className="row justify-content-center">{renderCategories()}</div>
         </div>
       </div>
     </section>

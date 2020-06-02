@@ -39,7 +39,7 @@ function JobOpportunity() {
     return jobs.map((value, index) => {
       const expiredDay = (value.exp - Date.now()) / (1000 * 60 * 60 * 24);
       return (
-        <div className="col-3" key={index}>
+        <div className="col-md-6 col-lg-4 col-xl-3" key={index}>
           <div className="job card mb-3">
             <a href="/" className="stretched-link">
               <span className="sr-only">title for screen</span>
@@ -63,7 +63,7 @@ function JobOpportunity() {
   return (
     <section className="py-5 border-top">
       <div className="row justify-content-center">
-        <div className="col-11">
+        <div className="col-10">
           <div className="heading text-center mb-5">
             <h1 className="text-merriweather mb-3 text-indigo-3">Lowongan Pekerjaan</h1>
             <p className="font-weight-light text-indigo-3">
@@ -72,7 +72,7 @@ function JobOpportunity() {
               sesuai dengan bidang dan keinginanmu
             </p>
           </div>
-          <div className="row">{renderJobOpportunity()}</div>
+          <div className="row justify-content-center">{renderJobOpportunity()}</div>
         </div>
       </div>
     </section>
