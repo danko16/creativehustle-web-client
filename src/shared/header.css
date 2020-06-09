@@ -242,6 +242,23 @@ ul.user-menu-small-nav li a:hover {
   display: none;
 }
 
+.brand-name {
+  padding: 5px;
+  margin-left: 10px;
+}
+
+.nav-item .fa.fa-cart-plus {
+  cursor: pointer;
+  color: white;
+  font-size: 24px;
+  margin-bottom: 4px;
+  margin-right: 8px;
+}
+
+.nav-item .fa.fa-cart-plus:hover {
+  color: rgba(255, 255, 255, 0.75)
+}
+
 @media only screen and (min-width: 1600px) {
   .navbar-collapse .left-nav {
     margin-left: 3rem;
@@ -268,6 +285,10 @@ ul.user-menu-small-nav li a:hover {
 
   .nav-head {
     overflow: auto;
+  }
+
+  .brand-name {
+    display: none;
   }
 
   .search-wrapper {
@@ -320,5 +341,9 @@ ul.user-menu-small-nav li a:hover {
   .navbar-collapse .nav-item {
     display: block;
     padding: 5px 0 5px 0;
+  }
+
+  .nav-item .fa.fa-cart-plus {
+    display: none;
   }
 }

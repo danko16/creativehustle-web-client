@@ -65,6 +65,7 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
         full_name: name,
         email,
         password,
+        type: 'student',
       });
     }
   }

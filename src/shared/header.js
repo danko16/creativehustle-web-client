@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -178,7 +178,7 @@ function Header({ children, style, user, logout }) {
       <nav className="navbar navbar-expand-lg navbar-dark justify-content-center">
         <div className="col-10 nav-container">
           <div className="nav-head">
-            <Link className="navbar-brand" to="/">
+            <Link className="navbar-brand d-flex" to="/">
               <img
                 src="assets/logo/logo-bwa.png"
                 width="40"
@@ -186,7 +186,7 @@ function Header({ children, style, user, logout }) {
                 className="d-inline-block align-top"
                 alt="logo buildwithangga"
               />
-              <span className="sr-only">BuildWith Angga</span>
+              <span className="brand-name">Creative Hustle</span>
             </Link>
             <div className="search-wrapper-sm">{renderSearchInput()}</div>
             <button
@@ -203,48 +203,28 @@ function Header({ children, style, user, logout }) {
           </div>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav">
-              <li className="nav-item left-nav">
-                <NavLink
-                  className="nav-link"
-                  to="/kelas"
-                  activeStyle={{
-                    color: '#59abe3',
-                  }}
-                >
-                  Kategori
-                </NavLink>
-              </li>
-              <li className="nav-item ">
-                <NavLink
-                  className="nav-link "
-                  to="/showcase"
-                  activeStyle={{
-                    color: '#59abe3',
-                  }}
-                >
-                  Jobs
-                </NavLink>
-              </li>
-              <li className="nav-item ">
-                <NavLink
-                  className="nav-link"
-                  to="/talent"
-                  style={{
-                    minWidth: 150,
-                  }}
-                  activeStyle={{
-                    color: '#59abe3',
-                  }}
-                >
-                  Alur Belajar
-                </NavLink>
-              </li>
-            </ul>
             <div className="search-wrapper ml-auto mr-auto">{renderSearchInput()}</div>
             <ul className="navbar-nav">
               <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Kursus
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Kelas
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link className="nav-link" to="/">
+                  Jobs
+                </Link>
+              </li>
+              <li className="nav-item">
                 <span className="nav-divider"></span>
+              </li>
+              <li className="nav-item">
+                <i className="fa fa-cart-plus" aria-hidden="true"></i>
               </li>
               {isAuthenticated() ? userMode() : authMode()}
             </ul>

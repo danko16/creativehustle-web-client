@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export const Api = axios.create({
-  baseURL: 'http://localhost:3000',
+  baseURL: 'https://api.creativehustle.id',
   timeout: 4000,
   headers: {
     version: '1.0.0',
