@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -30,7 +30,7 @@ function useOutsideAlerter(ref, setShowDropdown) {
   }, [ref, setShowDropdown]);
 }
 
-function Header({ children, style, user, logout }) {
+function Header({ style, user, logout }) {
   const [displayModal, setDisplayModal] = useState({
     show: false,
     mode: null,
@@ -48,16 +48,14 @@ function Header({ children, style, user, logout }) {
             <div className="user-avatar status-online">
               <img src="assets/img/danang.jpg" alt="Foto Proflie" width="45" height="45" />
             </div>
-            <div className="user-name">
-              <p>Danang Eko Yudanto</p>
-            </div>
+            <div className="user-name">Danang Eko Yudanto</div>
           </div>
         </div>
 
         <ul className="user-menu-small-nav">
           <li>
             <Link to="/dashboard">
-              <img src="assets/icon/cv.png" width="24" height="24" alt="profil" /> Kelas Saya
+              <img src="assets/icon/cv.png" width="24" height="24" alt="kelas" /> Kelas Saya
             </Link>
           </li>
           <li>
@@ -100,7 +98,7 @@ function Header({ children, style, user, logout }) {
           style={{ cursor: 'pointer' }}
         >
           <div className="nav-profile-text align-self-center">
-            <p>{user.name}</p>
+            <div className="user-name">{user.name}</div>
           </div>
 
           <div className="user-avatar status-online">
@@ -121,7 +119,7 @@ function Header({ children, style, user, logout }) {
     return (
       <>
         <li className="nav-item ">
-          <span
+          <div
             onClick={() => {
               setDisplayModal({
                 show: true,
@@ -129,15 +127,14 @@ function Header({ children, style, user, logout }) {
               });
             }}
             className="nav-link"
-            href="/register"
             style={{ cursor: 'pointer' }}
           >
             Daftar
-          </span>
+          </div>
         </li>
-        <li className="nav-item ">
-          <span
-            className="nav-link btn btn-masuk-bwa"
+        <li className="nav-item btn">
+          <div
+            className="p-2"
             onClick={() => {
               setDisplayModal({
                 show: true,
@@ -145,30 +142,10 @@ function Header({ children, style, user, logout }) {
               });
             }}
           >
-            Masuk
-          </span>
+            <span>Masuk</span>
+          </div>
         </li>
       </>
-    );
-  }
-
-  function renderSearchInput() {
-    return (
-      <div className="input-group">
-        <input
-          data-purpose="search-input"
-          name="q"
-          maxLength="200"
-          placeholder="Search for anything"
-          autoComplete="off"
-          className="form-control"
-        />
-        <div className="input-group-btn">
-          <button aria-label="Search for anything" type="submit">
-            <span className="fa fa-search"></span>
-          </button>
-        </div>
-      </div>
     );
   }
 
@@ -176,63 +153,65 @@ function Header({ children, style, user, logout }) {
     <section className="header" style={style}>
       {displayModal.show && <Modal displayModal={displayModal} setDisplayModal={setDisplayModal} />}
       <nav className="navbar navbar-expand-lg navbar-dark justify-content-center">
-        <div className="col-10 nav-container">
-          <div className="nav-head">
-            <Link className="navbar-brand d-flex" to="/">
-              <img
-                src="assets/logo/logo-bwa.png"
-                width="40"
-                height="40"
-                className="d-inline-block align-top"
-                alt="logo buildwithangga"
-              />
-              <span className="brand-name">Creative Hustle</span>
-            </Link>
-            <div className="search-wrapper-sm">{renderSearchInput()}</div>
-            <button
-              className="navbar-toggler"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              <span className="navbar-toggler-icon"></span>
-            </button>
-          </div>
+        <div className="container">
+          <Link className="navbar-brand d-flex" to="/">
+            <img
+              src="assets/img/creative-hustle.png"
+              alt="Creative Hustle"
+              id="logo"
+              data-height-percentage="33"
+              style={{
+                width: '270px',
+                height: '30px',
+              }}
+            />
+          </Link>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <i className="fa fa-bars" aria-hidden="true"></i>
+          </button>
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <div className="search-wrapper ml-auto mr-auto">{renderSearchInput()}</div>
-            <ul className="navbar-nav">
+            <ul className="navbar-nav ml-auto">
+              <li
+                className={ClassNames('nav-item', {
+                  hm: isAuthenticated() ? true : false,
+                })}
+              >
+                <NavLink className="nav-link" activeStyle={{ color: '#2ea3f2' }} to="/">
+                  Home
+                </NavLink>
+              </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <NavLink className="nav-link" to="/course">
                   Kursus
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <NavLink className="nav-link" to="/class">
                   Kelas
-                </Link>
+                </NavLink>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/">
-                  Jobs
-                </Link>
+                <NavLink className="nav-link" to="/path">
+                  Cara Belajar
+                </NavLink>
               </li>
-              <li className="nav-item">
+              <li className="nav-item nd">
                 <span className="nav-divider"></span>
-              </li>
-              <li className="nav-item">
-                <i className="fa fa-cart-plus" aria-hidden="true"></i>
               </li>
               {isAuthenticated() ? userMode() : authMode()}
             </ul>
           </div>
         </div>
       </nav>
-
-      {children}
     </section>
   );
 }

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;515;600;700&display=swap');
+
 .row {
   margin: 0;
 }
@@ -113,6 +115,11 @@ h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
 
 .container--light-grey {
   background: #f7f8fa;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0c1460;
+  font-family: 'Quicksand',Helvetica,Arial,Lucida,sans-serif;
 }
 
 @media (min-width: 992px) {

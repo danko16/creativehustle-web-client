@@ -184,6 +184,14 @@ section.footer .sitemap a {
   font-size: 12px;
 }
 
+.find-course.btn {
+  color: #ffffff;
+  border-width: 0px;
+  border-radius: 9px;
+  font-size: 20px;
+  background-image: linear-gradient(45deg, #2b87da 0%, #2167ff 100%);
+}
+
 @media only screen and (max-width: 992px) {
   .mentor-assign {
     border-right: none;

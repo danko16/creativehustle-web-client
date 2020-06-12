@@ -65,6 +65,9 @@ const reducer = (state = initialState, { type, field, value }) => {
         [field]: value,
       };
     case AUTH_ACTIONS.FLOW:
+      return {
+        ...state,
+      };
     case AUTH_ACTIONS.REQ_LOGIN:
     case AUTH_ACTIONS.REQ_REGISTER:
       return {
@@ -96,6 +99,7 @@ const reducer = (state = initialState, { type, field, value }) => {
         ...state,
         message: '',
         is_error: false,
+        loading: false,
       };
     case AUTH_ACTIONS.LOGOUT:
       return {

@@ -14,25 +14,40 @@ import './landing-page.css';
 function LandingPage() {
   return (
     <div className="landing-page">
-      <Header>
-        <div className="header-content">
-          <div className="row align-items-center justify-content-center">
-            <div className="col-12 col-lg-10 text-center">
-              <h1 className="header-home text-merriweather">Pelajari Keahlian Baru</h1>
-              <p className="font-weight-light">
-                kapanpun dimanapun dan dapatkan <br /> kemampuan yang dibutuhkan oleh industri saat
-                ini
-              </p>
-            </div>
+      <Header />
 
+      <section className="container py-3">
+        <div className="row mt-5 justify-content-center">
+          <div className="col-lg-6 mb-4">
+            <h1>Bingung cara mulai cari penghasilan tambahan ?</h1>
+            <p>
+              Creative Huslte id platform belajar buat kalian yang ingin mencari penghasilan
+              tambahan dengan cara kreatif. Dapatkan berbagai kemudahan belajar mulai dari :
+            </p>
+            <ul
+              style={{
+                paddingInlineStart: 'inherit',
+                marginBottom: 50,
+              }}
+            >
+              <li>Berbagai pilihan kursus lengkap</li>
+              <li>Kesempatan belajar langsung via kelas online</li>
+              <li>Dengan trainer yang berpengalaman mencari ‘cuan’ melalui dunia kreatif</li>
+            </ul>
+            <button className="find-course btn">Cari Kursus</button>
+          </div>
+          <div className="col-lg-6">
             <img
-              className="img-header mt-4"
-              src="assets/img/21421.png"
-              alt="belajar coding dan design online gratis buildwith angga"
+              src="/assets/img/header-img.png"
+              alt="header"
+              style={{
+                maxWidth: '100%',
+                height: 'auto',
+              }}
             />
           </div>
         </div>
-      </Header>
+      </section>
       <PopularClass />
       <Testimony />
       <TopCategories />

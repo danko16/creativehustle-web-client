@@ -27,22 +27,20 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
     password: '',
     repeatPassword: '',
   });
-  //eslint-disable-next-line
-  const [loading, setLoading] = useState(false);
   const [notification, setNotification] = useState({
     text: '',
     isError: false,
   });
 
   useEffect(() => {
-    if (auth.is_authorized) {
+    if (auth.is_authorized && !auth.loading) {
       setDisplayModal({
         show: false,
         type: null,
       });
     }
 
-    if (auth.message) {
+    if (auth.is_authorized && !auth.loading) {
       setNotification({
         text: auth.message,
         isError: auth.is_error,
