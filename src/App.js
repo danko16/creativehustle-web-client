@@ -15,6 +15,7 @@ import Dashboard from './dashboard';
 import Talent from './talent';
 import ShowCase from './showcase';
 import Journey from './journey';
+import GoogleAuth from './auth/googleAuth';
 import './app.css';
 
 const mapStateToProps = (state) => ({
@@ -75,9 +76,7 @@ function App({ authFlow }) {
       <ConnectedRouter history={history}>
         <div className="App">
           <Switch>
-            <Route exact path="/">
-              <LandingPage />
-            </Route>
+            <Route exact path="/" component={LandingPage} />
             <Route path="/kelas">
               <Kelas />
             </Route>
@@ -90,6 +89,7 @@ function App({ authFlow }) {
             <Route path="/journey">
               <Journey />
             </Route>
+            <Route path="/google-auth" component={GoogleAuth} />
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>

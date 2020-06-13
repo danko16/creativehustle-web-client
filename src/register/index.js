@@ -40,7 +40,7 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
       });
     }
 
-    if (auth.is_authorized && !auth.loading) {
+    if (auth.message && !auth.loading) {
       setNotification({
         text: auth.message,
         isError: auth.is_error,
@@ -322,7 +322,7 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
             Buat Akun
           </button>
           <hr />
-          <a href="/" className="btn btn-light btn-block">
+          <a href="http://localhost:3000/auth/google" className="btn btn-light btn-block">
             <img
               src="assets/logo/buildwithangga_with_google.svg"
               className="logo-login-google"

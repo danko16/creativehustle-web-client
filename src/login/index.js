@@ -206,10 +206,7 @@ function Login({ setDisplayModal, auth, clearMsg, login }) {
 
         <hr className="bullet" />
 
-        <a
-          href="https://class.buildwithangga.com/redirect/google"
-          className="btn btn-light btn-block"
-        >
+        <a href="http://localhost:3000/auth/google" className="btn btn-light btn-block">
           <img
             src="https://class.buildwithangga.com/images/buildwithangga_with_google.svg"
             className="logo-login-google"
@@ -217,10 +214,7 @@ function Login({ setDisplayModal, auth, clearMsg, login }) {
           />
           Masuk dengan Google
         </a>
-        <a
-          href="https://class.buildwithangga.com/redirect/google"
-          className="btn btn-light btn-block"
-        >
+        <a href="http://localhost:3000/auth/google" className="btn btn-light btn-block">
           <img
             src="https://class.buildwithangga.com/images/buildwithangga_with_google.svg"
             className="logo-login-google"

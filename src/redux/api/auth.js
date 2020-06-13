@@ -10,4 +10,5 @@ export default Object.freeze({
     Api.post('/auth/login', payload, {
       headers: { 'Content-Type': 'application/json' },
     }),
+  googleAuth: () => Api.get('/auth/google'),
 });
