@@ -164,24 +164,15 @@ section.footer .sitemap a {
   background-color: #1192cf;
 }
 
-.job .card-body .type span {
-  font-size: 13px;
-  border-radius: 3px;
-  font-weight: 600;
-  padding: 0 5px 0 5px;
-  border: 2px solid #a8a8a8;
+.hdr_img > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.job .card-body .desc {
-  color: #3455db;
+.hdr_img div span {
   font-weight: 600;
-  font-size: 16px;
-}
-
-.job .card-body .by,
-.job .card-body .exp,
-.job .card-body .pos {
-  font-size: 12px;
+  color: #0c1460;
 }
 
 .find-course.btn {

@@ -49,28 +49,12 @@ const popularClasses = [
     author: 'Yein Narayana',
     job: 'Front-End Developer',
   },
-  {
-    title: 'Flutter Mobile Apps Developer',
-    thumbnail: 'assets/img/kelas online flutter apps developer buildwith angga.png',
-    level: 'All Levels',
-    type: 'GRATIS',
-    author: 'Erico Darmawan',
-    job: 'Expert Flutter Developer',
-  },
-  {
-    title: 'Full-Stack JavaScript Developer',
-    thumbnail: 'assets/img/kelas full stack web javascript developer buildwith angga.png',
-    level: 'All Levels',
-    type: 'GRATIS',
-    author: 'Yein Narayana',
-    job: 'Front-End Developer',
-  },
 ];
 
 function PopularClass() {
   function renderClass() {
     return popularClasses.map((val, index) => (
-      <div className="col-md-6 col-lg-4 col-xl-3 mb-4" key={index}>
+      <div className="col-md-6 col-lg-4 mb-4" key={index}>
         <div className="course-card card">
           <a href="/" className="stretched-link">
             <span className="sr-only">title for screen</span>
@@ -116,7 +100,7 @@ function PopularClass() {
         </div>
 
         <div className="row mt-5 justify-content-center">
-          <div className="col col-10">
+          <div className="container">
             <div className="row justify-content-center">{renderClass()}</div>
           </div>
         </div>

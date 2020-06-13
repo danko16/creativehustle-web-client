@@ -18,3 +18,12 @@ body {
   background-color: #fff;
   font-family: 'Muli',Helvetica,Arial,Lucida,sans-serif;
 }
+
+h1, h2, h3, h4, h5, h6 {
+  color: #0c1460;
+  font-family: 'Quicksand',Helvetica,Arial,Lucida,sans-serif;
+}
+
+h2 {
+  font-size: 26px;
+}

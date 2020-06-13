@@ -11,13 +11,15 @@ function Footer() {
               <div className="col-12 col-lg-4">
                 <Link className="brand" to="/">
                   <img
-                    src="assets/logo/logo-bwa.png"
-                    width="60"
-                    height="60"
+                    src="assets/img/creative-hustle.png"
+                    width="270"
+                    height="30"
                     className="d-inline-block align-top"
+                    style={{
+                      marginLeft: '-8px',
+                    }}
                     alt=""
                   />
-                  <span className="sr-only">Build with Angga</span>
                 </Link>
                 <p className="mt-4 font-weight-light text-gray-500">
                   Belajar online sesuai kebutuhan <br className="desktop" />
