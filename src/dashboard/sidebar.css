@@ -4,8 +4,6 @@
   background-color: #fff;
   position: fixed;
   z-index: 1;
-  top: 66px;
-  left: 0;
   overflow-x: hidden;
   padding-top: 20px;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -34,7 +32,6 @@
 
 .dashboard-nav ul li {
   display: block;
-  border-left: 3px solid transparent;
   transition: .3s;
   line-height: 25px;
   font-size: 15px;
@@ -54,20 +51,19 @@
   width: 24px;
 }
 
-.dashboard-nav ul li.active, .dashboard-nav ul li.active-submenu, .dashboard-nav ul li:hover {
+.dashboard-nav ul li:hover {
   background-color: rgba(42,65,232,.04);
 }
 
-.dashboard-nav ul li.active, .dashboard-nav ul li.active-submenu, .dashboard-nav ul li:hover, .payment-tab-trigger>input:checked~label::before {
-  border-color: #2a41e8;
-}
-
-
-@media screen and (max-height: 450px) {
+@media screen and (max-width: 1200px) {
   .sidenav {
-    padding-top: 15px;
-  }
-  .sidenav a {
-    font-size: 18px;
+    width: 200px;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .sidenav {
+    display: none;
+  }
+}
+

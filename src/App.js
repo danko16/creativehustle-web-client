@@ -12,8 +12,7 @@ import { authActions } from './redux/reducers/auth';
 import LandingPage from './linding-page';
 import Kelas from './kelas';
 import Dashboard from './dashboard';
-import Talent from './talent';
-import ShowCase from './showcase';
+import Kursus from './kursus';
 import Journey from './journey';
 import GoogleAuth from './auth/googleAuth';
 import './app.css';
@@ -77,19 +76,16 @@ function App({ authFlow }) {
         <div className="App">
           <Switch>
             <Route exact path="/" component={LandingPage} />
+            <Route path="/kursus">
+              <Kursus />
+            </Route>
             <Route path="/kelas">
               <Kelas />
-            </Route>
-            <Route path="/talent">
-              <Talent />
-            </Route>
-            <Route path="/showcase">
-              <ShowCase />
             </Route>
             <Route path="/journey">
               <Journey />
             </Route>
-            <Route path="/google-auth" component={GoogleAuth} />
+            <Route exact path="/google-auth" component={GoogleAuth} />
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>

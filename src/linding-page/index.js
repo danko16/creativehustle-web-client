@@ -2,7 +2,6 @@ import React from 'react';
 
 import Header from '../shared/header';
 import Footer from '../shared/footer';
-//import FirstSection from './first-sect';
 import PopularClass from './popular-class';
 import Testimony from './testimony';
 import RegisterOffer from './register-offer';
@@ -14,7 +13,7 @@ function LandingPage() {
     <div className="landing-page">
       <Header />
 
-      <section className="container pt-4 pb-5">
+      <section className="container pt-4 pb-4">
         <div className="row mt-5 justify-content-center">
           <div className="col-lg-6 mb-4">
             <h1>Bingung cara mulai cari penghasilan tambahan ?</h1>
@@ -57,7 +56,7 @@ function LandingPage() {
 
           <div className="hdr_img row">
             <div className="col-md-6 col-lg-3">
-              <img className="mb-3" src="assets/img/head_1.png" width="90" height="90" alt="" />
+              <img className="mb-3" src="/assets/img/head_1.png" width="90" height="90" alt="" />
               <span className="mb-2">Lengkap Berkualitas</span>
               <p className="text-center">
                 Kursus dibuat melalui pengalaman yang dipadatkan untuk mudah dipahami dan
@@ -65,14 +64,14 @@ function LandingPage() {
               </p>
             </div>
             <div className="col-md-6 col-lg-3">
-              <img className="mb-3" src="assets/img/head_2.png" width="90" height="90" alt="" />
+              <img className="mb-3" src="/assets/img/head_2.png" width="90" height="90" alt="" />
               <span className="mb-2">Mudah di akses</span>
               <p className="text-center">
                 Dapat diakses dengan berbagai device baik laptop, PC, ataupun handphone.
               </p>
             </div>
             <div className="col-md-6 col-lg-3">
-              <img className="mb-3" src="assets/img/head_3.png" width="90" height="90" alt="" />
+              <img className="mb-3" src="/assets/img/head_3.png" width="90" height="90" alt="" />
               <span className="mb-2">Akses Selamanya</span>
               <p className="text-center">
                 Akses kelas yang telah dibeli untuk selamanya agar bisa diputar ulang hingga
@@ -80,7 +79,7 @@ function LandingPage() {
               </p>
             </div>
             <div className="col-md-6 col-lg-3">
-              <img className="mb-3" src="assets/img/head_4.png" width="90" height="90" alt="" />
+              <img className="mb-3" src="/assets/img/head_4.png" width="90" height="90" alt="" />
               <span className="mb-2">Offline download</span>
               <p className="text-center">
                 Takut kuota habis ? Tenang, kursus dapat diunduh secara offline agar bisa

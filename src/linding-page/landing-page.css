@@ -97,16 +97,6 @@ section.footer .sitemap a {
   overflow: hidden;
 }
 
-.bwa-invitation .members-bwa {
-  height: 60px;
-}
-
-.bwa-invitation .btn-primary {
-  background: var(--indigo-3);
-  color: #fff;
-  border: 0;
-}
-
 .testimony {
   padding: 20px;
 }
@@ -127,10 +117,6 @@ section.footer .sitemap a {
 .testimony .profile P {
   align-self: center;
   font-weight: 500;
-}
-
-.testimony .message {
-  font-size: 14px;
 }
 
 .mentor-assign {

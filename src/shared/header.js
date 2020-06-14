@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -30,7 +30,7 @@ function useOutsideAlerter(ref, setShowDropdown) {
   }, [ref, setShowDropdown]);
 }
 
-function Header({ style, user, logout }) {
+function Header({ style, user, logout, history }) {
   const [displayModal, setDisplayModal] = useState({
     show: false,
     mode: null,
@@ -46,7 +46,7 @@ function Header({ style, user, logout }) {
         <div className="user-status">
           <div className="user-details">
             <div className="user-avatar status-online">
-              <img src="assets/img/danang.jpg" alt="Foto Proflie" width="45" height="45" />
+              <img src="/assets/img/danang.jpg" alt="Foto Proflie" width="45" height="45" />
             </div>
             <div className="user-name">Danang Eko Yudanto</div>
           </div>
@@ -54,18 +54,19 @@ function Header({ style, user, logout }) {
 
         <ul className="user-menu-small-nav">
           <li>
-            <Link to="/dashboard">
-              <img src="assets/icon/cv.png" width="24" height="24" alt="kelas" /> Kelas Saya
+            <Link to="/dashboard/progress">
+              <img src="/assets/icon/cv.png" width="24" height="24" alt="kelas" /> Progress Belajar
             </Link>
           </li>
           <li>
             <Link to="/dashboard">
-              <img src="assets/icon/account.png" width="24" height="24" alt="profil" /> Profil
+              <img src="/assets/icon/account.png" width="24" height="24" alt="profil" /> Profil
             </Link>
           </li>
           <li>
             <Link to="/dashboard">
-              <img src="assets/icon/settings.png" width="24" height="24" alt="setting" /> Pengaturan
+              <img src="/assets/icon/settings.png" width="24" height="24" alt="setting" />{' '}
+              Pengaturan
             </Link>
           </li>
           <li>
@@ -75,7 +76,7 @@ function Header({ style, user, logout }) {
               }}
               to="/"
             >
-              <img src="assets/icon/off.png" width="24" height="24" alt="logout" /> Logout
+              <img src="/assets/icon/off.png" width="24" height="24" alt="logout" /> Logout
             </Link>
           </li>
         </ul>
@@ -93,7 +94,11 @@ function Header({ style, user, logout }) {
         <div
           className="d-flex"
           onClick={() => {
-            setShowDropdown(true);
+            if (window.innerWidth < 992) {
+              history.push('/dashboard');
+            } else {
+              setShowDropdown(true);
+            }
           }}
           style={{ cursor: 'pointer' }}
         >
@@ -103,7 +108,7 @@ function Header({ style, user, logout }) {
 
           <div className="user-avatar status-online">
             <img
-              src={user.avatar ? user.avatar : 'assets/img/default-avatar.png'}
+              src={user.avatar ? user.avatar : '/assets/img/default-avatar.png'}
               alt="avatar"
               width="45"
               height="45"
@@ -156,14 +161,10 @@ function Header({ style, user, logout }) {
         <div className="container">
           <Link className="navbar-brand d-flex" to="/">
             <img
-              src="assets/img/creative-hustle.png"
+              src="/assets/img/creative-hustle.png"
               alt="Creative Hustle"
               id="logo"
               data-height-percentage="33"
-              style={{
-                width: '270px',
-                height: '30px',
-              }}
             />
           </Link>
           <button
@@ -185,22 +186,22 @@ function Header({ style, user, logout }) {
                   hm: isAuthenticated() ? true : false,
                 })}
               >
-                <NavLink className="nav-link" activeStyle={{ color: '#2ea3f2' }} to="/">
+                <NavLink exact className="nav-link" activeStyle={{ color: '#2ea3f2' }} to="/">
                   Home
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/course">
+                <NavLink className="nav-link" activeStyle={{ color: '#2ea3f2' }} to="/kursus">
                   Kursus
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/class">
+                <NavLink className="nav-link" activeStyle={{ color: '#2ea3f2' }} to="/kelas">
                   Kelas
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/path">
+                <NavLink className="nav-link" activeStyle={{ color: '#2ea3f2' }} to="/journey">
                   Cara Belajar
                 </NavLink>
               </li>
@@ -220,7 +221,8 @@ Header.propTypes = {
   children: PropTypes.element,
   style: PropTypes.object,
   user: PropTypes.object,
+  history: PropTypes.object,
   logout: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapActionToProps)(Header);
+export default connect(mapStateToProps, mapActionToProps)(withRouter(Header));

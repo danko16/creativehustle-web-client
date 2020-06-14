@@ -3,7 +3,7 @@ import React from 'react';
 const popularClasses = [
   {
     title: 'Full-Stack Web Developer',
-    thumbnail: 'assets/img/thumbnail_kelas_fullstack_web_developer_buildwithangga.png',
+    thumbnail: '/assets/img/thumbnail_kelas_fullstack_web_developer_buildwithangga.png',
     level: 'All Levels',
     type: 'GRATIS',
     author: 'Galih Pratama',
@@ -11,7 +11,7 @@ const popularClasses = [
   },
   {
     title: 'Flutter Mobile Apps Developer',
-    thumbnail: 'assets/img/kelas online flutter apps developer buildwith angga.png',
+    thumbnail: '/assets/img/kelas online flutter apps developer buildwith angga.png',
     level: 'All Levels',
     type: 'GRATIS',
     author: 'Erico Darmawan',
@@ -19,7 +19,7 @@ const popularClasses = [
   },
   {
     title: 'Full-Stack JavaScript Developer',
-    thumbnail: 'assets/img/kelas full stack web javascript developer buildwith angga.png',
+    thumbnail: '/assets/img/kelas full stack web javascript developer buildwith angga.png',
     level: 'All Levels',
     type: 'GRATIS',
     author: 'Yein Narayana',
@@ -27,7 +27,7 @@ const popularClasses = [
   },
   {
     title: 'Full-Stack Web Developer',
-    thumbnail: 'assets/img/thumbnail_kelas_fullstack_web_developer_buildwithangga.png',
+    thumbnail: '/assets/img/thumbnail_kelas_fullstack_web_developer_buildwithangga.png',
     level: 'All Levels',
     type: 'GRATIS',
     author: 'Galih Pratama',
@@ -35,7 +35,7 @@ const popularClasses = [
   },
   {
     title: 'Flutter Mobile Apps Developer',
-    thumbnail: 'assets/img/kelas online flutter apps developer buildwith angga.png',
+    thumbnail: '/assets/img/kelas online flutter apps developer buildwith angga.png',
     level: 'All Levels',
     type: 'GRATIS',
     author: 'Erico Darmawan',
@@ -43,7 +43,7 @@ const popularClasses = [
   },
   {
     title: 'Full-Stack JavaScript Developer',
-    thumbnail: 'assets/img/kelas full stack web javascript developer buildwith angga.png',
+    thumbnail: '/assets/img/kelas full stack web javascript developer buildwith angga.png',
     level: 'All Levels',
     type: 'GRATIS',
     author: 'Yein Narayana',
@@ -89,13 +89,15 @@ function PopularClass() {
     ));
   }
   return (
-    <section className="py-3 border-top">
+    <section className="py-3 container--light-grey border-top">
       <div className="mt-5">
         <div className="heading text-center">
-          <h1 className="text-merriweather mb-3 text-indigo-3">Kelas Popular</h1>
-          <p className="font-weight-light text-indigo-3">
-            Materi telah didesain bedasarkan kebutuhan <br className="desktop" />
-            perusahaan dibidang teknologi
+          <h2 className="mb-3">
+            <strong>Pilihan Kursus Creative Hustle</strong>
+          </h2>
+          <p>
+            Materi telah didesain bedasarkan kebutuhan <br />
+            perusahaan dibidang kreatif
           </p>
         </div>
 

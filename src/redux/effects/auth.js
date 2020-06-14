@@ -52,6 +52,7 @@ function* isAllow() {
     yield call(authApi.isAllow);
     return true;
   } catch (e) {
+    yield put(authActions.logout());
     return false;
   }
 }

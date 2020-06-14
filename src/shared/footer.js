@@ -11,7 +11,7 @@ function Footer() {
               <div className="col-12 col-lg-4">
                 <Link className="brand" to="/">
                   <img
-                    src="assets/img/creative-hustle.png"
+                    src="/assets/img/creative-hustle.png"
                     width="270"
                     height="30"
                     className="d-inline-block align-top"
@@ -116,7 +116,7 @@ function Footer() {
             © 2019 - 2020 Creative Hustle • All rights reserved • Love from Klaten
           </div>
           <div className="col-auto">
-            <img src="assets/logo/monas.svg" height="50" className="ic_monas" alt="ills monas" />
+            <img src="/assets/logo/monas.svg" height="50" className="ic_monas" alt="ills monas" />
           </div>
         </div>
       </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import Header from '../shared/header';
 import Footer from '../shared/footer';
 
-function Journey() {
+function Talent() {
   return (
     <div>
       <Header style={{ height: '450px' }} />
@@ -11,4 +11,4 @@ function Journey() {
   );
 }
 
-export default Journey;
+export default Talent;

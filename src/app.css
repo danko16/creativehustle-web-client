@@ -5,23 +5,6 @@
   margin: 0;
 }
 
-section .thumbnail {
-  border-radius: 4px;
-}
-
-p {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  line-height: 1.875rem;
-}
-
-.bg-home .kampus {
-  height: 135px;
-}
-
-.bwa-tools-home {
-  margin-top: 350px;
-}
 
 .text-merriweather {
   font-family: 'Merriweather', serif;
@@ -29,58 +12,12 @@ p {
   font-weight: 600;
 }
 
-.text-indigo-3 {
-  color: #322f56 !important;
-}
-
-.font-weight-medium {
-  font-weight: 500 !important;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #2b50b4;
-  border-color: #2b50b4;
-}
-
-.btn {
-  padding: 0.5625rem 0.875rem calc(0.5625rem - 1px);
-}
-
-.line-height-1 {
-  line-height: 1;
-}
-
-.text-gray-500 {
-  color: #999999 !important;
-}
 
 h7,
 .h7 {
   font-size: 0.875rem;
 }
 
-.mt-7,
-.my-7 {
-  margin-top: 5rem !important;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  margin-bottom: 0.5rem;
-  font-weight: 500;
-  line-height: 1.375;
-}
 
 .form-group__icon:before {
   border-right: 1px solid #e6e6e6;
@@ -128,17 +65,4 @@ h6,
 
 .container--light-grey {
   background: #f7f8fa;
-}
-
-@media (min-width: 992px) {
-  .navbar-expand-lg .navbar-nav .nav-link {
-    padding-right: 1.25rem;
-    padding-left: 1.25rem;
-  }
-}
-
-@media (max-width: 575px) {
-  .bwa-tools .main-title {
-    text-align: center;
-  }
 }
