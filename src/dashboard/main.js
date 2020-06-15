@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DashboardSidebar from './dashboard-sidebar';
 import './main.css';
 
 function Main() {
   return (
     <div className="dashboard-main">
+      <DashboardSidebar />
       <div className="row mb-5">
         <div className="col-md-12">
           <div className="card">

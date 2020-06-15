@@ -34,7 +34,7 @@ function Sidebar({ logout }) {
                 Belajar
               </NavLink>
             </li>
-            <li className="active">
+            <li>
               <NavLink
                 to="/dashboard/kursus"
                 activeStyle={{
@@ -47,7 +47,7 @@ function Sidebar({ logout }) {
                 <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Kursus Saya
               </NavLink>
             </li>
-            <li className="active">
+            <li>
               <NavLink
                 to="/dashboard/kelas"
                 activeStyle={{

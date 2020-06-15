@@ -12,6 +12,7 @@ import './header.css';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
+  loading: state.auth.loading,
 });
 
 const mapActionToProps = (dispatch) => bindActionCreators({ logout: authActions.logout }, dispatch);
@@ -30,7 +31,7 @@ function useOutsideAlerter(ref, setShowDropdown) {
   }, [ref, setShowDropdown]);
 }
 
-function Header({ style, user, logout, history }) {
+function Header({ style, user, logout, loading, history }) {
   const [displayModal, setDisplayModal] = useState({
     show: false,
     mode: null,
@@ -42,81 +43,91 @@ function Header({ style, user, logout, history }) {
 
   function renderDropdown() {
     return (
-      <div className="header-notifications-dropdown" ref={wrapperRef}>
-        <div className="user-status">
-          <div className="user-details">
-            <div className="user-avatar status-online">
-              <img src="/assets/img/danang.jpg" alt="Foto Proflie" width="45" height="45" />
+      !loading && (
+        <div className="header-notifications-dropdown" ref={wrapperRef}>
+          <div className="user-status">
+            <div className="user-details">
+              <div className="user-avatar status-online">
+                <img
+                  src={user.avatar ? user.avatar : '/assets/img/default-avatar.png'}
+                  alt="Foto Proflie"
+                  width="45"
+                  height="45"
+                />
+              </div>
+              <div className="user-name">{user.name}</div>
             </div>
-            <div className="user-name">Danang Eko Yudanto</div>
           </div>
-        </div>
 
-        <ul className="user-menu-small-nav">
-          <li>
-            <Link to="/dashboard/progress">
-              <img src="/assets/icon/cv.png" width="24" height="24" alt="kelas" /> Progress Belajar
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard">
-              <img src="/assets/icon/account.png" width="24" height="24" alt="profil" /> Profil
-            </Link>
-          </li>
-          <li>
-            <Link to="/dashboard">
-              <img src="/assets/icon/settings.png" width="24" height="24" alt="setting" />{' '}
-              Pengaturan
-            </Link>
-          </li>
-          <li>
-            <Link
-              onClick={() => {
-                logout();
-              }}
-              to="/"
-            >
-              <img src="/assets/icon/off.png" width="24" height="24" alt="logout" /> Logout
-            </Link>
-          </li>
-        </ul>
-      </div>
+          <ul className="user-menu-small-nav">
+            <li>
+              <Link to="/dashboard/progress">
+                <img src="/assets/icon/cv.png" width="24" height="24" alt="kelas" /> Progress
+                Belajar
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard">
+                <img src="/assets/icon/account.png" width="24" height="24" alt="profil" /> Profil
+              </Link>
+            </li>
+            <li>
+              <Link to="/dashboard">
+                <img src="/assets/icon/settings.png" width="24" height="24" alt="setting" />{' '}
+                Pengaturan
+              </Link>
+            </li>
+            <li>
+              <Link
+                onClick={() => {
+                  logout();
+                }}
+                to="/"
+              >
+                <img src="/assets/icon/off.png" width="24" height="24" alt="logout" /> Logout
+              </Link>
+            </li>
+          </ul>
+        </div>
+      )
     );
   }
 
   function userMode() {
     return (
-      <li
-        className={ClassNames('nav-item header-notifications user-menu', {
-          active: showDropdown,
-        })}
-      >
-        <div
-          className="d-flex"
-          onClick={() => {
-            if (window.innerWidth < 992) {
-              history.push('/dashboard');
-            } else {
-              setShowDropdown(true);
-            }
-          }}
-          style={{ cursor: 'pointer' }}
+      !loading && (
+        <li
+          className={ClassNames('nav-item header-notifications user-menu', {
+            active: showDropdown,
+          })}
         >
-          <div className="nav-profile-text align-self-center">
-            <div className="user-name">{user.name}</div>
-          </div>
+          <div
+            className="d-flex"
+            onClick={() => {
+              if (window.innerWidth < 992) {
+                history.push('/dashboard');
+              } else {
+                setShowDropdown(true);
+              }
+            }}
+            style={{ cursor: 'pointer' }}
+          >
+            <div className="nav-profile-text align-self-center">
+              <div className="user-name">{user.name}</div>
+            </div>
 
-          <div className="user-avatar status-online">
-            <img
-              src={user.avatar ? user.avatar : '/assets/img/default-avatar.png'}
-              alt="avatar"
-              width="45"
-              height="45"
-            />
+            <div className="user-avatar status-online">
+              <img
+                src={user.avatar ? user.avatar : '/assets/img/default-avatar.png'}
+                alt="avatar"
+                width="45"
+                height="45"
+              />
+            </div>
           </div>
-        </div>
-        {renderDropdown()}
-      </li>
+          {renderDropdown()}
+        </li>
+      )
     );
   }
 
@@ -179,7 +190,10 @@ function Header({ style, user, logout, history }) {
             <i className="fa fa-bars" aria-hidden="true"></i>
           </button>
 
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
+          <div
+            className={ClassNames('collapse navbar-collapse', { 'd-none': displayModal.show })}
+            id="navbarSupportedContent"
+          >
             <ul className="navbar-nav ml-auto">
               <li
                 className={ClassNames('nav-item', {
@@ -222,6 +236,7 @@ Header.propTypes = {
   style: PropTypes.object,
   user: PropTypes.object,
   history: PropTypes.object,
+  loading: PropTypes.bool,
   logout: PropTypes.func,
 };
 

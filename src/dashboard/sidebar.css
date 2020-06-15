@@ -32,7 +32,7 @@
 
 .dashboard-nav ul li {
   display: block;
-  transition: .3s;
+  transition: 0.3s;
   line-height: 25px;
   font-size: 15px;
 }
@@ -42,8 +42,8 @@
   display: block;
   padding: 11px 32px;
   transition: 0.3s;
-  cursor: pointer;  
-  position: relative;  
+  cursor: pointer;
+  position: relative;
   text-decoration: none;
 }
 
@@ -52,7 +52,11 @@
 }
 
 .dashboard-nav ul li:hover {
-  background-color: rgba(42,65,232,.04);
+  background-color: rgba(42, 65, 232, 0.04);
+}
+
+.dashboard-sidebar {
+  display: none;
 }
 
 @media screen and (max-width: 1200px) {
@@ -65,5 +69,55 @@
   .sidenav {
     display: none;
   }
-}
 
+  .dashboard-sidebar {
+    display: block;
+    padding: 20px;
+  }
+
+  div.dashboard-responsive-nav-trigger {
+    width: 100%;
+    margin: 0;
+    cursor: pointer;
+    margin-top: 15px;
+    background-color: #333;
+    border-radius: 5px;
+    color: #fff;
+    padding: 16px 30px;
+    font-weight: 600;
+    transition: 0.2s;
+    display: block;
+    line-height: 26px;
+  }
+
+  .dashboard-nav {
+    padding-bottom: 0;
+  }
+  
+  .dashboard-nav ul {
+    padding: 25px 0;
+    margin: 0;
+    display: none;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .dashboard-nav ul.active {
+    display: block;
+  }
+
+  div.dashboard-responsive-nav-trigger.active {
+    border-radius: 4px 4px 0 0;
+  }
+
+  div.dashboard-responsive-nav-trigger .trigger-title {
+    margin-left: 35px;
+  }
+  .hamburger {
+    position: absolute;
+  }
+  .hamburger .fa.fa-bars {
+    font-size: 24px;
+    color: #fff;
+  }
+}

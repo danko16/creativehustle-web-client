@@ -39,6 +39,7 @@ function GoogleAuth({ history, login }) {
         id: parseQuery.id,
         name: parseQuery.name,
         email: parseQuery.email,
+        avatar: parseQuery.avatar,
       },
       type: parseQuery.type,
     });

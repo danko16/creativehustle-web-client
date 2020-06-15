@@ -278,6 +278,10 @@ ul.user-menu-small-nav li a:hover {
     justify-content: center;
   }
 
+  .navbar-expand-lg .navbar-nav .nav-item > * {
+    width: 100%;
+  }
+
   .navbar-dark .navbar-nav .nav-item.hm {
     margin-top: 50px;
   }
