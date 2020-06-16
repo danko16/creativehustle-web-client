@@ -1,0 +1,30 @@
+.kursus .kursus-head {
+  flex-direction: column;
+  min-height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+.kursus .kursus-head .input-group {
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.page-item.active .page-link {
+  z-index: -1;
+  color: #fff;
+  background-color: rgb(46, 163, 242);
+  border-color: rgb(46, 163, 242);
+}
+
+.page-link {
+  color: rgb(46, 163, 242);
+}
+
+.pagination .page-item {
+  cursor: pointer;
+}

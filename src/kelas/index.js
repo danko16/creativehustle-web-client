@@ -7,7 +7,7 @@ import './kelas.css';
 function Kelas() {
   return (
     <div>
-      <Header style={{ height: '550px' }} />
+      <Header style={{ height: '202px' }} />
       <Footer />
     </div>
   );

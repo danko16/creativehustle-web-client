@@ -232,7 +232,6 @@ function Header({ style, user, logout, loading, history }) {
 }
 
 Header.propTypes = {
-  children: PropTypes.element,
   style: PropTypes.object,
   user: PropTypes.object,
   history: PropTypes.object,

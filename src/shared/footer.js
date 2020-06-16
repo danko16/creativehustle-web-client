@@ -16,12 +16,12 @@ function Footer() {
                     height="30"
                     className="d-inline-block align-top"
                     style={{
-                      marginLeft: '-8px',
+                      marginLeft: '-12px',
                     }}
                     alt=""
                   />
                 </Link>
-                <p className="mt-4 font-weight-light text-gray-500">
+                <p className="my-4 font-weight-light text-gray-500">
                   Belajar online sesuai kebutuhan <br className="desktop" />
                   industri saat ini dan dapatkan <br className="desktop" />
                   kesempatan berkarir sesuai passionmu.
@@ -69,7 +69,7 @@ function Footer() {
                     <h5 className="text-indigo-3">Office</h5>
                     <ul className="list-unstyled sitemap">
                       <li className="line-height-2 font-weight-light">
-                        admin@creativehustle.com
+                        admin@creativehustle.id
                         <br /> Klaten Selatan, Indonesia
                       </li>
                     </ul>
@@ -78,29 +78,17 @@ function Footer() {
                     <h5 className="text-indigo-3">Social</h5>
                     <ul className="list-unstyled sitemap">
                       <li>
-                        <a
-                          rel="noopener noreferrer"
-                          target="_blank"
-                          href="http://instagram.com/buildwithangga"
-                        >
+                        <a rel="noopener noreferrer" href="/">
                           Instagram
                         </a>
                       </li>
                       <li>
-                        <a
-                          rel="noopener noreferrer"
-                          target="_blank"
-                          href="http://t.me/buildwithangga"
-                        >
+                        <a rel="noopener noreferrer" href="/">
                           Telegram
                         </a>
                       </li>
                       <li>
-                        <a
-                          rel="noopener noreferrer"
-                          target="_blank"
-                          href="https://youtube.com/anggarisky"
-                        >
+                        <a rel="noopener noreferrer" href="/">
                           YouTube
                         </a>
                       </li>
