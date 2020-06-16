@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
+import { SERVER_DOMAIN } from '../utils/api';
 
 import { authActions } from '../redux/reducers/auth';
 
@@ -206,20 +207,12 @@ function Login({ setDisplayModal, auth, clearMsg, login }) {
 
         <hr className="bullet" />
 
-        <a href="http://localhost:3000/auth/google" className="btn btn-light btn-block">
-          <img
-            src="https://class.buildwithangga.com/images/buildwithangga_with_google.svg"
-            className="logo-login-google"
-            alt="buildwithangga_login_with_google"
-          />
+        <a href={`${SERVER_DOMAIN}/auth/google`} className="btn btn-light btn-block">
+          <img src="/assets/logo/google-logo.svg" className="logo-login-google" alt="Google Logo" />
           Masuk dengan Google
         </a>
-        <a href="http://localhost:3000/auth/google" className="btn btn-light btn-block">
-          <img
-            src="https://class.buildwithangga.com/images/buildwithangga_with_google.svg"
-            className="logo-login-google"
-            alt="buildwithangga_login_with_google"
-          />
+        <a href={`${SERVER_DOMAIN}/auth/google`} className="btn btn-light btn-block">
+          <img src="/assets/logo/google-logo.svg" className="logo-login-google" alt="Google Logo" />
           Daftar dengan Google
         </a>
       </div>

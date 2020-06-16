@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
+import { SERVER_DOMAIN } from '../utils/api';
 
 import { authActions } from '../redux/reducers/auth';
 
@@ -322,11 +323,11 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
             Buat Akun
           </button>
           <hr />
-          <a href="http://localhost:3000/auth/google" className="btn btn-light btn-block">
+          <a href={`${SERVER_DOMAIN}/auth/google`} className="btn btn-light btn-block">
             <img
-              src="assets/logo/buildwithangga_with_google.svg"
+              src="/assets/logo/google-logo.svg"
               className="logo-login-google"
-              alt="buildwithangga_login_with_google"
+              alt="Google Logo"
             />
             Daftar dengan Google
           </a>
