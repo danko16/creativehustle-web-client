@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import DashboardSidebar from '../dashboard-sidebar';
 
 function Kelas() {
@@ -15,22 +16,22 @@ function Kelas() {
       </div>
       <div className="row">
         <div className="col-md-12 col-lg-6 mb-4">
-          <div className="card">
+          <Link to="/dashboard/kelas" className="card">
             <img src="/assets/img/default-img.svg" width="284" height="160" alt="default" />
             <div className="kursus-body">
               <h4 className="m-0">Judul Kelas</h4>
               <p className="pl-1">Author Kelas</p>
             </div>
-          </div>
+          </Link>
         </div>
         <div className="col-md-12 col-lg-6">
-          <div className="card">
+          <Link to="/dashboard/kelas" className="card">
             <img src="/assets/img/default-img.svg" width="284" height="160" alt="default" />
             <div className="kursus-body">
               <h4 className="m-0">Judul Kelas</h4>
               <p className="pl-1">Author Kelas</p>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
     </div>

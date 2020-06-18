@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ClassNames from 'classnames';
 
-const classList = [
+const kursusList = [
   {
     title: 'UX Brainstorming',
     author: 'Reezky Pradata',
@@ -112,15 +112,15 @@ const classList = [
   },
 ];
 
-function ClassList() {
+function KursusList() {
   const [activePage, setActivePage] = useState({
-    totalPage: Math.ceil(classList.length / 9),
+    totalPage: Math.ceil(kursusList.length / 9),
     page: 1,
     from: 0,
     to: 9,
   });
   function renderClass() {
-    return classList.map((val, index) => {
+    return kursusList.map((val, index) => {
       return (
         <div
           className={ClassNames('col-md-6 col-lg-4 mb-4 d-none', {
@@ -165,7 +165,7 @@ function ClassList() {
 
   function renderPagination() {
     let paginations = [];
-    const pgLength = Math.ceil(classList.length / 9);
+    const pgLength = Math.ceil(kursusList.length / 9);
     for (let i = 0; i < pgLength; i++) {
       const pg = (
         <li
@@ -241,4 +241,4 @@ function ClassList() {
   );
 }
 
-export default ClassList;
+export default KursusList;
