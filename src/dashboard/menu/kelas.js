@@ -7,7 +7,7 @@ function Kelas() {
       <DashboardSidebar />
       <div className="row mb-4">
         <div className="col-12">
-          <div className="title">
+          <div className="card-no-shadow">
             <h4 className="card-title">Kelas Saya</h4>
             <p>Berikut ini adalah daftar Kelas yang anda ikuti.</p>
           </div>

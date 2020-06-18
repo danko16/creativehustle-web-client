@@ -1,0 +1,68 @@
+.dashboard-nav.detail ul {
+  margin-top: 35px;
+}
+
+.dashboard-nav.detail ul li {
+  position: relative;
+  width: 90%;
+  margin-block-start: 15px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.dashboard-nav.detail ul li a:hover {
+  background-color: rgba(42, 65, 232, 0.01);
+}
+
+.dashboard-nav.detail ul li a {
+  color: #000;
+  display: block;
+  padding: 11px 32px;
+  background-color: rgba(42, 65, 232, 0.08);
+  border-radius: 5px;
+  transition: 0.3s;
+  cursor: pointer;
+  position: relative;
+  text-decoration: none;
+}
+
+.dashboard-nav.detail ul li.judul {
+  cursor: pointer;
+  padding: 0 20px;
+  margin-bottom: 8px;
+  display: block;
+  color: #2a41e8;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.dashboard-nav.detail ul li.sembunyi {
+  display: none;
+}
+
+.dashboard-nav.detail ul li.judul i.fa {
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  top: 3.25px;
+}
+
+.dashboard-nav.detail ul li i.fa.fa-check-circle {
+  font-size: 20px;
+  position: absolute;
+  color: #1abc9c;
+  right: 20px;
+  top: 14px;
+}
+
+.back-dashboard {
+  padding-left: 25px;
+}
+
+a.back-dashboard:hover {
+  text-decoration: none;
+}
+
+.back-dashboard span {
+  margin-left: 12px;
+}

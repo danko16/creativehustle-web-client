@@ -51,7 +51,7 @@
   width: 24px;
 }
 
-.dashboard-nav ul li:hover {
+.dashboard-nav ul li:hover:not(.judul) {
   background-color: rgba(42, 65, 232, 0.04);
 }
 

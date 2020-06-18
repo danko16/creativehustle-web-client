@@ -8,7 +8,7 @@ function Main() {
       <DashboardSidebar />
       <div className="row mb-5">
         <div className="col-md-12">
-          <div className="card">
+          <div className="progress-belajar card">
             <div className="card-body">
               <h4 className="card-title">Rekomendasi Kursus</h4>
               <p>
@@ -37,7 +37,7 @@ function Main() {
       </div>
       <div className="row">
         <div className="col-md-12">
-          <div className="card">
+          <div className="progress-belajar card">
             <div className="card-body">
               <h4 className="card-title">Progress Belajar</h4>
               <p>Berikut ini adalah daftar Kursus yang kamu ikuti</p>

@@ -36,15 +36,47 @@
   width: inherit;
 }
 
-.dashboard-main .card:hover {
+.dashboard-main .progress-belajar.card:hover {
   box-shadow: 0 2px 4px 0 rgba(20, 23, 28, 0.15);
 }
 
-.dashboard-main .title {
+.dashboard-main .card {
+  color: #5c6185;
+}
+
+.dashboard-main a.card:hover h4 {
+  color: #0056b3;
+}
+
+.dashboard-main a.card:hover {
+  color: #0056b3;
+  text-decoration: none;
+  border: 1px solid #0056b3;
+}
+
+.dashboard-main .card-no-shadow {
+  position: relative;
   padding: 20px 40px;
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(20, 23, 28, 0.15);
 }
+
+button.next-kursus {
+  outline: none;
+  padding: 12px;
+  border: 1px solid #dedfe0;
+  background-color: #19b5fe;
+  color: #fff;
+  transition: 0.2s ease;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+button.next-kursus:hover {
+  background-color: #1192cf;
+}
+
 
 @media screen and (max-width: 1200px) {
   .dashboard-main {
