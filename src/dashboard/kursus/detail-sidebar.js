@@ -1,72 +1,35 @@
-import React, { useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { NavLink, Link, useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 import './detail-sidebar.css';
 
-const sections = [
-  {
-    section_id: 1,
-    title: 'Section Pertama',
-    contents: [
-      {
-        section_id: 1,
-        content_id: 1,
-        title: 'Konten Pertama',
-        done: false,
-      },
-      {
-        section_id: 1,
-        content_id: 2,
-        title: 'Konten Kedua',
-        done: false,
-      },
-      {
-        section_id: 1,
-        content_id: 3,
-        title: 'Konten Ketiga',
-        done: false,
-      },
-    ],
-  },
-  {
-    section_id: 2,
-    title: 'Section Kedua',
-    contents: [
-      {
-        section_id: 2,
-        content_id: 4,
-        title: 'Konten Pertama',
-        done: false,
-      },
-      {
-        section_id: 2,
-        content_id: 5,
-        title: 'Konten Kedua',
-        done: false,
-      },
-      {
-        section_id: 2,
-        content_id: 6,
-        title: 'Konten Ketiga',
-        done: false,
-      },
-    ],
-  },
-];
+const mapStateToProps = (state) => ({
+  sections: state.kursusSaya.sections,
+  contents: state.kursusSaya.contents,
+  loading: state.kursusSaya.loading,
+});
 
-function DetailSidebar() {
+function DetailSidebar({ sections, contents, loading }) {
+  const { kursusId } = useParams();
   const [sectionCollapse, setSectionCollapse] = useState({});
-  function renderContents(contents) {
-    return contents.map((val) => {
-      const collapseName = `section${val.section_id}`;
+  const [sectionSaya, setSectionSaya] = useState([]);
 
+  useEffect(() => {
+    if (!loading && sections.length) {
+      const sectionSaya = sections.filter((val) => val.course_id === parseInt(kursusId));
+      setSectionSaya(sectionSaya);
+    }
+  }, [kursusId, sections, loading]);
+
+  function renderContents(contentSaya) {
+    return contentSaya.map((val) => {
+      const collapseName = `section${val.section_id}`;
       return (
-        <li
-          key={val.content_id}
-          className={ClassNames({ sembunyi: sectionCollapse[collapseName] })}
-        >
+        <li key={val.id} className={ClassNames({ sembunyi: sectionCollapse[collapseName] })}>
           <NavLink
-            to={`/dashboard/kursus/1/${val.section_id}/${val.content_id}`}
+            to={`/dashboard/kursus/${parseInt(kursusId)}/${val.id}`}
             activeStyle={{
               borderColor: '#2a41e8',
               borderLeft: '3px solid #2a41e8',
@@ -81,10 +44,11 @@ function DetailSidebar() {
     });
   }
   function renderSections() {
-    return sections.map((val) => {
-      const collapseName = `section${val.section_id}`;
+    return sectionSaya.map((val) => {
+      const collapseName = `section${val.id}`;
+      const contentSaya = contents.filter((content) => content.section_id === val.id);
       return (
-        <ul key={val.section_id}>
+        <ul key={val.id}>
           <li
             className="judul"
             onClick={() => {
@@ -100,7 +64,7 @@ function DetailSidebar() {
               aria-hidden="true"
             ></i>
           </li>
-          {renderContents(val.contents)}
+          {renderContents(contentSaya)}
         </ul>
       );
     });
@@ -118,4 +82,10 @@ function DetailSidebar() {
   );
 }
 
-export default DetailSidebar;
+DetailSidebar.propTypes = {
+  sections: PropTypes.array,
+  contents: PropTypes.array,
+  loading: PropTypes.bool,
+};
+
+export default connect(mapStateToProps)(DetailSidebar);

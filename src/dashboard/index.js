@@ -1,14 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { kursusSayaAction } from '../redux/reducers/kursus-saya';
+
 import Header from '../shared/header';
 import Sidebar from './sidebar';
-import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 import Progress from './menu/progress';
 import Kursus from './kursus';
 import Kelas from './menu/kelas';
 import './dashboard.css';
 
-function Dashboard() {
+const mapActionToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      reqKursusSaya: kursusSayaAction.reqKursus,
+    },
+    dispatch
+  );
+
+function Dashboard({ reqKursusSaya }) {
   let { path } = useRouteMatch();
+  useEffect(() => {
+    reqKursusSaya();
+  }, [reqKursusSaya]);
   return (
     <div className="dashboard-container">
       <Header />
@@ -42,4 +58,8 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+Dashboard.propTypes = {
+  reqKursusSaya: PropTypes.func,
+};
+
+export default connect(null, mapActionToProps)(Dashboard);

@@ -1,6 +1,6 @@
 import { call, put, take, takeLatest } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
-import { getErrorMessage } from '../../utils/auth';
+import { getErrorMessage } from '../../utils/api';
 import authApi from '../api/auth';
 
 import { AUTH_ACTIONS, authActions } from '../reducers/auth';

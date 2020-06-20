@@ -1,8 +1,79 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import DashboardSidebar from '../dashboard-sidebar';
 
-function Main() {
+const mapStateToProps = (state) => ({
+  kursus: state.kursusSaya.kursus,
+  contents: state.kursusSaya.contents,
+  loading: state.kursusSaya.loading,
+});
+
+function Progress({ kursus, contents, loading }) {
+  const [kursusSaya, setKursusSaya] = useState([]);
+  const [contentSaya, setContentSaya] = useState([]);
+
+  useEffect(() => {
+    if (!loading && kursus.length) {
+      console.log(kursus);
+      setKursusSaya(kursus);
+    }
+
+    if (!loading && contents.length) {
+      console.log(contents);
+      setContentSaya(contents);
+    }
+  }, [kursus, contents, loading]);
+
+  function renderRow() {
+    return kursusSaya.map((val) => {
+      const kursusId = val.id;
+      const content = contentSaya.filter((content) => content.course_id === val.id);
+      const contentId = content[0].id;
+      return (
+        <tr key={val.id}>
+          <td>
+            <Link
+              to={`/dashboard/kursus/${kursusId}/${contentId}`}
+              title="Memulai Pemrograman Dengan Kotlin"
+            >
+              {val.title}
+            </Link>
+          </td>
+          <td>
+            <div className="progress">
+              <div
+                className="progress-bar progress-bar-striped bg-success"
+                role="progressbar"
+                aria-valuenow="10"
+                aria-valuemin="0"
+                style={{ width: `${val.progress}%` }}
+                aria-valuemax="100"
+              >
+                {val.progress}%
+              </div>
+            </div>
+          </td>
+        </tr>
+      );
+    });
+  }
+
+  function renderTable() {
+    return (
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Kursus</th>
+            <th>Progress</th>
+          </tr>
+        </thead>
+        <tbody>{renderRow()}</tbody>
+      </table>
+    );
+  }
+
   return (
     <div className="dashboard-main">
       <DashboardSidebar />
@@ -43,60 +114,7 @@ function Main() {
               <p>Berikut ini adalah daftar Kursus yang kamu ikuti</p>
             </div>
             <div className="row">
-              <div className="col-md-12">
-                <table className="table">
-                  <thead>
-                    <tr>
-                      <th>Kursus</th>
-                      <th>Progress</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <Link to="/" title="Memulai Pemrograman Dengan Kotlin">
-                          Memulai Pemrograman Dengan Kotlin
-                        </Link>
-                      </td>
-                      <td>
-                        <div className="progress">
-                          <div
-                            className="progress-bar progress-bar-striped bg-success"
-                            role="progressbar"
-                            aria-valuenow="10"
-                            aria-valuemin="0"
-                            style={{ width: '25%' }}
-                            aria-valuemax="100"
-                          >
-                            25%
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <Link to="/" title="Membuat Aplikasi Android">
-                          Membuat Aplikasi Android
-                        </Link>
-                      </td>
-                      <td>
-                        <div className="progress">
-                          <div
-                            className="progress-bar progress-bar-striped bg-success"
-                            role="progressbar"
-                            aria-valuenow="10"
-                            aria-valuemin="0"
-                            style={{ width: '50%' }}
-                            aria-valuemax="100"
-                          >
-                            50%
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
+              <div className="col-md-12">{renderTable()}</div>
             </div>
           </div>
         </div>
@@ -105,4 +123,10 @@ function Main() {
   );
 }
 
-export default Main;
+Progress.propTypes = {
+  kursus: PropTypes.array,
+  contents: PropTypes.array,
+  loading: PropTypes.bool,
+};
+
+export default connect(mapStateToProps)(Progress);

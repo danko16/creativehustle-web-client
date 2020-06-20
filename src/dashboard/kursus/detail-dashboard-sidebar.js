@@ -1,9 +1,79 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
 import ClassNames from 'classnames';
-import { NavLink, Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { NavLink, useParams } from 'react-router-dom';
 
-function DetailDashboardSidebar() {
-  const [showDropdown, setShowDropdown] = useState(true);
+const mapStateToProps = (state) => ({
+  sections: state.kursusSaya.sections,
+  contents: state.kursusSaya.contents,
+  loading: state.kursusSaya.loading,
+});
+
+function DetailDashboardSidebar({ sections, contents, loading }) {
+  const { kursusId } = useParams();
+
+  const [showDropdown, setShowDropdown] = useState(false);
+  const [sectionCollapse, setSectionCollapse] = useState({});
+  const [sectionSaya, setSectionSaya] = useState([]);
+
+  useEffect(() => {
+    if (!loading && sections.length) {
+      const sectionSaya = sections.filter((val) => val.course_id === parseInt(kursusId));
+      setSectionSaya(sectionSaya);
+    }
+  }, [kursusId, sections, loading]);
+
+  function renderContents(contentSaya) {
+    return contentSaya.map((val) => {
+      const collapseName = `section${val.section_id}`;
+
+      return (
+        <li
+          key={val.content_id}
+          className={ClassNames({ sembunyi: sectionCollapse[collapseName] })}
+        >
+          <NavLink
+            to={`/dashboard/kursus/${parseInt(kursusId)}/${val.id}`}
+            activeStyle={{
+              borderColor: '#2a41e8',
+              borderLeft: '3px solid #2a41e8',
+            }}
+            className="menu-peserta"
+          >
+            {val.title}
+          </NavLink>
+          {val.done && <i className={'fa fa-check-circle'} aria-hidden="true"></i>}
+        </li>
+      );
+    });
+  }
+  function renderSections() {
+    return sectionSaya.map((val) => {
+      const collapseName = `section${val.id}`;
+      const contentSaya = contents.filter((content) => content.section_id === val.id);
+      return (
+        <ul key={val.id}>
+          <li
+            className="judul"
+            onClick={() => {
+              setSectionCollapse((prevState) => ({
+                ...prevState,
+                [collapseName]: !prevState[collapseName],
+              }));
+            }}
+          >
+            <span>{val.title}</span>
+            <i
+              className={`fa fa-caret-${sectionCollapse[collapseName] ? 'left' : 'down'}`}
+              aria-hidden="true"
+            ></i>
+          </li>
+          {renderContents(contentSaya)}
+        </ul>
+      );
+    });
+  }
   return (
     <div className="dashboard-sidebar">
       <div
@@ -19,65 +89,21 @@ function DetailDashboardSidebar() {
           <span className="trigger-title">Dashboard Navigation</span>
         </div>
       </div>
-      <div className="dashboard-nav">
-        <ul
-          data-submenu-title="Menu"
-          className={ClassNames('menu-peserta', {
-            active: showDropdown,
-          })}
-        >
-          <li className="active">
-            <NavLink
-              to="/dashboard/progress"
-              activeStyle={{
-                backgroundColor: 'rgba(42,65,232,.04)',
-                borderColor: '#2a41e8',
-                borderLeft: '3px solid #2a41e8',
-              }}
-              className="menu-peserta"
-            >
-              {' '}
-              Progress Belajar
-            </NavLink>
-          </li>
-          <li className="active">
-            <NavLink
-              to="/dashboard/kursus"
-              activeStyle={{
-                backgroundColor: 'rgba(42,65,232,.04)',
-                borderColor: '#2a41e8',
-                borderLeft: '3px solid #2a41e8',
-              }}
-              className="menu-peserta"
-            >
-              {' '}
-              Kursus Saya
-            </NavLink>
-          </li>
-          <li className="active">
-            <NavLink
-              to="/dashboard/kelas"
-              activeStyle={{
-                backgroundColor: 'rgba(42,65,232,.04)',
-                borderColor: '#2a41e8',
-                borderLeft: '3px solid #2a41e8',
-              }}
-              className="menu-peserta"
-            >
-              {' '}
-              Kelas Saya
-            </NavLink>
-          </li>
-          <li className="active">
-            <Link onClick={() => {}} to="/" className="menu-peserta">
-              {' '}
-              Logout
-            </Link>
-          </li>
-        </ul>
+      <div
+        className={ClassNames('dashboard-nav detail', {
+          active: showDropdown,
+        })}
+      >
+        {renderSections()}
       </div>
     </div>
   );
 }
 
-export default DetailDashboardSidebar;
+DetailDashboardSidebar.propTypes = {
+  sections: PropTypes.array,
+  contents: PropTypes.array,
+  loading: PropTypes.bool,
+};
+
+export default connect(mapStateToProps)(DetailDashboardSidebar);

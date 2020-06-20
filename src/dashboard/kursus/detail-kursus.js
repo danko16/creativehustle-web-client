@@ -1,83 +1,48 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { useParams, Link } from 'react-router-dom';
 import DetailDashboardSidebar from './detail-dashboard-sidebar';
 
-const sections = [
-  {
-    section_id: 1,
-    title: 'Section Pertama',
-    contents: [
-      {
-        section_id: 1,
-        content_id: 1,
-        title: 'Konten Pertama',
-        url: 'https://www.youtube.com/embed/0FcVu-BlGQg',
-        done: false,
-      },
-      {
-        section_id: 1,
-        content_id: 2,
-        title: 'Konten Kedua',
-        url: 'https://www.youtube.com/embed/UWYPTui1wCc',
-        done: false,
-      },
-      {
-        section_id: 1,
-        content_id: 3,
-        title: 'Konten Ketiga',
-        url: 'https://www.youtube.com/embed/ZPtSSytR8XE',
-        done: false,
-      },
-    ],
-  },
-  {
-    section_id: 2,
-    title: 'Section Kedua',
-    contents: [
-      {
-        section_id: 2,
-        content_id: 4,
-        title: 'Konten Pertama',
-        url: 'https://www.youtube.com/embed/0FcVu-BlGQg',
-        done: false,
-      },
-      {
-        section_id: 2,
-        content_id: 5,
-        title: 'Konten Kedua',
-        url: 'https://www.youtube.com/embed/0FcVu-BlGQg',
-        done: false,
-      },
-      {
-        section_id: 2,
-        content_id: 6,
-        title: 'Konten Ketiga',
-        url: 'https://www.youtube.com/embed/0FcVu-BlGQg',
-        done: false,
-      },
-    ],
-  },
-];
+const mapStateToProps = (state) => ({
+  contents: state.kursusSaya.contents,
+  loading: state.kursusSaya.loading,
+});
 
-function DetailKursus() {
-  const { sectionId, contentId } = useParams();
-  const [section, setSection] = useState({});
-  const [content, setContent] = useState({});
+function DetailKursus({ contents, loading }) {
+  const { kursusId, contentId } = useParams();
+  const [contentSaya, setContentSaya] = useState({});
+  const [nextId, setNextId] = useState();
   useEffect(() => {
-    const [section] = sections.filter((val) => val.section_id === parseInt(sectionId));
-    const [content] = section.contents.filter((val) => val.content_id === parseInt(contentId));
-    setSection(section);
-    setContent(content);
-  }, [sectionId, contentId]);
+    if (!loading && contents.length) {
+      let content;
+      const kursusContent = contents.filter((val) => val.course_id === parseInt(kursusId));
+      kursusContent.forEach((val, index) => {
+        if (val.id === parseInt(contentId)) {
+          content = val;
+          if (index + 1 < kursusContent.length) {
+            setNextId(kursusContent[index + 1].id);
+          } else {
+            setNextId(val.id);
+          }
+        }
+      });
+      setContentSaya(content);
+    }
+  }, [contentId, kursusId, contents, loading]);
   return (
     <div>
       <div className="dashboard-main">
+        <Link className="back-dashboard top-side-bar" to="/dashboard/kursus">
+          <i className="fa fa-arrow-left" aria-hidden="true"></i>
+          <span>Kembali ke Home</span>
+        </Link>
         <DetailDashboardSidebar />
         <div className="row mb-4">
           <div className="col-12">
             <div className="card-no-shadow">
-              <h4 className="card-title">{content.title}</h4>
-              <p>Materi bagian: {section.title}</p>
+              <h4 className="card-title">{contentSaya.title}</h4>
+              <p>Materi bagian: {contentSaya.section_title}</p>
             </div>
           </div>
         </div>
@@ -86,9 +51,9 @@ function DetailKursus() {
           <div className="col-12">
             <div className="card-no-shadow">
               <iframe
-                title={content.title}
+                title={contentSaya.title}
                 height="315"
-                src={content.url}
+                src={contentSaya.url}
                 frameBorder="0"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
@@ -104,7 +69,14 @@ function DetailKursus() {
           <div className="col-12">
             <div className="d-flex justify-content-center">
               <button className="next-kursus mr-3">Tandai Selesai</button>
-              <button className="next-kursus">Next Materi</button>
+              <Link
+                to={`/dashboard/kursus/${parseInt(kursusId)}/${
+                  nextId ? nextId : parseInt(contentId)
+                }`}
+                className="next-kursus"
+              >
+                Next Materi
+              </Link>
             </div>
           </div>
         </div>
@@ -113,4 +85,9 @@ function DetailKursus() {
   );
 }
 
-export default DetailKursus;
+DetailKursus.propTypes = {
+  contents: PropTypes.array,
+  loading: PropTypes.bool,
+};
+
+export default connect(mapStateToProps)(DetailKursus);

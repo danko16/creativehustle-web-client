@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
+
 import Kursus from './kursus';
 import Sidebar from '../sidebar';
 import DetailSidebar from './detail-sidebar';
@@ -8,6 +9,7 @@ import './kursus.css';
 
 function KursusMain() {
   const { path } = useRouteMatch();
+
   return (
     <div className="kursus-main">
       <Switch>
@@ -15,7 +17,7 @@ function KursusMain() {
           <Sidebar />
           <Kursus />
         </Route>
-        <Route path={`${path}/:kursusId/:sectionId/:contentId`}>
+        <Route path={`${path}/:kursusId/:contentId`}>
           <DetailSidebar />
           <DetailKursus />
         </Route>

@@ -1,0 +1,21 @@
+.next-kursus {
+  outline: none;
+  padding: 12px;
+  border: 1px solid #dedfe0;
+  background-color: #19b5fe;
+  color: #fff;
+  transition: 0.2s ease;
+  font-weight: 500;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+.next-kursus:hover {
+  background-color: #1192cf;
+  text-decoration: none;
+  color: #fff;
+}
+
+.kursus-body {
+  margin-top: 20px;
+}
