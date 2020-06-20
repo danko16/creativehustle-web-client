@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
 import DetailDashboardSidebar from './detail-dashboard-sidebar';
+import { kursusSayaAction } from '../../redux/reducers/kursus-saya';
 
 const mapStateToProps = (state) => ({
   contents: state.kursusSaya.contents,
   loading: state.kursusSaya.loading,
 });
 
-function DetailKursus({ contents, loading }) {
+const mapActionToProps = (disatch) => bindActionCreators({ done: kursusSayaAction.done }, disatch);
+
+function DetailKursus({ contents, done, loading }) {
   const { kursusId, contentId } = useParams();
   const [contentSaya, setContentSaya] = useState({});
   const [nextId, setNextId] = useState();
@@ -68,7 +72,19 @@ function DetailKursus({ contents, loading }) {
         <div className="row">
           <div className="col-12">
             <div className="d-flex justify-content-center">
-              <button className="next-kursus mr-3">Tandai Selesai</button>
+              <button
+                onClick={() => {
+                  if (!contentSaya.done) {
+                    done({
+                      my_content_id: contentSaya.id,
+                      kursus_id: parseInt(kursusId),
+                    });
+                  }
+                }}
+                className="next-kursus mr-3"
+              >
+                Tandai Selesai
+              </button>
               <Link
                 to={`/dashboard/kursus/${parseInt(kursusId)}/${
                   nextId ? nextId : parseInt(contentId)
@@ -87,7 +103,8 @@ function DetailKursus({ contents, loading }) {
 
 DetailKursus.propTypes = {
   contents: PropTypes.array,
+  done: PropTypes.func,
   loading: PropTypes.bool,
 };
 
-export default connect(mapStateToProps)(DetailKursus);
+export default connect(mapStateToProps, mapActionToProps)(DetailKursus);

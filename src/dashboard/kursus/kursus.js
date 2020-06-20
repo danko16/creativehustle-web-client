@@ -31,9 +31,9 @@ function Kursus({ kursus, contents, loading }) {
       const contentId = content[0].id;
       return (
         <div key={val.id} className="col-md-12 col-lg-6 mb-4">
-          <Link className="card" to={`/dashboard/kursus/${kursusId}/${contentId}`}>
-            <img src="/assets/img/default-img.svg" alt="default" />
-            <div className="kursus-body">
+          <Link className="kursus-card card" to={`/dashboard/kursus/${kursusId}/${contentId}`}>
+            <img src={`${val.thumbnail}`} alt="default" />
+            <div className="kursus-body card-body">
               <h5 className="m-0">{val.title}</h5>
               <p>{val.teacher_name}</p>
             </div>

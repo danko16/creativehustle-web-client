@@ -16,12 +16,10 @@ function Progress({ kursus, contents, loading }) {
 
   useEffect(() => {
     if (!loading && kursus.length) {
-      console.log(kursus);
       setKursusSaya(kursus);
     }
 
     if (!loading && contents.length) {
-      console.log(contents);
       setContentSaya(contents);
     }
   }, [kursus, contents, loading]);

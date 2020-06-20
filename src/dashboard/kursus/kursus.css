@@ -16,6 +16,9 @@
   color: #fff;
 }
 
-.kursus-body {
-  margin-top: 20px;
+.dashboard-main .card.kursus-card .card-body {
+  padding: 20px;
+}
+.dashboard-main .card.kursus-card {
+  padding: 0;
 }
