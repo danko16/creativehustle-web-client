@@ -16,15 +16,17 @@ const mapActionToProps = (dispatch) =>
   bindActionCreators(
     {
       reqKursusSaya: kursusSayaAction.reqKursus,
+      reqRekomendasi: kursusSayaAction.reqRekomendasi,
     },
     dispatch
   );
 
-function Dashboard({ reqKursusSaya }) {
+function Dashboard({ reqKursusSaya, reqRekomendasi }) {
   let { path } = useRouteMatch();
   useEffect(() => {
     reqKursusSaya();
-  }, [reqKursusSaya]);
+    reqRekomendasi();
+  }, [reqKursusSaya, reqRekomendasi]);
   return (
     <div className="dashboard-container">
       <Header />
@@ -60,6 +62,7 @@ function Dashboard({ reqKursusSaya }) {
 
 Dashboard.propTypes = {
   reqKursusSaya: PropTypes.func,
+  reqRekomendasi: PropTypes.func,
 };
 
 export default connect(null, mapActionToProps)(Dashboard);

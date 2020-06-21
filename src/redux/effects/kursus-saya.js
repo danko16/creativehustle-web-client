@@ -23,6 +23,19 @@ function* kursusSaya() {
   }
 }
 
+function* rekomendasi() {
+  try {
+    const {
+      data: { data },
+    } = yield call(kursusSayaApi.rekomendasi);
+    if (data) {
+      yield put(kursusSayaAction.rekomendasi(data));
+    }
+  } catch (error) {
+    yield put(kursusSayaAction.error(getErrorMessage(error)));
+  }
+}
+
 function* done({ value }) {
   try {
     const {
@@ -76,6 +89,7 @@ function* done({ value }) {
 
 const kursusSayaSaga = [
   takeLatest(KURSUS_SAYA_ACTION.REQ_KURSUS, kursusSaya),
+  takeLatest(KURSUS_SAYA_ACTION.REQ_REKOMENDASI, rekomendasi),
   takeLatest(KURSUS_SAYA_ACTION.DONE, done),
 ];
 

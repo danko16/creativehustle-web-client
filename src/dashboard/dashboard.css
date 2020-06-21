@@ -65,6 +65,29 @@
   box-shadow: 0 2px 4px 0 rgba(20, 23, 28, 0.15);
 }
 
+.dashboard-main .rekomendasi-wrapper {
+  cursor: pointer;
+  border: 2px solid #b2d1f1;
+  transition: .2s;
+  border-radius: 5px;
+}
+
+.dashboard-main .rekomendasi-wrapper h5 {
+  transition: .2s;
+}
+
+.dashboard-main .rekomendasi-wrapper:hover {
+  border: 2px solid #499aef;
+  color: #499aef;
+}
+
+.dashboard-main .rekomendasi-wrapper:hover h5 {
+  color: #499aef;
+}
+
+.dashboard-main .rekomendasi-wrapper .kursus-body {
+  padding: 15px
+}
 
 @media screen and (max-width: 1200px) {
   .dashboard-main {

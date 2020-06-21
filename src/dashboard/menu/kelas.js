@@ -19,7 +19,7 @@ function Kelas() {
           <Link to="/dashboard/kelas" className="card">
             <img src="/assets/img/default-img.svg" width="284" height="160" alt="default" />
             <div className="kursus-body">
-              <h4 className="m-0">Judul Kelas</h4>
+              <h5 className="m-0">Judul Kelas</h5>
               <p className="pl-1">Author Kelas</p>
             </div>
           </Link>
@@ -28,7 +28,7 @@ function Kelas() {
           <Link to="/dashboard/kelas" className="card">
             <img src="/assets/img/default-img.svg" width="284" height="160" alt="default" />
             <div className="kursus-body">
-              <h4 className="m-0">Judul Kelas</h4>
+              <h5 className="m-0">Judul Kelas</h5>
               <p className="pl-1">Author Kelas</p>
             </div>
           </Link>

@@ -7,12 +7,14 @@ import DashboardSidebar from '../dashboard-sidebar';
 const mapStateToProps = (state) => ({
   kursus: state.kursusSaya.kursus,
   contents: state.kursusSaya.contents,
+  rekomendasi: state.kursusSaya.rekomendasi,
   loading: state.kursusSaya.loading,
 });
 
-function Progress({ kursus, contents, loading }) {
+function Progress({ kursus, contents, rekomendasi, loading }) {
   const [kursusSaya, setKursusSaya] = useState([]);
   const [contentSaya, setContentSaya] = useState([]);
+  const [rekomendasiSaya, setRekomendasiSaya] = useState([]);
 
   useEffect(() => {
     if (!loading && kursus.length) {
@@ -22,7 +24,11 @@ function Progress({ kursus, contents, loading }) {
     if (!loading && contents.length) {
       setContentSaya(contents);
     }
-  }, [kursus, contents, loading]);
+
+    if (!loading && rekomendasi.length) {
+      setRekomendasiSaya(rekomendasi);
+    }
+  }, [kursus, contents, rekomendasi, loading]);
 
   function renderRow() {
     return kursusSaya.map((val) => {
@@ -72,6 +78,20 @@ function Progress({ kursus, contents, loading }) {
     );
   }
 
+  function renderRekomendasi() {
+    return rekomendasiSaya.map((val) => (
+      <div key={val.id} className="col-md-12 col-lg-6 mb-3">
+        <div className="rekomendasi-wrapper">
+          <img src={val.thumbnail} alt="default" />
+          <div className="kursus-body mt-2">
+            <h5 className="m-0">{val.title}</h5>
+            <p className="m-0">{val.teacher_name}</p>
+          </div>
+        </div>
+      </div>
+    ));
+  }
+
   return (
     <div className="dashboard-main">
       <DashboardSidebar />
@@ -85,22 +105,7 @@ function Progress({ kursus, contents, loading }) {
                 untukmu.
               </p>
             </div>
-            <div className="row">
-              <div className="kursus col-md-12 col-lg-6">
-                <img src="/assets/img/default-img.svg" alt="default" />
-                <div className="kursus-body">
-                  <h4 className="m-0">Judul Kursus</h4>
-                  <p className="pl-1">Author kursus</p>
-                </div>
-              </div>
-              <div className="kursus col-md-12 col-lg-6">
-                <img src="/assets/img/default-img.svg" alt="default" />
-                <div className="kursus-body">
-                  <h4 className="m-0">Judul Kursus</h4>
-                  <p className="pl-1">Author kursus</p>
-                </div>
-              </div>
-            </div>
+            <div className="row">{renderRekomendasi()}</div>
           </div>
         </div>
       </div>
@@ -124,6 +129,7 @@ function Progress({ kursus, contents, loading }) {
 Progress.propTypes = {
   kursus: PropTypes.array,
   contents: PropTypes.array,
+  rekomendasi: PropTypes.array,
   loading: PropTypes.bool,
 };
 
