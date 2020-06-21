@@ -1,24 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import ClassNames from 'classnames';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { kursusActions } from '../redux/reducers/kursus';
 
 const mapStateToProps = (state) => ({
   kursus: state.kursus.kursus,
   loading: state.kursus.loading,
 });
 
-const mapActionToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      reqKursus: kursusActions.reqKursus,
-    },
-    dispatch
-  );
-
-function KursusList({ kursus, reqKursus, loading }) {
+function KursusList({ kursus, loading }) {
   const [kursusList, setKursusList] = useState([]);
   const [activePage, setActivePage] = useState({
     totalPage: Math.ceil(kursusList.length / 9),
@@ -26,10 +17,6 @@ function KursusList({ kursus, reqKursus, loading }) {
     from: 0,
     to: 9,
   });
-
-  useEffect(() => {
-    reqKursus({ from: 0 });
-  }, [reqKursus]);
 
   useEffect(() => {
     if (!loading && kursus.length) {
@@ -49,9 +36,9 @@ function KursusList({ kursus, reqKursus, loading }) {
           key={index}
         >
           <div className="course-card card">
-            <a href="/kursus" className="stretched-link">
+            <Link to={`/kursus/${val.id}`} className="stretched-link">
               <span className="sr-only">title for screen</span>
-            </a>
+            </Link>
             <img src={val.thumbnail} alt="thumbnail kelas" className="img img__cover" />
             <div className="card-body pb-0">
               <h6 className="line-height-1 mb-2 mt-3">{val.title}</h6>
@@ -165,8 +152,7 @@ function KursusList({ kursus, reqKursus, loading }) {
 
 KursusList.propTypes = {
   kursus: PropTypes.array,
-  reqKursus: PropTypes.func,
   loading: PropTypes.bool,
 };
 
-export default connect(mapStateToProps, mapActionToProps)(KursusList);
+export default connect(mapStateToProps)(KursusList);

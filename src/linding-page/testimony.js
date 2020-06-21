@@ -21,8 +21,9 @@ function Testimony() {
               </div>
               <hr />
               <p className="message">
-                Udemy is a life saver. I don`t have the time or money for a college education. My
-                goal is to become a freelance web developer, and thanks to Udemy, I`m really close.
+                Creative Hustle is a life saver. I don`t have the time or money for a college
+                education. My goal is to become a freelance web developer, and thanks to Creative
+                Hustle, I`m really close.
               </p>
             </div>
           </div>
@@ -34,8 +35,9 @@ function Testimony() {
               </div>
               <hr />
               <p className="message">
-                Udemy is a life saver. I don`t have the time or money for a college education. My
-                goal is to become a freelance web developer, and thanks to Udemy, I`m really close.
+                Creative Hustle is a life saver. I don`t have the time or money for a college
+                education. My goal is to become a freelance web developer, and thanks to Creative
+                Hustle, I`m really close.
               </p>
             </div>
           </div>
@@ -47,8 +49,9 @@ function Testimony() {
               </div>
               <hr />
               <p className="message">
-                Udemy is a life saver. I don`t have the time or money for a college education. My
-                goal is to become a freelance web developer, and thanks to Udemy, I`m really close.
+                Creative Hustle is a life saver. I don`t have the time or money for a college
+                education. My goal is to become a freelance web developer, and thanks to Creative
+                Hustle, I`m really close.
               </p>
             </div>
           </div>

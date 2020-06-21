@@ -4,6 +4,7 @@ export const KURSUS_SAYA_ACTION = Object.freeze({
   REQ_REKOMENDASI: 'myapp/kursus-saya/req-rekomendasi',
   KURSUS: 'myapp/kursus-saya/kursus',
   REKOMENDASI: 'myapp/kursus-saya/rekomendasi',
+  SUBSCRIBE: 'myapp/kursus-saya/subscribe',
   DONE: 'myapp/kursus-saya/done',
   ERROR: 'myapp/kursus-saya/error',
   CLEAR_ERROR: 'myapp/kursus-saya/clear-error',
@@ -27,6 +28,10 @@ export const kursusSayaAction = Object.freeze({
   }),
   rekomendasi: (value) => ({
     type: KURSUS_SAYA_ACTION.REKOMENDASI,
+    value,
+  }),
+  subscribe: (value) => ({
+    type: KURSUS_SAYA_ACTION.SUBSCRIBE,
     value,
   }),
   done: (value) => ({
@@ -60,6 +65,7 @@ const reducer = (state = initialState, { type, field, value }) => {
         [field]: value,
       };
     case KURSUS_SAYA_ACTION.DONE:
+    case KURSUS_SAYA_ACTION.SUBSCRIBE:
     case KURSUS_SAYA_ACTION.REQ_REKOMENDASI:
     case KURSUS_SAYA_ACTION.REQ_KURSUS:
       return {

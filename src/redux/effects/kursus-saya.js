@@ -1,5 +1,6 @@
 import { call, select, put, takeLatest } from 'redux-saga/effects';
 import kursusSayaApi from '../api/kursus-saya';
+import { push } from 'connected-react-router';
 import { getErrorMessage } from '../../utils/api';
 import { KURSUS_SAYA_ACTION, kursusSayaAction } from '../reducers/kursus-saya';
 
@@ -30,6 +31,18 @@ function* rekomendasi() {
     } = yield call(kursusSayaApi.rekomendasi);
     if (data) {
       yield put(kursusSayaAction.rekomendasi(data));
+    }
+  } catch (error) {
+    yield put(kursusSayaAction.error(getErrorMessage(error)));
+  }
+}
+
+function* subscribe({ value }) {
+  try {
+    const { data } = yield call(kursusSayaApi.subscribe, value);
+    if (data) {
+      yield call(kursusSaya);
+      yield put(push('/dashboard/kursus'));
     }
   } catch (error) {
     yield put(kursusSayaAction.error(getErrorMessage(error)));
@@ -91,6 +104,7 @@ const kursusSayaSaga = [
   takeLatest(KURSUS_SAYA_ACTION.REQ_KURSUS, kursusSaya),
   takeLatest(KURSUS_SAYA_ACTION.REQ_REKOMENDASI, rekomendasi),
   takeLatest(KURSUS_SAYA_ACTION.DONE, done),
+  takeLatest(KURSUS_SAYA_ACTION.SUBSCRIBE, subscribe),
 ];
 
 export default kursusSayaSaga;

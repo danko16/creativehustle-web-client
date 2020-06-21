@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const mapStateToProps = (state) => ({
@@ -21,9 +22,9 @@ function PopularClass({ kursus, loading }) {
     return courses.map((val) => (
       <div className="col-md-6 col-lg-4 mb-4" key={val.id}>
         <div className="course-card card">
-          <a href="/" className="stretched-link">
+          <Link to={`/kursus/${val.id}`} className="stretched-link">
             <span className="sr-only">title for screen</span>
-          </a>
+          </Link>
           <img src={val.thumbnail} alt="thumbnail kelas" className="img img__cover" />
           <div className="card-body pb-0">
             <h5 className="line-height-1 mb-2 mt-3">{val.title}</h5>

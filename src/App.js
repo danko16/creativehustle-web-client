@@ -8,12 +8,14 @@ import { isAuthenticated } from './utils/auth';
 import { Api } from './utils/api';
 import { store, history } from './redux';
 import { authActions } from './redux/reducers/auth';
+import { kursusActions } from './redux/reducers/kursus';
 
 import LandingPage from './linding-page';
 import Kelas from './kelas';
 import Dashboard from './dashboard';
 import Kursus from './kursus';
 import Journey from './journey';
+import DetailKursus from './detail-kursus';
 import GoogleAuth from './auth/googleAuth';
 import './app.css';
 
@@ -25,6 +27,7 @@ const mapActionToProps = (dispatch) =>
   bindActionCreators(
     {
       authFlow: authActions.authFlow,
+      reqKursus: kursusActions.reqKursus,
     },
     dispatch
   );
@@ -45,10 +48,11 @@ Api.interceptors.request.use(
   }
 );
 
-function App({ authFlow }) {
+function App({ authFlow, reqKursus }) {
   useEffect(() => {
     authFlow();
-  }, [authFlow]);
+    reqKursus({ from: 0 });
+  }, [authFlow, reqKursus]);
   //eslint-disable-next-line
   function PrivateRoute({ children, ...rest }) {
     return (
@@ -76,8 +80,11 @@ function App({ authFlow }) {
         <div className="App">
           <Switch>
             <Route exact path="/" component={LandingPage} />
-            <Route path="/kursus">
+            <Route exact path="/kursus">
               <Kursus />
+            </Route>
+            <Route path="/kursus/:kursusId">
+              <DetailKursus />
             </Route>
             <Route path="/kelas">
               <Kelas />
@@ -98,6 +105,7 @@ function App({ authFlow }) {
 
 App.propTypes = {
   auth: PropTypes.object,
+  reqKursus: PropTypes.func,
   authFlow: PropTypes.func,
 };
 

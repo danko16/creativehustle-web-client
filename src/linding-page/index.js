@@ -1,8 +1,4 @@
-import React, { useEffect } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import { kursusActions } from '../redux/reducers/kursus';
-import PropTypes from 'prop-types';
+import React from 'react';
 
 import Header from '../shared/header';
 import Footer from '../shared/footer';
@@ -13,18 +9,7 @@ import RegisterOffer from './register-offer';
 
 import './landing-page.css';
 
-const mapActionToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      reqKursus: kursusActions.reqKursus,
-    },
-    dispatch
-  );
-
-function LandingPage({ reqKursus }) {
-  useEffect(() => {
-    reqKursus({ from: 0 });
-  }, [reqKursus]);
+function LandingPage() {
   return (
     <div className="landing-page">
       <Header />
@@ -37,8 +22,4 @@ function LandingPage({ reqKursus }) {
   );
 }
 
-LandingPage.propTypes = {
-  reqKursus: PropTypes.func,
-};
-
-export default connect(null, mapActionToProps)(LandingPage);
+export default LandingPage;
