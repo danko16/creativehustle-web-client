@@ -10,6 +10,7 @@ import { store, history } from './redux';
 import { authActions } from './redux/reducers/auth';
 import { kursusActions } from './redux/reducers/kursus';
 
+import NoMatch from './nomatch';
 import LandingPage from './linding-page';
 import Kelas from './kelas';
 import Dashboard from './dashboard';
@@ -96,6 +97,7 @@ function App({ authFlow, reqKursus }) {
             <PrivateRoute path="/dashboard">
               <Dashboard />
             </PrivateRoute>
+            <Route component={NoMatch} />
           </Switch>
         </div>
       </ConnectedRouter>

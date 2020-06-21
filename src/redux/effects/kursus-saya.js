@@ -45,6 +45,7 @@ function* subscribe({ value }) {
       yield put(push('/dashboard/kursus'));
     }
   } catch (error) {
+    alert(getErrorMessage(error));
     yield put(kursusSayaAction.error(getErrorMessage(error)));
   }
 }
