@@ -1,69 +1,34 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-const popularClasses = [
-  {
-    title: 'Full-Stack Web Developer',
-    thumbnail: '/assets/img/thumbnail_kelas_fullstack_web_developer_buildwithangga.png',
-    level: 'All Levels',
-    type: 'GRATIS',
-    author: 'Galih Pratama',
-    job: 'CTO at Lexar',
-  },
-  {
-    title: 'Flutter Mobile Apps Developer',
-    thumbnail: '/assets/img/kelas online flutter apps developer buildwith angga.png',
-    level: 'All Levels',
-    type: 'GRATIS',
-    author: 'Erico Darmawan',
-    job: 'Expert Flutter Developer',
-  },
-  {
-    title: 'Full-Stack JavaScript Developer',
-    thumbnail: '/assets/img/kelas full stack web javascript developer buildwith angga.png',
-    level: 'All Levels',
-    type: 'GRATIS',
-    author: 'Yein Narayana',
-    job: 'Front-End Developer',
-  },
-  {
-    title: 'Full-Stack Web Developer',
-    thumbnail: '/assets/img/thumbnail_kelas_fullstack_web_developer_buildwithangga.png',
-    level: 'All Levels',
-    type: 'GRATIS',
-    author: 'Galih Pratama',
-    job: 'CTO at Lexar',
-  },
-  {
-    title: 'Flutter Mobile Apps Developer',
-    thumbnail: '/assets/img/kelas online flutter apps developer buildwith angga.png',
-    level: 'All Levels',
-    type: 'GRATIS',
-    author: 'Erico Darmawan',
-    job: 'Expert Flutter Developer',
-  },
-  {
-    title: 'Full-Stack JavaScript Developer',
-    thumbnail: '/assets/img/kelas full stack web javascript developer buildwith angga.png',
-    level: 'All Levels',
-    type: 'GRATIS',
-    author: 'Yein Narayana',
-    job: 'Front-End Developer',
-  },
-];
+const mapStateToProps = (state) => ({
+  kursus: state.kursus.kursus,
+  loading: state.kursus.loading,
+});
 
-function PopularClass() {
+function PopularClass({ kursus, loading }) {
+  const [courses, setCourses] = useState([]);
+  useEffect(() => {
+    if (!loading && kursus.length) {
+      setCourses(kursus);
+    }
+  }, [kursus, loading]);
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  }
   function renderClass() {
-    return popularClasses.map((val, index) => (
-      <div className="col-md-6 col-lg-4 mb-4" key={index}>
+    return courses.map((val) => (
+      <div className="col-md-6 col-lg-4 mb-4" key={val.id}>
         <div className="course-card card">
           <a href="/" className="stretched-link">
             <span className="sr-only">title for screen</span>
           </a>
           <img src={val.thumbnail} alt="thumbnail kelas" className="img img__cover" />
           <div className="card-body pb-0">
-            <h6 className="line-height-1 mb-2 mt-3">{val.title}</h6>
+            <h5 className="line-height-1 mb-2 mt-3">{val.title}</h5>
 
-            <p className="h7 mb-2 text-gray-500">{val.author}</p>
+            <p className="h7 mb-2 text-gray-500">{val.teacher_name}</p>
             <div className="row no-gutters justify-content-between">
               <div className="col-auto d-flex align-items-center">
                 <span className="rating fa fa-star checked"></span>
@@ -71,7 +36,7 @@ function PopularClass() {
                 <span className="rating fa fa-star checked"></span>
                 <span className="rating fa fa-star checked"></span>
                 <span className="rating fa fa-star"></span>
-                <span className="rating-vote text-gray-500">(32.123)</span>
+                <span className="rating-vote text-gray-500">(123)</span>
               </div>
             </div>
 
@@ -79,8 +44,8 @@ function PopularClass() {
 
             <div className="row align-items-center no-gutters mb-4">
               <div className="col-auto d-flex justify-items-center">
-                <span style={{ textDecoration: 'line-through' }}>Rp. 2.000.000</span>
-                <h6 className="ml-2 line-height-1">Rp. 245.000</h6>
+                <span style={{ textDecoration: 'line-through' }}>Rp {formatNumber(val.price)}</span>
+                <h6 className="ml-2 line-height-1">Rp {formatNumber(val.promo_price)}</h6>
               </div>
             </div>
           </div>
@@ -111,4 +76,9 @@ function PopularClass() {
   );
 }
 
-export default PopularClass;
+PopularClass.propTypes = {
+  kursus: PropTypes.array,
+  loading: PropTypes.bool,
+};
+
+export default connect(mapStateToProps)(PopularClass);

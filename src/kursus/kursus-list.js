@@ -1,124 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import ClassNames from 'classnames';
+import PropTypes from 'prop-types';
+import { kursusActions } from '../redux/reducers/kursus';
 
-const kursusList = [
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-];
+const mapStateToProps = (state) => ({
+  kursus: state.kursus.kursus,
+  loading: state.kursus.loading,
+});
 
-function KursusList() {
+const mapActionToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      reqKursus: kursusActions.reqKursus,
+    },
+    dispatch
+  );
+
+function KursusList({ kursus, reqKursus, loading }) {
+  const [kursusList, setKursusList] = useState([]);
   const [activePage, setActivePage] = useState({
     totalPage: Math.ceil(kursusList.length / 9),
     page: 1,
     from: 0,
     to: 9,
   });
+
+  useEffect(() => {
+    reqKursus({ from: 0 });
+  }, [reqKursus]);
+
+  useEffect(() => {
+    if (!loading && kursus.length) {
+      setKursusList(kursus);
+    }
+  }, [kursus, loading]);
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  }
   function renderClass() {
     return kursusList.map((val, index) => {
       return (
@@ -136,7 +56,7 @@ function KursusList() {
             <div className="card-body pb-0">
               <h6 className="line-height-1 mb-2 mt-3">{val.title}</h6>
 
-              <p className="h7 mb-2 text-gray-500">{val.author}</p>
+              <p className="h7 mb-2 text-gray-500">{val.teacher_name}</p>
               <div className="row no-gutters justify-content-between">
                 <div className="col-auto d-flex align-items-center">
                   <span className="rating fa fa-star checked"></span>
@@ -144,7 +64,7 @@ function KursusList() {
                   <span className="rating fa fa-star checked"></span>
                   <span className="rating fa fa-star checked"></span>
                   <span className="rating fa fa-star"></span>
-                  <span className="rating-vote text-gray-500">(32.123)</span>
+                  <span className="rating-vote text-gray-500">(123)</span>
                 </div>
               </div>
 
@@ -152,8 +72,10 @@ function KursusList() {
 
               <div className="row align-items-center no-gutters mb-4">
                 <div className="col-auto d-flex justify-items-center">
-                  <span style={{ textDecoration: 'line-through' }}>Rp. 2.000.000</span>
-                  <h6 className="ml-2 line-height-1">Rp. 245.000</h6>
+                  <span style={{ textDecoration: 'line-through' }}>
+                    Rp {formatNumber(val.price)}
+                  </span>
+                  <h6 className="ml-2 line-height-1">Rp {formatNumber(val.promo_price)}</h6>
                 </div>
               </div>
             </div>
@@ -241,4 +163,10 @@ function KursusList() {
   );
 }
 
-export default KursusList;
+KursusList.propTypes = {
+  kursus: PropTypes.array,
+  reqKursus: PropTypes.func,
+  loading: PropTypes.bool,
+};
+
+export default connect(mapStateToProps, mapActionToProps)(KursusList);
