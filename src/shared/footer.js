@@ -36,10 +36,7 @@ function Footer() {
                         <Link to="/">Cara Belajar Online</Link>
                       </li>
                       <li>
-                        <Link to="/">Tata Cara Order</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Cara Melamar Pekerjaan</Link>
+                        <Link to="/">Mentor</Link>
                       </li>
                       <li>
                         <Link to="/">Kebijakan Privasi</Link>
@@ -50,16 +47,10 @@ function Footer() {
                     <h5 className="text-indigo-3">Explore</h5>
                     <ul className="list-unstyled sitemap">
                       <li>
-                        <Link to="/">Cek Kategori</Link>
+                        <Link to="/">Jadi Mentor</Link>
                       </li>
                       <li>
-                        <Link to="/">Biaya Belajar Online</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Donasi Bersama</Link>
-                      </li>
-                      <li>
-                        <Link to="/">Contact Us</Link>
+                        <Link to="/">Kontak Kami</Link>
                       </li>
                     </ul>
                   </div>

@@ -247,7 +247,7 @@ ul.user-menu-small-nav li a:hover {
     position: relative;
   }
 
-  .header-notifications.active .header-notifications-dropdown {
+  .header-notifications-dropdown {
     display: none;
   }
 

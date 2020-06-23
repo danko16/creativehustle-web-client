@@ -6,6 +6,7 @@ function Kelas() {
   return (
     <div className="dashboard-main">
       <DashboardSidebar />
+      {/*
       <div className="row mb-4">
         <div className="col-12">
           <div className="card-no-shadow">
@@ -13,25 +14,21 @@ function Kelas() {
             <p>Berikut ini adalah daftar Kelas yang anda ikuti.</p>
           </div>
         </div>
-      </div>
-      <div className="row">
-        <div className="col-md-12 col-lg-6 mb-4">
-          <Link to="/dashboard/kelas" className="card">
-            <img src="/assets/img/default-img.svg" width="284" height="160" alt="default" />
-            <div className="kursus-body">
-              <h5 className="m-0">Judul Kelas</h5>
-              <p className="pl-1">Author Kelas</p>
-            </div>
-          </Link>
-        </div>
-        <div className="col-md-12 col-lg-6">
-          <Link to="/dashboard/kelas" className="card">
-            <img src="/assets/img/default-img.svg" width="284" height="160" alt="default" />
-            <div className="kursus-body">
-              <h5 className="m-0">Judul Kelas</h5>
-              <p className="pl-1">Author Kelas</p>
-            </div>
-          </Link>
+      </div>*/}
+
+      <div className="row mb-4">
+        <div className="col-12">
+          <div className="card-no-shadow py-5 text-center">
+            <h2 className="card-title">Anda Belum Memiliki Kelas</h2>
+            <p>Silahkan Cari Kelas Melalui Link di Bawah Ini</p>
+            <button className="et_pb_button">
+              <Link to={`/kelas`} className="stretched-link">
+                <span className="sr-only">title for screen</span>
+              </Link>
+              <span>Lihat Kelas</span>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
       </div>
     </div>

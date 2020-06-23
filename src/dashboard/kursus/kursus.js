@@ -30,7 +30,7 @@ function Kursus({ kursus, contents, loading }) {
       const content = contentSaya.filter((content) => content.course_id === val.id);
       const contentId = content[0].id;
       return (
-        <div key={val.id} className="col-md-12 col-lg-6 mb-4">
+        <div key={val.id} className="col-md-6 col-lg-6 col-xl-3 mb-4">
           <Link className="kursus-card card" to={`/dashboard/kursus/${kursusId}/${contentId}`}>
             <img src={`${val.thumbnail}`} alt="default" />
             <div className="kursus-body card-body">
@@ -45,14 +45,32 @@ function Kursus({ kursus, contents, loading }) {
   return (
     <div className="dashboard-main">
       <DashboardSidebar />
-      <div className="row mb-4">
-        <div className="col-12">
-          <div className="card-no-shadow">
-            <h4 className="card-title">Kursus Saya</h4>
-            <p>Berikut ini adalah daftar kursus yang anda ikuti.</p>
+      {kursusSaya.length ? (
+        <div className="row mb-4">
+          <div className="col-12">
+            <div className="card-no-shadow">
+              <h4 className="card-title">Kursus Saya</h4>
+              <p>Berikut ini adalah daftar kursus yang anda ikuti.</p>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div className="row mb-4">
+          <div className="col-12">
+            <div className="card-no-shadow py-5 text-center">
+              <h2 className="card-title">Anda Belum Memiliki Kursus</h2>
+              <p>Silahkan Cari Kursus Melalui Link di Bawah Ini</p>
+              <button className="et_pb_button">
+                <Link to={`/kursus`} className="stretched-link">
+                  <span className="sr-only">title for screen</span>
+                </Link>
+                <span>Lihat Kursus</span>
+                <i className="fa fa-angle-right" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
       <div className="row">{renderKursusList()}</div>
     </div>
   );

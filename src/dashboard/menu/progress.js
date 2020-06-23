@@ -80,7 +80,7 @@ function Progress({ kursus, contents, rekomendasi, loading }) {
 
   function renderRekomendasi() {
     return rekomendasiSaya.map((val) => (
-      <div key={val.id} className="col-md-12 col-lg-6 mb-3">
+      <div key={val.id} className="col-md-6 col-lg-6 col-xl-3 mb-3">
         <div className="rekomendasi-wrapper">
           <Link to={`/kursus/${val.id}`} className="stretched-link">
             <span className="sr-only">title for screen</span>
@@ -101,7 +101,7 @@ function Progress({ kursus, contents, rekomendasi, loading }) {
       <div className="row mb-5">
         <div className="col-md-12">
           <div className="progress-belajar card">
-            <div className="card-body">
+            <div className="card-body ">
               <h4 className="card-title">Rekomendasi Kursus</h4>
               <p>
                 Berikut ini adalah beberapa Kursus favorit di creative hustle yang mungkin sesuai
