@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Introduction() {
   return (
@@ -6,7 +7,14 @@ function Introduction() {
       <section className="container pt-4 pb-4">
         <div className="row mt-5 justify-content-center">
           <div className="col-lg-6 mb-4">
-            <h1>Bingung cara mulai cari penghasilan tambahan ?</h1>
+            <h1
+              className="mb-4"
+              style={{
+                fontSize: 42,
+              }}
+            >
+              Bingung cara mulai cari penghasilan tambahan ?
+            </h1>
             <p>
               Creative Huslte id platform belajar buat kalian yang ingin mencari penghasilan
               tambahan dengan cara kreatif. Dapatkan berbagai kemudahan belajar mulai dari :
@@ -21,7 +29,26 @@ function Introduction() {
               <li>Kesempatan belajar langsung via kelas online</li>
               <li>Dengan trainer yang berpengalaman mencari ‘cuan’ melalui dunia kreatif</li>
             </ul>
-            <button className="find-course btn">Cari Kursus</button>
+            <div className="d-flex intro btn-wrapper">
+              <div>
+                <button className="find-course btn">
+                  <Link to={`/kursus`} className="stretched-link">
+                    <span className="sr-only">title for screen</span>
+                  </Link>
+                  <span>Cari Kursus</span>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+              </div>
+              <div>
+                <button className="find-class btn">
+                  <Link to={`/kelas`} className="stretched-link">
+                    <span className="sr-only">title for screen</span>
+                  </Link>
+                  <span>Lihat Kelas</span>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
           </div>
           <div className="col-lg-6">
             <img

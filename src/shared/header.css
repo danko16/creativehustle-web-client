@@ -141,7 +141,14 @@ button.navbar-toggler {
 
 .user-status {
   padding: 25px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
   border-bottom: 1px solid #e6e6e6;
+}
+
+.user-status:hover {
+  opacity: 0.7;
+  background-color: rgba(0, 0, 0, 0.03);
 }
 
 ul.user-menu-small-nav {
@@ -212,13 +219,13 @@ ul.user-menu-small-nav li a:hover {
   z-index: 0;
 }
 
-
 .navbar-expand-lg .navbar-nav .nav-item .nav-link {
   padding-right: 12px;
   padding-left: 12px;
 }
 
-.navbar-dark .navbar-nav .nav-link:focus, .navbar-dark .navbar-nav .nav-link:hover {
+.navbar-dark .navbar-nav .nav-link:focus,
+.navbar-dark .navbar-nav .nav-link:hover {
   color: #0b1460;
   outline: none;
   outline-color: initial;
@@ -228,13 +235,14 @@ ul.user-menu-small-nav li a:hover {
 
 .navbar-brand img {
   width: 270px;
+  height: 30px;
 }
 
 @media only screen and (max-width: 991px) {
   .header {
     margin-top: 71.42px;
   }
-  
+
   .container {
     position: relative;
   }
@@ -243,7 +251,8 @@ ul.user-menu-small-nav li a:hover {
     display: none;
   }
 
-  .collapse.navbar-collapse, .collapsing {
+  .collapse.navbar-collapse,
+  .collapsing {
     position: absolute;
     top: 56px;
     background-color: rgb(255, 255, 255);
@@ -257,8 +266,8 @@ ul.user-menu-small-nav li a:hover {
     display: none;
   }
 
-  .navbar-expand-lg .navbar-nav .nav-item  {
-    padding-bottom: 10px;    
+  .navbar-expand-lg .navbar-nav .nav-item {
+    padding-bottom: 10px;
     border-bottom-width: 1px;
     border-bottom-style: solid;
     border-bottom-color: rgba(0, 0, 0, 0.03);
@@ -266,14 +275,14 @@ ul.user-menu-small-nav li a:hover {
 
   .navbar-expand-lg .navbar-nav .nav-item:hover:not(.btn) {
     cursor: pointer;
-    background-color: rgba(0,0,0,.03);
-    transition: all .2s ease-in-out;
-    opacity: .7;
+    background-color: rgba(0, 0, 0, 0.03);
+    transition: all 0.2s ease-in-out;
+    opacity: 0.7;
   }
 
   .navbar-expand-lg .navbar-nav .nav-item.btn:hover {
-    transition: all .2s ease-in-out;
-    opacity: .7;
+    transition: all 0.2s ease-in-out;
+    opacity: 0.7;
     text-align: center;
   }
 
@@ -300,12 +309,14 @@ ul.user-menu-small-nav li a:hover {
   .header {
     margin-top: 66px;
   }
-  
-  .collapse.navbar-collapse, .collapsing {
+
+  .collapse.navbar-collapse,
+  .collapsing {
     top: 50px;
   }
 
   .navbar-brand img {
     width: 220px;
+    height: 24px;
   }
 }

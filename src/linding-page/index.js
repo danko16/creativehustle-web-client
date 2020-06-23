@@ -5,6 +5,7 @@ import Footer from '../shared/footer';
 import Introduction from './introduction';
 import PopularClass from './popular-class';
 import Testimony from './testimony';
+import LearningPath from './learning-path';
 import RegisterOffer from './register-offer';
 
 import './landing-page.css';
@@ -17,6 +18,7 @@ function LandingPage() {
       <PopularClass />
       <Testimony />
       <RegisterOffer />
+      <LearningPath />
       <Footer />
     </div>
   );

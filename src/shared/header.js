@@ -21,7 +21,10 @@ function useOutsideAlerter(ref, setShowDropdown) {
   useEffect(() => {
     function handleClickOutside(event) {
       if (ref.current && !ref.current.contains(event.target)) {
-        setShowDropdown(false);
+        const userwrapper = event.target.attributes['userwrapper'];
+        if (!userwrapper) {
+          setShowDropdown(false);
+        }
       }
     }
     document.addEventListener('mousedown', handleClickOutside);
@@ -45,7 +48,12 @@ function Header({ style, user, logout, loading, history }) {
     return (
       !loading && (
         <div className="header-notifications-dropdown" ref={wrapperRef}>
-          <div className="user-status">
+          <div
+            className="user-status"
+            onClick={() => {
+              history.push('/dashboard');
+            }}
+          >
             <div className="user-details">
               <div className="user-avatar status-online">
                 <img
@@ -103,23 +111,27 @@ function Header({ style, user, logout, loading, history }) {
         >
           <div
             className="d-flex"
+            userwrapper="true"
             onClick={() => {
               if (window.innerWidth < 992) {
                 history.push('/dashboard');
               } else {
-                setShowDropdown(true);
+                setShowDropdown(!showDropdown);
               }
             }}
             style={{ cursor: 'pointer' }}
           >
-            <div className="nav-profile-text align-self-center">
-              <div className="user-name">{user.name}</div>
+            <div userwrapper="true" className="nav-profile-text align-self-center">
+              <div userwrapper="true" className="user-name">
+                {user.name}
+              </div>
             </div>
 
-            <div className="user-avatar status-online">
+            <div userwrapper="true" className="user-avatar status-online">
               <img
                 src={user.avatar ? user.avatar : '/assets/img/default-avatar.png'}
                 alt="avatar"
+                userwrapper="true"
                 width="45"
                 height="45"
               />

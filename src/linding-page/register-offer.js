@@ -2,7 +2,7 @@ import React from 'react';
 
 function RegisterOffer() {
   return (
-    <section className="border-top container--light-grey py-5">
+    <section className="border-top container--light-blue py-5">
       <div className="container">
         <div className="row">
           <div className="col-12 col-lg-6 d-flex flex-column align-items-center mentor-assign">
