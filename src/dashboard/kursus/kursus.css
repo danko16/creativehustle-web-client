@@ -22,3 +22,21 @@
 .dashboard-main .card.kursus-card {
   padding: 0;
 }
+
+.dashboard-main iframe.kursus-tv {
+  width: 100%;
+  height: 600px;
+}
+
+@media only screen and (max-width: 768px) {
+  .dashboard-main iframe.kursus-tv {
+    height: 400px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .dashboard-main iframe.kursus-tv {
+    width: 100%;
+    height: 300px;
+  }
+}

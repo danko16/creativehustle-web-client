@@ -39,41 +39,17 @@ function DashboardSidebar({ logout }) {
           })}
         >
           <li className="active">
-            <NavLink
-              to="/dashboard/progress"
-              activeStyle={{
-                backgroundColor: 'rgba(42,65,232,.04)',
-                borderColor: '#2a41e8',
-                borderLeft: '3px solid #2a41e8',
-              }}
-              className="menu-peserta"
-            >
+            <NavLink to="/dashboard/progress" activeClassName="active-nav" className="menu-peserta">
               <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Progress Belajar
             </NavLink>
           </li>
           <li className="active">
-            <NavLink
-              to="/dashboard/kursus"
-              activeStyle={{
-                backgroundColor: 'rgba(42,65,232,.04)',
-                borderColor: '#2a41e8',
-                borderLeft: '3px solid #2a41e8',
-              }}
-              className="menu-peserta"
-            >
+            <NavLink to="/dashboard/kursus" activeClassName="active-nav" className="menu-peserta">
               <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Kursus Saya
             </NavLink>
           </li>
           <li className="active">
-            <NavLink
-              to="/dashboard/kelas"
-              activeStyle={{
-                backgroundColor: 'rgba(42,65,232,.04)',
-                borderColor: '#2a41e8',
-                borderLeft: '3px solid #2a41e8',
-              }}
-              className="menu-peserta"
-            >
+            <NavLink to="/dashboard/kelas" activeClassName="active-nav" className="menu-peserta">
               <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Kelas Saya
             </NavLink>
           </li>

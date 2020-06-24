@@ -37,6 +37,7 @@ function Dashboard({ reqKursusSaya, reqRekomendasi }) {
           <Progress />
         </Route>
         <Route path={`${path}/kursus`}>
+          <Sidebar />
           <Kursus />
         </Route>
         <Route path={`${path}/kelas`}>

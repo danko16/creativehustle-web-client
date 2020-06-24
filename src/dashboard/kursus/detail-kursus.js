@@ -53,17 +53,14 @@ function DetailKursus({ contents, done, loading }) {
 
         <div className="row mb-4">
           <div className="col-12">
-            <div className="card-no-shadow">
+            <div className="card-tv-wrapper">
               <iframe
                 title={contentSaya.title}
                 src={contentSaya.url}
                 frameBorder="0"
+                className="kursus-tv"
                 allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                 allowFullScreen
-                style={{
-                  width: '100%',
-                  height: 500,
-                }}
               ></iframe>
             </div>
           </div>

@@ -23,66 +23,34 @@ function Sidebar({ logout }) {
             <li className="active">
               <NavLink
                 to="/dashboard/progress"
-                activeStyle={{
-                  backgroundColor: 'rgba(42,65,232,.04)',
-                  borderColor: '#2a41e8',
-                  borderLeft: '3px solid #2a41e8',
-                }}
+                activeClassName="active-nav"
                 className="menu-peserta"
               >
                 <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Progress
-                Belajar
+                <span> Belajar</span>
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/dashboard/kursus"
-                activeStyle={{
-                  backgroundColor: 'rgba(42,65,232,.04)',
-                  borderColor: '#2a41e8',
-                  borderLeft: '3px solid #2a41e8',
-                }}
-                className="menu-peserta"
-              >
+              <NavLink to="/dashboard/kursus" activeClassName="active-nav" className="menu-peserta">
                 <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Kursus Saya
               </NavLink>
             </li>
             <li>
-              <NavLink
-                to="/dashboard/kelas"
-                activeStyle={{
-                  backgroundColor: 'rgba(42,65,232,.04)',
-                  borderColor: '#2a41e8',
-                  borderLeft: '3px solid #2a41e8',
-                }}
-                className="menu-peserta"
-              >
+              <NavLink to="/dashboard/kelas" activeClassName="active-nav" className="menu-peserta">
                 <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Kelas Saya
               </NavLink>
             </li>
           </ul>
           <ul data-submenu-title="Akun Saya" className="mt-5">
             <li>
-              <NavLink
-                to="/dashboard/profil"
-                activeStyle={{
-                  backgroundColor: 'rgba(42,65,232,.04)',
-                  borderColor: '#2a41e8',
-                  borderLeft: '3px solid #2a41e8',
-                }}
-                className="menu-peserta"
-              >
+              <NavLink to="/dashboard/profil" activeClassName="active-nav" className="menu-peserta">
                 <img src="/assets/icon/account.png" data-sga="profil" alt="profile" /> Profil
               </NavLink>
             </li>
             <li>
               <NavLink
                 to="/dashboard/pengaturan"
-                activeStyle={{
-                  backgroundColor: 'rgba(42,65,232,.04)',
-                  borderColor: '#2a41e8',
-                  borderLeft: '3px solid #2a41e8',
-                }}
+                activeClassName="active-nav"
                 className="menu-peserta"
               >
                 <img src="/assets/icon/settings.png" data-sga="setting" alt="setting" /> Pengaturan

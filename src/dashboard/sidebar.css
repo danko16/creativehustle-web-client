@@ -1,7 +1,7 @@
 .sidenav {
   height: 100%;
   width: 280px;
-  background-color: #fff;
+  background-color: #4b5496;
   position: fixed;
   z-index: 1;
   overflow-x: hidden;
@@ -34,11 +34,10 @@
   display: block;
   transition: 0.3s;
   line-height: 25px;
-  font-size: 15px;
 }
 
 .dashboard-nav ul li a {
-  color: #707070;
+  color: #d3d6e8;
   display: block;
   padding: 11px 32px;
   transition: 0.3s;
@@ -52,16 +51,25 @@
 }
 
 .dashboard-nav ul li:hover:not(.judul) {
-  background-color: rgba(42, 65, 232, 0.04);
+  background-color: rgba(113, 118, 152, 0.4);
 }
 
 .dashboard-sidebar {
   display: none;
 }
 
+a.active-nav {
+  background-color: rgba(3, 3, 45, 0.5);
+  border-left: 3px solid rgb(255, 255, 255);
+}
+
 @media screen and (max-width: 1200px) {
   .sidenav {
     width: 200px;
+  }
+
+  .dashboard-nav ul li a {
+    padding: 11px 22px;
   }
 }
 
@@ -81,7 +89,6 @@
     cursor: pointer;
     margin-top: 15px;
     background-color: #333;
-    border-radius: 5px;
     color: #fff;
     padding: 16px 30px;
     font-weight: 600;
@@ -93,17 +100,19 @@
   .dashboard-nav {
     padding-bottom: 0;
   }
-  
+
   .dashboard-nav:not(.detail) ul {
-    padding: 25px 0;
+    max-height: 0;
+    transition: .5s ease;
     margin: 0;
-    display: none;
-    background-color: #fff;
+    overflow: hidden;
+    background-color: #4b5496;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   .dashboard-nav ul.active {
-    display: block;
+    padding: 25px 0;
+    max-height: 1000px;
   }
 
   div.dashboard-responsive-nav-trigger.active {

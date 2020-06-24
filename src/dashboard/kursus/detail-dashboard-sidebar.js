@@ -36,8 +36,9 @@ function DetailDashboardSidebar({ sections, contents, loading }) {
           <NavLink
             to={`/dashboard/kursus/${parseInt(kursusId)}/${val.id}`}
             activeStyle={{
-              borderColor: '#2a41e8',
-              borderLeft: '3px solid #2a41e8',
+              color: '#fff',
+              backgroundColor: 'rgba(33, 39, 60, 0.7)',
+              borderLeft: '3px solid rgba(182, 198, 255, 0.7)',
             }}
             className="menu-peserta"
           >

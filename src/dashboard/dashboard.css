@@ -1,7 +1,6 @@
 .dashboard-main {
   min-height: 100vh;
   width: auto;
-  background-color: #f7f8fa;
   margin-left: 280px;
   overflow-x: hidden;
   padding: 40px 20px 40px 20px;
@@ -61,6 +60,13 @@
 .dashboard-main .card-no-shadow {
   position: relative;
   padding: 20px 40px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(20, 23, 28, 0.15);
+}
+
+.dashboard-main .card-tv-wrapper {
+  position: relative;
+  padding: 10px;
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(20, 23, 28, 0.15);
 }

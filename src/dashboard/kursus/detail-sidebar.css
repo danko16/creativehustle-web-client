@@ -11,14 +11,14 @@
 }
 
 .dashboard-nav.detail ul li a:hover {
-  background-color: rgba(42, 65, 232, 0.01);
+  background-color: #e5e8f3b3;
 }
 
 .dashboard-nav.detail ul li a {
   color: #000;
   display: block;
   padding: 11px 32px;
-  background-color: rgba(42, 65, 232, 0.08);
+  background-color: #fff;
   border-radius: 5px;
   transition: 0.3s;
   cursor: pointer;
@@ -31,7 +31,7 @@
   padding: 0 20px;
   margin-bottom: 8px;
   display: block;
-  color: #2a41e8;
+  color: #fff;
   font-weight: 600;
   font-size: 15px;
 }
@@ -55,12 +55,18 @@
   top: 14px;
 }
 
+.dashboard-nav ul::before {
+  color: #ffffff;
+}
+
 .back-dashboard {
+  color: #fff;
   padding-left: 25px;
 }
 
 a.back-dashboard:hover {
   text-decoration: none;
+  color: #9eb3ff;
 }
 
 .back-dashboard span {
@@ -72,6 +78,14 @@ a.back-dashboard:hover {
 }
 
 @media screen and (max-width: 768px) {
+  a.back-dashboard {
+    color: #007bff;
+  }
+
+  a.back-dashboard:hover {
+    color: #0056b3;
+  }
+
   .back-dashboard.top-side-bar {
     background: #fff;
     margin: 15px 20px 0 20px;
@@ -81,16 +95,19 @@ a.back-dashboard:hover {
     border-radius: 5px;
     box-shadow: 0 2px 4px 0 rgba(20, 23, 28, 0.15);
   }
-  
+
   .dashboard-nav.detail {
-    display: none;
-    padding: 20px 0 25px 0;
-    background-color: #fff;
+    max-height: 0;
+    transition: 1s ease;
+    margin: 0;
+    overflow: hidden;
+    background-color: #4b5496;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
   .dashboard-nav.detail.active {
-    display: block;
+    padding: 25px 0;
+    max-height: 1000px;
   }
 
   .dashboard-nav.detail ul {
