@@ -73,8 +73,8 @@ function DetailKursus({ contents, done, loading }) {
                 onClick={() => {
                   if (!contentSaya.done) {
                     done({
-                      my_content_id: contentSaya.id,
-                      kursus_id: parseInt(kursusId),
+                      content_id: contentSaya.id,
+                      course_id: parseInt(kursusId),
                     });
                   }
                 }}

@@ -80,9 +80,9 @@ function Progress({ kursus, contents, rekomendasi, loading }) {
 
   function renderRekomendasi() {
     return rekomendasiSaya.map((val) => (
-      <div key={val.id} className="col-md-6 col-lg-4 mb-3">
+      <div key={val.id} className="col-md-6 col-lg-4 col-xl-3 mb-3">
         <div className="rekomendasi-wrapper">
-          <Link to={`/kursus/${val.id}`} className="stretched-link">
+          <Link to={`/kursus/${val.course_id}`} className="stretched-link">
             <span className="sr-only">title for screen</span>
           </Link>
           <img src={val.thumbnail} alt="default" />

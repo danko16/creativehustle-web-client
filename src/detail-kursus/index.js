@@ -68,7 +68,7 @@ function DetailKursus({ kursus, contents, subscribe, loading }) {
           <div className="col-lg-8">
             <iframe
               title={detailContent.title}
-              src={detailContent.url}
+              src={`${detailContent.url}?controls=0&autoplay=1&modestbranding=1&showinfo=0`}
               frameBorder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen

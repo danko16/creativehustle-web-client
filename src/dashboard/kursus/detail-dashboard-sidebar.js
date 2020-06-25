@@ -29,10 +29,7 @@ function DetailDashboardSidebar({ sections, contents, loading }) {
       const collapseName = `section${val.section_id}`;
 
       return (
-        <li
-          key={val.content_id}
-          className={ClassNames({ sembunyi: sectionCollapse[collapseName] })}
-        >
+        <li key={val.id} className={ClassNames({ sembunyi: sectionCollapse[collapseName] })}>
           <NavLink
             to={`/dashboard/kursus/${parseInt(kursusId)}/${val.id}`}
             activeStyle={{
