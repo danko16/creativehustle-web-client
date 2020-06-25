@@ -11,21 +11,29 @@ const mapStateToProps = (state) => ({
   loading: state.kursusSaya.loading,
 });
 
-const mapActionToProps = (disatch) => bindActionCreators({ done: kursusSayaAction.done }, disatch);
+const mapActionToProps = (disatch) =>
+  bindActionCreators(
+    { reqContents: kursusSayaAction.reqContents, done: kursusSayaAction.done },
+    disatch
+  );
 
-function DetailKursus({ contents, done, loading }) {
+function DetailKursus({ contents, reqContents, done, loading }) {
   const { kursusId, contentId } = useParams();
-  const [contentSaya, setContentSaya] = useState({});
+  const [contentSaya, setContentSaya] = useState(null);
   const [nextId, setNextId] = useState();
+
+  useEffect(() => {
+    reqContents({ course_id: parseInt(kursusId) });
+  }, [reqContents, kursusId]);
+
   useEffect(() => {
     if (!loading && contents.length) {
       let content;
-      const kursusContent = contents.filter((val) => val.course_id === parseInt(kursusId));
-      kursusContent.forEach((val, index) => {
+      contents.forEach((val, index) => {
         if (val.id === parseInt(contentId)) {
           content = val;
-          if (index + 1 < kursusContent.length) {
-            setNextId(kursusContent[index + 1].id);
+          if (index + 1 < contents.length) {
+            setNextId(contents[index + 1].id);
           } else {
             setNextId(val.id);
           }
@@ -34,7 +42,7 @@ function DetailKursus({ contents, done, loading }) {
       setContentSaya(content);
     }
   }, [contentId, kursusId, contents, loading]);
-  return (
+  return contentSaya ? (
     <div>
       <div className="dashboard-main">
         <Link className="back-dashboard top-side-bar" to="/dashboard/kursus">
@@ -95,12 +103,15 @@ function DetailKursus({ contents, done, loading }) {
         </div>
       </div>
     </div>
+  ) : (
+    <div></div>
   );
 }
 
 DetailKursus.propTypes = {
   contents: PropTypes.array,
   done: PropTypes.func,
+  reqContents: PropTypes.func,
   loading: PropTypes.bool,
 };
 

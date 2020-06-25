@@ -1,8 +1,10 @@
 export const KURSUS_SAYA_ACTION = Object.freeze({
   SET_DATA: 'myapp/kursus-saya/set-data',
   REQ_KURSUS: 'myapp/kursus-saya/req-kursus',
+  REQ_CONTENTS: 'myapp/kursus-saya/req-contents',
   REQ_REKOMENDASI: 'myapp/kursus-saya/req-rekomendasi',
   KURSUS: 'myapp/kursus-saya/kursus',
+  CONTENTS: 'myapp/kursus-saya/contents',
   REKOMENDASI: 'myapp/kursus-saya/rekomendasi',
   SUBSCRIBE: 'myapp/kursus-saya/subscribe',
   DONE: 'myapp/kursus-saya/done',
@@ -19,11 +21,19 @@ export const kursusSayaAction = Object.freeze({
   reqKursus: () => ({
     type: KURSUS_SAYA_ACTION.REQ_KURSUS,
   }),
+  reqContents: (value) => ({
+    type: KURSUS_SAYA_ACTION.REQ_CONTENTS,
+    value,
+  }),
   reqRekomendasi: () => ({
     type: KURSUS_SAYA_ACTION.REQ_REKOMENDASI,
   }),
   kursus: (value) => ({
     type: KURSUS_SAYA_ACTION.KURSUS,
+    value,
+  }),
+  contents: (value) => ({
+    type: KURSUS_SAYA_ACTION.CONTENTS,
     value,
   }),
   rekomendasi: (value) => ({
@@ -68,6 +78,7 @@ const reducer = (state = initialState, { type, field, value }) => {
     case KURSUS_SAYA_ACTION.SUBSCRIBE:
     case KURSUS_SAYA_ACTION.REQ_REKOMENDASI:
     case KURSUS_SAYA_ACTION.REQ_KURSUS:
+    case KURSUS_SAYA_ACTION.REQ_CONTENTS:
       return {
         ...state,
         loading: true,
@@ -76,6 +87,13 @@ const reducer = (state = initialState, { type, field, value }) => {
       return {
         ...state,
         kursus: value.kursus,
+        message: '',
+        is_error: false,
+        loading: false,
+      };
+    case KURSUS_SAYA_ACTION.CONTENTS:
+      return {
+        ...state,
         sections: value.sections,
         contents: value.contents,
         message: '',

@@ -9,19 +9,36 @@ function* kursus({ value }) {
       data: { data },
     } = yield call(kursusApi.kursus, value);
     if (data) {
-      const { courses, sections, contents } = data;
+      yield put(kursusActions.kursus({ kursus: data }));
+    }
+  } catch (error) {
+    yield put(kursusActions.error(getErrorMessage(error)));
+  }
+}
+
+function* contents({ value }) {
+  try {
+    const {
+      data: { data },
+    } = yield call(kursusApi.contents, value);
+    if (data) {
+      const { sections, contents } = data;
       yield put(
-        kursusActions.kursus({
-          kursus: courses,
+        kursusActions.contents({
           sections,
           contents,
         })
       );
     }
   } catch (error) {
+    console.log(kursusActions.error(getErrorMessage(error)));
     yield put(kursusActions.error(getErrorMessage(error)));
   }
 }
-const kursusSaga = [takeLatest(KURSUS_ACTIONS.REQ_KURSUS, kursus)];
+
+const kursusSaga = [
+  takeLatest(KURSUS_ACTIONS.REQ_KURSUS, kursus),
+  takeLatest(KURSUS_ACTIONS.REQ_CONTENTS, contents),
+];
 
 export default kursusSaga;

@@ -2,7 +2,7 @@ import { Api } from '../../utils/api';
 
 export default Object.freeze({
   kursusSaya: () => Api.get('/kursus-saya'),
-  contents: () => Api.get('/kursus-saya/contents'),
+  contents: ({ course_id }) => Api.get(`/kursus-saya/${course_id}/contents`),
   rekomendasi: () => Api.get('/kursus-saya/rekomendasi'),
   subscribe: (payload) =>
     Api.post('/kursus-saya/subscribe', payload, {

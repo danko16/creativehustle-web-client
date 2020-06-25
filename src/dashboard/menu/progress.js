@@ -13,16 +13,11 @@ const mapStateToProps = (state) => ({
 
 function Progress({ kursus, contents, rekomendasi, loading }) {
   const [kursusSaya, setKursusSaya] = useState([]);
-  const [contentSaya, setContentSaya] = useState([]);
   const [rekomendasiSaya, setRekomendasiSaya] = useState([]);
 
   useEffect(() => {
     if (!loading && kursus.length) {
       setKursusSaya(kursus);
-    }
-
-    if (!loading && contents.length) {
-      setContentSaya(contents);
     }
 
     if (!loading && rekomendasi.length) {
@@ -33,8 +28,7 @@ function Progress({ kursus, contents, rekomendasi, loading }) {
   function renderRow() {
     return kursusSaya.map((val) => {
       const kursusId = val.id;
-      const content = contentSaya.filter((content) => content.course_id === val.id);
-      const contentId = content[0].id;
+      const contentId = val.first_content;
       return (
         <tr key={val.id}>
           <td>

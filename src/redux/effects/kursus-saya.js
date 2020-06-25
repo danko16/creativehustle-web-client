@@ -10,10 +10,22 @@ function* kursusSaya() {
       data: { data },
     } = yield call(kursusSayaApi.kursusSaya);
     if (data) {
-      const { courses, sections, contents } = data;
+      yield put(kursusSayaAction.kursus({ kursus: data }));
+    }
+  } catch (error) {
+    yield put(kursusSayaAction.error(getErrorMessage(error)));
+  }
+}
+
+function* contents({ value }) {
+  try {
+    const {
+      data: { data },
+    } = yield call(kursusSayaApi.contents, value);
+    if (data) {
+      const { sections, contents } = data;
       yield put(
-        kursusSayaAction.kursus({
-          kursus: courses,
+        kursusSayaAction.contents({
           sections,
           contents,
         })
@@ -53,7 +65,7 @@ function* subscribe({ value }) {
 function* done({ value }) {
   try {
     const {
-      kursusSaya: { kursus, sections },
+      kursusSaya: { sections },
     } = yield select();
     const {
       data: { data },
@@ -62,7 +74,8 @@ function* done({ value }) {
       course_id: value.course_id,
     });
     if (data) {
-      yield put(kursusSayaAction.kursus({ contents: data, kursus, sections }));
+      yield put(kursusSayaAction.contents({ contents: data, sections }));
+      yield call(kursusSaya);
     }
   } catch (error) {
     yield put(kursusSayaAction.error(getErrorMessage(error)));
@@ -71,6 +84,7 @@ function* done({ value }) {
 
 const kursusSayaSaga = [
   takeLatest(KURSUS_SAYA_ACTION.REQ_KURSUS, kursusSaya),
+  takeLatest(KURSUS_SAYA_ACTION.REQ_CONTENTS, contents),
   takeLatest(KURSUS_SAYA_ACTION.REQ_REKOMENDASI, rekomendasi),
   takeLatest(KURSUS_SAYA_ACTION.DONE, done),
   takeLatest(KURSUS_SAYA_ACTION.SUBSCRIBE, subscribe),

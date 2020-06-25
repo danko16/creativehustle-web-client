@@ -5,6 +5,7 @@ import Header from '../shared/header';
 import Footer from '../shared/footer';
 import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { kursusActions } from '../redux/reducers/kursus';
 import { kursusSayaAction } from '../redux/reducers/kursus-saya';
 import { isAuthenticated } from '../utils/auth';
 import './detail-kursus.css';
@@ -18,15 +19,20 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = (dispatch) =>
   bindActionCreators(
     {
+      reqContents: kursusActions.reqContents,
       subscribe: kursusSayaAction.subscribe,
     },
     dispatch
   );
 
-function DetailKursus({ kursus, contents, subscribe, loading }) {
+function DetailKursus({ kursus, reqContents, contents, subscribe, loading }) {
   const { kursusId } = useParams();
   const [detailKursus, setDetailKursus] = useState(null);
   const [detailContent, setDetailContent] = useState(null);
+
+  useEffect(() => {
+    reqContents({ course_id: parseInt(kursusId) });
+  }, [reqContents, kursusId]);
 
   useEffect(() => {
     if (!loading && kursus.length) {
@@ -121,6 +127,7 @@ DetailKursus.propTypes = {
   kursus: PropTypes.array,
   contents: PropTypes.array,
   subscribe: PropTypes.func,
+  reqContents: PropTypes.func,
   loading: PropTypes.bool,
 };
 
