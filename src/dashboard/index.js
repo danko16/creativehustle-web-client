@@ -6,9 +6,14 @@ import PropTypes from 'prop-types';
 import { kursusSayaAction } from '../redux/reducers/kursus-saya';
 
 import Sidebar from './sidebar';
+import DashboardSidebar from './dashboard-sidebar';
 import Progress from './menu/progress';
-import Kursus from './kursus';
+import Kursus from './menu/kursus';
 import Kelas from './menu/kelas';
+import Profile from './menu/profile';
+import Settings from './menu/settings';
+import DetailSidebar from './kursus/detail-sidebar';
+import DetailKursus from './kursus/detail-kursus';
 import './dashboard.css';
 
 const mapActionToProps = (dispatch) =>
@@ -33,24 +38,33 @@ function Dashboard({ reqKursusSaya, reqRekomendasi }) {
           <Redirect to={`${path}/progress`} />
         </Route>
         <Route path={`${path}/progress`}>
+          <DashboardSidebar />
           <Sidebar />
           <Progress />
         </Route>
-        <Route path={`${path}/kursus`}>
+        <Route exact path={`${path}/kursus`}>
+          <DashboardSidebar />
           <Sidebar />
           <Kursus />
         </Route>
+        <Route path={`${path}/kursus/:kursusId/:contentId`}>
+          <DetailSidebar />
+          <DetailKursus />
+        </Route>
         <Route path={`${path}/kelas`}>
+          <DashboardSidebar />
           <Sidebar />
           <Kelas />
         </Route>
         <Route path={`${path}/profil`}>
+          <DashboardSidebar />
           <Sidebar />
-          <div className="dashboard-main"></div>
+          <Profile />
         </Route>
         <Route path={`${path}/pengaturan`}>
+          <DashboardSidebar />
           <Sidebar />
-          <div className="dashboard-main"></div>
+          <Settings />
         </Route>
       </Switch>
     </div>

@@ -184,7 +184,7 @@ function Header({ style, user, logout, loading, history }) {
         <div className="container">
           <Link className="navbar-brand d-flex" to="/">
             <img
-              src="/assets/img/creative-hustle.png"
+              src="/assets/img/creative-hustle.jpg"
               alt="Creative Hustle"
               id="logo"
               data-height-percentage="33"

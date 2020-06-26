@@ -40,6 +40,7 @@
   color: #d3d6e8;
   display: block;
   padding: 11px 32px;
+  font-size: 15px;
   transition: 0.3s;
   cursor: pointer;
   position: relative;
@@ -63,7 +64,14 @@ a.active-nav {
   border-left: 3px solid rgb(255, 255, 255);
 }
 
+.dashboard-nav img#logo {
+  width: 80%;
+}
+
 @media screen and (max-width: 1200px) {
+  .dashboard-nav img#logo {
+    width: 95%;
+  }
   .sidenav {
     width: 200px;
   }
@@ -80,14 +88,13 @@ a.active-nav {
 
   .dashboard-sidebar {
     display: block;
-    padding: 0 20px 20px 20px;
+    padding-bottom: 20px;
   }
 
   div.dashboard-responsive-nav-trigger {
     width: 100%;
     margin: 0;
     cursor: pointer;
-    margin-top: 15px;
     background-color: #333;
     color: #fff;
     padding: 16px 30px;
@@ -103,7 +110,7 @@ a.active-nav {
 
   .dashboard-nav:not(.detail) ul {
     max-height: 0;
-    transition: .5s ease;
+    transition: 0.8s ease;
     margin: 0;
     overflow: hidden;
     background-color: #4b5496;

@@ -73,27 +73,8 @@ a.back-dashboard:hover {
   margin-left: 12px;
 }
 
-.back-dashboard.top-side-bar {
-  display: none;
-}
-
 @media screen and (max-width: 768px) {
   a.back-dashboard {
-    color: #007bff;
-  }
-
-  a.back-dashboard:hover {
-    color: #0056b3;
-  }
-
-  .back-dashboard.top-side-bar {
-    background: #fff;
-    margin: 15px 20px 0 20px;
-    padding: 15px;
-    display: block;
-    width: max-content;
-    border-radius: 5px;
-    box-shadow: 0 2px 4px 0 rgba(20, 23, 28, 0.15);
   }
 
   .dashboard-nav.detail {

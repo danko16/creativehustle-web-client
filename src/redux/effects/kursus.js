@@ -31,7 +31,6 @@ function* contents({ value }) {
       );
     }
   } catch (error) {
-    console.log(kursusActions.error(getErrorMessage(error)));
     yield put(kursusActions.error(getErrorMessage(error)));
   }
 }

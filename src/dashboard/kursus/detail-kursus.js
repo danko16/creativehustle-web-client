@@ -43,62 +43,56 @@ function DetailKursus({ contents, reqContents, done, loading }) {
     }
   }, [contentId, kursusId, contents, loading]);
   return contentSaya ? (
-    <div>
-      <div className="dashboard-main">
-        <Link className="back-dashboard top-side-bar" to="/dashboard/kursus">
-          <i className="fa fa-arrow-left" aria-hidden="true"></i>
-          <span>Kembali ke Home</span>
-        </Link>
-        <DetailDashboardSidebar />
-        <div className="row mb-4">
-          <div className="col-12">
-            <div className="card-no-shadow">
-              <h4 className="card-title">{contentSaya.title}</h4>
-              <p>Materi bagian: {contentSaya.section_title}</p>
-            </div>
+    <div className="dashboard-main">
+      <DetailDashboardSidebar />
+      <div className="row mb-4">
+        <div className="col-12">
+          <div className="card-no-shadow">
+            <h4 className="card-title">{contentSaya.title}</h4>
+            <p>Materi bagian: {contentSaya.section_title}</p>
           </div>
         </div>
+      </div>
 
-        <div className="row mb-4">
-          <div className="col-12">
-            <div className="card-tv-wrapper">
-              <iframe
-                title={contentSaya.title}
-                src={contentSaya.url}
-                frameBorder="0"
-                className="kursus-tv"
-                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-              ></iframe>
-            </div>
+      <div className="row mb-4">
+        <div className="col-12">
+          <div className="card-tv-wrapper">
+            <iframe
+              title={contentSaya.title}
+              src={contentSaya.url}
+              frameBorder="0"
+              className="kursus-tv"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
           </div>
         </div>
+      </div>
 
-        <div className="row">
-          <div className="col-12">
-            <div className="d-flex justify-content-center">
-              <button
-                onClick={() => {
-                  if (!contentSaya.done) {
-                    done({
-                      content_id: contentSaya.id,
-                      course_id: parseInt(kursusId),
-                    });
-                  }
-                }}
-                className="next-kursus mr-3"
-              >
-                Tandai Selesai
-              </button>
-              <Link
-                to={`/dashboard/kursus/${parseInt(kursusId)}/${
-                  nextId ? nextId : parseInt(contentId)
-                }`}
-                className="next-kursus"
-              >
-                Next Materi
-              </Link>
-            </div>
+      <div className="row">
+        <div className="col-12">
+          <div className="d-flex justify-content-center">
+            <button
+              onClick={() => {
+                if (!contentSaya.done) {
+                  done({
+                    content_id: contentSaya.id,
+                    course_id: parseInt(kursusId),
+                  });
+                }
+              }}
+              className="next-kursus mr-3"
+            >
+              Tandai Selesai
+            </button>
+            <Link
+              to={`/dashboard/kursus/${parseInt(kursusId)}/${
+                nextId ? nextId : parseInt(contentId)
+              }`}
+              className="next-kursus"
+            >
+              Next Materi
+            </Link>
           </div>
         </div>
       </div>

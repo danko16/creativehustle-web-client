@@ -1,11 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import DashboardSidebar from '../dashboard-sidebar';
 
 function Kelas() {
   return (
     <div className="dashboard-main">
-      <DashboardSidebar />
       {/*
       <div className="row mb-4">
         <div className="col-12">

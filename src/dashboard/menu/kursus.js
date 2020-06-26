@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import DashboardSidebar from '../dashboard-sidebar';
+import './kursus.css';
 
 const mapStateToProps = (state) => ({
   kursus: state.kursusSaya.kursus,
@@ -24,7 +24,7 @@ function Kursus({ kursus, contents, loading }) {
       const kursusId = val.id;
       const contentId = val.first_content;
       return (
-        <div key={val.id} className="col-md-6 col-lg-4 col-xl-3 mb-4">
+        <div key={val.id} className="col-md-6 col-lg-4 mb-4">
           <Link className="kursus-card card" to={`/dashboard/kursus/${kursusId}/${contentId}`}>
             <img src={`${val.thumbnail}`} alt="default" />
             <div className="kursus-body card-body">
@@ -38,7 +38,6 @@ function Kursus({ kursus, contents, loading }) {
   }
   return (
     <div className="dashboard-main">
-      <DashboardSidebar />
       {kursusSaya.length ? (
         <div className="row mb-4">
           <div className="col-12">

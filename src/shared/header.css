@@ -4,7 +4,6 @@
   background-color: #fff;
   z-index: 88;
   width: 100%;
-  padding: 1rem;
   font-family: 'Muli', Helvetica, Arial, Lucida, sans-serif;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
   -moz-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
@@ -212,7 +211,7 @@ ul.user-menu-small-nav li a:hover {
 }
 
 .header {
-  margin-top: 77px;
+  margin-top: 66px;
 }
 
 .stretched-link::after {
@@ -234,15 +233,10 @@ ul.user-menu-small-nav li a:hover {
 }
 
 .navbar-brand img {
-  width: 270px;
-  height: 30px;
+  height: 40px;
 }
 
 @media only screen and (max-width: 991px) {
-  .header {
-    margin-top: 71.42px;
-  }
-
   .container {
     position: relative;
   }
@@ -254,7 +248,7 @@ ul.user-menu-small-nav li a:hover {
   .collapse.navbar-collapse,
   .collapsing {
     position: absolute;
-    top: 56px;
+    top: 58px;
     background-color: rgb(255, 255, 255);
     border-top: 3px solid #2667ff;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 2px 5px;
@@ -302,21 +296,5 @@ ul.user-menu-small-nav li a:hover {
     position: absolute;
     align-self: center;
     border: none;
-  }
-}
-
-@media only screen and (max-width: 560px) {
-  .header {
-    margin-top: 66px;
-  }
-
-  .collapse.navbar-collapse,
-  .collapsing {
-    top: 50px;
-  }
-
-  .navbar-brand img {
-    width: 220px;
-    height: 24px;
   }
 }

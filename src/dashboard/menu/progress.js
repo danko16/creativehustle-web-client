@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import DashboardSidebar from '../dashboard-sidebar';
 
 const mapStateToProps = (state) => ({
   kursus: state.kursusSaya.kursus,
@@ -74,7 +73,7 @@ function Progress({ kursus, contents, rekomendasi, loading }) {
 
   function renderRekomendasi() {
     return rekomendasiSaya.map((val) => (
-      <div key={val.id} className="col-md-6 col-lg-4 col-xl-3 mb-3">
+      <div key={val.id} className="col-md-6 col-lg-4 mb-3">
         <div className="rekomendasi-wrapper">
           <Link to={`/kursus/${val.course_id}`} className="stretched-link">
             <span className="sr-only">title for screen</span>
@@ -91,7 +90,6 @@ function Progress({ kursus, contents, rekomendasi, loading }) {
 
   return (
     <div className="dashboard-main">
-      <DashboardSidebar />
       <div className="row mb-5">
         <div className="col-md-12">
           <div className="progress-belajar card">

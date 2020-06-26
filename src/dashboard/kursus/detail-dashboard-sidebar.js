@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
-import { NavLink, useParams } from 'react-router-dom';
+import { NavLink, useParams, Link } from 'react-router-dom';
 
 const mapStateToProps = (state) => ({
   sections: state.kursusSaya.sections,
@@ -78,7 +78,7 @@ function DetailDashboardSidebar({ sections, contents, loading }) {
         onClick={() => {
           setShowDropdown((prevState) => !prevState);
         }}
-        className={ClassNames('dashboard-responsive-nav-trigger')}
+        className={ClassNames('dashboard-responsive-nav-trigger detail')}
       >
         <div className="hamburger-container">
           <span className="hamburger">
@@ -92,6 +92,10 @@ function DetailDashboardSidebar({ sections, contents, loading }) {
           active: showDropdown,
         })}
       >
+        <Link className="back-dashboard" to="/dashboard/kursus">
+          <i className="fa fa-arrow-left" aria-hidden="true"></i>
+          <span>Kembali ke Home</span>
+        </Link>
         {renderSections()}
       </div>
     </div>

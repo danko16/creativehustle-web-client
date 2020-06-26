@@ -15,7 +15,7 @@ const mapActionToProps = (dispatch) =>
   );
 
 function DashboardSidebar({ logout }) {
-  const [showDropdown, setShowDropdown] = useState(true);
+  const [showDropdown, setShowDropdown] = useState(false);
   return (
     <div className="dashboard-sidebar">
       <div
@@ -51,6 +51,20 @@ function DashboardSidebar({ logout }) {
           <li className="active">
             <NavLink to="/dashboard/kelas" activeClassName="active-nav" className="menu-peserta">
               <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Kelas Saya
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/profil" activeClassName="active-nav" className="menu-peserta">
+              <img src="/assets/icon/account.png" data-sga="profil" alt="profile" /> Profil
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              to="/dashboard/pengaturan"
+              activeClassName="active-nav"
+              className="menu-peserta"
+            >
+              <img src="/assets/icon/settings.png" data-sga="setting" alt="setting" /> Pengaturan
             </NavLink>
           </li>
           <li className="active">
