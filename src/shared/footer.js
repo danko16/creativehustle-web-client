@@ -12,8 +12,7 @@ function Footer() {
                 <Link className="brand" to="/">
                   <img
                     src="/assets/img/creative-hustle.png"
-                    width="270"
-                    height="30"
+                    width="200"
                     className="d-inline-block align-top"
                     style={{
                       marginLeft: '-12px',
@@ -23,8 +22,8 @@ function Footer() {
                 </Link>
                 <p className="my-4 font-weight-light text-gray-500">
                   Belajar online sesuai kebutuhan <br className="desktop" />
-                  industri saat ini dan dapatkan <br className="desktop" />
-                  kesempatan berkarir sesuai passionmu.
+                  industri kreatiftion saat ini dan dapatkan <br className="desktop" />
+                  penghasilan tambahanmu sekarang juga.
                 </p>
               </div>
               <div className="col-12 col-lg-7 offset-lg-1">

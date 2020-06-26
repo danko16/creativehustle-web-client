@@ -74,9 +74,6 @@ a.back-dashboard:hover {
 }
 
 @media screen and (max-width: 768px) {
-  a.back-dashboard {
-  }
-
   .dashboard-nav.detail {
     max-height: 0;
     transition: 1s ease;

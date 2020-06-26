@@ -24,12 +24,30 @@ function Kursus({ kursus, contents, loading }) {
       const kursusId = val.id;
       const contentId = val.first_content;
       return (
-        <div key={val.id} className="col-md-6 col-lg-4 mb-4">
+        <div key={val.id} className="col-md-6 col-lg-4 col-xxl-3 mb-4">
           <Link className="kursus-card card" to={`/dashboard/kursus/${kursusId}/${contentId}`}>
             <img src={`${val.thumbnail}`} alt="default" />
             <div className="kursus-body card-body">
-              <h5 className="m-0">{val.title}</h5>
-              <p>{val.teacher_name}</p>
+              <div className="row no-gutters justify-content-between">
+                <p className="student-subscr m-0">124 Siswa</p>
+                <div className="col-auto d-flex align-items-center">
+                  <span className="rating fa fa-star checked"></span>
+                  <span className="rating fa fa-star checked"></span>
+                  <span className="rating fa fa-star checked"></span>
+                  <span className="rating fa fa-star checked"></span>
+                  <span className="rating fa fa-star"></span>
+                  <span className="rating-vote text-gray-500">(123)</span>
+                </div>
+              </div>
+              <h6>{val.title}</h6>
+              <p className="m-0">
+                <img
+                  className="teacher-avatar"
+                  src="/assets/img/default-avatar.png"
+                  alt="default"
+                />
+                {val.teacher_name}
+              </p>
             </div>
           </Link>
         </div>

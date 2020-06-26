@@ -1,0 +1,29 @@
+.rekomendasi-wrapper .kursus-body {
+  padding: 10px;
+}
+
+.rekomendasi-wrapper .kursus-body h6 {
+  margin-top: 0.75rem;
+  min-height: 60px;
+  font-weight: 600;
+}
+
+.rekomendasi-wrapper {
+  cursor: pointer;
+  border: 2px solid #b2d1f1;
+  transition: 0.2s;
+  border-radius: 5px;
+}
+
+.rekomendasi-wrapper h6 {
+  transition: 0.2s;
+}
+
+.rekomendasi-wrapper:hover {
+  border: 2px solid #499aef;
+  color: #499aef;
+}
+
+.rekomendasi-wrapper:hover h6 {
+  color: #499aef;
+}

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './progress.css';
 
 const mapStateToProps = (state) => ({
   kursus: state.kursusSaya.kursus,
@@ -73,15 +74,29 @@ function Progress({ kursus, contents, rekomendasi, loading }) {
 
   function renderRekomendasi() {
     return rekomendasiSaya.map((val) => (
-      <div key={val.id} className="col-md-6 col-lg-4 mb-3">
+      <div key={val.id} className="col-md-6 col-lg-4 col-xxl-3 mb-3">
         <div className="rekomendasi-wrapper">
           <Link to={`/kursus/${val.course_id}`} className="stretched-link">
             <span className="sr-only">title for screen</span>
           </Link>
           <img src={val.thumbnail} alt="default" />
-          <div className="kursus-body mt-2">
-            <h5 className="m-0">{val.title}</h5>
-            <p className="m-0">{val.teacher_name}</p>
+          <div className="kursus-body">
+            <div className="row no-gutters justify-content-between">
+              <p className="student-subscr m-0">124 Siswa</p>
+              <div className="col-auto d-flex align-items-center">
+                <span className="rating fa fa-star checked"></span>
+                <span className="rating fa fa-star checked"></span>
+                <span className="rating fa fa-star checked"></span>
+                <span className="rating fa fa-star checked"></span>
+                <span className="rating fa fa-star"></span>
+                <span className="rating-vote text-gray-500">(123)</span>
+              </div>
+            </div>
+            <h6>{val.title}</h6>
+            <p className="m-0">
+              <img className="teacher-avatar" src="/assets/img/default-avatar.png" alt="default" />
+              {val.teacher_name}
+            </p>
           </div>
         </div>
       </div>

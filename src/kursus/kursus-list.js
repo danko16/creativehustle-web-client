@@ -40,11 +40,9 @@ function KursusList({ kursus, loading }) {
               <span className="sr-only">title for screen</span>
             </Link>
             <img src={val.thumbnail} alt="thumbnail kelas" className="img img__cover" />
-            <div className="card-body pb-0">
-              <h6 className="line-height-1 mb-2 mt-3">{val.title}</h6>
-
-              <p className="h7 mb-2 text-gray-500">{val.teacher_name}</p>
+            <div className="card-body">
               <div className="row no-gutters justify-content-between">
+                <p className="student-subscr m-0">124 Siswa</p>
                 <div className="col-auto d-flex align-items-center">
                   <span className="rating fa fa-star checked"></span>
                   <span className="rating fa fa-star checked"></span>
@@ -54,10 +52,17 @@ function KursusList({ kursus, loading }) {
                   <span className="rating-vote text-gray-500">(123)</span>
                 </div>
               </div>
-
+              <h6 className="kursus-title line-height-1">{val.title}</h6>
+              <p className="m-0">
+                <img
+                  className="teacher-avatar"
+                  src="/assets/img/default-avatar.png"
+                  alt="default"
+                />
+                {val.teacher_name}
+              </p>
               <hr />
-
-              <div className="row align-items-center no-gutters mb-4">
+              <div className="row align-items-center no-gutters">
                 <div className="col-auto d-flex justify-items-center">
                   <span style={{ textDecoration: 'line-through' }}>
                     Rp {formatNumber(val.price)}

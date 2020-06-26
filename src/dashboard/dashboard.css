@@ -47,16 +47,6 @@
   color: #5c6185;
 }
 
-.dashboard-main a.card:hover h5 {
-  color: #0056b3;
-}
-
-.dashboard-main a.card:hover {
-  color: #0056b3;
-  text-decoration: none;
-  border: 1px solid #0056b3;
-}
-
 .dashboard-main .card-no-shadow {
   position: relative;
   padding: 20px 40px;
@@ -69,30 +59,6 @@
   padding: 10px;
   background-color: #fff;
   box-shadow: 0 2px 4px 0 rgba(20, 23, 28, 0.15);
-}
-
-.dashboard-main .rekomendasi-wrapper {
-  cursor: pointer;
-  border: 2px solid #b2d1f1;
-  transition: 0.2s;
-  border-radius: 5px;
-}
-
-.dashboard-main .rekomendasi-wrapper h5 {
-  transition: 0.2s;
-}
-
-.dashboard-main .rekomendasi-wrapper:hover {
-  border: 2px solid #499aef;
-  color: #499aef;
-}
-
-.dashboard-main .rekomendasi-wrapper:hover h5 {
-  color: #499aef;
-}
-
-.dashboard-main .rekomendasi-wrapper .kursus-body {
-  padding: 15px;
 }
 
 .dashboard-main button.et_pb_button {
@@ -135,6 +101,11 @@
 
 .dashboard-main .card-title {
   font-weight: 600;
+}
+
+.dashboard-main [class*='col-'] {
+  padding-right: 8px;
+  padding-left: 8px;
 }
 
 @media screen and (max-width: 1200px) {

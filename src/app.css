@@ -80,3 +80,32 @@ h7,
 .container--light-blue {
   background-color: #fafcfe !important;
 }
+
+.course-card.card {
+  border-radius: 8px;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.student-subscr {
+  font-size: 15px;
+}
+
+h6.kursus-title {
+  margin-top: 0.75rem;
+  min-height: 60px;
+  font-weight: 600;
+}
+
+.card-body hr {
+  margin: 0.4rem 0;
+}
+
+img.teacher-avatar {
+  height: 24px;
+  width: 24px;
+  border-radius: 50%;
+  margin-right: 5px;
+}

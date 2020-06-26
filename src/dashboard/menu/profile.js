@@ -8,7 +8,7 @@ function Profile() {
           <h4 className="card-title">Edit Profile</h4>
           <p className="m-0">Informasi valid adalah kunci keberhasilan</p>
         </div>
-        <img src="/assets/img/default-avatar.png" alt="default"></img>
+        <img src="/assets/img/default-input-avatar.png" alt="default"></img>
         <form>
           <div className="form-group">
             <label htmlFor="inputFile">Foto Profil</label>
