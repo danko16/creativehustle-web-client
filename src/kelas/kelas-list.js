@@ -128,29 +128,36 @@ function ClassList() {
           })}
           key={index}
         >
-          <div className="course-card card">
+          <div
+            className="course-card card"
+            style={{
+              border: 0,
+            }}
+          >
             <a href="/kelas" className="stretched-link">
               <span className="sr-only">title for screen</span>
             </a>
-            <img src={val.thumbnail} alt="thumbnail kelas" className="img img__cover" />
-            <div className="card-body pb-0">
-              <h6 className="line-height-1 mb-2 mt-3">{val.title}</h6>
-
-              <p className="h7 mb-2 text-gray-500">{val.author}</p>
-              <div className="row no-gutters justify-content-between">
-                <div className="col-auto d-flex align-items-center">
-                  <span className="rating fa fa-star checked"></span>
-                  <span className="rating fa fa-star checked"></span>
-                  <span className="rating fa fa-star checked"></span>
-                  <span className="rating fa fa-star checked"></span>
-                  <span className="rating fa fa-star"></span>
-                  <span className="rating-vote text-gray-500">(32.123)</span>
-                </div>
-              </div>
-
+            <div className="tanggal-kelas">Jun 29th - Jul 27th, 2020</div>
+            <img
+              src={val.thumbnail}
+              alt="thumbnail kelas"
+              className="img img__cover"
+              style={{
+                paddingTop: 40,
+              }}
+            />
+            <div className="card-body">
+              <h6 className="kursus-title line-height-1">{val.title}</h6>
+              <p className="m-0">
+                <img
+                  className="teacher-avatar"
+                  src="/assets/img/default-avatar.png"
+                  alt="default"
+                />
+                {val.author}
+              </p>
               <hr />
-
-              <div className="row align-items-center no-gutters mb-4">
+              <div className="row align-items-center no-gutters">
                 <div className="col-auto d-flex justify-items-center">
                   <span style={{ textDecoration: 'line-through' }}>Rp. 2.000.000</span>
                   <h6 className="ml-2 line-height-1">Rp. 245.000</h6>
