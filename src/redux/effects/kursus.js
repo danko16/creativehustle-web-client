@@ -1,9 +1,9 @@
-import { call, put, takeLatest } from 'redux-saga/effects';
+import { call, all, put, takeLatest } from 'redux-saga/effects';
 import kursusApi from '../api/kursus';
 import { getErrorMessage } from '../../utils/api';
 import { KURSUS_ACTIONS, kursusActions } from '../reducers/kursus';
 
-function* kursus({ value }) {
+function* kursus(value) {
   try {
     const {
       data: { data },
@@ -35,9 +35,13 @@ function* contents({ value }) {
   }
 }
 
-const kursusSaga = [
-  takeLatest(KURSUS_ACTIONS.REQ_KURSUS, kursus),
-  takeLatest(KURSUS_ACTIONS.REQ_CONTENTS, contents),
-];
+function* kursusSaga() {
+  try {
+    yield call(kursus, { from: 0 });
+    yield all([takeLatest(KURSUS_ACTIONS.REQ_CONTENTS, contents)]);
+  } catch (error) {
+    yield put(kursusActions.error(getErrorMessage(error)));
+  }
+}
 
 export default kursusSaga;

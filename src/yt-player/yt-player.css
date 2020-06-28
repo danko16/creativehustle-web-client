@@ -1,0 +1,83 @@
+.detail-kursus .slider {
+  position: relative;
+  width: 440px;
+  height: 4px;
+  border-radius: 4px;
+  background: #eee;
+  transition: width 0.1s;
+}
+
+.detail-kursus .slider.fullscreen {
+  width: 80%;
+}
+
+.detail-kursus .player-control {
+  display: flex;
+  border-radius: 0 0 8px 8px;
+  background-color: #101427f5;
+  justify-content: space-evenly;
+  align-items: center;
+  padding: 18px;
+  margin-bottom: 40px;
+}
+
+.detail-kursus .player-control .fa {
+  cursor: pointer;
+  font-size: 24px;
+  color: rgb(255, 129, 129);
+}
+
+.detail-kursus .player-control p {
+  color: #ebefff;
+}
+
+.detail-kursus .youtube-intro {
+  bottom: 0;
+  width: 100%;
+  margin-bottom: -6px;
+  border-radius: 8px 8px 0 0;
+  pointer-events: none;
+}
+
+.detail-kursus .youtube-intro.fullscreen {
+  height: calc(100vh - 60px);
+}
+
+.detail-kursus .plyr__tooltip {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 3px;
+  bottom: 100%;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+  color: #4a5764;
+  font-size: 14px;
+  font-weight: 500;
+  left: 50%;
+  line-height: 1.3;
+  margin-bottom: 20px;
+  padding: 10px;
+  pointer-events: none;
+  position: absolute;
+  transform: translate(-50%, 10px) scale(0.8);
+  transform-origin: 50% 100%;
+  transition: transform 0.2s 0.1s ease, opacity 0.2s 0.1s ease;
+  transition-property: transform, opacity;
+  transition-duration: 0.2s, 0.2s;
+  transition-timing-function: ease, ease;
+  transition-delay: 0.1s, 0.1s;
+  white-space: nowrap;
+  z-index: 2;
+}
+
+.plyr__tooltip::before {
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid rgba(255, 255, 255, 0.9);
+  bottom: -4px;
+  content: '';
+  height: 0;
+  left: 50%;
+  position: absolute;
+  transform: translateX(-50%);
+  width: 0;
+  z-index: 2;
+}

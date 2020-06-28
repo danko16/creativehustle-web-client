@@ -9,22 +9,18 @@
   width: 600px;
 }
 
-.profile-container img {
-  display: block;
-  padding-top: 50px;
-  width: 150px !important;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .profile-container form {
-  padding-top: 50px;
+  padding-top: 40px;
 }
 
 .profile-container form button.btn {
   display: block;
   padding: 5px 20px;
   margin-left: auto;
+}
+
+.custom-file-label {
+  background-color: #fbfbfb;
 }
 
 @media only screen and (max-width: 768px) {

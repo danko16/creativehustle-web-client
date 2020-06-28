@@ -15,19 +15,23 @@ function Introduction() {
             >
               Bingung cara mulai cari penghasilan tambahan ?
             </h1>
-            <p>
+            <p className="mb-4">
               Creative Huslte id platform belajar buat kalian yang ingin mencari penghasilan
               tambahan dengan cara kreatif. Dapatkan berbagai kemudahan belajar mulai dari :
             </p>
-            <ul
-              style={{
-                paddingInlineStart: 'inherit',
-                marginBottom: 50,
-              }}
-            >
-              <li>Berbagai pilihan kursus lengkap</li>
-              <li>Kesempatan belajar langsung via kelas online</li>
-              <li>Dengan trainer yang berpengalaman mencari ‘cuan’ melalui dunia kreatif</li>
+            <ul className="benefit-list">
+              <li>
+                <i className="fa fa-check-circle" aria-hidden="true"></i>
+                <p>Berbagai pilihan kursus lengkap</p>
+              </li>
+              <li>
+                <i className="fa fa-check-circle" aria-hidden="true"></i>
+                <p>Kesempatan belajar langsung via kelas online</p>
+              </li>
+              <li>
+                <i className="fa fa-check-circle" aria-hidden="true"></i>
+                <p>Dengan trainer yang berpengalaman mencari ‘cuan’ melalui dunia kreatif</p>
+              </li>
             </ul>
             <div className="d-flex intro btn-wrapper">
               <div>

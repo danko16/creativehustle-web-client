@@ -8,7 +8,6 @@ import { isAuthenticated } from './utils/auth';
 import { Api } from './utils/api';
 import { store, history } from './redux';
 import { authActions } from './redux/reducers/auth';
-import { kursusActions } from './redux/reducers/kursus';
 
 import NoMatch from './nomatch';
 import LandingPage from './linding-page';
@@ -28,7 +27,6 @@ const mapActionToProps = (dispatch) =>
   bindActionCreators(
     {
       authFlow: authActions.authFlow,
-      reqKursus: kursusActions.reqKursus,
     },
     dispatch
   );
@@ -49,11 +47,10 @@ Api.interceptors.request.use(
   }
 );
 
-function App({ authFlow, reqKursus }) {
+function App({ authFlow }) {
   useEffect(() => {
     authFlow();
-    reqKursus({ from: 0 });
-  }, [authFlow, reqKursus]);
+  }, [authFlow]);
   //eslint-disable-next-line
   function PrivateRoute({ children, ...rest }) {
     return (
@@ -107,7 +104,6 @@ function App({ authFlow, reqKursus }) {
 
 App.propTypes = {
   auth: PropTypes.object,
-  reqKursus: PropTypes.func,
   authFlow: PropTypes.func,
 };
 

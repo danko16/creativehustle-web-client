@@ -7,8 +7,12 @@
 }
 
 .detail-kursus button.subscribe-Kursus {
+  display: flex;
+  position: relative;
+  transition: all 300ms ease 0ms;
   outline: none;
   border: none;
+  align-items: center;
   padding: 0.3em 1em;
   font-size: 20px;
   font-weight: 500;
@@ -20,89 +24,95 @@
 }
 
 .detail-kursus button.subscribe-Kursus:hover {
-  opacity: 0.8;
+  margin-left: -8px;
 }
 
-.detail-kursus .slider {
+.detail-kursus button.subscribe-Kursus i.fa-angle-right {
+  transition: all 300ms ease 0ms;
+  font-size: 30px;
+  margin-left: -8px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.detail-kursus button.subscribe-Kursus:hover i.fa-angle-right {
+  visibility: visible;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+.materi-kelas-public {
+  max-height: 46px;
+  transition: max-height 1.5s ease-out;
+  margin-bottom: 20px;
+  overflow: hidden;
+}
+
+.materi-kelas-public.active {
+  max-height: 1000px;
+}
+
+.materi-kelas-public ul {
+  list-style: none;
+  padding: 0 20px;
+  margin-top: 20px;
+}
+
+.materi-kelas-public .content,
+.materi-kelas-public .parent-content {
   position: relative;
-  width: 440px;
-  height: 4px;
-  border-radius: 4px;
-  background: #eee;
-  transition: width 0.1s;
-}
-
-.detail-kursus .slider.fullscreen {
-  width: 80%;
-}
-
-.detail-kursus .player-control {
-  display: flex;
-  border-radius: 0 0 8px 8px;
-  background-color: #101427f5;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 18px;
-  margin-bottom: 20px;
-}
-
-.detail-kursus .player-control .fa {
+  padding: 10px 20px;
+  margin-bottom: 10px;
   cursor: pointer;
-  font-size: 24px;
-  color: rgb(255, 129, 129);
+  background: #fbfbfb;
+  border: 1px solid #efefef;
+  border-radius: 4px;
 }
 
-.detail-kursus .player-control p {
-  color: #ebefff;
+.materi-kelas-public .parent-content .fa {
+  position: absolute;
+  font-size: 20px;
+  top: 50%;
+  margin-top: -10px;
+  right: 20px;
+  color: #226ff7;
 }
 
-.detail-kursus .youtube-intro {
-  bottom: 0;
+.materi-kelas-public .content .fa.fa-lock {
+  color: #a1a1a1;
+  margin-right: 10px;
+}
+
+.mentor-profile {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.mentor-profile > div {
+  flex-basis: 50%;
+}
+
+.mentor-profile .mentor-photo img {
   width: 100%;
-  margin-bottom: -6px;
-  border-radius: 8px 8px 0 0;
-  pointer-events: none;
 }
 
-.detail-kursus .youtube-intro.fullscreen {
-  height: calc(100vh - 60px);
+.mentor-profile .mentor-detail {
+  padding-left: 30px;
 }
 
-.detail-kursus .plyr__tooltip {
-  background: rgba(255, 255, 255, 0.9);
-  border-radius: 3px;
-  bottom: 100%;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
-  color: #4a5764;
-  font-size: 14px;
-  font-weight: 500;
-  left: 50%;
-  line-height: 1.3;
-  margin-bottom: 20px;
-  padding: 10px;
-  pointer-events: none;
-  position: absolute;
-  transform: translate(-50%, 10px) scale(0.8);
-  transform-origin: 50% 100%;
-  transition: transform 0.2s 0.1s ease, opacity 0.2s 0.1s ease;
-  transition-property: transform, opacity;
-  transition-duration: 0.2s, 0.2s;
-  transition-timing-function: ease, ease;
-  transition-delay: 0.1s, 0.1s;
-  white-space: nowrap;
-  z-index: 2;
+.kursus-benefit {
+  padding-left: 40px;
 }
 
-.plyr__tooltip::before {
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid rgba(255, 255, 255, 0.9);
-  bottom: -4px;
-  content: '';
-  height: 0;
-  left: 50%;
-  position: absolute;
-  transform: translateX(-50%);
-  width: 0;
-  z-index: 2;
+@media only screen and (max-width: 992px) {
+  .kursus-benefit {
+    margin-top: 1.5rem;
+    padding-left: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .mentor-profile > div {
+    flex-basis: 100%;
+  }
 }

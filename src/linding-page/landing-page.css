@@ -220,6 +220,25 @@ button.to-learn-path:hover i.fa-angle-right {
   margin-left: 12px;
 }
 
+ul.benefit-list {
+  margin-bottom: 50px;
+  list-style: none;
+  padding-left: 0;
+}
+
+ul.benefit-list li {
+  display: flex;
+}
+
+ul.benefit-list li i.fa.fa-check-circle {
+  font-size: 25px;
+  color: #2667ff;
+}
+
+ul.benefit-list li p {
+  padding-left: 20px;
+}
+
 @media only screen and (max-width: 992px) {
   .mentor-assign {
     border-right: none;

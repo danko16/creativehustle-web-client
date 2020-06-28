@@ -25,7 +25,8 @@ function GoogleAuth({ history, login }) {
       !parseQuery.id ||
       !parseQuery.name ||
       !parseQuery.email ||
-      !parseQuery.type
+      !parseQuery.type ||
+      !parseQuery.phone
     ) {
       history.push('/');
     }
@@ -39,6 +40,7 @@ function GoogleAuth({ history, login }) {
         id: parseQuery.id,
         name: parseQuery.name,
         email: parseQuery.email,
+        phone: parseQuery.phone,
         avatar: parseQuery.avatar,
       },
       type: parseQuery.type,

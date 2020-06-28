@@ -1,10 +1,14 @@
 export const AUTH_ACTIONS = Object.freeze({
   FLOW: 'myapp/auth/flow',
   SET_DATA: 'myapp/auth/set-data',
-  REQ_LOGIN: 'myapp/auth/req-login',
-  REQ_REGISTER: 'myapp/auth/req-register',
+  REQ_LOGIN: 'myapp/auth/req/login',
+  REQ_REGISTER: 'myapp/auth/req/register',
+  REQ_UPDATE_PROFILE: 'myapp/auth/req/update-profile',
+  REQ_UPDATE_PASSWORD: 'myapp/auth/req/update-password',
   LOGIN: 'myapp/auth/login',
   REGISTER: 'myapp/auth/register',
+  PROFILE: 'myapp/auth/profile',
+  PASSWORD: 'myapp/auth/password',
   LOGOUT: 'myapp/auth/logout',
   ERROR: 'myapp/auth/error',
   CLEAR_ERROR: 'myapp/auth/clear-error',
@@ -27,12 +31,28 @@ export const authActions = Object.freeze({
     type: AUTH_ACTIONS.REQ_REGISTER,
     value,
   }),
+  reqUpdateProfile: (value) => ({
+    type: AUTH_ACTIONS.REQ_UPDATE_PROFILE,
+    value,
+  }),
+  reqUpdatePassword: (value) => ({
+    type: AUTH_ACTIONS.REQ_UPDATE_PASSWORD,
+    value,
+  }),
   login: (value) => ({
     type: AUTH_ACTIONS.LOGIN,
     value,
   }),
   register: (value) => ({
     type: AUTH_ACTIONS.REGISTER,
+    value,
+  }),
+  profile: (value) => ({
+    type: AUTH_ACTIONS.PROFILE,
+    value,
+  }),
+  password: (value) => ({
+    type: AUTH_ACTIONS.PASSWORD,
     value,
   }),
   logout: () => ({
@@ -70,6 +90,8 @@ const reducer = (state = initialState, { type, field, value }) => {
       };
     case AUTH_ACTIONS.REQ_LOGIN:
     case AUTH_ACTIONS.REQ_REGISTER:
+    case AUTH_ACTIONS.REQ_UPDATE_PROFILE:
+    case AUTH_ACTIONS.REQ_UPDATE_PASSWORD:
       return {
         ...state,
         loading: true,
@@ -86,10 +108,17 @@ const reducer = (state = initialState, { type, field, value }) => {
         is_error: false,
         loading: false,
       };
+    case AUTH_ACTIONS.PROFILE:
+      return {
+        ...state,
+        user: value.user,
+        message: value.message,
+        is_error: false,
+        loading: false,
+      };
     case AUTH_ACTIONS.ERROR:
       return {
         ...state,
-        is_authorized: false,
         message: value,
         is_error: true,
         loading: false,

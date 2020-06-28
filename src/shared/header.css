@@ -78,6 +78,7 @@ button.navbar-toggler {
 
 .user-avatar img {
   display: inline-block;
+  object-fit: cover;
   border-radius: 50%;
   image-rendering: -webkit-optimize-contrast;
 }

@@ -134,6 +134,20 @@ button.et_pb_button:hover i.fa-angle-right {
   margin-left: 12px;
 }
 
+.et_pb_row_2 {
+  display: flex;
+  background-image: url(/assets/img/cta-bg.png);
+  overflow: hidden;
+  height: 10rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem 0;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 @media only screen and (min-width: 992px) {
   .et_pb_toggle.pd_dyn {
     padding-bottom: 55px;
@@ -168,23 +182,21 @@ button.et_pb_button:hover i.fa-angle-right {
     padding-bottom: 30px;
   }
 
-  .et_pb_toggle.pd_dyn p{
+  .et_pb_toggle.pd_dyn p {
     width: 90%;
   }
-  
+
   h4.et_pb_toggle_title {
     font-size: 15px;
   }
 }
-
 
 @media only screen and (max-width: 450px) {
   .et_pb_toggle.pd_sm_dyn {
     padding-bottom: 40px;
   }
 
-  .et_pb_toggle p{
+  .et_pb_toggle p {
     width: 90%;
   }
-  
 }

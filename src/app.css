@@ -109,3 +109,8 @@ img.teacher-avatar {
   border-radius: 50%;
   margin-right: 5px;
 }
+
+.bg-gradient-danger {
+  background: #dc3545 linear-gradient(180deg, #e15361, #dc3545) repeat-x !important;
+  color: #fff;
+}
