@@ -15,9 +15,9 @@
 .modal-content {
   position: relative;
   background-color: #fefefe;
-  margin: auto!important;
+  margin: auto !important;
   padding: 20px;
-  width: 400px;
+  max-width: 400px;
   min-height: 675px;
   border-radius: 5px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -80,4 +80,22 @@
 .logo-login-google {
   height: 18px;
   margin-right: 10px;
+}
+
+.modal-content-wrapper {
+  max-width: 320px;
+}
+
+@media only screen and (max-width: 480px) {
+  .modal {
+    padding-top: 65px;
+  }
+  
+  .modal-content {
+    padding: 20px 10px;
+  }
+
+  .modal-content-wrapper {
+    max-width: 340px;
+  }
 }

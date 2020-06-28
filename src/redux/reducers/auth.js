@@ -108,6 +108,13 @@ const reducer = (state = initialState, { type, field, value }) => {
         is_error: false,
         loading: false,
       };
+    case AUTH_ACTIONS.PASSWORD:
+      return {
+        ...state,
+        message: value,
+        is_error: false,
+        loading: false,
+      };
     case AUTH_ACTIONS.PROFILE:
       return {
         ...state,
@@ -128,7 +135,6 @@ const reducer = (state = initialState, { type, field, value }) => {
         ...state,
         message: '',
         is_error: false,
-        loading: false,
       };
     case AUTH_ACTIONS.LOGOUT:
       return {

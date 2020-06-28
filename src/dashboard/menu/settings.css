@@ -1,0 +1,51 @@
+.settings-container {
+  width: 600px;
+}
+
+.settings-container .form-group {
+  position: relative;
+}
+
+.settings-container form {
+  padding-top: 40px;
+}
+
+.settings-container form button.btn {
+  display: block;
+  padding: 5px 20px;
+  margin-left: auto;
+}
+
+.settings-container form i.fa {
+  cursor: pointer;
+  position: absolute;
+  right: 20px;
+  top: 40px;
+}
+
+.form-control.is-invalid, .was-validated .form-control:invalid {
+    background-image: none;
+}
+
+@media only screen and (max-width: 768px) {
+  .settings-container {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 550px) {
+  .settings-container {
+    width: 400px;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .settings-container {
+    width: 350px;
+    box-shadow: none;
+  }
+
+  .settings-container.card-no-shadow {
+    box-shadow: none !important;
+  }
+}

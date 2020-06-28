@@ -59,7 +59,6 @@ function* updateProfile({ value }) {
     } = yield call(authApi.profile, {
       name: value.name,
       phone: value.phone,
-      type: value.type,
       formData,
     });
     if (data) {
@@ -69,6 +68,19 @@ function* updateProfile({ value }) {
           message,
         })
       );
+    }
+  } catch (e) {
+    yield put(authActions.error(getErrorMessage(e)));
+  }
+}
+
+function* updatePassword({ value }) {
+  try {
+    const {
+      data: { message },
+    } = yield call(authApi.password, value);
+    if (message) {
+      yield put(authActions.password(message));
     }
   } catch (e) {
     yield put(authActions.error(getErrorMessage(e)));
@@ -86,7 +98,10 @@ function* isAllow() {
 
 function* authorizedTsk() {
   try {
-    yield all([takeLatest(AUTH_ACTIONS.REQ_UPDATE_PROFILE, updateProfile)]);
+    yield all([
+      takeLatest(AUTH_ACTIONS.REQ_UPDATE_PROFILE, updateProfile),
+      takeLatest(AUTH_ACTIONS.REQ_UPDATE_PASSWORD, updatePassword),
+    ]);
   } catch (error) {
     yield put(authActions.error(getErrorMessage(error)));
   }

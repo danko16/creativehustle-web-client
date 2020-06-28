@@ -23,7 +23,7 @@ const mapActionToProps = (dispatch) =>
     dispatch
   );
 
-function Profile({ user, message, is_error, clearMsg, loading, reqUpdateProfile }) {
+const Profile = ({ user, message, is_error, clearMsg, loading, reqUpdateProfile }) => {
   const [file, setFile] = useState(null);
   const [notification, setNotification] = useState({
     text: '',
@@ -107,7 +107,6 @@ function Profile({ user, message, is_error, clearMsg, loading, reqUpdateProfile 
       reqUpdateProfile({
         name,
         phone,
-        type: 'student',
         file,
       });
     }
@@ -142,9 +141,6 @@ function Profile({ user, message, is_error, clearMsg, loading, reqUpdateProfile 
                   className={error.image ? 'custom-file-input is-invalid' : 'custom-file-input'}
                   onChange={handleImageChange}
                   id="avatarImage"
-                  onClick={() => {
-                    setError((state) => ({ ...state, image: '' }));
-                  }}
                 />
                 <label className="custom-file-label" htmlFor="avatarImage">
                   {file ? file.name : 'Choose file'}
@@ -171,9 +167,6 @@ function Profile({ user, message, is_error, clearMsg, loading, reqUpdateProfile 
             <label htmlFor="inputName">Nama</label>
             <input
               name="inputName"
-              onClick={() => {
-                setError((state) => ({ ...state, name: '' }));
-              }}
               onChange={(e) => {
                 setName(e.target.value);
               }}
@@ -195,9 +188,6 @@ function Profile({ user, message, is_error, clearMsg, loading, reqUpdateProfile 
               id="inputPhone"
               name="phone"
               value={phone}
-              onClick={() => {
-                setError((state) => ({ ...state, phone: '' }));
-              }}
               onChange={(e) => {
                 setPhone(e.target.value);
               }}
@@ -214,7 +204,7 @@ function Profile({ user, message, is_error, clearMsg, loading, reqUpdateProfile 
       </div>
     </div>
   );
-}
+};
 
 Profile.propTypes = {
   user: PropTypes.object,

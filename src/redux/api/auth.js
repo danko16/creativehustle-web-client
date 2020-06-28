@@ -10,15 +10,20 @@ export default Object.freeze({
     Api.post('/auth/login', payload, {
       headers: { 'Content-Type': 'application/json' },
     }),
-  profile: ({ name, type, phone, formData }) =>
+  profile: ({ name, phone, formData }) =>
     Api.patch('/auth/profile', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
       params: {
         name,
-        type,
         phone,
+      },
+    }),
+  password: (payload) =>
+    Api.patch('/auth/password', payload, {
+      headers: {
+        'Content-Type': 'application/json',
       },
     }),
   googleAuth: () => Api.get('/auth/google'),

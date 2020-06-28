@@ -138,7 +138,7 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
 
   return (
     <div className="modal-content row align-items-center justify-content-center">
-      <div className="col w-320px ">
+      <div className="col modal-content-wrapper">
         <span
           className="d-flex"
           style={{ cursor: 'pointer' }}
