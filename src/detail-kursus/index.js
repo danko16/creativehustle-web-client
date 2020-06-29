@@ -36,7 +36,9 @@ function DetailKursus({ kursus, reqContents, sections, contents, subscribe, load
   const [toggler, setToggler] = useState({});
 
   useEffect(() => {
-    reqContents({ course_id: parseInt(kursusId) });
+    setTimeout(() => {
+      reqContents({ course_id: parseInt(kursusId) });
+    }, 250);
   }, [reqContents, kursusId]);
 
   useEffect(() => {
@@ -110,7 +112,6 @@ function DetailKursus({ kursus, reqContents, sections, contents, subscribe, load
         <h1>
           <strong>{detailKursus.title}</strong>
         </h1>
-        <span> Taruh deskirpsi kursus di sini</span>
       </div>
 
       <div className="container mb-5">
@@ -120,11 +121,7 @@ function DetailKursus({ kursus, reqContents, sections, contents, subscribe, load
             <h3 className="mb-4">
               <strong>Tentang Kursus</strong>
             </h3>
-            <p className="mb-4">
-              Your content goes here. Edit or remove this text inline or in the module Content
-              settings. You can also style every aspect of this content in the module Design
-              settings and even apply custom CSS to this text in the module Advanced settings.
-            </p>
+            <p className="mb-4">{detailKursus.desc}</p>
             <h3 className="mb-4">
               <strong>Materi Kursus</strong>
             </h3>
@@ -134,10 +131,10 @@ function DetailKursus({ kursus, reqContents, sections, contents, subscribe, load
             </h3>
             <div className="mentor-profile">
               <div className="mentor-photo">
-                <img src="/assets/img/header-img.png" alt="proifle" />
+                <img src="/assets/img/header-img.png" alt="profile" />
               </div>
               <div className="mentor-detail">
-                <h5>Reezky pradata</h5>
+                <h5>{detailKursus.teacher_name}</h5>
                 <h6
                   style={{
                     paddingTop: 10,
@@ -167,11 +164,9 @@ function DetailKursus({ kursus, reqContents, sections, contents, subscribe, load
               <p>sekali bayar untuk selamanya</p>
               <p className="mt-4 mb-1">Kursus ini mencakup</p>
               <ul className="pl-3">
-                <li>Video atas permintaan 38 mnt</li>
-                <li>2 sumber daya yang dapat diunduh</li>
-                <li>Akses penuh seumur hidup</li>
-                <li>Akses di perangkat seluler dan TV</li>
-                <li>Sertifikat Penyelesaian</li>
+                {detailKursus.benefit.map((val, index) => (
+                  <li key={index}>{val}</li>
+                ))}
               </ul>
               <button onClick={handleSubscribe} className="subscribe-Kursus">
                 <span>Ikuti Kursus</span>

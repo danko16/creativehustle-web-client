@@ -13,7 +13,7 @@ const opts = {
   playerVars: {
     rel: 0,
     controls: 0,
-    autoplay: 0,
+    autoplay: 1,
     playback: 0,
     modestbranding: 1,
     origin: CLIENT_DOMAIN,
