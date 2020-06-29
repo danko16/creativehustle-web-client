@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Header from '../shared/header';
-import Footer from '../shared/footer';
 import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { kursusActions } from '../redux/reducers/kursus';
 import { kursusSayaAction } from '../redux/reducers/kursus-saya';
 import { isAuthenticated } from '../utils/auth';
+import Loading from '../shared/loading';
 import YtPlayer from '../yt-player';
 import './detail-kursus.css';
 
@@ -21,13 +20,14 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = (dispatch) =>
   bindActionCreators(
     {
+      setData: kursusActions.setData,
       reqContents: kursusActions.reqContents,
       subscribe: kursusSayaAction.subscribe,
     },
     dispatch
   );
 
-function DetailKursus({ kursus, reqContents, sections, contents, subscribe, loading }) {
+function DetailKursus({ kursus, reqContents, setData, sections, contents, subscribe, loading }) {
   const { kursusId } = useParams();
   const [detailKursus, setDetailKursus] = useState(null);
   const [detailContent, setDetailContent] = useState(null);
@@ -38,8 +38,12 @@ function DetailKursus({ kursus, reqContents, sections, contents, subscribe, load
   useEffect(() => {
     setTimeout(() => {
       reqContents({ course_id: parseInt(kursusId) });
-    }, 250);
-  }, [reqContents, kursusId]);
+    }, 1000);
+
+    return () => {
+      setData('contents', []);
+    };
+  }, [reqContents, kursusId, setData]);
 
   useEffect(() => {
     if (!loading && kursus.length) {
@@ -107,7 +111,6 @@ function DetailKursus({ kursus, reqContents, sections, contents, subscribe, load
 
   return detailKursus && detailContent ? (
     <div className="detail-kursus">
-      <Header />
       <div className="title">
         <h1>
           <strong>{detailKursus.title}</strong>
@@ -194,10 +197,9 @@ function DetailKursus({ kursus, reqContents, sections, contents, subscribe, load
           <i className="fa fa-angle-right" aria-hidden="true"></i>
         </button>
       </div>
-      <Footer />
     </div>
   ) : (
-    <div></div>
+    <Loading />
   );
 }
 
@@ -207,6 +209,7 @@ DetailKursus.propTypes = {
   contents: PropTypes.array,
   subscribe: PropTypes.func,
   reqContents: PropTypes.func,
+  setData: PropTypes.func,
   loading: PropTypes.bool,
 };
 

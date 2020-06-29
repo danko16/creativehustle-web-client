@@ -73,6 +73,10 @@ a.back-dashboard:hover {
   margin-left: 12px;
 }
 
+.sidenav::-webkit-scrollbar, .dashboard-nav.detail::-webkit-scrollbar {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .dashboard-nav.detail {
     max-height: 0;
@@ -85,7 +89,8 @@ a.back-dashboard:hover {
 
   .dashboard-nav.detail.active {
     padding: 25px 0;
-    max-height: 1000px;
+    max-height: 500px;
+    overflow: auto;
   }
 
   .dashboard-nav.detail ul {

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
-import DetailDashboardSidebar from './detail-dashboard-sidebar';
+import Loading from '../../shared/loading';
 import { kursusSayaAction } from '../../redux/reducers/kursus-saya';
 
 const mapStateToProps = (state) => ({
@@ -23,7 +23,9 @@ function DetailKursus({ contents, reqContents, done, loading }) {
   const [nextId, setNextId] = useState();
 
   useEffect(() => {
-    reqContents({ course_id: parseInt(kursusId) });
+    setTimeout(() => {
+      reqContents({ course_id: parseInt(kursusId) });
+    }, 1000);
   }, [reqContents, kursusId]);
 
   useEffect(() => {
@@ -44,7 +46,6 @@ function DetailKursus({ contents, reqContents, done, loading }) {
   }, [contentId, kursusId, contents, loading]);
   return contentSaya ? (
     <div className="dashboard-main">
-      <DetailDashboardSidebar />
       <div className="row mb-4">
         <div className="col-12">
           <div className="card-no-shadow">
@@ -98,7 +99,9 @@ function DetailKursus({ contents, reqContents, done, loading }) {
       </div>
     </div>
   ) : (
-    <div></div>
+    <div className="dashboard-main">
+      <Loading />
+    </div>
   );
 }
 

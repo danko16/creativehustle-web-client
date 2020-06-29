@@ -3,6 +3,7 @@ import { Switch, Route, Redirect, useRouteMatch } from 'react-router-dom';
 
 import Sidebar from './sidebar';
 import DashboardSidebar from './dashboard-sidebar';
+import DetailDashboardSidebar from './kursus/detail-dashboard-sidebar';
 import Progress from './menu/progress';
 import Kursus from './menu/kursus';
 import Kelas from './menu/kelas';
@@ -32,6 +33,7 @@ function Dashboard() {
         </Route>
         <Route path={`${path}/kursus/:kursusId/:contentId`}>
           <DetailSidebar />
+          <DetailDashboardSidebar />
           <DetailKursus />
         </Route>
         <Route path={`${path}/kelas`}>

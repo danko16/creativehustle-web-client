@@ -10,6 +10,8 @@ import { store, history } from './redux';
 import { authActions } from './redux/reducers/auth';
 
 import NoMatch from './nomatch';
+import Header from './shared/header';
+import Footer from './shared/footer';
 import LandingPage from './linding-page';
 import Kelas from './kelas';
 import Dashboard from './dashboard';
@@ -82,7 +84,9 @@ function App({ authFlow }) {
               <Kursus />
             </Route>
             <Route path="/kursus/:kursusId">
+              <Header />
               <DetailKursus />
+              <Footer />
             </Route>
             <Route path="/kelas">
               <Kelas />
