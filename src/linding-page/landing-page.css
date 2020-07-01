@@ -162,8 +162,9 @@ section.footer .sitemap a {
 }
 
 .find-class.btn {
-  color: #3874ff !important;
+  color: #3874ff;
   border: 1px solid;
+  background-color: #fff;
 }
 
 .find-course.btn {
@@ -173,7 +174,8 @@ section.footer .sitemap a {
 .find-course.btn:hover,
 .find-class.btn:hover {
   background-color: #151363 !important;
-  background-image: initial !important;
+  background-image: initial !important;  
+  color: #fff;
   padding: 8px 24px;
 }
 

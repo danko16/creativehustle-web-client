@@ -36,6 +36,10 @@ function DetailKursus({ kursus, reqContents, setData, sections, contents, subscr
   const [toggler, setToggler] = useState({});
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (kursus.length) {
       reqContents({ course_id: parseInt(kursusId) });
     }

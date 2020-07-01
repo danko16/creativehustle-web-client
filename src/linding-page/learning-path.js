@@ -31,7 +31,7 @@ function LearningPath() {
               bersama para mentor untuk memberikan pengalaman penyajian langsung untuk para Huslter.
             </p>
             <button className="to-learn-path">
-              <Link to={`/journey`} className="stretched-link">
+              <Link to="/journey" className="stretched-link">
                 <span className="sr-only">title for screen</span>
               </Link>
               <span>Lihat Cara Belajar</span>

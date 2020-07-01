@@ -168,6 +168,6 @@ function* authFlow() {
   }
 }
 
-const authSaga = fork(authFlow);
+const authSaga = takeLatest(AUTH_ACTIONS.FLOW, authFlow);
 
 export default authSaga;

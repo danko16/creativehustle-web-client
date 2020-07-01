@@ -5,7 +5,7 @@ export const CLIENT_DOMAIN = 'http://localhost:3006';
 
 export const Api = axios.create({
   baseURL: SERVER_DOMAIN,
-  timeout: 4000,
+  timeout: 60000,
   headers: {
     version: '1.0.0',
   },
