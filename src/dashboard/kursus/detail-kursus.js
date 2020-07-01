@@ -8,6 +8,8 @@ import { kursusSayaAction } from '../../redux/reducers/kursus-saya';
 
 const mapStateToProps = (state) => ({
   contents: state.kursusSaya.contents,
+  kursus: state.kursusSaya.kursus,
+  rekomendasi: state.kursusSaya.rekomendasi,
   loading: state.kursusSaya.loading,
 });
 
@@ -17,16 +19,16 @@ const mapActionToProps = (disatch) =>
     disatch
   );
 
-function DetailKursus({ contents, reqContents, done, loading }) {
+function DetailKursus({ contents, kursus, rekomendasi, reqContents, done, loading }) {
   const { kursusId, contentId } = useParams();
   const [contentSaya, setContentSaya] = useState(null);
   const [nextId, setNextId] = useState();
 
   useEffect(() => {
-    setTimeout(() => {
+    if (kursus.length && rekomendasi) {
       reqContents({ course_id: parseInt(kursusId) });
-    }, 1000);
-  }, [reqContents, kursusId]);
+    }
+  }, [reqContents, rekomendasi, kursus, kursusId]);
 
   useEffect(() => {
     if (!loading && contents.length) {
@@ -109,6 +111,8 @@ DetailKursus.propTypes = {
   contents: PropTypes.array,
   done: PropTypes.func,
   reqContents: PropTypes.func,
+  kursus: PropTypes.array,
+  rekomendasi: PropTypes.array,
   loading: PropTypes.bool,
 };
 

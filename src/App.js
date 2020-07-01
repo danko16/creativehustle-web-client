@@ -1,13 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { ConnectedRouter } from 'connected-react-router';
 import { isAuthenticated } from './utils/auth';
 import { Api } from './utils/api';
 import { store, history } from './redux';
-import { authActions } from './redux/reducers/auth';
 
 import NoMatch from './nomatch';
 import Header from './shared/header';
@@ -18,20 +16,14 @@ import Dashboard from './dashboard';
 import Kursus from './kursus';
 import Journey from './journey';
 import DetailKursus from './detail-kursus';
+import ForgotPassword from './auth/forgotPassword';
+import ResetPassword from './auth/resetPassword';
 import GoogleAuth from './auth/googleAuth';
 import './app.css';
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
 });
-
-const mapActionToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      authFlow: authActions.authFlow,
-    },
-    dispatch
-  );
 
 Api.interceptors.request.use(
   function (config) {
@@ -49,10 +41,7 @@ Api.interceptors.request.use(
   }
 );
 
-function App({ authFlow }) {
-  useEffect(() => {
-    authFlow();
-  }, [authFlow]);
+function App() {
   //eslint-disable-next-line
   function PrivateRoute({ children, ...rest }) {
     return (
@@ -94,6 +83,16 @@ function App({ authFlow }) {
             <Route path="/journey">
               <Journey />
             </Route>
+            <Route exact path="/forgot-password">
+              <Header />
+              <ForgotPassword />
+              <Footer />
+            </Route>
+            <Route exact path="/reset-password">
+              <Header />
+              <ResetPassword />
+              <Footer />
+            </Route>
             <Route exact path="/google-auth" component={GoogleAuth} />
             <PrivateRoute path="/dashboard">
               <Dashboard />
@@ -108,7 +107,6 @@ function App({ authFlow }) {
 
 App.propTypes = {
   auth: PropTypes.object,
-  authFlow: PropTypes.func,
 };
 
-export default connect(mapStateToProps, mapActionToProps)(App);
+export default connect(mapStateToProps)(App);

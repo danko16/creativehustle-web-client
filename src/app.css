@@ -114,3 +114,27 @@ img.teacher-avatar {
   background: #dc3545 linear-gradient(180deg, #e15361, #dc3545) repeat-x !important;
   color: #fff;
 }
+
+.btn-info {
+  color: #fff;
+  background-color: #5d69d8;
+  transition: .2s;
+  border: none;
+}
+
+.btn-info:hover {
+  background-color: #5433ad;
+}
+
+.btn-info:not(:disabled):not(.disabled).active, 
+.btn-info:not(:disabled):not(.disabled):active, 
+.show > .btn-info.dropdown-toggle,
+.btn-info:not(:disabled):not(.disabled):focus
+{
+  color: #fff;
+  border: none;
+  outline: none;
+  outline: none;
+  box-shadow: none;
+  background-color: #5433ad;
+}

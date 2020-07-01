@@ -75,12 +75,12 @@ function Header({ style, user, logout, loading, history }) {
               </Link>
             </li>
             <li>
-              <Link to="/dashboard">
+              <Link to="/dashboard/profil">
                 <img src="/assets/icon/account.png" width="24" height="24" alt="profil" /> Profil
               </Link>
             </li>
             <li>
-              <Link to="/dashboard">
+              <Link to="/dashboard/pengaturan">
                 <img src="/assets/icon/settings.png" width="24" height="24" alt="setting" />{' '}
                 Pengaturan
               </Link>

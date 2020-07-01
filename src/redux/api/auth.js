@@ -26,5 +26,17 @@ export default Object.freeze({
         'Content-Type': 'application/json',
       },
     }),
+  forgotPassword: (payload) =>
+    Api.post('/auth/forgot', payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }),
+  resetPassword: (payload) =>
+    Api.post('/auth/reset', payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }),
   googleAuth: () => Api.get('/auth/google'),
 });

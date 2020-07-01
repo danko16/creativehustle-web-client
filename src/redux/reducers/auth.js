@@ -5,10 +5,14 @@ export const AUTH_ACTIONS = Object.freeze({
   REQ_REGISTER: 'myapp/auth/req/register',
   REQ_UPDATE_PROFILE: 'myapp/auth/req/update-profile',
   REQ_UPDATE_PASSWORD: 'myapp/auth/req/update-password',
+  REQ_FORGOT_PASSWORD: 'myapp/auth/req/forgot-password',
+  REQ_RESET_PASSWORD: 'myapp/auth/req/reset-password',
   LOGIN: 'myapp/auth/login',
   REGISTER: 'myapp/auth/register',
   PROFILE: 'myapp/auth/profile',
   PASSWORD: 'myapp/auth/password',
+  FORGOT_PASSWORD: 'myapp/auth/forgot-password',
+  RESET_PASSWORD: 'myapp/auth/reset-password',
   LOGOUT: 'myapp/auth/logout',
   ERROR: 'myapp/auth/error',
   CLEAR_ERROR: 'myapp/auth/clear-error',
@@ -39,6 +43,14 @@ export const authActions = Object.freeze({
     type: AUTH_ACTIONS.REQ_UPDATE_PASSWORD,
     value,
   }),
+  reqForgotPassword: (value) => ({
+    type: AUTH_ACTIONS.REQ_FORGOT_PASSWORD,
+    value,
+  }),
+  reqResetPassword: (value) => ({
+    type: AUTH_ACTIONS.REQ_RESET_PASSWORD,
+    value,
+  }),
   login: (value) => ({
     type: AUTH_ACTIONS.LOGIN,
     value,
@@ -53,6 +65,14 @@ export const authActions = Object.freeze({
   }),
   password: (value) => ({
     type: AUTH_ACTIONS.PASSWORD,
+    value,
+  }),
+  forgotPassword: (value) => ({
+    type: AUTH_ACTIONS.FORGOT_PASSWORD,
+    value,
+  }),
+  resetPassword: (value) => ({
+    type: AUTH_ACTIONS.RESET_PASSWORD,
     value,
   }),
   logout: () => ({
@@ -92,6 +112,8 @@ const reducer = (state = initialState, { type, field, value }) => {
     case AUTH_ACTIONS.REQ_REGISTER:
     case AUTH_ACTIONS.REQ_UPDATE_PROFILE:
     case AUTH_ACTIONS.REQ_UPDATE_PASSWORD:
+    case AUTH_ACTIONS.REQ_FORGOT_PASSWORD:
+    case AUTH_ACTIONS.REQ_RESET_PASSWORD:
       return {
         ...state,
         loading: true,
@@ -108,6 +130,8 @@ const reducer = (state = initialState, { type, field, value }) => {
         is_error: false,
         loading: false,
       };
+    case AUTH_ACTIONS.FORGOT_PASSWORD:
+    case AUTH_ACTIONS.RESET_PASSWORD:
     case AUTH_ACTIONS.PASSWORD:
       return {
         ...state,

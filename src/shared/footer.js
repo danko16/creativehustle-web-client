@@ -22,7 +22,7 @@ function Footer() {
                 </Link>
                 <p className="my-4 font-weight-light text-gray-500">
                   Belajar online sesuai kebutuhan <br className="desktop" />
-                  industri kreatiftion saat ini dan dapatkan <br className="desktop" />
+                  industri kreatif saat ini dan dapatkan <br className="desktop" />
                   penghasilan tambahanmu sekarang juga.
                 </p>
               </div>

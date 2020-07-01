@@ -36,14 +36,16 @@ function DetailKursus({ kursus, reqContents, setData, sections, contents, subscr
   const [toggler, setToggler] = useState({});
 
   useEffect(() => {
-    setTimeout(() => {
+    if (kursus.length) {
       reqContents({ course_id: parseInt(kursusId) });
-    }, 1000);
+    }
+  }, [reqContents, kursus, kursusId, setData]);
 
+  useEffect(() => {
     return () => {
       setData('contents', []);
     };
-  }, [reqContents, kursusId, setData]);
+  }, [setData]);
 
   useEffect(() => {
     if (!loading && kursus.length) {

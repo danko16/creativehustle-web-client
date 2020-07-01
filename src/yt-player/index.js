@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import YouTube from 'react-youtube';
 import { Slider, FormattedTime } from 'react-player-controls';
-import { CLIENT_DOMAIN } from '../utils/api';
 import PropTypes from 'prop-types';
 import './yt-player.css';
 
@@ -16,7 +15,6 @@ const opts = {
     autoplay: 1,
     playback: 0,
     modestbranding: 1,
-    origin: CLIENT_DOMAIN,
   },
 };
 
@@ -110,11 +108,16 @@ function YtPlayer({ detailContent }) {
           player.current.seekTo(newValue * duration);
         }}
         onChangeStart={() => {
-          player.current.pauseVideo();
+          if (player.current) {
+            player.current.pauseVideo();
+            setHoverValue(null);
+          }
         }}
         onChangeEnd={() => {
-          player.current.playVideo();
-          setHoverValue(null);
+          if (player.current) {
+            player.current.playVideo();
+            setHoverValue(null);
+          }
         }}
         className={`slider ${isFullScreen && 'fullscreen'}`}
       >

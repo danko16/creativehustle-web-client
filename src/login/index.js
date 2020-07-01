@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
@@ -169,8 +170,8 @@ function Login({ setDisplayModal, auth, clearMsg, login }) {
             {error.password}
           </small>
           <div className="form-group form-group__icon">
-            <a
-              href="https://class.buildwithangga.com/password/reset"
+            <Link
+              to="/forgot-password"
               className="mr-auto"
               style={{
                 textDecoration: 'underline',
@@ -178,7 +179,7 @@ function Login({ setDisplayModal, auth, clearMsg, login }) {
               }}
             >
               Lupa Password
-            </a>
+            </Link>
           </div>
           <button type="submit" className="btn btn-submit btn-info font-weight-medium btn-block ">
             Masuk Akun Saya

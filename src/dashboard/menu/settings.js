@@ -76,10 +76,6 @@ function Settings({ user, loading, reqUpdatePassword, message, is_error, clearMs
     return true;
   }
 
-  function handleChange(event) {
-    setOldPassword(event.target.value);
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setError({
@@ -132,7 +128,9 @@ function Settings({ user, loading, reqUpdatePassword, message, is_error, clearMs
               type={showPassword.oldPassword ? 'text' : 'password'}
               name="oldPassword"
               value={oldPassword}
-              onChange={handleChange}
+              onChange={(e) => {
+                setOldPassword(e.target.value);
+              }}
               className={error.oldPassword ? 'form-control is-invalid' : 'form-control'}
               id="oldPassword"
               placeholder="Masukan Password Lama"

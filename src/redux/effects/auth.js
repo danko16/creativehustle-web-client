@@ -87,6 +87,32 @@ function* updatePassword({ value }) {
   }
 }
 
+function* forgotPassword({ value }) {
+  try {
+    const {
+      data: { message },
+    } = yield call(authApi.forgotPassword, value);
+    if (message) {
+      yield put(authActions.forgotPassword(message));
+    }
+  } catch (e) {
+    yield put(authActions.error(getErrorMessage(e)));
+  }
+}
+
+function* resetPassword({ value }) {
+  try {
+    const {
+      data: { message },
+    } = yield call(authApi.resetPassword, value);
+    if (message) {
+      yield put(authActions.resetPassword(message));
+    }
+  } catch (e) {
+    yield put(authActions.error(getErrorMessage(e)));
+  }
+}
+
 function* isAllow() {
   try {
     yield call(authApi.isAllow);
@@ -94,6 +120,17 @@ function* isAllow() {
   } catch (e) {
     yield put(authActions.logout());
     return false;
+  }
+}
+
+function* unAuthorizedTsk() {
+  try {
+    yield all([
+      takeLatest(AUTH_ACTIONS.REQ_FORGOT_PASSWORD, forgotPassword),
+      takeLatest(AUTH_ACTIONS.REQ_RESET_PASSWORD, resetPassword),
+    ]);
+  } catch (error) {
+    yield put(authActions.error(getErrorMessage(error)));
   }
 }
 
@@ -111,6 +148,7 @@ function* authorizedTsk() {
 function* authFlow() {
   while (true) {
     yield fork(kursusSaga);
+    yield fork(unAuthorizedTsk);
     const isAuthorized = yield call(isAllow);
     if (!isAuthorized) {
       console.log('wait for loggin');
@@ -130,6 +168,6 @@ function* authFlow() {
   }
 }
 
-const authSaga = takeLatest(AUTH_ACTIONS.FLOW, authFlow);
+const authSaga = fork(authFlow);
 
 export default authSaga;

@@ -17,7 +17,14 @@ function ResponseMessage(props) {
       })}
       style={{ borderRadius: 4, position: 'relative', color: 'white', padding: 16 }}
     >
-      <p className="m-0">{text}</p>
+      <p
+        className="m-0"
+        style={{
+          paddingRight: 15,
+        }}
+      >
+        {text}
+      </p>
       <button type="button" className="btn btn-tool" onClick={onDismiss}>
         <i className="right fa fa-times"></i>
       </button>
