@@ -150,3 +150,7 @@ img.teacher-avatar {
   content: "";
   background-color: rgba(0,0,0,0);
 }
+
+h1.merriweather {
+  color: #0c1460;
+}

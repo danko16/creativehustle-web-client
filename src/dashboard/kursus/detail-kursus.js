@@ -25,8 +25,14 @@ function DetailKursus({ contents, kursus, rekomendasi, reqContents, done, loadin
   const [nextId, setNextId] = useState();
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     if (kursus.length && rekomendasi) {
-      reqContents({ course_id: parseInt(kursusId) });
+      setTimeout(() => {
+        reqContents({ course_id: parseInt(kursusId) });
+      }, 1000);
     }
   }, [reqContents, rekomendasi, kursus, kursusId]);
 

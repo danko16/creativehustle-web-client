@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { useParams, Link } from 'react-router-dom';
+import Title from '../shared/title';
 import PropTypes from 'prop-types';
 import { kursusActions } from '../redux/reducers/kursus';
 import { kursusSayaAction } from '../redux/reducers/kursus-saya';
@@ -41,7 +42,9 @@ function DetailKursus({ kursus, reqContents, setData, sections, contents, subscr
 
   useEffect(() => {
     if (kursus.length) {
-      reqContents({ course_id: parseInt(kursusId) });
+      setTimeout(() => {
+        reqContents({ course_id: parseInt(kursusId) });
+      }, 1000);
     }
   }, [reqContents, kursus, kursusId, setData]);
 
@@ -117,6 +120,7 @@ function DetailKursus({ kursus, reqContents, setData, sections, contents, subscr
 
   return detailKursus && detailContent ? (
     <div className="detail-kursus">
+      <Title title={detailKursus.title} />
       <div className="title">
         <h1>
           <strong>{detailKursus.title}</strong>

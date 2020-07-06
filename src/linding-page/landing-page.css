@@ -3,6 +3,32 @@
   transition: 0.2s ease;
 }
 
+.lp-landing {
+  padding: 4rem 0;
+  background-size: contain;
+  background-image: url(/assets/img/bg-gradient-right-1024x763-1.png) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.lp-landing .lp-title {
+  background-image: url(/assets/img/ezgif-1-9ac9b56b38bf.png);
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.lp-landing .lp-title-left {
+  background-image: url(/assets/img/ezgif-1-9ac9b56b38bf.png);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.lp-2-row {
+  padding: 3rem 0;
+}
+
 .course-card.card {
   border-radius: 0px;
   transition: 0.2s ease;
@@ -174,7 +200,7 @@ section.footer .sitemap a {
 .find-course.btn:hover,
 .find-class.btn:hover {
   background-color: #151363 !important;
-  background-image: initial !important;  
+  background-image: initial !important;
   color: #fff;
   padding: 8px 24px;
 }
@@ -199,7 +225,7 @@ button.to-learn-path {
   position: relative;
   outline: none;
   border: none;
-  background: #fff;
+  background: inherit;
   font-size: 14px;
   color: #2667ff;
   padding: 0;
@@ -250,5 +276,23 @@ ul.benefit-list li p {
 
   .student-assign {
     padding-top: 40px;
+  }
+
+  .lp-2-row {
+    flex-direction: column-reverse;
+  }
+
+  .lp-landing .lp-title-left {
+    background-size: cover;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  .intro.btn-wrapper {
+    flex-direction: column;
+  }
+
+  .intro.btn-wrapper > div {
+    margin-bottom: 20px;
   }
 }

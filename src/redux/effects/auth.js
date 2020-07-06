@@ -1,4 +1,4 @@
-import { call, put, take, takeLatest, race, cancel, all, fork } from 'redux-saga/effects';
+import { call, select, put, take, takeLatest, race, cancel, all, fork } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import { getErrorMessage } from '../../utils/api';
 import authApi from '../api/auth';
@@ -89,6 +89,13 @@ function* updatePassword({ value }) {
 
 function* forgotPassword({ value }) {
   try {
+    const {
+      auth: { forgot_password },
+    } = yield select();
+    if (forgot_password >= 2) {
+      yield put(authActions.error('anda sudah request reset password silahkan check email anda'));
+      return;
+    }
     const {
       data: { message },
     } = yield call(authApi.forgotPassword, value);

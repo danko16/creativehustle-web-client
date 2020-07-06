@@ -95,6 +95,7 @@ const initialState = {
   message: '',
   is_error: false,
   loading: false,
+  forgot_password: 0,
 };
 
 const reducer = (state = initialState, { type, field, value }) => {
@@ -131,6 +132,13 @@ const reducer = (state = initialState, { type, field, value }) => {
         loading: false,
       };
     case AUTH_ACTIONS.FORGOT_PASSWORD:
+      return {
+        ...state,
+        message: value,
+        forgot_password: state.forgot_password + 1,
+        is_error: false,
+        loading: false,
+      };
     case AUTH_ACTIONS.RESET_PASSWORD:
     case AUTH_ACTIONS.PASSWORD:
       return {

@@ -18,6 +18,7 @@ import Dashboard from './dashboard';
 import Kursus from './kursus';
 import Journey from './journey';
 import DetailKursus from './detail-kursus';
+import Title from './shared/title';
 import ForgotPassword from './auth/forgotPassword';
 import ResetPassword from './auth/resetPassword';
 import GoogleAuth from './auth/googleAuth';
@@ -81,8 +82,12 @@ function App({ authFlow }) {
       <ConnectedRouter history={history}>
         <div className="App">
           <Switch>
-            <Route exact path="/" component={LandingPage} />
+            <Route exact path="/">
+              <Title />
+              <LandingPage />
+            </Route>
             <Route exact path="/kursus">
+              <Title title="Kursus" />
               <Kursus />
             </Route>
             <Route path="/kursus/:kursusId">
@@ -91,23 +96,28 @@ function App({ authFlow }) {
               <Footer />
             </Route>
             <Route path="/kelas">
+              <Title title="Kelas" />
               <Kelas />
             </Route>
             <Route path="/journey">
+              <Title title="Cara Belajar" />
               <Journey />
             </Route>
             <Route exact path="/forgot-password">
+              <Title title="Lupa Password" />
               <Header />
               <ForgotPassword />
               <Footer />
             </Route>
             <Route exact path="/reset-password">
+              <Title title="Reset Password" />
               <Header />
               <ResetPassword />
               <Footer />
             </Route>
             <Route exact path="/google-auth" component={GoogleAuth} />
             <PrivateRoute path="/dashboard">
+              <Title title="Dashboard" />
               <Dashboard />
             </PrivateRoute>
             <Route component={NoMatch} />

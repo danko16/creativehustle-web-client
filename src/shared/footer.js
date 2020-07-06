@@ -90,10 +90,10 @@ function Footer() {
           </div>
         </div>
         <div className="row justify-content-center align-items-center mt-5 pt-4">
-          <div className="col-auto text-gray-500 font-weight-light">
+          <div className="text-center text-gray-500 font-weight-light">
             © 2019 - 2020 Creative Hustle • All rights reserved • Love from Klaten
           </div>
-          <div className="col-auto">
+          <div className="text-center ml-2">
             <img src="/assets/logo/monas.svg" height="50" className="ic_monas" alt="ills monas" />
           </div>
         </div>

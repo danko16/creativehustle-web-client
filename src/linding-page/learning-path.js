@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function LearningPath() {
   return (
-    <div className="border-top py-5">
+    <div className="border-top lp-landing">
       <div className="container">
         <div className="row">
           <div
@@ -14,7 +14,7 @@ function LearningPath() {
             }}
           >
             <img
-              src="/assets/img/642-3-scaled.jpg"
+              src="/assets/img/ezgif-6-61036b878dfe.png"
               alt="642-scaled"
               style={{
                 width: '100%',
@@ -22,13 +22,14 @@ function LearningPath() {
               }}
             />
           </div>
-          <div className="col-lg-6">
+          <div className="col-lg-6 lp-title">
             <h2 className="mb-4">
               <strong>Dengan kemudahan Belajar</strong>
             </h2>
             <p className="mb-4">
               Creative Hustle tidak hanya membuat kursus tetapi juga menghadirkan Kelas Online
-              bersama para mentor untuk memberikan pengalaman penyajian langsung untuk para Huslter.
+              bersama para mentor untuk <br /> memberikan pengalaman penyajian langsung untuk para
+              Huslter.
             </p>
             <button className="to-learn-path">
               <Link to="/journey" className="stretched-link">
@@ -39,7 +40,7 @@ function LearningPath() {
             </button>
           </div>
         </div>
-        <div className="row mt-5">
+        <div className="row lp-2-row lp-title-left">
           <div
             className="col-lg-6"
             style={{
@@ -66,6 +67,7 @@ function LearningPath() {
             className="col-lg-6"
             style={{
               padding: '0 60px',
+              marginBottom: 30,
             }}
           >
             <img
