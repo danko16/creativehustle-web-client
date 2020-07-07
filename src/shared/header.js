@@ -46,7 +46,8 @@ function Header({ style, user, logout, loading, history }) {
 
   function renderDropdown() {
     return (
-      !loading && (
+      !loading &&
+      user && (
         <div className="header-notifications-dropdown" ref={wrapperRef}>
           <div
             className="user-status"
@@ -103,7 +104,8 @@ function Header({ style, user, logout, loading, history }) {
 
   function userMode() {
     return (
-      !loading && (
+      !loading &&
+      user && (
         <li
           className={ClassNames('nav-item header-notifications user-menu', {
             active: showDropdown,

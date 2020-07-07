@@ -45,7 +45,6 @@ function ResetPassword({ history, message, loading, is_error, clearMsg, reqReset
   useEffect(() => {
     const query = history.location.search;
     const parseQuery = QS.parse(query);
-    console.log(query);
     if (!query || !parseQuery.token || !parseQuery.email || !parseQuery.type) {
       history.push('/');
     } else {

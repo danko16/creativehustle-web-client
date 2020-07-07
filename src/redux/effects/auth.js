@@ -1,4 +1,4 @@
-import { call, select, put, take, takeLatest, race, cancel, all, fork } from 'redux-saga/effects';
+import { call, select, put, take, takeLatest, cancel, all, fork } from 'redux-saga/effects';
 import { push } from 'connected-react-router';
 import { getErrorMessage } from '../../utils/api';
 import authApi from '../api/auth';
@@ -10,7 +10,6 @@ import kursusSaga from './kursus';
 function* register({ value }) {
   try {
     const { data: response } = yield call(authApi.register, value);
-
     const { data } = response;
     if (data) {
       const registerPayload = Object.freeze({
@@ -24,7 +23,7 @@ function* register({ value }) {
       yield put(push('/dashboard'));
     }
   } catch (e) {
-    yield put(authActions.error(getErrorMessage(e)));
+    yield put(authActions.authError(getErrorMessage(e)));
   }
 }
 
@@ -45,7 +44,7 @@ function* login({ value }) {
       yield put(push('/dashboard'));
     }
   } catch (e) {
-    yield put(authActions.error(getErrorMessage(e)));
+    yield put(authActions.authError(getErrorMessage(e)));
   }
 }
 
@@ -92,7 +91,7 @@ function* forgotPassword({ value }) {
     const {
       auth: { forgot_password },
     } = yield select();
-    if (forgot_password >= 2) {
+    if (forgot_password >= 1) {
       yield put(authActions.error('anda sudah request reset password silahkan check email anda'));
       return;
     }
@@ -110,10 +109,19 @@ function* forgotPassword({ value }) {
 function* resetPassword({ value }) {
   try {
     const {
-      data: { message },
+      data: { message, data },
     } = yield call(authApi.resetPassword, value);
-    if (message) {
+    if (data) {
       yield put(authActions.resetPassword(message));
+      yield put(
+        authActions.login({
+          user: data.user,
+          token: data.token,
+          type: data.type,
+          auth_msg: '',
+        })
+      );
+      yield put(push('/dashboard'));
     }
   } catch (e) {
     yield put(authActions.error(getErrorMessage(e)));
@@ -133,6 +141,8 @@ function* isAllow() {
 function* unAuthorizedTsk() {
   try {
     yield all([
+      takeLatest(AUTH_ACTIONS.REQ_LOGIN, login),
+      takeLatest(AUTH_ACTIONS.REQ_REGISTER, register),
       takeLatest(AUTH_ACTIONS.REQ_FORGOT_PASSWORD, forgotPassword),
       takeLatest(AUTH_ACTIONS.REQ_RESET_PASSWORD, resetPassword),
     ]);
@@ -159,10 +169,6 @@ function* authFlow() {
     const isAuthorized = yield call(isAllow);
     if (!isAuthorized) {
       console.log('wait for loggin');
-      yield race([
-        takeLatest(AUTH_ACTIONS.REQ_LOGIN, login),
-        takeLatest(AUTH_ACTIONS.REQ_REGISTER, register),
-      ]);
       yield take([AUTH_ACTIONS.LOGIN, AUTH_ACTIONS.REGISTER]);
     }
 

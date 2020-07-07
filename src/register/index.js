@@ -13,7 +13,7 @@ const mapStateToProps = (state) => ({
 
 const mapActionToProps = (dispatch) =>
   bindActionCreators(
-    { register: authActions.reqRegister, clearMsg: authActions.clearError },
+    { register: authActions.reqRegister, clearMsg: authActions.clearAuthMsg },
     dispatch
   );
 
@@ -41,9 +41,9 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
       });
     }
 
-    if (auth.message && !auth.loading) {
+    if (auth.auth_msg && !auth.loading) {
       setNotification({
-        text: auth.message,
+        text: auth.auth_msg,
         isError: auth.is_error,
       });
 

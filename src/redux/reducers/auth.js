@@ -15,7 +15,9 @@ export const AUTH_ACTIONS = Object.freeze({
   RESET_PASSWORD: 'myapp/auth/reset-password',
   LOGOUT: 'myapp/auth/logout',
   ERROR: 'myapp/auth/error',
+  AUTH_ERROR: 'myapp/auth/auth-error',
   CLEAR_ERROR: 'myapp/auth/clear-error',
+  CLEAR_AUTH_MSG: 'myapp/auth/clear-auth-msg',
 });
 
 export const authActions = Object.freeze({
@@ -82,8 +84,15 @@ export const authActions = Object.freeze({
     type: AUTH_ACTIONS.ERROR,
     value,
   }),
+  authError: (value) => ({
+    type: AUTH_ACTIONS.AUTH_ERROR,
+    value,
+  }),
   clearError: () => ({
     type: AUTH_ACTIONS.CLEAR_ERROR,
+  }),
+  clearAuthMsg: () => ({
+    type: AUTH_ACTIONS.CLEAR_AUTH_MSG,
   }),
 });
 
@@ -93,6 +102,7 @@ const initialState = {
   token: null,
   type: '',
   message: '',
+  auth_msg: '',
   is_error: false,
   loading: false,
   forgot_password: 0,
@@ -127,7 +137,7 @@ const reducer = (state = initialState, { type, field, value }) => {
         user: value.user,
         token: value.token,
         type: value.type,
-        message: value.message,
+        auth_msg: value.message,
         is_error: false,
         loading: false,
       };
@@ -168,6 +178,19 @@ const reducer = (state = initialState, { type, field, value }) => {
         message: '',
         is_error: false,
       };
+    case AUTH_ACTIONS.AUTH_ERROR:
+      return {
+        ...state,
+        auth_msg: value,
+        is_error: true,
+        loading: false,
+      };
+    case AUTH_ACTIONS.CLEAR_AUTH_MSG:
+      return {
+        ...state,
+        auth_msg: '',
+        is_error: false,
+      };
     case AUTH_ACTIONS.LOGOUT:
       return {
         ...state,
@@ -176,8 +199,10 @@ const reducer = (state = initialState, { type, field, value }) => {
         token: null,
         type: '',
         message: '',
+        auth_msg: '',
         is_error: false,
         loading: false,
+        forgot_password: 0,
       };
     default:
       return state;

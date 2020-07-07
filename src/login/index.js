@@ -13,7 +13,7 @@ const mapStateToPops = (state) => ({
 });
 
 const mapActionToProps = (dispatch) =>
-  bindActionCreators({ login: authActions.reqLogin, clearMsg: authActions.clearError }, dispatch);
+  bindActionCreators({ login: authActions.reqLogin, clearMsg: authActions.clearAuthMsg }, dispatch);
 
 function Login({ setDisplayModal, auth, clearMsg, login }) {
   const [email, setEmail] = useState('');
@@ -36,9 +36,9 @@ function Login({ setDisplayModal, auth, clearMsg, login }) {
       });
     }
 
-    if (auth.message && !auth.loading) {
+    if (auth.auth_msg && !auth.loading) {
       setNotification({
-        text: auth.message,
+        text: auth.auth_msg,
         isError: auth.is_error,
       });
       clearMsg();
