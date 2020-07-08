@@ -6,6 +6,7 @@ import authApi from '../api/auth';
 import { AUTH_ACTIONS, authActions } from '../reducers/auth';
 import kursusSayaSaga from './kursus-saya';
 import kursusSaga from './kursus';
+import kelasSaga from './kelas';
 
 function* register({ value }) {
   try {
@@ -165,6 +166,7 @@ function* authorizedTsk() {
 function* authFlow() {
   while (true) {
     yield fork(kursusSaga);
+    yield fork(kelasSaga);
     yield fork(unAuthorizedTsk);
     const isAuthorized = yield call(isAllow);
     if (!isAuthorized) {

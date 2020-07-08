@@ -1,132 +1,34 @@
 import React, { useState } from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import ClassNames from 'classnames';
 
-const classList = [
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-  {
-    title: 'UX Brainstorming',
-    author: 'Reezky Pradata',
-    thumbnail: '/assets/img/default-img.svg',
-    price: 2000000,
-    promoPirce: 245000,
-    rating: 4,
-    ratingVoter: 32.123,
-  },
-];
+const mapStateToProps = (state) => ({
+  kelas: state.kelas.kelas,
+  loading: state.kelas.loading,
+});
 
-function ClassList() {
+function ClassList({ kelas }) {
   const [activePage, setActivePage] = useState({
-    totalPage: Math.ceil(classList.length / 9),
+    totalPage: Math.ceil(kelas.length / 9),
     page: 1,
     from: 0,
     to: 9,
   });
+
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  }
+
   function renderClass() {
-    return classList.map((val, index) => {
+    return kelas.map((val, index) => {
       return (
         <div
           className={ClassNames('col-md-6 col-lg-4 mb-4 d-none', {
             'd-block': index >= activePage.from && index < activePage.to,
           })}
-          key={index}
+          key={val.id}
         >
           <div
             className="course-card card"
@@ -134,14 +36,14 @@ function ClassList() {
               border: 0,
             }}
           >
-            <a href="/kelas" className="stretched-link">
+            <Link to={`/kelas/${val.id}`} className="stretched-link">
               <span className="sr-only">title for screen</span>
-            </a>
+            </Link>
             <div className="tanggal-kelas">Jun 29th - Jul 27th, 2020</div>
             <img
               src={val.thumbnail}
               alt="thumbnail kelas"
-              className="img img__cover"
+              className="img img__cover_kelas"
               style={{
                 paddingTop: 40,
               }}
@@ -154,13 +56,15 @@ function ClassList() {
                   src="/assets/img/default-avatar.png"
                   alt="default"
                 />
-                {val.author}
+                {val.teacher_name}
               </p>
               <hr />
               <div className="row align-items-center no-gutters">
                 <div className="col-auto d-flex justify-items-center">
-                  <span style={{ textDecoration: 'line-through' }}>Rp. 2.000.000</span>
-                  <h6 className="ml-2 line-height-1">Rp. 245.000</h6>
+                  <span style={{ textDecoration: 'line-through' }}>
+                    Rp {formatNumber(val.price)}
+                  </span>
+                  <h6 className="ml-2 line-height-1">Rp {formatNumber(val.promo_price)}</h6>
                 </div>
               </div>
             </div>
@@ -172,7 +76,7 @@ function ClassList() {
 
   function renderPagination() {
     let paginations = [];
-    const pgLength = Math.ceil(classList.length / 9);
+    const pgLength = Math.ceil(kelas.length / 9);
     for (let i = 0; i < pgLength; i++) {
       const pg = (
         <li
@@ -248,4 +152,9 @@ function ClassList() {
   );
 }
 
-export default ClassList;
+ClassList.propTypes = {
+  kelas: PropTypes.array,
+  loading: PropTypes.bool,
+};
+
+export default connect(mapStateToProps)(ClassList);

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import Title from '../shared/title';
 import './detail-kelas.css';
 
 function DetailKelas() {
@@ -9,6 +10,7 @@ function DetailKelas() {
 
   return (
     <div className="detail-kelas">
+      <Title />
       <div className="container">
         <div className="row dk-thumbnail-wrapper">
           <div className="col-lg-6">
