@@ -13,6 +13,7 @@ import './header.css';
 const mapStateToProps = (state) => ({
   user: state.auth.user,
   loading: state.auth.loading,
+  modal: state.header,
 });
 
 const mapActionToProps = (dispatch) => bindActionCreators({ logout: authActions.logout }, dispatch);
@@ -34,7 +35,7 @@ function useOutsideAlerter(ref, setShowDropdown) {
   }, [ref, setShowDropdown]);
 }
 
-function Header({ style, user, logout, loading, history }) {
+function Header({ style, user, logout, modal, loading, history }) {
   const [displayModal, setDisplayModal] = useState({
     show: false,
     mode: null,
@@ -43,6 +44,10 @@ function Header({ style, user, logout, loading, history }) {
   const wrapperRef = useRef(null);
 
   useOutsideAlerter(wrapperRef, setShowDropdown);
+
+  useEffect(() => {
+    setDisplayModal(modal);
+  }, [modal]);
 
   function renderDropdown() {
     return (
@@ -250,6 +255,7 @@ Header.propTypes = {
   user: PropTypes.object,
   history: PropTypes.object,
   loading: PropTypes.bool,
+  modal: PropTypes.object,
   logout: PropTypes.func,
 };
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { month } from '../utils/date';
 import ClassNames from 'classnames';
 
 const mapStateToProps = (state) => ({
@@ -19,6 +20,11 @@ function ClassList({ kelas }) {
 
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  }
+
+  function convertDate(stringDate, withYear = false) {
+    let date = stringDate.split('-');
+    return withYear ? `${date[0]} ${month[date[1]]}, ${date[2]}` : `${date[0]} ${month[date[1]]}`;
   }
 
   function renderClass() {
@@ -39,7 +45,9 @@ function ClassList({ kelas }) {
             <Link to={`/kelas/${val.id}`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
-            <div className="tanggal-kelas">Jun 29th - Jul 27th, 2020</div>
+            <div className="tanggal-kelas">
+              {convertDate(val.start_date.date)} - {convertDate(val.end_date.date, true)}
+            </div>
             <img
               src={val.thumbnail}
               alt="thumbnail kelas"

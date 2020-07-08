@@ -205,12 +205,14 @@ function YtPlayer({ detailContent }) {
       <div
         onDoubleClick={handleFullScreen}
         onClick={() => {
-          if (isPlaying) {
-            player.current.pauseVideo();
-            setIsPlaying(false);
-          } else {
-            player.current.playVideo();
-            setIsPlaying(true);
+          if (player.current) {
+            if (isPlaying) {
+              player.current.pauseVideo();
+              setIsPlaying(false);
+            } else {
+              player.current.playVideo();
+              setIsPlaying(true);
+            }
           }
         }}
       >
@@ -226,12 +228,14 @@ function YtPlayer({ detailContent }) {
       <div className="player-control">
         <i
           onClick={() => {
-            if (isPlaying) {
-              player.current.pauseVideo();
-              setIsPlaying(false);
-            } else {
-              player.current.playVideo();
-              setIsPlaying(true);
+            if (player.current) {
+              if (isPlaying) {
+                player.current.pauseVideo();
+                setIsPlaying(false);
+              } else {
+                player.current.playVideo();
+                setIsPlaying(true);
+              }
             }
           }}
           className={`fa fa-${isPlaying ? 'pause' : 'play'}-circle`}

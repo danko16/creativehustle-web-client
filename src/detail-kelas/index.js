@@ -78,7 +78,7 @@ function DetailKelas({ kelas, loading }) {
         <div className="row dk-thumbnail-wrapper">
           <div className="col-lg-6">
             <img
-              src="/assets/img/kelas full stack web javascript developer buildwith angga.png"
+              src={kelasDetail.thumbnail}
               alt="test"
               style={{
                 maxWidth: '100%',
@@ -86,7 +86,7 @@ function DetailKelas({ kelas, loading }) {
               }}
             />
           </div>
-          <div className="col-lg-6 p-0">
+          <div className="col-lg-6 et_pb_text_wrapper p-0">
             <div className="et_pb_text_inner">
               <h4>
                 {convertDate(kelasDetail.start_date.date)} -{' '}

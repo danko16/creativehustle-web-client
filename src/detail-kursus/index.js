@@ -6,6 +6,7 @@ import Title from '../shared/title';
 import PropTypes from 'prop-types';
 import { kursusActions } from '../redux/reducers/kursus';
 import { kursusSayaAction } from '../redux/reducers/kursus-saya';
+import { headerActions } from '../redux/reducers/header';
 import { isAuthenticated } from '../utils/auth';
 import Loading from '../shared/loading';
 import YtPlayer from '../yt-player';
@@ -24,11 +25,21 @@ const mapActionToProps = (dispatch) =>
       setData: kursusActions.setData,
       reqContents: kursusActions.reqContents,
       subscribe: kursusSayaAction.subscribe,
+      showModal: headerActions.showModal,
     },
     dispatch
   );
 
-function DetailKursus({ kursus, reqContents, setData, sections, contents, subscribe, loading }) {
+function DetailKursus({
+  kursus,
+  reqContents,
+  setData,
+  sections,
+  showModal,
+  contents,
+  subscribe,
+  loading,
+}) {
   const { kursusId } = useParams();
   const [detailKursus, setDetailKursus] = useState(null);
   const [detailContent, setDetailContent] = useState(null);
@@ -51,8 +62,12 @@ function DetailKursus({ kursus, reqContents, setData, sections, contents, subscr
   useEffect(() => {
     return () => {
       setData('contents', []);
+      showModal({
+        show: false,
+        type: null,
+      });
     };
-  }, [setData]);
+  }, [setData, showModal]);
 
   useEffect(() => {
     if (!loading && kursus.length) {
@@ -81,7 +96,10 @@ function DetailKursus({ kursus, reqContents, setData, sections, contents, subscr
         kursus_id: detailKursus.id,
       });
     } else {
-      alert('silahkan login untuk mengikuti kursus');
+      showModal({
+        show: true,
+        type: 'login',
+      });
     }
   }
 
@@ -220,6 +238,7 @@ DetailKursus.propTypes = {
   subscribe: PropTypes.func,
   reqContents: PropTypes.func,
   setData: PropTypes.func,
+  showModal: PropTypes.func,
   loading: PropTypes.bool,
 };
 
