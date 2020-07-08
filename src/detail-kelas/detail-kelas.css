@@ -1,0 +1,78 @@
+.detail-kelas .dk-thumbnail-wrapper {
+  padding: 4rem 0;
+  border-bottom: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #0c71c3;
+}
+
+.detail-kelas .dk-thumbnail-wrapper .et_pb_text_inner {
+  text-align: center;
+  margin-bottom: 2.25rem;
+}
+
+.detail-kelas h4 {
+  font-size: 18px;
+}
+
+.detail-kelas .btn-wrp {
+  margin-left: auto;
+  margin-right: auto;
+  width: fit-content;
+}
+
+.detail-kelas button.subscribe-kelas {
+  display: flex;
+  position: relative;
+  transition: all 300ms ease 0ms;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  align-items: center;
+  padding: 0.3em 1em;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.7em !important;
+  transition: 0.2s;
+  color: #ffffff;
+  background-color: #3874ff;
+  margin-top: 24px;
+}
+
+.detail-kelas button.subscribe-kelas:hover {
+  margin-left: -8px;
+}
+
+.detail-kelas button.subscribe-kelas i.fa-angle-right {
+  transition: all 300ms ease 0ms;
+  font-size: 30px;
+  margin-left: -8px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.detail-kelas button.subscribe-kelas:hover i.fa-angle-right {
+  visibility: visible;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+.detail-kelas .dk-content-wrapper {
+  padding: 54px 0;
+}
+
+.detail-kelas .dk-content-wrapper .col-lg-8 > *,
+.detail-kelas .dk-content-wrapper .col-lg-4 > * {
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.detail-kelas .dk-content-wrapper .col-lg-8 ul {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.75;
+}
+
+.detail-kelas .dk-content-wrapper .col-lg-4 ul {
+  padding-left: 15px;
+  line-height: 1.75;
+}

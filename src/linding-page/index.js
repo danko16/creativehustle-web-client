@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../shared/header';
 import Footer from '../shared/footer';
@@ -9,6 +9,9 @@ import LearningPath from './learning-path';
 import './landing-page.css';
 
 function LandingPage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="landing-page">
       <Header />

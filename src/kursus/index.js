@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../shared/header';
 import Footer from '../shared/footer';
@@ -6,6 +6,9 @@ import KursusList from './kursus-list';
 import './kursus.css';
 
 function Talent() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div className="kursus">
       <Header />

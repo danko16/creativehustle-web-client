@@ -182,7 +182,7 @@ function DetailKursus({ kursus, reqContents, setData, sections, contents, subscr
                 ))}
               </ul>
               <button onClick={handleSubscribe} className="subscribe-Kursus">
-                <span>Ikuti Kursus</span>
+                <span>Daftar Kursus</span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </button>
             </div>

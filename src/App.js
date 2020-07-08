@@ -18,6 +18,7 @@ import Dashboard from './dashboard';
 import Kursus from './kursus';
 import Journey from './journey';
 import DetailKursus from './detail-kursus';
+import DetailKelas from './detail-kelas';
 import Title from './shared/title';
 import ForgotPassword from './auth/forgotPassword';
 import ResetPassword from './auth/resetPassword';
@@ -95,9 +96,14 @@ function App({ authFlow }) {
               <DetailKursus />
               <Footer />
             </Route>
-            <Route path="/kelas">
+            <Route exact path="/kelas">
               <Title title="Kelas" />
               <Kelas />
+            </Route>
+            <Route path="/kelas/:kelasId">
+              <Header />
+              <DetailKelas />
+              <Footer />
             </Route>
             <Route path="/journey">
               <Title title="Cara Belajar" />
