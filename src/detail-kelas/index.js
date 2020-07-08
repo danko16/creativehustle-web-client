@@ -1,14 +1,77 @@
-import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import Loading from '../shared/loading';
+import { month } from '../utils/date';
 import Title from '../shared/title';
 import './detail-kelas.css';
 
-function DetailKelas() {
+const mapStateToProps = (state) => ({
+  kelas: state.kelas.kelas,
+  loading: state.kelas.loading,
+});
+
+function DetailKelas({ kelas, loading }) {
+  const [kelasDetail, setKelasDetail] = useState(null);
+  const { kelasId } = useParams();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  return (
+  useEffect(() => {
+    if (!loading && kelas.length) {
+      kelas.forEach((val) => {
+        if (val.id === parseInt(kelasId)) {
+          setTimeout(() => {
+            setKelasDetail(val);
+          }, 1000);
+        }
+      });
+    }
+  }, [kelas, kelasId, loading]);
+
+  function convertDate(stringDate) {
+    let date = stringDate.split('-');
+    return `${date[0]} ${month[date[1]]} ${date[2]}`;
+  }
+
+  function renderSections(sections) {
+    return sections.map((val, index) => (
+      <li key={index}>
+        {index + 1}. {val}
+      </li>
+    ));
+  }
+
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  }
+
+  function calcDuration() {
+    const startTime = kelasDetail.start_date.started_time.split(':');
+    const endTime = kelasDetail.start_date.ended_time.split(':');
+    const startHour = parseInt(startTime[0]) * 60;
+    const endHour = parseInt(endTime[0]) * 60;
+    let startMinutes = startTime[1];
+    let endMinutes = endTime[1];
+
+    if (startMinutes[0] === '0') {
+      startMinutes = parseInt(startMinutes[1]);
+    } else {
+      startMinutes = parseInt(startMinutes);
+    }
+
+    if (endMinutes[0] === '0') {
+      endMinutes = parseInt(endMinutes[1]);
+    } else {
+      endMinutes = parseInt(endMinutes);
+    }
+
+    return endHour + endMinutes - (startHour + startMinutes);
+  }
+
+  return kelasDetail ? (
     <div className="detail-kelas">
       <Title />
       <div className="container">
@@ -25,9 +88,12 @@ function DetailKelas() {
           </div>
           <div className="col-lg-6 p-0">
             <div className="et_pb_text_inner">
-              <h4>Beginner Class: Microstock – 26 Juni 2020</h4>
+              <h4>
+                {convertDate(kelasDetail.start_date.date)} -{' '}
+                {convertDate(kelasDetail.end_date.date)}
+              </h4>
               <h1>
-                <strong>Cara Memulai Berjualan Shutterstock hingga menghasilkan Dollar</strong>
+                <strong>{kelasDetail.title}</strong>
               </h1>
             </div>
             <div className="btn-wrp">
@@ -49,21 +115,11 @@ function DetailKelas() {
             <h3>
               <strong>Tentang Kelas</strong>
             </h3>
-            <p>
-              Your content goes here. Edit or remove this text inline or in the module Content
-              settings. You can also style every aspect of this content in the module Design
-              settings and even apply custom CSS to this text in the module Advanced settings.
-            </p>
+            <p>{kelasDetail.desc}</p>
             <h3>
               <strong>Yang Akan Dipelajari</strong>
             </h3>
-            <ul>
-              <li>1. Konsep asuransi jiwa</li>
-              <li>2. Berkenalan dengan berbagai pilihan asuransi jiwa</li>
-              <li>3. Cara membaca polis asuransi jiwa</li>
-              <li>4. Tools untuk memilih asuransi jiwa yang sesuai kebutuhan keluarga</li>
-              <li>5. Tools untuk menghitung kebutuhan Uang Pertanggungan</li>
-            </ul>
+            <ul>{renderSections(kelasDetail.sections)}</ul>
             <h3>
               <strong>Mentor Kelas</strong>
             </h3>
@@ -101,16 +157,21 @@ function DetailKelas() {
               <strong>Investasi Mengikuti Kelas</strong>
             </h3>
             <div>
-              <h3>RP. 100.000/orang</h3>
+              <h3>Rp. {formatNumber(kelasDetail.price)}/orang</h3>
               <p className="akses font-weight-light">sekali bayar untuk selamanya</p>
             </div>
             <h3>
               <strong>Jadwal dan Durasi</strong>
             </h3>
             <ul>
-              <li>Tanggal : 20 Juni 2020</li>
-              <li>Pukul : 20.00 – 21.00</li>
-              <li>Durasi : 60 Menit</li>
+              <li>
+                Tanggal : {convertDate(kelasDetail.start_date.date)} -{' '}
+                {convertDate(kelasDetail.end_date.date)}
+              </li>
+              <li>
+                Pukul : {kelasDetail.start_date.started_time} - {kelasDetail.start_date.ended_time}{' '}
+              </li>
+              <li>Durasi : {calcDuration()} Menit</li>
             </ul>
           </div>
         </div>
@@ -133,7 +194,14 @@ function DetailKelas() {
         </button>
       </div>
     </div>
+  ) : (
+    <Loading />
   );
 }
 
-export default DetailKelas;
+DetailKelas.propTypes = {
+  kelas: PropTypes.array,
+  loading: PropTypes.bool,
+};
+
+export default connect(mapStateToProps)(DetailKelas);
