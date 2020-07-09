@@ -20,7 +20,7 @@ function Kelas({ kelas, loading }) {
       return (
         <div className="col-sm-6 col-lg-4 col-xxl-3 mb-4" key={val.id}>
           <Link
-            to={`/kelas/${val.id}`}
+            to={`/dashboard/kelas/${val.id}/1`}
             className="kursus-card card"
             style={{
               borderRadius: 8,

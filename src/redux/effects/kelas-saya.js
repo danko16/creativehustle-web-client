@@ -17,6 +17,19 @@ function* kelas() {
   }
 }
 
+function* schedules({ value }) {
+  try {
+    const {
+      data: { data },
+    } = yield call(kelasSayaApi.jadwal, value);
+    if (data) {
+      yield put(kelasSayaActions.schedules(data));
+    }
+  } catch (error) {
+    yield put(kelasSayaActions.error(getErrorMessage(error)));
+  }
+}
+
 function* subscribe({ value }) {
   try {
     const { data } = yield call(kelasSayaApi.subscribe, value);
@@ -33,7 +46,10 @@ function* subscribe({ value }) {
 function* kelasSayaSaga() {
   try {
     yield call(kelas);
-    yield all([takeLatest(KELAS_SAYA_ACTIONS.SUBSCRIBE, subscribe)]);
+    yield all([
+      takeLatest(KELAS_SAYA_ACTIONS.SUBSCRIBE, subscribe),
+      takeLatest(KELAS_SAYA_ACTIONS.REQ_SCHEDULES, schedules),
+    ]);
   } catch (error) {
     yield put(kelasSayaActions.error(getErrorMessage(error)));
   }

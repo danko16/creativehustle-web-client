@@ -12,4 +12,5 @@ export default Object.freeze({
       }
     ),
   kelas: () => Api.get('/kelas-saya'),
+  jadwal: ({ class_id }) => Api.get(`/kelas-saya/${class_id}/jadwal`),
 });

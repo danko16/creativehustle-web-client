@@ -76,12 +76,14 @@ a.active-nav {
 }
 
 .dashboard-nav .logo-wrapper img {
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
 }
 
 .dashboard-nav .logo-wrapper h2 {
   margin: 0;
+  font-size: 24px;
+  margin-bottom: 4px;
   color: #ffffff;
 }
 

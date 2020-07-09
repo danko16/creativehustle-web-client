@@ -12,3 +12,8 @@ export const month = Object.freeze({
   '11': 'November',
   '12': 'Desember',
 });
+
+export function convertDate(stringDate) {
+  let date = stringDate.split('-');
+  return `${date[0]} ${month[date[1]]} ${date[2]}`;
+}

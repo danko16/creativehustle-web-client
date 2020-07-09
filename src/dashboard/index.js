@@ -11,6 +11,9 @@ import Profile from './menu/profile';
 import Settings from './menu/settings';
 import DetailSidebar from './kursus/detail-sidebar';
 import DetailKursus from './kursus/detail-kursus';
+import KelasDetail from './kelas/detail-kelas';
+import KelasDetailSidebar from './kelas/detail-sidebar';
+import KelasDetailDashboardSidebar from './kelas/detail-dashboard-sidebar';
 import './dashboard.css';
 
 function Dashboard() {
@@ -36,10 +39,15 @@ function Dashboard() {
           <DetailDashboardSidebar />
           <DetailKursus />
         </Route>
-        <Route path={`${path}/kelas`}>
+        <Route exact path={`${path}/kelas`}>
           <DashboardSidebar />
           <Sidebar />
           <Kelas />
+        </Route>
+        <Route path={`${path}/kelas/:kelasId/:no`}>
+          <KelasDetailSidebar />
+          <KelasDetailDashboardSidebar />
+          <KelasDetail />
         </Route>
         <Route path={`${path}/profil`}>
           <DashboardSidebar />
