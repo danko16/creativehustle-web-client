@@ -23,11 +23,13 @@ function* contents({ value }) {
       data: { data },
     } = yield call(kursusSayaApi.contents, value);
     if (data) {
-      const { sections, contents } = data;
+      const { sections, contents, materi_tambahan, tel_group } = data;
       yield put(
         kursusSayaAction.contents({
           sections,
           contents,
+          materi_tambahan,
+          tel_group,
         })
       );
     }

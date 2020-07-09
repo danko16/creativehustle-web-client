@@ -33,11 +33,24 @@ function DashboardSidebar({ logout }) {
       </div>
       <div className="dashboard-nav">
         <ul
-          data-submenu-title="Menu"
           className={ClassNames('menu-peserta', {
             active: showDropdown,
           })}
         >
+          <li>
+            <Link
+              to="/kursus"
+              className="logo-wrapper"
+              style={{
+                textDecoration: 'none',
+                justifyContent: 'center',
+                paddingBottom: '1.25rem',
+              }}
+            >
+              <img src="/assets/img/creative-hustle-no-cap.png" alt="logo" />
+              <h2>Creative Hustle</h2>
+            </Link>
+          </li>
           <li className="active">
             <NavLink to="/dashboard/progress" activeClassName="active-nav" className="menu-peserta">
               <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Progress Belajar

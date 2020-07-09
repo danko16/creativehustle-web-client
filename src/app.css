@@ -158,5 +158,5 @@ h1.merriweather {
 .img__cover_kelas {
   width: 100%;
   object-fit: cover;
-  height: 250px;
+  height: 100%;
 }

@@ -6,6 +6,7 @@ import kursus from './kursus';
 import kursusSaya from './kursus-saya';
 import kelas from './kelas';
 import header from './header';
+import kelasSaya from './kelas-saya';
 
 const createRootReducer = (history) =>
   combineReducers({
@@ -15,6 +16,7 @@ const createRootReducer = (history) =>
     kursusSaya,
     kelas,
     header,
+    kelasSaya,
   });
 
 export default createRootReducer;

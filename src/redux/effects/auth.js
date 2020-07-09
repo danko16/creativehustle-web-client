@@ -7,6 +7,7 @@ import { AUTH_ACTIONS, authActions } from '../reducers/auth';
 import kursusSayaSaga from './kursus-saya';
 import kursusSaga from './kursus';
 import kelasSaga from './kelas';
+import kelasSayaSaga from './kelas-saya';
 
 function* register({ value }) {
   try {
@@ -176,10 +177,11 @@ function* authFlow() {
 
     const authorizedTask = yield fork(authorizedTsk);
     const kursusSayaTask = yield fork(kursusSayaSaga);
+    const kelasSayaTask = yield fork(kelasSayaSaga);
 
     console.log('wait for logout');
     yield take(AUTH_ACTIONS.LOGOUT);
-    yield cancel([authorizedTask, kursusSayaTask]);
+    yield cancel([authorizedTask, kursusSayaTask, kelasSayaTask]);
   }
 }
 

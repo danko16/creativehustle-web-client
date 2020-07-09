@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { kelasSayaActions } from '../redux/reducers/kelas-saya';
+import { headerActions } from '../redux/reducers/header';
+
 import Loading from '../shared/loading';
 import { month } from '../utils/date';
+import { isAuthenticated } from '../utils/auth';
 import Title from '../shared/title';
 import './detail-kelas.css';
 
@@ -12,12 +17,27 @@ const mapStateToProps = (state) => ({
   loading: state.kelas.loading,
 });
 
-function DetailKelas({ kelas, loading }) {
+const mapActionToProps = (dispatch) =>
+  bindActionCreators(
+    { subscribe: kelasSayaActions.subscribe, showModal: headerActions.showModal },
+    dispatch
+  );
+
+function DetailKelas({ kelas, loading, subscribe, showModal }) {
   const [kelasDetail, setKelasDetail] = useState(null);
   const { kelasId } = useParams();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      showModal({
+        show: false,
+        type: null,
+      });
+    };
+  }, [showModal]);
 
   useEffect(() => {
     if (!loading && kelas.length) {
@@ -71,6 +91,20 @@ function DetailKelas({ kelas, loading }) {
     return endHour + endMinutes - (startHour + startMinutes);
   }
 
+  function handleSubscribe() {
+    const isAuth = isAuthenticated();
+    if (isAuth) {
+      subscribe({
+        class_id: kelasDetail.id,
+      });
+    } else {
+      showModal({
+        show: true,
+        type: 'login',
+      });
+    }
+  }
+
   return kelasDetail ? (
     <div className="detail-kelas">
       <Title />
@@ -97,7 +131,7 @@ function DetailKelas({ kelas, loading }) {
               </h1>
             </div>
             <div className="btn-wrp">
-              <button className="subscribe-kelas">
+              <button onClick={handleSubscribe} className="subscribe-kelas">
                 <span>Daftar Kelas</span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </button>
@@ -202,6 +236,8 @@ function DetailKelas({ kelas, loading }) {
 DetailKelas.propTypes = {
   kelas: PropTypes.array,
   loading: PropTypes.bool,
+  subscribe: PropTypes.func,
+  showModal: PropTypes.func,
 };
 
-export default connect(mapStateToProps)(DetailKelas);
+export default connect(mapStateToProps, mapActionToProps)(DetailKelas);

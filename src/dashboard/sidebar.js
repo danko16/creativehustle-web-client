@@ -18,6 +18,16 @@ function Sidebar({ logout }) {
   return (
     <div className="sidenav">
       <div className="dashboard-nav">
+        <Link
+          to="/kursus"
+          className="logo-wrapper"
+          style={{
+            textDecoration: 'none',
+          }}
+        >
+          <img src="/assets/img/creative-hustle-no-cap.png" alt="logo" />
+          <h2>Creative Hustle</h2>
+        </Link>
         <div className="dashboard-nav-inner">
           <ul data-submenu-title="Menu">
             <li className="active">

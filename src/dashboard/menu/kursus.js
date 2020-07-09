@@ -24,7 +24,7 @@ function Kursus({ kursus, contents, loading }) {
       const kursusId = val.id;
       const contentId = val.first_content;
       return (
-        <div key={val.id} className="col-md-6 col-lg-4 col-xxl-3 mb-4">
+        <div key={val.id} className="col-sm-6 col-lg-4 col-xxl-3 mb-4">
           <Link className="kursus-card card" to={`/dashboard/kursus/${kursusId}/${contentId}`}>
             <img src={`${val.thumbnail}`} alt="default" />
             <div className="kursus-body card-body">
