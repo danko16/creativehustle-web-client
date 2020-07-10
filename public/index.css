@@ -1,0 +1,56 @@
+button.et_pb_button {
+  position: relative;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  border-width: 0px !important;
+  border-radius: 10px;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 0.3em 1em;
+  line-height: 1.7em !important;
+  transition: all 300ms ease 0ms;
+  background-color: #ffffff;
+  color: #2667ff;
+}
+
+button.et_pb_button:hover {
+  color: #ffffff !important;
+  background-image: initial !important;
+  background-color: #151363 !important;
+}
+
+button.et_pb_button i.fa-angle-right {
+  transition: all 300ms ease 0ms;
+  font-size: 30px;
+  margin-left: -12px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+button.et_pb_button:hover i.fa-angle-right {
+  visibility: visible;
+  opacity: 1;
+  margin-left: 12px;
+}
+
+.et_pb_row_2 {
+  display: flex;
+  background-image: url(/assets/img/cta-bg.png);
+  overflow: hidden;
+  height: 10rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem 0;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+span.et_pb_button_2 {
+  border-width: 0px !important;
+  font-size: 17px;
+  font-weight: 700 !important;
+}

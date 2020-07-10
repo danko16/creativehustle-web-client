@@ -24,7 +24,7 @@ function DetailSidebar({ sections, contents, materi_tambahan, loading }) {
       setSectionSaya(sectionSaya);
     }
 
-    if (!loading && materi_tambahan.length) {
+    if (!loading && materi_tambahan && materi_tambahan.length) {
       const materi = materi_tambahan.filter((val) => val.course_id === parseInt(kursusId));
       setMateriTambahan(materi);
     }

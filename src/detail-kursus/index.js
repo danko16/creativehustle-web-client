@@ -53,9 +53,7 @@ function DetailKursus({
 
   useEffect(() => {
     if (kursus.length) {
-      setTimeout(() => {
-        reqContents({ course_id: parseInt(kursusId) });
-      }, 1000);
+      reqContents({ course_id: parseInt(kursusId) });
     }
   }, [reqContents, kursus, kursusId, setData]);
 

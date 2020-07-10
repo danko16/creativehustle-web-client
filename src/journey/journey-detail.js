@@ -31,7 +31,7 @@ function JourneyDetail() {
             <Link to={`/journey`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
-            <span>Daftar Akun</span>
+            <span className="et_pb_button_2">Daftar Akun</span>
             <i className="fa fa-angle-right" aria-hidden="true"></i>
           </button>
         </div>
@@ -52,14 +52,14 @@ function JourneyDetail() {
             <Link to={`/krusus`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
-            <span>Lihat Pilihan Kursus</span>
+            <span className="et_pb_button_2">Lihat Pilihan Kursus</span>
             <i className="fa fa-angle-right" aria-hidden="true"></i>
           </button>
         </div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
-            src="/assets/img/default-img.svg"
-            alt="default"
+            src="/assets/img/ezgif-1-9f67bd320d15.png"
+            alt="ezgif-1-9f67bd320d15"
             style={{
               width: '100%',
               height: '100%',
@@ -70,8 +70,8 @@ function JourneyDetail() {
       <div className="row row_rvrs">
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
-            src="/assets/img/default-img.svg"
-            alt="default"
+            src="/assets/img/ezgif-1-42777db772fd.png"
+            alt="ezgif-1-42777db772fd"
             style={{
               width: '100%',
               height: '100%',
@@ -94,7 +94,7 @@ function JourneyDetail() {
             <Link to={`/journey`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
-            <span>Lihat Pilihan Kursus</span>
+            <span className="et_pb_button_2">Lihat Pilihan Kursus</span>
             <i className="fa fa-angle-right" aria-hidden="true"></i>
           </button>
         </div>
@@ -116,14 +116,14 @@ function JourneyDetail() {
             <Link to={`/journey`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
-            <span>Lihat Pilihan Kursus</span>
+            <span className="et_pb_button_2">Masuk ke Dasboard</span>
             <i className="fa fa-angle-right" aria-hidden="true"></i>
           </button>
         </div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
-            src="/assets/img/default-img.svg"
-            alt="default"
+            src="/assets/img/wczVgW3nQyRqPUCDTI7FIKl8SoDZLPdBVCniIPho-980x735.png"
+            alt="wczVgW3nQyRqPUCDTI7FIKl8SoDZLPdBVCniIPho-980x735"
             style={{
               width: '100%',
               height: '100%',
@@ -151,14 +151,14 @@ function JourneyDetail() {
           </h2>
           <p className="mb-4">
             Setelah selesai kelas banyak pertanyaan dan pemikiran yang ingin disampaikan ke
-            instruktur ? Tenang, Creative Hustle membuat forum khusus agar untuk bertanya langsung
-            pada instruktur kursus dan kelas tersebut.
+            instruktur ? Tenang, Creative Hustle membuat forum telegram untuk setiap alumni kursus
+            dan kelas bersama mentor agar dapat bertanya langsung dengan para mentor.
           </p>
           <button className="to-learn-path">
             <Link to={`/journey`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
-            <span>Lihat Pilihan Kursus</span>
+            <span className="et_pb_button_2">Lihat Pilihan Kursus</span>
             <i className="fa fa-angle-right" aria-hidden="true"></i>
           </button>
         </div>

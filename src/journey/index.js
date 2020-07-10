@@ -26,13 +26,13 @@ function Journey() {
       >
         <div className="text-center py-4">
           <h1>
-            <strong>Cara Belajar di Creative Hustle</strong>
+            <strong>5 Langkah Mulai Belajar di Creative Hustle</strong>
           </h1>
           <p>Kami membuat cara paling mudah untuk teman-teman belajar di Creative Hustle</p>
         </div>
         <div className="container">
           <img
-            src="/assets/img/growmodo-how-it-works-image-02.png"
+            src="/assets/img/How-it-work-1280x255.png"
             alt="growmodo-how-it-works-02"
             style={{
               maxWidth: '100%',

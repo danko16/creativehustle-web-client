@@ -38,9 +38,7 @@ function DetailKelas({
           setTeacherName(el.teacher_name);
         }
       });
-      setTimeout(() => {
-        reqSchedules({ class_id: kelasId });
-      }, 1000);
+      reqSchedules({ class_id: kelasId });
     }
   }, [kelas, kelasId, reqSchedules]);
 

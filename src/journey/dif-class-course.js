@@ -2,7 +2,7 @@ import React from 'react';
 
 function DifClassCourse() {
   return (
-    <div className="et_pb_section container--light-blue">
+    <div className="et_pb_section et_pb_section_7">
       <div className="container">
         <div className="text-center et_pb_row">
           <h2
@@ -26,15 +26,42 @@ function DifClassCourse() {
                 </h3>
               </div>
               <ul>
-                <li>Harga mulai Rp. 150.000</li>
-                <li>Berlangsung secara tidak langsung</li>
-                <li>Konsultasi dengan instruktur</li>
-                <li>Durasi kursus minimal 45 menit</li>
-                <li>Mendapatkan materi tambahan pada kursus</li>
-                <li>Dapat didownload offline</li>
-                <li>Peserta tidak terbatas dalam satu kursus</li>
-                <li>Video berkualitas HD</li>
-                <li>Mendapatkan e-sertifikat kursus</li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Harga mulai Rp. 150.000
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Berlangsung secara tidak langsung
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Konsultasi dengan instruktur
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Durasi kursus minimal 45 menit
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Mendapatkan materi tambahan pada kursus
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Dapat didownload offline
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Peserta tidak terbatas dalam satu kursus
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Video berkualitas HD
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Mendapatkan e-sertifikat kursus
+                </li>
               </ul>
             </div>
           </div>
@@ -46,15 +73,42 @@ function DifClassCourse() {
                 </h3>
               </div>
               <ul>
-                <li>Harga mulai Rp. 100.000</li>
-                <li>Berlangsung secara live</li>
-                <li>Konsultasi langsung dengan instruktur</li>
-                <li>Durasi kelas online selama 1 jam</li>
-                <li>Mendapatkan materi kelas online</li>
-                <li>Rekaman kelas dapat diunduh</li>
-                <li>Peserta maksimal hanya 50 orang dalam kelas online</li>
-                <li>Live video berkualitas HD</li>
-                <li>Mendapatkan e-sertifikat kelas online</li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Harga mulai Rp. 100.000
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Berlangsung secara live
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Konsultasi langsung dengan instruktur
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Durasi kelas online selama 1 jam
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Mendapatkan materi kelas online
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Rekaman kelas dapat diunduh
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Peserta maksimal hanya 50 orang dalam kelas online
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Live video berkualitas HD
+                </li>
+                <li>
+                  <i className="fa fa-check" aria-hidden="true"></i>
+                  Mendapatkan e-sertifikat kelas online
+                </li>
               </ul>
             </div>
           </div>

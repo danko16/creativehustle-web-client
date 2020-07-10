@@ -24,18 +24,18 @@ function LearningPath() {
           </div>
           <div className="col-lg-6 lp-title">
             <h2 className="mb-4">
-              <strong>Dengan kemudahan Belajar</strong>
+              <strong>Lengkap dengan Kelas Online</strong>
             </h2>
             <p className="mb-4">
-              Creative Hustle tidak hanya membuat kursus tetapi juga menghadirkan Kelas Online
-              bersama para mentor untuk <br /> memberikan pengalaman penyajian langsung untuk para
-              Huslter.
+              Creative Hustle tidak hanya membuat kursus tetapi <br /> juga menghadirkan Kelas
+              Online bersama para <br /> mentor untuk memberikan pengalaman penyajian <br />{' '}
+              langsung untuk para Huslter.
             </p>
             <button className="to-learn-path">
-              <Link to="/journey" className="stretched-link">
+              <Link to="/kelas" className="stretched-link">
                 <span className="sr-only">title for screen</span>
               </Link>
-              <span>Lihat Cara Belajar</span>
+              <span className="et_pb_button_2">Ikuti Kelas Online</span>
               <i className="fa fa-angle-right" aria-hidden="true"></i>
             </button>
           </div>
@@ -59,7 +59,7 @@ function LearningPath() {
               <Link to={`/journey`} className="stretched-link">
                 <span className="sr-only">title for screen</span>
               </Link>
-              <span>Lihat Cara Belajar</span>
+              <span className="et_pb_button_2">Lihat Cara Belajar</span>
               <i className="fa fa-angle-right" aria-hidden="true"></i>
             </button>
           </div>

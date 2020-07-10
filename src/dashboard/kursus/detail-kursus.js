@@ -43,9 +43,7 @@ function DetailKursus({
 
   useEffect(() => {
     if (kursus.length && rekomendasi) {
-      setTimeout(() => {
-        reqContents({ course_id: parseInt(kursusId) });
-      }, 1000);
+      reqContents({ course_id: parseInt(kursusId) });
     }
   }, [reqContents, rekomendasi, kursus, kursusId]);
 
@@ -65,9 +63,8 @@ function DetailKursus({
       setContentSaya(content);
     }
 
-    if (!loading && materi_tambahan.length && tel_group) {
+    if (!loading && materi_tambahan && materi_tambahan.length && tel_group) {
       const materi = materi_tambahan.filter((val) => val.course_id === parseInt(kursusId));
-      console.log(materi_tambahan, tel_group);
       setMateriTambahan(materi);
       setTelGroup(tel_group);
     }

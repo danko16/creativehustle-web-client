@@ -63,9 +63,8 @@ function HintDropdown() {
               </h4>
               <div className="et_pb_toggle_content">
                 <p>
-                  Your content goes here. Edit or remove this text inline or in the module Content
-                  settings. You can also style every aspect of this content in the module Design
-                  settings and even apply custom CSS to this text in the module Advanced settings.
+                  Teman-teman dapat mengambil sebanyak mungkin kursus dan kelas Online pada Creative
+                  Hustle.
                 </p>
               </div>
             </div>
@@ -116,7 +115,7 @@ function HintDropdown() {
               }}
             >
               <h4 className="et_pb_toggle_title  m-0">
-                <p className="m-0"> Your Title Goes Here</p>
+                <p className="m-0"> Apakah ada kelas dan kursus Gratisan ?</p>
                 <i
                   className={`fa fa-${togglePb.et_pb_toggle_4 ? 'minus' : 'plus'}-circle`}
                   aria-hidden="true"
@@ -124,9 +123,8 @@ function HintDropdown() {
               </h4>
               <div className="et_pb_toggle_content">
                 <p>
-                  Your content goes here. Edit or remove this text inline or in the module Content
-                  settings. You can also style every aspect of this content in the module Design
-                  settings and even apply custom CSS to this text in the module Advanced settings.
+                  Tentu ada, akan ada beberapa kelas dan kursus yang dapat diikuti secara gratis
+                  untuk teman-teman.
                 </p>
               </div>
             </div>

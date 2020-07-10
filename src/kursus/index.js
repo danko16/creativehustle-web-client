@@ -48,7 +48,15 @@ function Talent() {
         </div>
       </div>
       <KursusList />
-      <div className="container border-top--blue py-5">
+      <div
+        className="container border-top--blue py-5"
+        style={{
+          backgroundSize: 'cover',
+          backgroundImage: 'url(/assets/img/bg-gradient-right-1024x763-1.png)',
+          backgroundPosition: 'right',
+          backgroundRepeat: 'no-repeat',
+        }}
+      >
         <div className="row">
           <div
             className="col-lg-6"
@@ -58,8 +66,8 @@ function Talent() {
             }}
           >
             <img
-              src="/assets/img/642-3-scaled.jpg"
-              alt="642-scaled"
+              src="/assets/img/ezgif-6-61036b878dfe.png"
+              alt="ezgif-6-61036b878dfe"
               style={{
                 width: '100%',
                 height: '100%',
@@ -79,7 +87,7 @@ function Talent() {
               <Link to={`/journey`} className="stretched-link">
                 <span className="sr-only">title for screen</span>
               </Link>
-              <span>Lihat Cara Belajar</span>
+              <span className="et_pb_button_2">Lihat Cara Belajar</span>
               <i className="fa fa-angle-right" aria-hidden="true"></i>
             </button>
           </div>

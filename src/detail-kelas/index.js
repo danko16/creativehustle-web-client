@@ -43,9 +43,7 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
     if (!loading && kelas.length) {
       kelas.forEach((val) => {
         if (val.id === parseInt(kelasId)) {
-          setTimeout(() => {
-            setKelasDetail(val);
-          }, 1000);
+          setKelasDetail(val);
         }
       });
     }

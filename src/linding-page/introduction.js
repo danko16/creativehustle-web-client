@@ -7,6 +7,7 @@ function Introduction() {
       <section className="container pt-4 pb-4">
         <div className="row mt-5 justify-content-center">
           <div className="col-lg-6 mb-4">
+            <h5 className="et_pb_text_0">SELAMAT DATANG DI CREATIVE HUSTLE</h5>
             <h1
               className="mb-4"
               style={{
