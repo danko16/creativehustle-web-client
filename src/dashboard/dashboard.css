@@ -31,7 +31,7 @@
   width: 50%;
 }
 
-.dashboard-main img {
+.dashboard-main img:not(.teacher-avatar) {
   width: 100%;
 }
 
@@ -125,6 +125,23 @@
 
 .dashboard-main .st-separator a:hover {
   background-color: #c3c3c361;
+}
+
+.dashboard-main .tanggal-kelas {
+  background-color: #6f69f1;
+  font-size: 16px;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  right: 0;
+  border-radius: 8px 8px 0 0;
+  line-height: 40px;
+  font-weight: 600;
+  height: 40px;
+  overflow: hidden;
+  text-align: center;
 }
 @media screen and (max-width: 1200px) {
   .dashboard-main {

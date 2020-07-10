@@ -9,21 +9,24 @@ import { Api } from './utils/api';
 import { authActions } from './redux/reducers/auth';
 import { store, history } from './redux';
 
-import NoMatch from './nomatch';
 import Header from './shared/header';
 import Footer from './shared/footer';
-import LandingPage from './linding-page';
-import Kelas from './kelas';
-import Dashboard from './dashboard';
-import Kursus from './kursus';
-import Journey from './journey';
-import DetailKursus from './detail-kursus';
-import DetailKelas from './detail-kelas';
 import Title from './shared/title';
-import ForgotPassword from './auth/forgotPassword';
-import ResetPassword from './auth/resetPassword';
-import GoogleAuth from './auth/googleAuth';
+import Loading from './shared/loading';
+import LandingPage from './linding-page';
+
 import './app.css';
+
+const Kelas = React.lazy(() => import('./kelas'));
+const Dashboard = React.lazy(() => import('./dashboard'));
+const Kursus = React.lazy(() => import('./kursus'));
+const Journey = React.lazy(() => import('./journey'));
+const DetailKursus = React.lazy(() => import('./detail-kursus'));
+const DetailKelas = React.lazy(() => import('./detail-kelas'));
+const ForgotPassword = React.lazy(() => import('./auth/forgotPassword'));
+const ResetPassword = React.lazy(() => import('./auth/resetPassword'));
+const GoogleAuth = React.lazy(() => import('./auth/googleAuth'));
+const NoMatch = React.lazy(() => import('./nomatch'));
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
@@ -81,54 +84,64 @@ function App({ authFlow }) {
   return (
     <Router>
       <ConnectedRouter history={history}>
-        <div className="App">
-          <Switch>
-            <Route exact path="/">
-              <Title />
-              <LandingPage />
-            </Route>
-            <Route exact path="/kursus">
-              <Title title="Kursus" />
-              <Kursus />
-            </Route>
-            <Route path="/kursus/:kursusId">
+        <React.Suspense
+          fallback={
+            <div>
               <Header />
-              <DetailKursus />
+              <Loading />
               <Footer />
-            </Route>
-            <Route exact path="/kelas">
-              <Title title="Kelas" />
-              <Kelas />
-            </Route>
-            <Route path="/kelas/:kelasId">
-              <Header />
-              <DetailKelas />
-              <Footer />
-            </Route>
-            <Route path="/journey">
-              <Title title="Cara Belajar" />
-              <Journey />
-            </Route>
-            <Route exact path="/forgot-password">
-              <Title title="Lupa Password" />
-              <Header />
-              <ForgotPassword />
-              <Footer />
-            </Route>
-            <Route exact path="/reset-password">
-              <Title title="Reset Password" />
-              <Header />
-              <ResetPassword />
-              <Footer />
-            </Route>
-            <Route exact path="/google-auth" component={GoogleAuth} />
-            <PrivateRoute path="/dashboard">
-              <Title title="Dashboard" />
-              <Dashboard />
-            </PrivateRoute>
-            <Route component={NoMatch} />
-          </Switch>
-        </div>
+            </div>
+          }
+        >
+          <div className="App">
+            <Switch>
+              <Route exact path="/">
+                <Title />
+                <LandingPage />
+              </Route>
+              <Route exact path="/kursus">
+                <Title title="Kursus" />
+                <Kursus />
+              </Route>
+              <Route path="/kursus/:kursusId">
+                <Header />
+                <DetailKursus />
+                <Footer />
+              </Route>
+              <Route exact path="/kelas">
+                <Title title="Kelas" />
+                <Kelas />
+              </Route>
+              <Route path="/kelas/:kelasId">
+                <Header />
+                <DetailKelas />
+                <Footer />
+              </Route>
+              <Route path="/journey">
+                <Title title="Cara Belajar" />
+                <Journey />
+              </Route>
+              <Route exact path="/forgot-password">
+                <Title title="Lupa Password" />
+                <Header />
+                <ForgotPassword />
+                <Footer />
+              </Route>
+              <Route exact path="/reset-password">
+                <Title title="Reset Password" />
+                <Header />
+                <ResetPassword />
+                <Footer />
+              </Route>
+              <Route exact path="/google-auth" component={GoogleAuth} />
+              <PrivateRoute path="/dashboard">
+                <Title title="Dashboard" />
+                <Dashboard />
+              </PrivateRoute>
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+        </React.Suspense>
       </ConnectedRouter>
     </Router>
   );
