@@ -32,7 +32,7 @@ function Footer() {
                     <h5 className="text-indigo-3">Bantuan</h5>
                     <ul className="list-unstyled sitemap">
                       <li>
-                        <Link to="/">Cara Belajar Online</Link>
+                        <Link to="/footer/tentang">Tentang Kami</Link>
                       </li>
                       <li>
                         <Link to="/">Mentor</Link>
@@ -59,8 +59,7 @@ function Footer() {
                     <h5 className="text-indigo-3">Office</h5>
                     <ul className="list-unstyled sitemap">
                       <li className="line-height-2 font-weight-light">
-                        admin@creativehustle.id
-                        <br /> Klaten Selatan, Indonesia
+                        creativehustleid@gmail.com <br /> Klaten Selatan, Indonesia
                       </li>
                     </ul>
                   </div>
@@ -68,20 +67,16 @@ function Footer() {
                     <h5 className="text-indigo-3">Social</h5>
                     <ul className="list-unstyled sitemap">
                       <li>
-                        <a rel="noopener noreferrer" href="/">
+                        <a
+                          rel="noopener noreferrer"
+                          href="https://www.instagram.com/creativehustle.id/"
+                          target="_blank"
+                        >
                           Instagram
                         </a>
                       </li>
-                      <li>
-                        <a rel="noopener noreferrer" href="/">
-                          Telegram
-                        </a>
-                      </li>
-                      <li>
-                        <a rel="noopener noreferrer" href="/">
-                          YouTube
-                        </a>
-                      </li>
+                      <li>Telegram</li>
+                      <li>YouTube</li>
                     </ul>
                   </div>
                 </div>

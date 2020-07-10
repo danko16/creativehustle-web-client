@@ -111,9 +111,13 @@ div.et_pb_section.et_pb_section_7 {
   line-height: 2;
 }
 
-.et_pb_section_7 ul li i{
+.et_pb_section_7 ul li i {
   color: #226ff7;
   padding-right: 1rem;
+}
+
+.to-learn-path {
+  cursor: pointer;
 }
 
 @media only screen and (min-width: 992px) {

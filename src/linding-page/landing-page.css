@@ -267,13 +267,6 @@ ul.benefit-list li p {
   padding-left: 20px;
 }
 
-h5.et_pb_text_0 {
-  font-size: 18px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: #3874ff!important;
-}
-
 @media only screen and (max-width: 992px) {
   .mentor-assign {
     border-right: none;

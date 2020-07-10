@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
+import { headerActions } from '../redux/reducers/header';
+import { isAuthenticated } from '../utils/auth';
 
-function JourneyDetail() {
+const mapActionToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      showRegister: headerActions.showModal,
+    },
+    dispatch
+  );
+
+function JourneyDetail({ showRegister, history }) {
+  useEffect(() => {
+    return () => {
+      showRegister({
+        show: false,
+        type: null,
+      });
+    };
+  }, [showRegister]);
   return (
     <div className="container journey-detail">
       <div className="row row_rvrs">
@@ -27,10 +49,18 @@ function JourneyDetail() {
             membuat akun terlebih dahulu. Tidak perlu kwatir, pembuatan akun gratis tanpa biaya
             apapun.
           </p>
-          <button className="to-learn-path">
-            <Link to={`/journey`} className="stretched-link">
-              <span className="sr-only">title for screen</span>
-            </Link>
+          <button
+            className="to-learn-path"
+            onClick={() => {
+              const isAuth = isAuthenticated();
+              if (!isAuth) {
+                showRegister({
+                  show: true,
+                  type: 'register',
+                });
+              }
+            }}
+          >
             <span className="et_pb_button_2">Daftar Akun</span>
             <i className="fa fa-angle-right" aria-hidden="true"></i>
           </button>
@@ -49,7 +79,7 @@ function JourneyDetail() {
             dan kelas kami jamin kualitasnya agar teman-teman mendapatkan ilmu setelah mengikutinya.{' '}
           </p>
           <button className="to-learn-path">
-            <Link to={`/krusus`} className="stretched-link">
+            <Link to={`/kursus`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
             <span className="et_pb_button_2">Lihat Pilihan Kursus</span>
@@ -91,7 +121,7 @@ function JourneyDetail() {
             Sstt.. tidak semua kursus dan kelas berbayar, ada yang gratis.
           </p>
           <button className="to-learn-path">
-            <Link to={`/journey`} className="stretched-link">
+            <Link to={`/kursus`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
             <span className="et_pb_button_2">Lihat Pilihan Kursus</span>
@@ -112,10 +142,20 @@ function JourneyDetail() {
             segera mulai untuk belajar dalam dasboard yang kami design khusus agar nyaman dan mudah
             ketika menyimak video.
           </p>
-          <button className="to-learn-path">
-            <Link to={`/journey`} className="stretched-link">
-              <span className="sr-only">title for screen</span>
-            </Link>
+          <button
+            className="to-learn-path"
+            onClick={() => {
+              const isAuth = isAuthenticated();
+              if (!isAuth) {
+                showRegister({
+                  show: true,
+                  type: 'login',
+                });
+              } else {
+                history.push('/dashboard');
+              }
+            }}
+          >
             <span className="et_pb_button_2">Masuk ke Dasboard</span>
             <i className="fa fa-angle-right" aria-hidden="true"></i>
           </button>
@@ -155,7 +195,7 @@ function JourneyDetail() {
             dan kelas bersama mentor agar dapat bertanya langsung dengan para mentor.
           </p>
           <button className="to-learn-path">
-            <Link to={`/journey`} className="stretched-link">
+            <Link to={`/kursus`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
             <span className="et_pb_button_2">Lihat Pilihan Kursus</span>
@@ -167,4 +207,9 @@ function JourneyDetail() {
   );
 }
 
-export default JourneyDetail;
+JourneyDetail.propTypes = {
+  showRegister: PropTypes.func,
+  history: PropTypes.object,
+};
+
+export default connect(null, mapActionToProps)(withRouter(JourneyDetail));

@@ -26,6 +26,7 @@ const DetailKelas = React.lazy(() => import('./detail-kelas'));
 const ForgotPassword = React.lazy(() => import('./auth/forgotPassword'));
 const ResetPassword = React.lazy(() => import('./auth/resetPassword'));
 const GoogleAuth = React.lazy(() => import('./auth/googleAuth'));
+const FooterDetail = React.lazy(() => import('./footer-detail'));
 const NoMatch = React.lazy(() => import('./nomatch'));
 
 const mapStateToProps = (state) => ({
@@ -134,6 +135,11 @@ function App({ authFlow }) {
                 <Footer />
               </Route>
               <Route exact path="/google-auth" component={GoogleAuth} />
+              <Route path="/footer">
+                <Header />
+                <FooterDetail />
+                <Footer />
+              </Route>
               <PrivateRoute path="/dashboard">
                 <Title title="Dashboard" />
                 <Dashboard />
