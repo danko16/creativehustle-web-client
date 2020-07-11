@@ -113,7 +113,7 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
               src={kelasDetail.thumbnail}
               alt="test"
               style={{
-                maxWidth: '100%',
+                width: '100%',
                 height: 'auto',
               }}
             />

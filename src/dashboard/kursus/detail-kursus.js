@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import { useParams, Link } from 'react-router-dom';
 import Loading from '../../shared/loading';
@@ -63,22 +64,29 @@ function DetailKursus({
       setContentSaya(content);
     }
 
-    if (!loading && materi_tambahan && materi_tambahan.length && tel_group) {
+    if (!loading && materi_tambahan && materi_tambahan.length) {
       const materi = materi_tambahan.filter((val) => val.course_id === parseInt(kursusId));
       setMateriTambahan(materi);
+    }
+
+    if (!loading && tel_group) {
       setTelGroup(tel_group);
     }
   }, [contentId, kursusId, contents, tel_group, materi_tambahan, loading]);
 
   if (contentId === 'tambahan') {
     let idx = 1;
-    return materiTambahan.length && telGroup ? (
+    return materiTambahan.length || telGroup ? (
       <div className="dashboard-main">
         <div className="card-no-shadow mb-3">
           <h4 className="card-title">Section Tambahan</h4>
           <p>Berikut ini materi tambahan yang dapat di download dan group telegram dengan mentor</p>
         </div>
-        <div className="card-no-shadow">
+        <div
+          className={ClassNames('card-no-shadow', {
+            'd-none': !materi_tambahan.length && !tel_group,
+          })}
+        >
           {materiTambahan.map((el, index) => {
             idx = idx + 1;
             return (
@@ -90,21 +98,23 @@ function DetailKursus({
               </div>
             );
           })}
-          <div className="st-separator">
-            <h5>{idx}. Group Telegram dengan Mentor</h5>
-            <p className="m-0">
-              <img
-                src="/assets/icon/icons8-telegram-app-48.png"
-                alt="telegram group"
-                style={{
-                  height: 45,
-                  width: 45,
-                  marginRight: 6,
-                }}
-              />
-              {telGroup}
-            </p>
-          </div>
+          {telGroup && (
+            <div className="st-separator">
+              <h5>{idx}. Group Telegram dengan Mentor</h5>
+              <p className="m-0">
+                <img
+                  src="/assets/icon/icons8-telegram-app-48.png"
+                  alt="telegram group"
+                  style={{
+                    height: 45,
+                    width: 45,
+                    marginRight: 6,
+                  }}
+                />
+                {telGroup}
+              </p>
+            </div>
+          )}
         </div>
       </div>
     ) : (

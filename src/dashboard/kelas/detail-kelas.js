@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import ClassNames from 'classnames';
 import { bindActionCreators } from 'redux';
 import { useParams, NavLink } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -142,7 +143,11 @@ function DetailKelas({
               <h4 className="card-title">Materi Kelas</h4>
               <p>Berikut ini Materi dari kelas yang anda ikuti</p>
             </div>
-            <div className="card-no-shadow">
+            <div
+              className={ClassNames('card-no-shadow', {
+                'd-none': !materi_tambahan.length && !tel_group,
+              })}
+            >
               {materi_tambahan.map((el, index) => {
                 idx = idx + 1;
                 return (
@@ -154,27 +159,29 @@ function DetailKelas({
                   </div>
                 );
               })}
-              <div className="st-separator">
-                <h5>{idx}. Group Telegram dengan Mentor</h5>
-                <p className="m-0">
-                  <img
-                    src="/assets/icon/icons8-telegram-app-48.png"
-                    alt="telegram group"
-                    style={{
-                      height: 45,
-                      width: 45,
-                      marginRight: 6,
-                    }}
-                  />
-                  {tel_group}
-                </p>
-              </div>
+              {tel_group && (
+                <div className="st-separator">
+                  <h5>{idx}. Group Telegram dengan Mentor</h5>
+                  <p className="m-0">
+                    <img
+                      src="/assets/icon/icons8-telegram-app-48.png"
+                      alt="telegram group"
+                      style={{
+                        height: 45,
+                        width: 45,
+                        marginRight: 6,
+                      }}
+                    />
+                    {tel_group}
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         );
     }
   }
-  return schedules.length && materi_tambahan.length && tel_group ? (
+  return schedules.length ? (
     renderHead()
   ) : (
     <div className="dashboard-main">

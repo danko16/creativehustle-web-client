@@ -1,8 +1,10 @@
 import React from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useParams } from 'react-router-dom';
 import './detail-sidebar.css';
 
 function DetailSidebar() {
+  const { kelasId } = useParams();
+
   return (
     <div className="sidenav">
       <div className="dashboard-nav detail">
@@ -14,7 +16,7 @@ function DetailSidebar() {
           <ul>
             <li>
               <NavLink
-                to={`/dashboard/kelas/2/1`}
+                to={`/dashboard/kelas/${kelasId}/1`}
                 activeStyle={{
                   color: '#fff',
                   backgroundColor: 'rgba(234, 73, 73, 0.7)',
@@ -27,7 +29,7 @@ function DetailSidebar() {
             </li>
             <li>
               <NavLink
-                to={`/dashboard/kelas/2/2`}
+                to={`/dashboard/kelas/${kelasId}/2`}
                 activeStyle={{
                   color: '#fff',
                   backgroundColor: 'rgba(234, 73, 73, 0.7)',
@@ -40,7 +42,7 @@ function DetailSidebar() {
             </li>
             <li>
               <NavLink
-                to={`/dashboard/kelas/2/3`}
+                to={`/dashboard/kelas/${kelasId}/3`}
                 activeStyle={{
                   color: '#fff',
                   backgroundColor: 'rgba(234, 73, 73, 0.7)',
@@ -53,7 +55,7 @@ function DetailSidebar() {
             </li>
             <li>
               <NavLink
-                to={`/dashboard/kelas/2/4`}
+                to={`/dashboard/kelas/${kelasId}/4`}
                 activeStyle={{
                   color: '#fff',
                   backgroundColor: 'rgba(234, 73, 73, 0.7)',

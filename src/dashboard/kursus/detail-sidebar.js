@@ -9,10 +9,11 @@ const mapStateToProps = (state) => ({
   sections: state.kursusSaya.sections,
   contents: state.kursusSaya.contents,
   materi_tambahan: state.kursusSaya.materi_tambahan,
+  tel_group: state.kursusSaya.tel_group,
   loading: state.kursusSaya.loading,
 });
 
-function DetailSidebar({ sections, contents, materi_tambahan, loading }) {
+function DetailSidebar({ sections, contents, tel_group, materi_tambahan, loading }) {
   const { kursusId } = useParams();
   const [sectionCollapse, setSectionCollapse] = useState({});
   const [sectionSaya, setSectionSaya] = useState([]);
@@ -80,7 +81,7 @@ function DetailSidebar({ sections, contents, materi_tambahan, loading }) {
 
   function renderMateriTambahan() {
     const collapseName = 'materi_tambahan';
-    return materiTambahan.length ? (
+    return materiTambahan.length || tel_group ? (
       <ul>
         <li
           className="judul"
@@ -135,6 +136,7 @@ DetailSidebar.propTypes = {
   sections: PropTypes.array,
   contents: PropTypes.array,
   materi_tambahan: PropTypes.array,
+  tel_group: PropTypes.string,
   loading: PropTypes.bool,
 };
 
