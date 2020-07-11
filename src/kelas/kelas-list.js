@@ -10,7 +10,7 @@ const mapStateToProps = (state) => ({
   loading: state.kelas.loading,
 });
 
-function ClassList({ kelas }) {
+function ClassList({ kelas, notFound }) {
   const [activePage, setActivePage] = useState({
     totalPage: Math.ceil(kelas.length / 9),
     page: 1,
@@ -116,6 +116,14 @@ function ClassList({ kelas }) {
         {renderClass()}
       </div>
 
+      {!kelas.length && (
+        <div className="container">
+          <div className="card-no-shadow search-not-found">
+            <h4>Kelas `{notFound}` Tidak Di Temukan</h4>
+          </div>
+        </div>
+      )}
+
       <ul className="pagination" role="navigation">
         <li
           className={ClassNames('page-item', { disabled: activePage.page === 1 })}
@@ -162,6 +170,7 @@ function ClassList({ kelas }) {
 
 ClassList.propTypes = {
   kelas: PropTypes.array,
+  notFound: PropTypes.string,
   loading: PropTypes.bool,
 };
 

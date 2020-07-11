@@ -2,6 +2,7 @@ export const KURSUS_ACTIONS = Object.freeze({
   SET_DATA: 'myapp/kursus/set-data',
   REQ_KURSUS: 'myapp/kursus/req-kursus',
   REQ_CONTENTS: 'myapp/kursus/req-contents',
+  REQ_CARI_KURSUS: 'myapp/kursus/req-cari',
   KURSUS: 'myapp/kursus/kursus',
   CONTENTS: 'myapp/kursus/contents',
   ERROR: 'myapp/kursus/error',
@@ -16,6 +17,10 @@ export const kursusActions = Object.freeze({
   }),
   reqKursus: (value) => ({
     type: KURSUS_ACTIONS.REQ_KURSUS,
+    value,
+  }),
+  reqCariKursus: (value) => ({
+    type: KURSUS_ACTIONS.REQ_CARI_KURSUS,
     value,
   }),
   reqContents: (value) => ({
@@ -57,6 +62,7 @@ const reducer = (state = initialState, { type, field, value }) => {
       };
     case KURSUS_ACTIONS.REQ_KURSUS:
     case KURSUS_ACTIONS.REQ_CONTENTS:
+    case KURSUS_ACTIONS.REQ_CARI_KURSUS:
       return {
         ...state,
         loading: true,

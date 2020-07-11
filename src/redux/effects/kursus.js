@@ -35,10 +35,26 @@ function* contents({ value }) {
   }
 }
 
+function* cari({ value }) {
+  try {
+    const {
+      data: { data },
+    } = yield call(kursusApi.cari, value);
+    if (data) {
+      yield put(kursusActions.kursus({ kursus: data }));
+    }
+  } catch (error) {
+    yield put(kursusActions.error(getErrorMessage(error)));
+  }
+}
+
 function* kursusSaga() {
   try {
     yield call(kursus, { from: 0 });
-    yield all([takeLatest(KURSUS_ACTIONS.REQ_CONTENTS, contents)]);
+    yield all([
+      takeLatest(KURSUS_ACTIONS.REQ_CONTENTS, contents),
+      takeLatest(KURSUS_ACTIONS.REQ_CARI_KURSUS, cari),
+    ]);
   } catch (error) {
     yield put(kursusActions.error(getErrorMessage(error)));
   }

@@ -6,7 +6,6 @@ import './footer-detail.css';
 
 function FooterDetail() {
   const { path } = useRouteMatch();
-  console.log(path);
   return (
     <Switch>
       <Route exact path={`${path}`}>

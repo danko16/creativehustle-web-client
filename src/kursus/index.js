@@ -1,14 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { kursusActions } from '../redux/reducers/kursus';
 import Header from '../shared/header';
 import Footer from '../shared/footer';
 import KursusList from './kursus-list';
 import './kursus.css';
 
-function Talent() {
+const mapActionToProps = (dispatch) =>
+  bindActionCreators({ reqCariKursus: kursusActions.reqCariKursus }, dispatch);
+
+function Kursus({ reqCariKursus }) {
+  const [keywords, SetKeywords] = useState('');
+  const [notFound, setNotFound] = useState('');
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  function handleSearch() {
+    reqCariKursus({ keywords });
+    setNotFound(keywords);
+  }
   return (
     <div className="kursus">
       <Header />
@@ -31,13 +45,21 @@ function Talent() {
             Bingung mulai dari mana, cari kursusmu di bawah ini
           </p>
           <div className="input-group mt-3">
-            <div className="input-group-prepend">
+            <div className="input-group-prepend" onClick={handleSearch}>
               <span className="input-group-text" id="basic-addon1">
                 <i className="fa fa-search" aria-hidden="true"></i>
               </span>
             </div>
             <input
               type="text"
+              onKeyPress={(e) => {
+                if (e.key === 'Enter') {
+                  handleSearch();
+                }
+              }}
+              onChange={(e) => {
+                SetKeywords(e.target.value);
+              }}
               className="form-control"
               placeholder="Cari Kursus"
               aria-label="Kursus"
@@ -47,7 +69,7 @@ function Talent() {
           </div>
         </div>
       </div>
-      <KursusList />
+      <KursusList notFound={notFound} />
       <div
         className="container border-top--blue py-5"
         style={{
@@ -98,4 +120,8 @@ function Talent() {
   );
 }
 
-export default Talent;
+Kursus.propTypes = {
+  reqCariKursus: PropTypes.func,
+};
+
+export default connect(null, mapActionToProps)(Kursus);

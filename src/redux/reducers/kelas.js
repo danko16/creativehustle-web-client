@@ -1,6 +1,7 @@
 export const KELAS_ACTIONS = Object.freeze({
   SET_DATA: 'myapp/kelas/set-data',
   REQ_KELAS: 'myapp/kelas/req-kelas',
+  REQ_CARI_KELAS: 'myapp/kelas/req/cari-kelas',
   KELAS: 'myapp/kelas/kelas',
   ERROR: 'myapp/kelas/error',
   CLEAR_ERROR: 'myapp/kelas/clear-error',
@@ -14,6 +15,10 @@ export const kelasActions = Object.freeze({
   }),
   reqKelas: (value) => ({
     type: KELAS_ACTIONS.REQ_KELAS,
+    value,
+  }),
+  reqCariKelas: (value) => ({
+    type: KELAS_ACTIONS.REQ_CARI_KELAS,
     value,
   }),
   kelas: (value) => ({
@@ -44,6 +49,11 @@ const reducer = (state = initialState, { type, field, value }) => {
         [field]: value,
       };
     case KELAS_ACTIONS.REQ_KELAS:
+    case KELAS_ACTIONS.REQ_CARI_KELAS:
+      return {
+        ...state,
+        loading: true,
+      };
     case KELAS_ACTIONS.KELAS:
       return {
         ...state,

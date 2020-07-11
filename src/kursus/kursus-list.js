@@ -9,20 +9,24 @@ const mapStateToProps = (state) => ({
   loading: state.kursus.loading,
 });
 
-function KursusList({ kursus, loading }) {
+function KursusList({ kursus, loading, notFound }) {
   const [kursusList, setKursusList] = useState([]);
   const [activePage, setActivePage] = useState({
-    totalPage: Math.ceil(kursusList.length / 9),
+    totalPage: 1,
     page: 1,
     from: 0,
     to: 9,
   });
 
   useEffect(() => {
-    if (!loading && kursus.length) {
+    if (!loading && kursus) {
       setKursusList(kursus);
+      setActivePage((prevState) => ({
+        ...prevState,
+        totalPage: Math.ceil(kursus.length / 9),
+      }));
     }
-  }, [kursus, loading]);
+  }, [kursus, setActivePage, loading]);
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
   }
@@ -111,6 +115,14 @@ function KursusList({ kursus, loading }) {
         {renderClass()}
       </div>
 
+      {!kursus.length && (
+        <div className="container">
+          <div className="card-no-shadow search-not-found">
+            <h4>Kursus `{notFound}` Tidak Di Temukan</h4>
+          </div>
+        </div>
+      )}
+
       <ul className="pagination" role="navigation">
         <li
           className={ClassNames('page-item', { disabled: activePage.page === 1 })}
@@ -157,6 +169,7 @@ function KursusList({ kursus, loading }) {
 
 KursusList.propTypes = {
   kursus: PropTypes.array,
+  notFound: PropTypes.string,
   loading: PropTypes.bool,
 };
 
