@@ -14,6 +14,7 @@ import Footer from './shared/footer';
 import Title from './shared/title';
 import Loading from './shared/loading';
 import LandingPage from './linding-page';
+import GoogleAuth from './auth/googleAuth';
 
 import './app.css';
 
@@ -25,7 +26,6 @@ const DetailKursus = React.lazy(() => import('./detail-kursus'));
 const DetailKelas = React.lazy(() => import('./detail-kelas'));
 const ForgotPassword = React.lazy(() => import('./auth/forgotPassword'));
 const ResetPassword = React.lazy(() => import('./auth/resetPassword'));
-const GoogleAuth = React.lazy(() => import('./auth/googleAuth'));
 const FooterDetail = React.lazy(() => import('./footer-detail'));
 const NoMatch = React.lazy(() => import('./nomatch'));
 

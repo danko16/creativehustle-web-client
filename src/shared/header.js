@@ -241,6 +241,16 @@ function Header({ style, user, logout, modal, loading, history }) {
               <li className="nav-item nd">
                 <span className="nav-divider"></span>
               </li>
+              <li className="nav-item cart-wrapper">
+                <img
+                  className="ic-cart"
+                  src="/assets/icon/icons8-shopping-cart-50.png"
+                  alt="cart"
+                />
+                <span className="cart-notification-badge" title="item in the cart">
+                  1
+                </span>
+              </li>
               {isAuthenticated() ? userMode() : authMode()}
             </ul>
           </div>
