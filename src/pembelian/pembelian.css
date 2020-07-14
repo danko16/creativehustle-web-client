@@ -140,6 +140,7 @@
   justify-content: center;
   padding: 0;
   box-shadow: 0 0 2px #000000;
+  height: fit-content;
   border-radius: 12px;
 }
 
@@ -148,7 +149,7 @@
   border-top: 1px solid #e8e8e8;
   flex-direction: column;
   width: 320px;
-  padding: 5px 0;
+  padding: 10px;
   border-radius: 12px;
 }
 
@@ -159,13 +160,12 @@
 }
 
 .pembayaran .bank-logo {
-  padding: 12px;
+  padding: 12px 0;
 }
 
 .pembayaran .bank-info {
   display: flex;
   justify-content: space-between;
-  padding: 0 16px;
   padding-top: 8px;
 }
 
@@ -197,11 +197,71 @@
   text-transform: uppercase;
   padding: 20px;
   cursor: pointer;
-  transition: .2s;
+  transition: 0.2s;
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
 }
 
 .pembayaran .bank-list .confirm-payment.button:hover {
-  opacity: .7;
+  opacity: 0.7;
+}
+
+.pembayaran .invoice {
+  border: 1px solid #ccc;
+  padding: 25px;
+}
+
+.pembayaran .invoice img {
+  width: 280px;
+  height: auto;
+}
+
+.invoice-status {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+}
+
+.unpaid {
+  color: #c00;
+}
+
+.invoice > div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice .table td,
+.invoice .table th {
+  width: 70%;
+}
+
+.panel-title {
+  padding: 10px;
+}
+
+.pembayaran .invoice-dp {
+  display: flex;
+  justify-content: center;
+  padding-top: 12px;
+}
+
+.pembayaran .invoice-dp .btn-default {
+  border: 1px solid;
+  transition: .2s;
+}
+
+.pembayaran .invoice-dp .btn-default i.fa {
+  padding-right: 10px;
+}
+
+.pembayaran .invoice-dp .btn-default:hover {
+  background-color: #616aff;
+  border: 1px solid #000;
+  color: #fff;
+}
+
+.pembayaran .invoice-dp .btn-default:nth-child(2) {
+  margin-left: 12px;
 }

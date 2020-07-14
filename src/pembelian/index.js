@@ -22,6 +22,10 @@ function Pembelian() {
   }
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     setActiveTab(parseInt(tab));
   }, [tab]);
 
