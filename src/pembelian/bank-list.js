@@ -3,13 +3,7 @@ import React from 'react';
 function BankList() {
   return (
     <div className="bank-list">
-      <h5
-        style={{
-          margin: '14px 0',
-        }}
-      >
-        Transfer Pembayaran:
-      </h5>
+      <h5 className="bank-list-title">Transfer Pembayaran:</h5>
       <div className="bank-wrapper">
         <div className="bank-logo">
           <img

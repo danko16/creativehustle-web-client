@@ -135,7 +135,7 @@ function App({ authFlow }) {
                 <ResetPassword />
                 <Footer />
               </Route>
-              <Route path="/pembelian/:tab">
+              <Route path="/pembelian">
                 <Title title="Pembelian" />
                 <Header />
                 <Pembelian />

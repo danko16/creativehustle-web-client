@@ -1,29 +1,44 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 
 function Invoice() {
+  const divToPrint = useRef();
   function converToPdf(mode) {
-    const input = document.getElementById('divToPrint');
-    html2canvas(input).then((canvas) => {
-      const imgData = canvas.toDataURL('image/png');
-      const pdf = new jsPDF();
+    const input = divToPrint.current.cloneNode(true);
 
-      pdf.addImage(imgData, 'PNG', 8, 5);
+    input.classList.add('pdf');
+    document.body.append(input);
+
+    html2canvas(input, {
+      scale: 2,
+    }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', [canvas.height, 1150]);
+
+      pdf.addImage(imgData, 'PNG', 10, 10);
       if (mode === 'download') {
-        pdf.save('download.pdf');
+        pdf.save('invoice#520930.pdf');
       } else if (mode === 'print') {
         pdf.autoPrint();
       }
       window.open(pdf.output('bloburl'), '_blank');
+      document.body.removeChild(input);
     });
   }
 
   return (
     <>
-      <div id="divToPrint" className="invoice">
+      <div ref={divToPrint} className="invoice">
         <div className="text-center">
-          <img src="/assets/img/creative-hustle.png" alt="logo" />
+          <img
+            src="/assets/img/creative-hustle.png"
+            alt="logo"
+            style={{
+              width: 280,
+              height: 'auto',
+            }}
+          />
           <h3
             style={{
               margin: '18px 0',
@@ -41,8 +56,14 @@ function Invoice() {
           </span>
         </div>
         <hr></hr>
-        <div className="row">
-          <div className="col-sm-6 pl-0">
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+          }}
+        >
+          <div>
             <p>
               <strong>Ditagihkan kepada:</strong>
             </p>
@@ -52,13 +73,13 @@ function Invoice() {
               reezkypradata@gmail.com
             </p>
           </div>
-          <div className="col-sm-6 pr-0">
+          <div>
             <p>
               <strong>Dibayarkan kepada:</strong>
             </p>
             <p>
-              Creativehustle.id <br /> Bendogantungan 2, sumberejo, klaten selatan <br /> Klaten
-              57426 <br /> Klaten, Jawa Tengah <br /> <br />
+              Creativehustle.id <br /> Bendogantungan 2, sumberejo,
+              <br /> klaten selatan <br /> Klaten 57426 <br /> Klaten, Jawa Tengah <br /> <br />
             </p>
           </div>
         </div>

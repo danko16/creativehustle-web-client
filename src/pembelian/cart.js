@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function Cart() {
   return (
-    <div className="cart pt-5">
+    <div className="container cart py-5">
       <div className="row">
-        <div className="col-md-8 pl-0">
+        <div className="col-lg-8 pl-0">
           <div className="cart-item">
             <img
               className="img__cover"
@@ -17,7 +18,7 @@ function Cart() {
             />
             <div>
               <p>
-                <strong>Leadership Essentials [Accredited]</strong>
+                <strong>Leadership Essentials [Accredited] </strong>
               </p>
               <p>By Braco Pobric and 1 other Current</p>
             </div>
@@ -42,7 +43,7 @@ function Cart() {
             </div>
           </div>
         </div>
-        <div className="col-md-4 pr-0">
+        <div className="col-lg-4 pr-0">
           <div className="cart-total card-no-shadow">
             <p>Total: </p>
             <h2>
@@ -50,7 +51,7 @@ function Cart() {
             </h2>
             <p>Rp1,399,000</p>
             <p>81% off</p>
-            <div>Bayar</div>
+            <Link to="/pembelian/bayar">Bayar</Link>
             <div>
               <div className="input-group mb-3">
                 <input type="text" className="form-control" placeholder="Masukan Kupon" />

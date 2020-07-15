@@ -242,7 +242,7 @@ function Header({ style, user, logout, modal, loading, history }) {
                 <span className="nav-divider"></span>
               </li>
               <li className="nav-item cart-wrapper">
-                <Link className="stretched-link" to="/pembelian/1">
+                <Link className="stretched-link" to="/pembelian/keranjang">
                   <span className="sr-only">title for screen</span>
                 </Link>
                 <img

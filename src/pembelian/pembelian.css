@@ -102,7 +102,9 @@
   color: #7f8b9c;
 }
 
-.cart-total > div:nth-child(5) {
+.cart-total > a:nth-child(5) {
+  display: block;
+  text-decoration: none;
   background-color: #ec5252;
   border-radius: 3px;
   text-align: center;
@@ -114,7 +116,7 @@
   cursor: pointer;
 }
 
-.cart-total > div:nth-child(5):hover {
+.cart-total > a:nth-child(5):hover {
   opacity: 0.8;
 }
 
@@ -142,6 +144,10 @@
   box-shadow: 0 0 2px #000000;
   height: fit-content;
   border-radius: 12px;
+}
+
+.pembayaran .bank-list h5.bank-list-title {
+  margin: 14px 0;
 }
 
 .pembayaran .bank-wrapper {
@@ -211,11 +217,6 @@
   padding: 25px;
 }
 
-.pembayaran .invoice img {
-  width: 280px;
-  height: auto;
-}
-
 .invoice-status {
   text-transform: uppercase;
   font-size: 24px;
@@ -249,7 +250,7 @@
 
 .pembayaran .invoice-dp .btn-default {
   border: 1px solid;
-  transition: .2s;
+  transition: 0.2s;
 }
 
 .pembayaran .invoice-dp .btn-default i.fa {
@@ -264,4 +265,77 @@
 
 .pembayaran .invoice-dp .btn-default:nth-child(2) {
   margin-left: 12px;
+}
+
+.invoice.pdf {
+  display: block;
+  width: 725px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+}
+
+@media only screen and (max-width: 992px) {
+  .cart div.row > div {
+    padding: 0;
+  }
+
+  .cart div.row > div:last-child {
+    margin-top: 2rem;
+  }
+
+  .pembayaran > .row {
+    flex-direction: column-reverse;
+  }
+
+  .pembayaran > .row > * {
+    padding: 0;
+    margin-bottom: 2.5rem;
+  }
+
+  .pembayaran .bank-list {
+    padding-top: 40px;
+  }
+
+  .pembayaran .bank-wrapper {
+    border-top: none;
+  }
+
+  .pembayaran .bank-list h5.bank-list-title {
+    position: absolute;
+    top: 16px;
+    margin: 0;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .cart .cart-item {
+    flex-wrap: wrap;
+  }
+
+  .cart .cart-item > div:nth-child(2) {
+    padding: 0 12px 12px 12px;
+  }
+
+  .cart-item > div:last-child {
+    position: absolute;
+    right: 0;
+  }
+
+  .cart-item > div:nth-child(3) {
+    margin-left: 0;
+  }
+}
+
+@media only screen and (max-width: 519px) {
+  .cart-item > div:nth-child(2) {
+    margin-right: 53px;
+  }
+}
+
+@media only screen and (max-width: 466px) {
+  .cart-item > div:nth-child(2) {
+    margin-right: 0px;
+  }
 }
