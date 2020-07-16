@@ -138,15 +138,125 @@ function DetailKursus({
     <div className="detail-kursus">
       <Title title={detailKursus.title} />
       <div className="title">
-        <h1>
-          <strong>{detailKursus.title}</strong>
-        </h1>
+        <div>
+          <h1 className="text-center">
+            <strong>{detailKursus.title}</strong>
+          </h1>
+          <p
+            className="text-center"
+            style={{
+              fontSize: 18,
+            }}
+          >
+            Dimentori oleh <strong>{detailKursus.teacher_name}</strong>
+          </p>
+          <div className="et_pb_divider_0"></div>
+        </div>
+        <div className="container">
+          <div className="row info">
+            <div className="col-md-6 col-lg-3 p-0">
+              <h6 className="et_pb_module_header">
+                <span>Total Peserta</span>
+              </h6>
+              <p>1.000</p>
+            </div>
+            <div className="col-md-6 col-lg-3 p-0">
+              <h6 className="et_pb_module_header">
+                <span>Level</span>
+              </h6>
+              <p>SEMUA LEVEL</p>
+            </div>
+            <div className="col-md-6 col-lg-3 p-0">
+              <h6 className="et_pb_module_header">
+                <span>Topik Kursus</span>
+              </h6>
+              <p>MICROSTOCK</p>
+            </div>
+            <div className="col-md-6 col-lg-3 p-0">
+              <h6 className="et_pb_module_header">
+                <span>Tipe</span>
+              </h6>
+              <p>PREMIUM</p>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <div className="container mb-5">
+      <div
+        className="container mb-5"
+        style={{
+          marginTop: '-50px',
+        }}
+      >
         <div className="row">
           <div className="col-lg-8">
             <YtPlayer detailContent={detailContent} />
+          </div>
+
+          <div className="col-lg-4">
+            <div className="kursus-benefit">
+              <div className="price">
+                {detailKursus.promo_price && (
+                  <h5>
+                    Rp. <strong>{formatNumber(detailKursus.promo_price)}</strong>
+                  </h5>
+                )}
+                <h2>
+                  <strong>
+                    Rp.{' '}
+                    {formatNumber(
+                      detailKursus.promo_price ? detailKursus.promo_price : detailKursus.price
+                    )}
+                  </strong>
+                </h2>
+                <p>Investasi sekali untuk selamanya</p>
+              </div>
+              <div className="desc">
+                <h3>
+                  <strong>Kursus ini mencakup</strong>
+                </h3>
+                <ul>
+                  <li>
+                    <i className="fa fa-play-circle" aria-hidden="true"></i>
+                    45 menit total durasi kursus
+                  </li>
+                  <li>
+                    <span className="material-icons">description</span>8 sumber daya dapat diunduh
+                  </li>
+                  <li>
+                    <i className="fa fa-spinner" aria-hidden="true"></i>
+                    Akses penuh seumur hidup{' '}
+                  </li>
+                  <li>
+                    <i className="fa fa-comments-o" aria-hidden="true"></i>
+                    Private telegram group
+                  </li>
+                  <li>
+                    <i className="fa fa-cloud-download" aria-hidden="true"></i>
+                    Dapat didownload offline{' '}
+                  </li>
+                </ul>
+                <button onClick={handleSubscribe} className="subscribe-Kursus">
+                  <span>Masukan Keranjang</span>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+                <button
+                  onClick={handleSubscribe}
+                  className="subscribe-Kursus"
+                  style={{
+                    backgroundColor: '#ff6161',
+                    marginTop: 10,
+                  }}
+                >
+                  <span>Beli Sekarang</span>
+                  <i className="fa fa-angle-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="row">
+          <div className="col-lg-8">
             <h3 className="mb-4">
               <strong>Tentang Kursus</strong>
             </h3>
@@ -178,29 +288,6 @@ function DetailKursus({
                   settings and even apply custom CSS to this text in the module Advanced settings.
                 </p>
               </div>
-            </div>
-          </div>
-
-          <div className="col-lg-4">
-            <div className="kursus-benefit">
-              <p>Kategori Kursus</p>
-              <h2>
-                Rp{' '}
-                {formatNumber(
-                  detailKursus.promo_price ? detailKursus.promo_price : detailKursus.price
-                )}
-              </h2>
-              <p>sekali bayar untuk selamanya</p>
-              <p className="mt-4 mb-1">Kursus ini mencakup</p>
-              <ul className="pl-3">
-                {detailKursus.benefit.map((val, index) => (
-                  <li key={index}>{val}</li>
-                ))}
-              </ul>
-              <button onClick={handleSubscribe} className="subscribe-Kursus">
-                <span>Daftar Kursus</span>
-                <i className="fa fa-angle-right" aria-hidden="true"></i>
-              </button>
             </div>
           </div>
         </div>

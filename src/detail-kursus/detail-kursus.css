@@ -1,13 +1,62 @@
 .detail-kursus .title {
+  padding: 90px 0;
+  background-image: url(https://chi.reezkypradata.com/wp-content/uploads/2020/07/affiliate-cta-bg.jpg) !important;
+  background-size: cover;
+  background-position: 50%;
+  background-repeat: no-repeat;
+}
+
+.detail-kursus .title > div:first-child {
   display: flex;
-  height: 225px;
+  padding: 27px 0;
   flex-direction: column;
   justify-content: center;
+  color: #ffffff;
   align-items: center;
+}
+
+.detail-kursus .title > div:last-child {
+  padding: 27px 0;
+}
+
+.detail-kursus .title > div:last-child .info > * {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.detail-kursus .title > div:last-child .info > * p {
+  color: #fff;
+  font-weight: 500;
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+.detail-kursus .title > div:last-child .info h6 {
+  font-weight: 600;
+  font-size: 14px;
+  color: #3bed9a !important;
+}
+
+.detail-kursus .title h1 {
+  color: #ffffff;
+  font-size: 34px;
+}
+
+.detail-kursus .et_pb_divider_0 {
+  background-color: #2667ff;
+  display: block;
+  height: 6px;
+  width: 100px;
 }
 
 .detail-kursus button.subscribe-Kursus {
   display: flex;
+  width: 100%;
+  border-radius: 20px;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
   position: relative;
   transition: all 300ms ease 0ms;
   cursor: pointer;
@@ -22,10 +71,6 @@
   color: #ffffff;
   background-color: #3874ff;
   margin-top: 24px;
-}
-
-.detail-kursus button.subscribe-Kursus:hover {
-  margin-left: -8px;
 }
 
 .detail-kursus button.subscribe-Kursus i.fa-angle-right {
@@ -102,7 +147,63 @@
 }
 
 .kursus-benefit {
-  padding-left: 40px;
+  background-color: #f4f8fd;
+  border-radius: 25px 25px 25px 25px;
+  overflow: hidden;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+}
+
+.kursus-benefit .price {
+  text-align: center;
+  border-bottom: 1px solid #2667ff;
+  padding-bottom: 15px;
+}
+
+.kursus-benefit .price h5 {
+  margin: 0;
+  text-decoration: line-through;
+  font-size: 16px;
+}
+
+.kursus-benefit .price p:last-child {
+  font-style: italic;
+  font-size: 14px;
+  margin: 0;
+}
+
+.kursus-benefit .price h2 {
+  color: #3874ff;
+  font-size: 40px;
+}
+
+.kursus-benefit .desc {
+  padding-top: 15px;
+}
+
+.kursus-benefit .desc h3 {
+  font-size: 20px;
+  padding-bottom: 12px;
+}
+
+.kursus-benefit .desc ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.kursus-benefit .desc ul li {
+  display: flex;
+  padding-bottom: 10px;
+  font-size: 15px;
+}
+
+.kursus-benefit .desc ul li *:first-child {
+  font-size: 20px;
+  padding-right: 10px;
+  color: #3874ff;
+  align-items: center;
 }
 
 @media only screen and (max-width: 992px) {

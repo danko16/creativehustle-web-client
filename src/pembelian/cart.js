@@ -1,9 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function Cart() {
-  return (
-    <div className="container cart py-5">
+const mapStateToProps = (state) => ({
+  carts: state.cart.carts,
+});
+
+function Cart({ carts }) {
+  function renderEmptyCart() {
+    return (
+      <div className="shopping-list--empty">
+        <img
+          src="/assets/icon/icons8-add-shopping-cart-80.png"
+          alt="cart"
+          style={{
+            padding: '25px 0',
+          }}
+        />
+        <p>Keranjang belanjamu kosong, ayo segera cari kursus favoritmu</p>
+        <Link className="keep-shopping-action" to="/kursus">
+          Cari Kursus
+        </Link>
+      </div>
+    );
+  }
+
+  function renderCart() {
+    return (
       <div className="row">
         <div className="col-lg-8 pl-0">
           <div className="cart-item">
@@ -76,8 +100,15 @@ function Cart() {
           </div>
         </div>
       </div>
-    </div>
+    );
+  }
+  return (
+    <div className="container cart py-5">{carts.length > 0 ? renderCart() : renderEmptyCart()}</div>
   );
 }
 
-export default Cart;
+Cart.propTypes = {
+  carts: PropTypes.array,
+};
+
+export default connect(mapStateToProps)(Cart);

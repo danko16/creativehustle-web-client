@@ -1,0 +1,81 @@
+export const CART_ACTIONS = Object.freeze({
+  SET_DATA: 'myapp/cart/set-data',
+  REQ_CART: 'myapp/cart/req-cart',
+  CART: 'myapp/cart/cart',
+  ADD_CART: 'myapp/cart/add',
+  DELETE_CART: 'myapp/cart/delete',
+  ERROR: 'myapp/cart/error',
+  CLEAR_ERROR: 'myapp/cart/clear-error',
+});
+
+export const cartActions = Object.freeze({
+  setData: (field, value) => ({
+    type: CART_ACTIONS.SET_DATA,
+    field,
+    value,
+  }),
+  reqCart: () => ({
+    type: CART_ACTIONS.REQ_CART,
+  }),
+  cart: (value) => ({
+    type: CART_ACTIONS.CART,
+    value,
+  }),
+  error: (value) => ({
+    type: CART_ACTIONS.ERROR,
+    value,
+  }),
+  clearError: () => ({
+    type: CART_ACTIONS.CLEAR_ERROR,
+  }),
+});
+
+const initialState = {
+  carts: [],
+  message: '',
+  is_error: false,
+  loading: false,
+};
+
+const reducer = (state = initialState, { field, value, type }) => {
+  switch (type) {
+    case CART_ACTIONS.SET_DATA:
+      return {
+        ...state,
+        [field]: value,
+      };
+    case CART_ACTIONS.REQ_CART:
+    case CART_ACTIONS.ADD_CART:
+    case CART_ACTIONS.DELETE_CART:
+      return {
+        ...state,
+        loading: true,
+      };
+    case CART_ACTIONS.CART:
+      return {
+        ...state,
+        carts: value,
+        message: '',
+        is_error: false,
+        loading: false,
+      };
+    case CART_ACTIONS.ERROR:
+      return {
+        ...state,
+        message: value,
+        is_error: true,
+        loading: false,
+      };
+    case CART_ACTIONS.CLEAR_ERROR:
+      return {
+        ...state,
+        message: '',
+        is_error: false,
+        loading: false,
+      };
+    default:
+      return state;
+  }
+};
+
+export default reducer;

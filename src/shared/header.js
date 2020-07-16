@@ -12,6 +12,7 @@ import './header.css';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
+  carts: state.cart.carts,
   loading: state.auth.loading,
   modal: state.header,
 });
@@ -35,7 +36,7 @@ function useOutsideAlerter(ref, setShowDropdown) {
   }, [ref, setShowDropdown]);
 }
 
-function Header({ style, user, logout, modal, loading, history }) {
+function Header({ style, user, logout, modal, loading, carts, history }) {
   const [displayModal, setDisplayModal] = useState({
     show: false,
     mode: null,
@@ -250,9 +251,11 @@ function Header({ style, user, logout, modal, loading, history }) {
                   src="/assets/icon/icons8-shopping-cart-50.png"
                   alt="cart"
                 />
-                <span className="cart-notification-badge" title="item in the cart">
-                  1
-                </span>
+                {carts.length > 0 && (
+                  <span className="cart-notification-badge" title="item in the cart">
+                    {carts.length}
+                  </span>
+                )}
               </li>
               {isAuthenticated() ? userMode() : authMode()}
             </ul>
@@ -269,6 +272,7 @@ Header.propTypes = {
   history: PropTypes.object,
   loading: PropTypes.bool,
   modal: PropTypes.object,
+  carts: PropTypes.array,
   logout: PropTypes.func,
 };
 

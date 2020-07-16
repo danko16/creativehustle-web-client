@@ -8,6 +8,7 @@ import kursusSayaSaga from './kursus-saya';
 import kursusSaga from './kursus';
 import kelasSaga from './kelas';
 import kelasSayaSaga from './kelas-saya';
+import cartSaga from './cart';
 
 function* register({ value }) {
   try {
@@ -178,10 +179,11 @@ function* authFlow() {
     const authorizedTask = yield fork(authorizedTsk);
     const kursusSayaTask = yield fork(kursusSayaSaga);
     const kelasSayaTask = yield fork(kelasSayaSaga);
+    const cartTask = yield fork(cartSaga);
 
     console.log('wait for logout');
     yield take(AUTH_ACTIONS.LOGOUT);
-    yield cancel([authorizedTask, kursusSayaTask, kelasSayaTask]);
+    yield cancel([authorizedTask, kursusSayaTask, kelasSayaTask, cartTask]);
   }
 }
 

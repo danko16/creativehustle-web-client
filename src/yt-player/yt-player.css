@@ -1,3 +1,9 @@
+.youtube-wrapper {
+  border: 15px solid #f4f8fd;
+  margin-bottom: 40px;
+  border-radius: 25px;
+}
+
 .detail-kursus .slider {
   position: relative;
   width: 440px;
@@ -18,7 +24,6 @@
   justify-content: space-evenly;
   align-items: center;
   padding: 18px;
-  margin-bottom: 40px;
 }
 
 .detail-kursus .player-control .fa {

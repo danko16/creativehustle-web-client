@@ -136,6 +136,36 @@
   cursor: pointer;
 }
 
+.cart .shopping-list--empty {
+  box-shadow: 0 0 2px #dedfe0;
+  justify-content: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 300px;
+  margin-bottom: 30px;
+  padding: 10px;
+  text-align: center;
+}
+
+.cart .shopping-list--empty .keep-shopping-action:hover {
+  opacity: .7;
+}
+
+.cart .keep-shopping-action {
+  display: block;
+  text-decoration: none;
+  background-color: #ec5252;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  padding: 12px;
+  font-size: 18px;
+  transition: 0.2s;
+  cursor: pointer;
+}
+
 .pembayaran .bank-list {
   display: flex;
   flex-wrap: wrap;
