@@ -1,8 +1,8 @@
 export const KURSUS_ACTIONS = Object.freeze({
   SET_DATA: 'myapp/kursus/set-data',
-  REQ_KURSUS: 'myapp/kursus/req-kursus',
-  REQ_CONTENTS: 'myapp/kursus/req-contents',
-  REQ_CARI_KURSUS: 'myapp/kursus/req-cari',
+  REQ_KURSUS: 'myapp/kursus/req/kursus',
+  REQ_CONTENTS: 'myapp/kursus/req/contents',
+  REQ_CARI_KURSUS: 'myapp/kursus/req/cari',
   KURSUS: 'myapp/kursus/kursus',
   CONTENTS: 'myapp/kursus/contents',
   ERROR: 'myapp/kursus/error',

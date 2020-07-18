@@ -4,6 +4,7 @@ import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { cartActions } from '../redux/reducers/cart';
+import { invoiceActions } from '../redux/reducers/invoice';
 
 const mapStateToProps = (state) => ({
   carts: state.cart.carts,
@@ -13,12 +14,13 @@ const mapStateToProps = (state) => ({
 const mapActionToProps = (dispatch) =>
   bindActionCreators(
     {
+      addInvoice: invoiceActions.addInvoice,
       deleteCart: cartActions.deleteCart,
     },
     dispatch
   );
 
-function Cart({ carts, total_prices, deleteCart }) {
+function Cart({ carts, total_prices, addInvoice, deleteCart }) {
   function renderEmptyCart() {
     return (
       <div className="shopping-list--empty">
@@ -39,6 +41,20 @@ function Cart({ carts, total_prices, deleteCart }) {
 
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  }
+
+  function handleAddInvoice() {
+    const courses_id = [],
+      classes_id = [];
+    carts.forEach((val) => {
+      if (val.type === 'course') {
+        courses_id.push(val.course_id);
+      } else if (val.type === 'class') {
+        classes_id.push(val.class_id);
+      }
+    });
+
+    addInvoice({ courses_id, classes_id });
   }
 
   function renderCartItems() {
@@ -106,17 +122,24 @@ function Cart({ carts, total_prices, deleteCart }) {
           <div className="cart-total card-no-shadow">
             <p className="total-label">Total: </p>
             <h2 className="total-price">
-              <strong>Rp {formatNumber(total_prices.total_price)}</strong>
+              <strong>
+                Rp{' '}
+                {formatNumber(
+                  total_prices.total_promo_price
+                    ? total_prices.total_promo_price
+                    : total_prices.total_price
+                )}
+              </strong>
             </h2>
             {total_prices.total_promo_price !== 0 && (
-              <p className="total-promo-price">Rp {formatNumber(total_prices.total_promo_price)}</p>
+              <p className="total-promo-price">Rp {formatNumber(total_prices.total_price)}</p>
             )}
             {total_prices.percentage !== 0 && (
               <p className="total-discount">diskon {Math.round(total_prices.percentage)} %</p>
             )}
-            <Link className="pay-btn" to="/pembelian/bayar">
+            <div onClick={handleAddInvoice} className="pay-btn">
               Bayar
-            </Link>
+            </div>
             <div className="coupon">
               <div className="input-group mb-3">
                 <input type="text" className="form-control" placeholder="Masukan Kupon" />
@@ -151,6 +174,7 @@ function Cart({ carts, total_prices, deleteCart }) {
 Cart.propTypes = {
   carts: PropTypes.array,
   total_prices: PropTypes.object,
+  addInvoice: PropTypes.func,
   deleteCart: PropTypes.func,
 };
 

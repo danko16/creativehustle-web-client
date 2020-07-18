@@ -1,9 +1,72 @@
-import React, { useRef } from 'react';
+import React, { useRef, useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { invoiceActions } from '../redux/reducers/invoice';
 
-function Invoice() {
+import Loading from '../shared/loading';
+
+const mapStateToProps = (state) => ({
+  user: state.auth.user,
+  invoice: state.invoice.invoice,
+  prices: state.invoice.prices,
+  carts: state.invoice.carts,
+});
+
+const mapActionToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      reqInvoice: invoiceActions.reqInvoice,
+    },
+    dispatch
+  );
+
+function Invoice({ reqInvoice, invoice, user, prices, carts }) {
+  const { invoiceId } = useParams();
   const divToPrint = useRef();
+
+  useEffect(() => {
+    reqInvoice({ invoice_id: invoiceId });
+  }, [reqInvoice, invoiceId]);
+
+  function convertStatus(status) {
+    switch (status) {
+      case 'unpaid':
+        return 'Belum Terbayar';
+      case 'paid':
+        return 'Lunas';
+      case 'pending':
+        return 'Menunggu Konfirmasi';
+      case 'canceled':
+        return 'di Batalkan';
+      default:
+        return 'Menunggu Konfirmasi';
+    }
+  }
+
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  }
+
+  function convertDate(mode) {
+    if (mode === 'date') {
+      const date = new Date(invoice.date);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      return `${day}/${month < 10 ? `0${month}` : month}/${year}`;
+    } else if (mode === 'expired') {
+      const date = new Date(invoice.expired);
+      const day = date.getDate();
+      const month = date.getMonth() + 1;
+      const year = date.getFullYear();
+      return `${day}/${month < 10 ? `0${month}` : month}/${year}`;
+    }
+  }
+
   function converToPdf(mode) {
     const input = divToPrint.current.cloneNode(true);
 
@@ -27,7 +90,23 @@ function Invoice() {
     });
   }
 
-  return (
+  function renderItems() {
+    return carts.map((val) =>
+      val.type === 'course' ? (
+        <tr key={val.course_id}>
+          <td>{val.title} - Kursus *</td>
+          <td className="text-center">Rp. {formatNumber(val.price)}</td>
+        </tr>
+      ) : (
+        <tr key={val.class_id}>
+          <td>{val.title} - Kelas *</td>
+          <td className="text-center">Rp. {formatNumber(val.price)}</td>
+        </tr>
+      )
+    );
+  }
+
+  return invoice && prices && carts && user ? (
     <>
       <div ref={divToPrint} className="invoice">
         <div className="text-center">
@@ -44,15 +123,15 @@ function Invoice() {
               margin: '18px 0',
             }}
           >
-            Invoice <strong>#520930</strong>
+            Invoice <strong>#{invoice.id}</strong>
           </h3>
           <div className="invoice-status">
-            Status: <span className="unpaid">Belum Terbayar</span>
+            Status: <span className={invoice.status}>{convertStatus(invoice.status)}</span>
           </div>
           <span className="small-text">
-            Terbit: 11/07/2020
+            Terbit: {convertDate('date')}
             <br />
-            Kadaluwarsa: 18/07/2020
+            Kadaluwarsa: {convertDate('expired')}
           </span>
         </div>
         <hr></hr>
@@ -68,9 +147,9 @@ function Invoice() {
               <strong>Ditagihkan kepada:</strong>
             </p>
             <p>
-              Reezky Pradata
+              {user.name}
               <br />
-              reezkypradata@gmail.com
+              {user.email}
             </p>
           </div>
           <div>
@@ -103,27 +182,35 @@ function Invoice() {
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Domain Registration - reezky.com - 1 Year/s (11/07/2020 - 10/07/2021) *</td>
-                    <td className="text-center">Rp 129.000,00</td>
-                  </tr>
+                  {renderItems()}
                   <tr>
                     <td className="total-row text-right">
                       <strong>Sub Total</strong>
                     </td>
-                    <td className="total-row text-center">Rp 129.000,00</td>
-                  </tr>
-                  <tr>
-                    <td className="total-row text-right">
-                      <strong>10.00% PPN</strong>
+                    <td className="total-row text-center">
+                      Rp. {formatNumber(prices.total_price)}
                     </td>
-                    <td className="total-row text-center">Rp 12.900,00</td>
                   </tr>
+                  {prices.total_promo_price && (
+                    <tr>
+                      <td className="total-row text-right">
+                        <strong>Diskon {Math.round(prices.percentage)}%</strong>
+                      </td>
+                      <td className="total-row text-center">
+                        Rp. {formatNumber(prices.total_price - prices.total_promo_price)}
+                      </td>
+                    </tr>
+                  )}
                   <tr>
                     <td className="total-row text-right">
                       <strong>Total</strong>
                     </td>
-                    <td className="total-row text-center">Rp 141.900,00</td>
+                    <td className="total-row text-center">
+                      Rp{' '}
+                      {formatNumber(
+                        prices.total_promo_price ? prices.total_promo_price : prices.total_price
+                      )}
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -153,7 +240,17 @@ function Invoice() {
         </div>
       </div>
     </>
+  ) : (
+    <Loading />
   );
 }
 
-export default Invoice;
+Invoice.propTypes = {
+  reqInvoice: PropTypes.func,
+  invoice: PropTypes.object,
+  carts: PropTypes.array,
+  prices: PropTypes.object,
+  user: PropTypes.object,
+};
+
+export default connect(mapStateToProps, mapActionToProps)(Invoice);

@@ -21,11 +21,12 @@ function Pembelian() {
           <PembelianHead title="Keranjang Belanja" />
           <Cart />
         </Route>
-        <Route path={`${path}/bayar`}>
+        <Route path={`${path}/bayar/:invoiceId`}>
           <PembelianHead title="Pembayaran" />
           <Payment />
         </Route>
         <Route path={`${path}/konfirmasi`}>
+          <PembelianHead title="Konfirmasi" />
           <Confirmations />
         </Route>
       </Switch>

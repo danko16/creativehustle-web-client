@@ -1,6 +1,6 @@
 export const CART_ACTIONS = Object.freeze({
   SET_DATA: 'myapp/cart/set-data',
-  REQ_CART: 'myapp/cart/req-cart',
+  REQ_CART: 'myapp/cart/req/cart',
   CART: 'myapp/cart/cart',
   ADD_CART: 'myapp/cart/add',
   DELETE_CART: 'myapp/cart/delete',

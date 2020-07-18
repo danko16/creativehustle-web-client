@@ -8,6 +8,7 @@ import kelas from './kelas';
 import header from './header';
 import kelasSaya from './kelas-saya';
 import cart from './cart';
+import invoice from './invoice';
 
 const createRootReducer = (history) =>
   combineReducers({
@@ -19,6 +20,7 @@ const createRootReducer = (history) =>
     header,
     kelasSaya,
     cart,
+    invoice,
   });
 
 export default createRootReducer;

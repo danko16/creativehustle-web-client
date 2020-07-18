@@ -1,8 +1,8 @@
 export const KURSUS_SAYA_ACTION = Object.freeze({
   SET_DATA: 'myapp/kursus-saya/set-data',
-  REQ_KURSUS: 'myapp/kursus-saya/req-kursus',
-  REQ_CONTENTS: 'myapp/kursus-saya/req-contents',
-  REQ_REKOMENDASI: 'myapp/kursus-saya/req-rekomendasi',
+  REQ_KURSUS: 'myapp/kursus-saya/req/kursus',
+  REQ_CONTENTS: 'myapp/kursus-saya/req/contents',
+  REQ_REKOMENDASI: 'myapp/kursus-saya/req/rekomendasi',
   KURSUS: 'myapp/kursus-saya/kursus',
   CONTENTS: 'myapp/kursus-saya/contents',
   REKOMENDASI: 'myapp/kursus-saya/rekomendasi',

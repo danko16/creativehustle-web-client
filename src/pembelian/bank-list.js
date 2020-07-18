@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function BankList() {
   return (
@@ -85,7 +86,9 @@ function BankList() {
           </ul>
         </div>
       </div>
-      <div className="confirm-payment button">Konfirmasi Pembayaran</div>
+      <Link to="/pembelian/konfirmasi" className="confirm-payment button">
+        Konfirmasi Pembayaran
+      </Link>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 export const KELAS_ACTIONS = Object.freeze({
   SET_DATA: 'myapp/kelas/set-data',
-  REQ_KELAS: 'myapp/kelas/req-kelas',
+  REQ_KELAS: 'myapp/kelas/req/kelas',
   REQ_CARI_KELAS: 'myapp/kelas/req/cari-kelas',
   KELAS: 'myapp/kelas/kelas',
   ERROR: 'myapp/kelas/error',
