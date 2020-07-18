@@ -40,6 +40,7 @@ export const cartActions = Object.freeze({
 
 const initialState = {
   carts: [],
+  total_prices: {},
   recently_added: null,
   message: '',
   is_error: false,
@@ -63,7 +64,8 @@ const reducer = (state = initialState, { field, value, type }) => {
     case CART_ACTIONS.CART:
       return {
         ...state,
-        carts: value,
+        carts: value.carts_payload,
+        total_prices: value.prices,
         message: '',
         is_error: false,
         loading: false,

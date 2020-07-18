@@ -94,21 +94,21 @@
   padding: 10px 20px;
 }
 
-.cart-total > p:nth-child(1) {
+.cart-total > p.total-label {
   margin-bottom: 10px;
 }
 
-.cart-total > p:nth-child(3) {
+.cart-total > p.total-promo-price {
   margin-bottom: 0;
   text-decoration: line-through;
 }
 
-.cart-total > p:nth-child(4) {
+.cart-total > p.total-discount {
   font-size: 13px;
   color: #7f8b9c;
 }
 
-.cart-total > a:nth-child(5) {
+.cart-total > a.pay-btn {
   display: block;
   text-decoration: none;
   background-color: #ec5252;
@@ -122,22 +122,22 @@
   cursor: pointer;
 }
 
-.cart-total > a:nth-child(5):hover {
+.cart-total > a.pay-btn:hover {
   opacity: 0.8;
 }
 
-.cart-total > div:nth-child(6) {
+.cart-total > div.coupon {
   margin-top: 12px;
   padding-top: 12px;
   border-top: 1px solid #cacaca;
 }
 
-.cart-total > div:nth-child(6) ul {
+.cart-total > div.coupon ul {
   list-style: none;
   padding-left: 4px;
 }
 
-.cart-total > div:nth-child(6) ul i.fa.fa-times {
+.cart-total > div.coupon ul i.fa.fa-times {
   color: #ec5252;
   cursor: pointer;
 }

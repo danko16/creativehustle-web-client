@@ -7,6 +7,7 @@ import { cartActions } from '../redux/reducers/cart';
 
 const mapStateToProps = (state) => ({
   carts: state.cart.carts,
+  total_prices: state.cart.total_prices,
 });
 
 const mapActionToProps = (dispatch) =>
@@ -17,7 +18,7 @@ const mapActionToProps = (dispatch) =>
     dispatch
   );
 
-function Cart({ carts, deleteCart }) {
+function Cart({ carts, total_prices, deleteCart }) {
   function renderEmptyCart() {
     return (
       <div className="shopping-list--empty">
@@ -103,14 +104,20 @@ function Cart({ carts, deleteCart }) {
         <div className="col-lg-8 pl-0">{renderCartItems()}</div>
         <div className="col-lg-4 pr-0">
           <div className="cart-total card-no-shadow">
-            <p>Total: </p>
-            <h2>
-              <strong>Rp 269,000</strong>
+            <p className="total-label">Total: </p>
+            <h2 className="total-price">
+              <strong>Rp {formatNumber(total_prices.total_price)}</strong>
             </h2>
-            <p>Rp1,399,000</p>
-            <p>81% off</p>
-            <Link to="/pembelian/bayar">Bayar</Link>
-            <div>
+            {total_prices.total_promo_price !== 0 && (
+              <p className="total-promo-price">Rp {formatNumber(total_prices.total_promo_price)}</p>
+            )}
+            {total_prices.percentage !== 0 && (
+              <p className="total-discount">diskon {Math.round(total_prices.percentage)} %</p>
+            )}
+            <Link className="pay-btn" to="/pembelian/bayar">
+              Bayar
+            </Link>
+            <div className="coupon">
               <div className="input-group mb-3">
                 <input type="text" className="form-control" placeholder="Masukan Kupon" />
                 <div className="input-group-prepend">
@@ -143,6 +150,7 @@ function Cart({ carts, deleteCart }) {
 
 Cart.propTypes = {
   carts: PropTypes.array,
+  total_prices: PropTypes.object,
   deleteCart: PropTypes.func,
 };
 

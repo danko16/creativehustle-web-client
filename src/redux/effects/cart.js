@@ -9,7 +9,8 @@ function* cart() {
       data: { data },
     } = yield call(cartApi.cart);
     if (data) {
-      yield put(cartActions.cart(data));
+      const { carts_payload, prices } = data;
+      yield put(cartActions.cart({ carts_payload, prices }));
     }
   } catch (error) {
     yield put(cartActions.error(getErrorMessage(error)));
