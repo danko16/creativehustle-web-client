@@ -30,9 +30,15 @@ function* register({ value }) {
   }
 }
 
-function* login({ value }) {
+function* login({ value: { email, password, remember_me, type, pembelian } }) {
   try {
-    const { data: response } = yield call(authApi.login, value);
+    const { data: response } = yield call(authApi.login, {
+      email,
+      password,
+      remember_me,
+      type,
+      pembelian,
+    });
 
     const { data } = response;
     if (data) {
@@ -44,7 +50,9 @@ function* login({ value }) {
       });
 
       yield put(authActions.login(loginPayload));
-      yield put(push('/dashboard'));
+      if (!pembelian) {
+        yield put(push('/dashboard'));
+      }
     }
   } catch (e) {
     yield put(authActions.authError(getErrorMessage(e)));

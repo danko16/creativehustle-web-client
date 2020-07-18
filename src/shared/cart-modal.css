@@ -1,0 +1,98 @@
+.cart-modal {
+  display: block;
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+}
+
+.cart-modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto !important;
+  padding: 20px;
+  top: 40%;
+  max-width: 600px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: cartanimatetop;
+  -webkit-animation-duration: 0.6s;
+  animation-name: cartanimatetop;
+  animation-duration: 0.6s;
+}
+
+.cart-modal-content div:first-child {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: capitalize;
+}
+
+.cart-modal-content div:first-child i.fa.fa-times {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  transition: 0.4s;
+  top: 0;
+}
+
+.cart-modal-content div:first-child i.fa.fa-times:hover {
+  opacity: 0.7;
+}
+
+.cart-modal-content .cart-modal-item {
+  margin-top: 12px;
+  display: flex;
+}
+
+.cart-modal-content .cart-modal-item div:nth-child(2) {
+  padding-left: 10px;
+}
+
+.cart-modal-content .cart-modal-item div:nth-child(3) {
+  background-color: #2967ff;
+  color: #fff;
+  height: fit-content;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: 500;
+  border-radius: 8px;
+  transition: 0.4s;
+  margin-left: auto;
+}
+
+.cart-modal-content .cart-modal-item div:nth-child(3):hover {
+  opacity: 0.7;
+}
+
+.cart-modal-content .cart-modal-item p {
+  margin: 0;
+}
+
+@-webkit-keyframes cartanimatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 40%;
+    opacity: 1;
+  }
+}
+
+@keyframes cartanimatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 40%;
+    opacity: 1;
+  }
+}

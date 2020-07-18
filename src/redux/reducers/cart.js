@@ -21,6 +21,14 @@ export const cartActions = Object.freeze({
     type: CART_ACTIONS.CART,
     value,
   }),
+  addCart: (value) => ({
+    type: CART_ACTIONS.ADD_CART,
+    value,
+  }),
+  deleteCart: (value) => ({
+    type: CART_ACTIONS.DELETE_CART,
+    value,
+  }),
   error: (value) => ({
     type: CART_ACTIONS.ERROR,
     value,
@@ -32,6 +40,7 @@ export const cartActions = Object.freeze({
 
 const initialState = {
   carts: [],
+  recently_added: null,
   message: '',
   is_error: false,
   loading: false,

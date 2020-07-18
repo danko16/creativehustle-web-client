@@ -15,7 +15,7 @@ const mapStateToPops = (state) => ({
 const mapActionToProps = (dispatch) =>
   bindActionCreators({ login: authActions.reqLogin, clearMsg: authActions.clearAuthMsg }, dispatch);
 
-function Login({ setDisplayModal, auth, clearMsg, login }) {
+function Login({ setDisplayModal, displayModal, auth, clearMsg, login }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
@@ -55,6 +55,7 @@ function Login({ setDisplayModal, auth, clearMsg, login }) {
         password,
         remember_me: rememberMe,
         type: 'student',
+        pembelian: displayModal.pembelian,
       });
     }
   }
@@ -225,6 +226,7 @@ Login.propTypes = {
   setDisplayModal: PropTypes.func,
   login: PropTypes.func,
   clearMsg: PropTypes.func,
+  displayModal: PropTypes.object,
   auth: PropTypes.object,
 };
 

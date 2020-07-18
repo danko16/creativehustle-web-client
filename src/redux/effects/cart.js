@@ -9,27 +9,28 @@ function* cart() {
       data: { data },
     } = yield call(cartApi.cart);
     if (data) {
-      console.log(data);
+      yield put(cartActions.cart(data));
     }
   } catch (error) {
     yield put(cartActions.error(getErrorMessage(error)));
   }
 }
 
-function* addCart(value) {
+function* addCart({ value }) {
   try {
     const {
       data: { data },
     } = yield call(cartApi.add, value);
     if (data) {
       yield call(cart);
+      yield put(cartActions.setData('recently_added', data));
     }
   } catch (error) {
     yield put(cartActions.error(getErrorMessage(error)));
   }
 }
 
-function* deleteCart(value) {
+function* deleteCart({ value }) {
   try {
     const {
       data: { data },

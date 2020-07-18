@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, withRouter } from 'react-router-dom';
 import Title from '../shared/title';
 import PropTypes from 'prop-types';
 import { kursusActions } from '../redux/reducers/kursus';
-import { kursusSayaAction } from '../redux/reducers/kursus-saya';
 import { headerActions } from '../redux/reducers/header';
+import { cartActions } from '../redux/reducers/cart';
 import { isAuthenticated } from '../utils/auth';
 import Loading from '../shared/loading';
+import CartModal from '../shared/cart-modal';
 import YtPlayer from '../yt-player';
 import './detail-kursus.css';
 
@@ -17,6 +18,8 @@ const mapStateToProps = (state) => ({
   sections: state.kursus.sections,
   contents: state.kursus.contents,
   loading: state.kursus.loading,
+  carts: state.cart.carts,
+  recently_added: state.cart.recently_added,
 });
 
 const mapActionToProps = (dispatch) =>
@@ -24,8 +27,9 @@ const mapActionToProps = (dispatch) =>
     {
       setData: kursusActions.setData,
       reqContents: kursusActions.reqContents,
-      subscribe: kursusSayaAction.subscribe,
       showModal: headerActions.showModal,
+      addCart: cartActions.addCart,
+      setCart: cartActions.setData,
     },
     dispatch
   );
@@ -36,8 +40,12 @@ function DetailKursus({
   setData,
   sections,
   showModal,
+  addCart,
+  carts,
+  setCart,
+  history,
+  recently_added,
   contents,
-  subscribe,
   loading,
 }) {
   const { kursusId } = useParams();
@@ -45,6 +53,8 @@ function DetailKursus({
   const [detailContent, setDetailContent] = useState(null);
   const [detailSections, setDetailSections] = useState(null);
   const [detailContents, setDetailContents] = useState(null);
+  const [showCartModal, setShowCartModal] = useState(false);
+  const [isCartExist, setIsCartExist] = useState(false);
   const [toggler, setToggler] = useState({});
 
   useEffect(() => {
@@ -60,12 +70,13 @@ function DetailKursus({
   useEffect(() => {
     return () => {
       setData('contents', []);
+      setCart('recently_added', null);
       showModal({
         show: false,
         type: null,
       });
     };
-  }, [setData, showModal]);
+  }, [setData, setCart, showModal]);
 
   useEffect(() => {
     if (!loading && kursus.length) {
@@ -83,15 +94,31 @@ function DetailKursus({
     }
   }, [kursusId, kursus, sections, contents, loading]);
 
+  useEffect(() => {
+    if (carts.length && detailKursus) {
+      carts.forEach((val) => {
+        if (val.course_id === detailKursus.id) {
+          setIsCartExist(true);
+        }
+      });
+    }
+  }, [carts, detailKursus]);
+
+  useEffect(() => {
+    if (detailKursus && recently_added && recently_added.course_id === detailKursus.id) {
+      setShowCartModal(true);
+    }
+  }, [recently_added, detailKursus]);
+
   function formatNumber(num) {
     return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
   }
 
-  function handleSubscribe() {
+  function handleAddCart() {
     const isAuth = isAuthenticated();
     if (isAuth) {
-      subscribe({
-        kursus_id: detailKursus.id,
+      addCart({
+        course_id: detailKursus.id,
       });
     } else {
       showModal({
@@ -100,6 +127,8 @@ function DetailKursus({
       });
     }
   }
+
+  function handlePayment() {}
 
   function renderSections() {
     return detailSections.map((val) => {
@@ -137,6 +166,9 @@ function DetailKursus({
   return detailKursus && detailContent ? (
     <div className="detail-kursus">
       <Title title={detailKursus.title} />
+      {showCartModal && (
+        <CartModal setShowCartModal={setShowCartModal} detailKursus={detailKursus} />
+      )}
       <div className="title">
         <div>
           <h1 className="text-center">
@@ -236,12 +268,21 @@ function DetailKursus({
                     Dapat didownload offline{' '}
                   </li>
                 </ul>
-                <button onClick={handleSubscribe} className="subscribe-Kursus">
-                  <span>Masukan Keranjang</span>
+                <button
+                  onClick={() => {
+                    if (isCartExist) {
+                      history.push('/pembelian/keranjang');
+                    } else {
+                      handleAddCart();
+                    }
+                  }}
+                  className="subscribe-Kursus"
+                >
+                  <span>{isCartExist ? 'Lihat' : 'Masukan'} Keranjang</span>
                   <i className="fa fa-angle-right" aria-hidden="true"></i>
                 </button>
                 <button
-                  onClick={handleSubscribe}
+                  onClick={handlePayment}
                   className="subscribe-Kursus"
                   style={{
                     backgroundColor: '#ff6161',
@@ -320,11 +361,15 @@ DetailKursus.propTypes = {
   kursus: PropTypes.array,
   sections: PropTypes.array,
   contents: PropTypes.array,
-  subscribe: PropTypes.func,
   reqContents: PropTypes.func,
+  addCart: PropTypes.func,
+  setCart: PropTypes.func,
+  history: PropTypes.object,
+  recently_added: PropTypes.object,
+  carts: PropTypes.array,
   setData: PropTypes.func,
   showModal: PropTypes.func,
   loading: PropTypes.bool,
 };
 
-export default connect(mapStateToProps, mapActionToProps)(DetailKursus);
+export default connect(mapStateToProps, mapActionToProps)(withRouter(DetailKursus));

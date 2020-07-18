@@ -19,7 +19,7 @@ function Modal({ displayModal, setDisplayModal }) {
     if (displayModal.type === 'register') {
       return <Register setDisplayModal={setDisplayModal} />;
     } else if (displayModal.type === 'login') {
-      return <Login setDisplayModal={setDisplayModal} />;
+      return <Login displayModal={displayModal} setDisplayModal={setDisplayModal} />;
     }
   }
   return (

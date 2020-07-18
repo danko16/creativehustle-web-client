@@ -16,7 +16,7 @@ function Invoice() {
       const imgData = canvas.toDataURL('image/png');
       const pdf = new jsPDF('p', 'mm', [canvas.height, 1150]);
 
-      pdf.addImage(imgData, 'PNG', 10, 10);
+      pdf.addImage(imgData, 'PNG', 10, 15);
       if (mode === 'download') {
         pdf.save('invoice#520930.pdf');
       } else if (mode === 'print') {

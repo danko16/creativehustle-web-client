@@ -1,13 +1,23 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { cartActions } from '../redux/reducers/cart';
 
 const mapStateToProps = (state) => ({
   carts: state.cart.carts,
 });
 
-function Cart({ carts }) {
+const mapActionToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      deleteCart: cartActions.deleteCart,
+    },
+    dispatch
+  );
+
+function Cart({ carts, deleteCart }) {
   function renderEmptyCart() {
     return (
       <div className="shopping-list--empty">
@@ -26,47 +36,71 @@ function Cart({ carts }) {
     );
   }
 
+  function formatNumber(num) {
+    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
+  }
+
+  function renderCartItems() {
+    return carts.map((val) => (
+      <div key={val.cart_id} className="cart-item">
+        <img
+          className="img__cover"
+          src={val.thumbnail}
+          alt="thumbnail"
+          style={{
+            maxWidth: '130px',
+            height: 'auto',
+          }}
+        />
+        <div>
+          <Link
+            to={val.type === 'course' ? `/kursus/${val.course_id}` : `/kelas/${val.class_id}`}
+            className="stretched-link"
+          >
+            <span className="sr-only">title for screen</span>
+          </Link>
+          <p>
+            <strong>{val.title}</strong>
+          </p>
+          <p>By {val.teacher_name}</p>
+        </div>
+        <div>
+          <p style={{ color: '#f44336' }}>
+            <strong>
+              Rp. {formatNumber(val.promo_price ? val.promo_price : val.price)}{' '}
+              <i className="fa fa-tag" aria-hidden="true"></i>
+            </strong>
+          </p>
+          {val.promo_price && (
+            <p
+              style={{
+                textDecoration: 'line-through',
+              }}
+            >
+              Rp. {formatNumber(val.price)}
+            </p>
+          )}
+        </div>
+        <div>
+          <p
+            className="remove-cart-item"
+            onClick={() => {
+              deleteCart({
+                cart_id: val.cart_id,
+              });
+            }}
+          >
+            Hapus <i className="fa fa-times" aria-hidden="true"></i>
+          </p>
+        </div>
+      </div>
+    ));
+  }
+
   function renderCart() {
     return (
       <div className="row">
-        <div className="col-lg-8 pl-0">
-          <div className="cart-item">
-            <img
-              className="img__cover"
-              src="/assets/img/ezgif-2-d540788c4e50.png"
-              alt="thumbnail"
-              style={{
-                maxWidth: '130px',
-                height: 'auto',
-              }}
-            />
-            <div>
-              <p>
-                <strong>Leadership Essentials [Accredited] </strong>
-              </p>
-              <p>By Braco Pobric and 1 other Current</p>
-            </div>
-            <div>
-              <p style={{ color: '#f44336' }}>
-                <strong>
-                  Rp269,000 <i className="fa fa-tag" aria-hidden="true"></i>
-                </strong>
-              </p>
-              <p
-                style={{
-                  textDecoration: 'line-through',
-                }}
-              >
-                Rp1,399,000
-              </p>
-            </div>
-            <div>
-              <p className="remove-cart-item">
-                Hapus <i className="fa fa-times" aria-hidden="true"></i>
-              </p>
-            </div>
-          </div>
-        </div>
+        <div className="col-lg-8 pl-0">{renderCartItems()}</div>
         <div className="col-lg-4 pr-0">
           <div className="cart-total card-no-shadow">
             <p>Total: </p>
@@ -109,6 +143,7 @@ function Cart({ carts }) {
 
 Cart.propTypes = {
   carts: PropTypes.array,
+  deleteCart: PropTypes.func,
 };
 
-export default connect(mapStateToProps)(Cart);
+export default connect(mapStateToProps, mapActionToProps)(Cart);

@@ -18,6 +18,7 @@ export const headerActions = Object.freeze({
 const initialState = {
   show: false,
   type: null,
+  pembelian: true,
 };
 
 const reducer = (state = initialState, { value, field, type }) => {

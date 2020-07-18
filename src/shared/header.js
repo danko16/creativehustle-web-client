@@ -40,6 +40,7 @@ function Header({ style, user, logout, modal, loading, carts, history }) {
   const [displayModal, setDisplayModal] = useState({
     show: false,
     mode: null,
+    pembelian: false,
   });
   const [showDropdown, setShowDropdown] = useState(false);
   const wrapperRef = useRef(null);
