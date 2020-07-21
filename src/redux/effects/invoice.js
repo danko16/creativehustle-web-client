@@ -23,7 +23,6 @@ function* addInvoice({ value }) {
       data: { data },
     } = yield call(invoiceApi.add, value);
     if (data) {
-      console.log(data);
       yield put(push(`/pembelian/bayar/${data.invoice_id}`));
     }
   } catch (error) {

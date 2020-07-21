@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Invoice from './invoice';
 import BankList from './bank-list';
 
 function Payment() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="container pembayaran py-5">
       <div className="row">

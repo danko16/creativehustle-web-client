@@ -328,6 +328,12 @@
 
 .konfirmasi .form-group {
   display: flex;
+  margin-bottom: 15px;
+}
+
+.konfirmasi .form-group label {
+  margin-top: 4px;
+  text-align: right;
 }
 
 .konfirmasi .form-control {
@@ -345,6 +351,81 @@
 .konfirmasi .error-text {
   margin-top: 0.25rem;
   margin-bottom: 0;
+}
+
+.konfirmasi .react-datepicker-wrapper {
+  width: 100%;
+}
+
+.konfirmasi .label-bg {
+  font-size: 20px;
+  color: #fff;
+  width: 38px;
+  height: 38px;
+  border-radius: 0.25rem 0 0 0.25rem;
+  background-color: #36a1ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.konfirmasi .form-control.with-label-bg {
+  border-radius: 0 0.25rem 0.25rem 0;
+  border-left: 0px;
+  height: 38px;
+}
+
+.konfirmasi .form-check-label {
+  cursor: pointer;
+  color: black;
+  font-weight: 600;
+}
+
+.konfirmasi .form-check .form-check-input {
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.konfirmasi .btn-confirm {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  outline: none;
+  margin-top: 30px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  padding: 10px 80px;
+  background-color: #36a1ff;
+  transition: 0.4s;
+  color: #fff;
+}
+
+.konfirmasi .btn-confirm:hover {
+  background-color: #534bff;
+}
+
+.konfirmasi .form-group .bank-wrapper {
+  position: absolute;
+  z-index: 88;
+  border-radius: 8px;
+  border: 1px solid;
+  left: 23%;
+  visibility: hidden;
+  top: 18%;
+  opacity: 0;
+  transition: visibility 0s linear 300ms, opacity 300ms;
+}
+
+.konfirmasi .form-group .bank-wrapper img {
+  border-radius: 8px;
+  width: 300px;
+}
+
+.konfirmasi .form-group .form-check-label:hover ~ .bank-wrapper {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
 }
 
 @media only screen and (max-width: 992px) {

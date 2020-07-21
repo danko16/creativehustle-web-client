@@ -1,7 +1,8 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function BankList() {
+  const { invoiceId } = useParams();
   return (
     <div className="bank-list">
       <h5 className="bank-list-title">Transfer Pembayaran:</h5>
@@ -86,7 +87,7 @@ function BankList() {
           </ul>
         </div>
       </div>
-      <Link to="/pembelian/konfirmasi" className="confirm-payment button">
+      <Link to={`/pembelian/konfirmasi/${invoiceId}`} className="confirm-payment button">
         Konfirmasi Pembayaran
       </Link>
     </div>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useRouteMatch, Switch, Route } from 'react-router-dom';
 
 import Cart from './cart';
@@ -9,10 +9,6 @@ import './pembelian.css';
 
 function Pembelian() {
   const { path } = useRouteMatch();
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
 
   return (
     <div className="pembelian">
@@ -25,7 +21,7 @@ function Pembelian() {
           <PembelianHead title="Pembayaran" />
           <Payment />
         </Route>
-        <Route path={`${path}/konfirmasi`}>
+        <Route path={`${path}/konfirmasi/:invoiceId`}>
           <PembelianHead title="Konfirmasi" />
           <Confirmations />
         </Route>

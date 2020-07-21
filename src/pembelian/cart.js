@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -21,6 +21,10 @@ const mapActionToProps = (dispatch) =>
   );
 
 function Cart({ carts, total_prices, addInvoice, deleteCart }) {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   function renderEmptyCart() {
     return (
       <div className="shopping-list--empty">
