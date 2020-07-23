@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function JourneyPath() {
   return (
@@ -9,47 +10,39 @@ function JourneyPath() {
       }}
     >
       <div className="container">
-        <div className="d-flex flex-wrap">
-          <div className="text-center jp_intro">
-            <h2>
-              <strong>1.</strong>
-            </h2>
-            <h4>
-              <strong>Membuat Akun</strong>
-            </h4>
-          </div>
-          <div className="text-center jp_intro">
-            <h2>
-              <strong>2.</strong>
-            </h2>
-            <h4>
-              <strong>Pilih Kursus/kelas</strong>
-            </h4>
-          </div>
-          <div className="text-center jp_intro">
-            <h2>
-              <strong>3.</strong>
-            </h2>
-            <h4>
-              <strong>Melakukan Pembayaran</strong>
-            </h4>
-          </div>
-          <div className="text-center jp_intro">
-            <h2>
-              <strong>4.</strong>
-            </h2>
-            <h4>
-              <strong>Mulai Kursus</strong>
-            </h4>
-          </div>
-          <div className="text-center jp_intro">
-            <h2>
-              <strong>5.</strong>
-            </h2>
-            <h4>
-              <strong>Konsultasi Trainer</strong>
-            </h4>
-          </div>
+        <div className="elementor-widget-container">
+          <ul className="step-num">
+            <li className="active">
+              <Link to="/pembelian/keranjang">
+                <span className="num">1</span>
+                <span className="num-txt">Membuat Akun</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#step2">
+                <span className="num">2</span>
+                <span className="num-txt">Pilih Kursus/kelas</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#step3">
+                <span className="num">3</span>
+                <span className="num-txt">Melakukan Pembayaran</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#step3">
+                <span className="num">4</span>
+                <span className="num-txt">Mulai Kursus</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="#step3">
+                <span className="num">5</span>
+                <span className="num-txt">Konsultasi Trainer</span>
+              </Link>
+            </li>
+          </ul>
         </div>
       </div>
     </div>

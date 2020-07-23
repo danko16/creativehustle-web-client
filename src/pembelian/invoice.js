@@ -1,19 +1,19 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { connect } from 'react-redux';
-import { useParams } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
+import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { invoiceActions } from '../redux/reducers/invoice';
-
-import Loading from '../shared/loading';
+import { isAuthenticated } from '../utils/auth';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
   invoice: state.invoice.invoice,
   prices: state.invoice.prices,
   carts: state.invoice.carts,
+  message: state.invoice.message,
 });
 
 const mapActionToProps = (dispatch) =>
@@ -24,13 +24,20 @@ const mapActionToProps = (dispatch) =>
     dispatch
   );
 
-function Invoice({ reqInvoice, invoice, user, prices, carts }) {
-  const { invoiceId } = useParams();
+function Invoice({ reqInvoice, invoice, user, prices, carts, message }) {
   const divToPrint = useRef();
+  const [error, setError] = useState({
+    invoiceId: '',
+  });
+  const [invoiceId, setInvoiceId] = useState();
 
   useEffect(() => {
-    reqInvoice({ invoice_id: invoiceId });
-  }, [reqInvoice, invoiceId]);
+    if (message) {
+      setError({
+        invoiceId: message,
+      });
+    }
+  }, [message]);
 
   function convertStatus(status) {
     switch (status) {
@@ -138,7 +145,6 @@ function Invoice({ reqInvoice, invoice, user, prices, carts }) {
         <div
           style={{
             display: 'flex',
-            justifyContent: 'space-between',
             flexWrap: 'wrap',
           }}
         >
@@ -152,13 +158,31 @@ function Invoice({ reqInvoice, invoice, user, prices, carts }) {
               {user.email}
             </p>
           </div>
-          <div>
+        </div>
+        <div>
+          <p>
+            <strong>Dibayarkan kepada: </strong>
+            <br />
+            <span>Salah satu rekening di bawah ini</span>
+          </p>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              flexWrap: 'wrap',
+            }}
+          >
             <p>
-              <strong>Dibayarkan kepada:</strong>
+              <strong>BNI</strong> <br /> 0722620388
+              <br /> Danang Eko Yudanto
             </p>
             <p>
-              Creativehustle.id <br /> Bendogantungan 2, sumberejo,
-              <br /> klaten selatan <br /> Klaten 57426 <br /> Klaten, Jawa Tengah <br /> <br />
+              <strong>MANDIRI</strong> <br /> 1370016138576
+              <br /> Reezky Pradata Sanjaya
+            </p>
+            <p>
+              <strong>BTPN</strong> <br /> 90020619442
+              <br /> Reezky Pradata Sanjaya
             </p>
           </div>
         </div>
@@ -241,7 +265,60 @@ function Invoice({ reqInvoice, invoice, user, prices, carts }) {
       </div>
     </>
   ) : (
-    <Loading />
+    <div className="empty-invoice">
+      <h2>Silahkan Masukan No Invoice</h2>
+      <p>
+        masukan no invoice untuk melihat
+        <br /> invoice anda
+      </p>
+      <div className="form-group">
+        <label htmlFor="invoiceId">No Invoice </label>
+        <input
+          onChange={(e) => {
+            setInvoiceId(e.target.value);
+          }}
+          onInputCapture={() => {
+            setError((prevState) => ({
+              ...prevState,
+              invoiceId: '',
+            }));
+          }}
+          type="number"
+          name="invoiceId"
+          className={ClassNames('form-control', { 'error-form': error.invoiceId })}
+        />
+        <small
+          className={ClassNames('error-text form-text d-none', {
+            'd-block': error.invoiceId,
+          })}
+        >
+          {error.invoiceId}
+        </small>
+      </div>
+      <div
+        className="cari-invoice"
+        onClick={() => {
+          let isValid = true;
+          setError({
+            invoiceId: '',
+          });
+          if (!isAuthenticated()) {
+            isValid = false;
+            setError((state) => ({ ...state, invoiceId: 'Silahkan login/register' }));
+          }
+          if (!invoiceId) {
+            isValid = false;
+            setError((state) => ({ ...state, invoiceId: 'Tolong masukan invoice id' }));
+          }
+
+          if (isValid) {
+            reqInvoice({ invoice_id: invoiceId });
+          }
+        }}
+      >
+        Cari Invoice
+      </div>
+    </div>
   );
 }
 
@@ -251,6 +328,7 @@ Invoice.propTypes = {
   carts: PropTypes.array,
   prices: PropTypes.object,
   user: PropTypes.object,
+  message: PropTypes.string,
 };
 
 export default connect(mapStateToProps, mapActionToProps)(Invoice);

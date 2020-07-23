@@ -171,7 +171,7 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
     );
   }
   return (
-    <div className="container cart py-5">{carts.length > 0 ? renderCart() : renderEmptyCart()}</div>
+    <div className="container cart pb-5">{carts.length > 0 ? renderCart() : renderEmptyCart()}</div>
   );
 }
 

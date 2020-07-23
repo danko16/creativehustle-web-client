@@ -6,6 +6,10 @@
   position: relative;
 }
 
+a.tabbed-options {
+  text-decoration: none;
+}
+
 .tabbed-options {
   cursor: pointer;
   text-align: center;
@@ -44,6 +48,46 @@
 
 .tabbed-options:nth-child(3) ~ .slider {
   left: 66.666%;
+}
+
+.pembelian .elementor-widget-container {
+  padding-left: 5rem;
+}
+
+.pembelian .elementor-widget-container ul.step-num li .num,
+.pembelian .elementor-widget-container ul.step-num li .num-txt {
+  cursor: pointer;
+}
+
+.pembelian .elementor-widget-container ul.step-num li.active .num {
+  background: #f44336;
+  color: #fff;
+  border-color: #f44336;
+}
+
+.pembelian .elementor-widget-container ul.step-num li:not(.active):hover .num {
+  background: #fff;
+  color: #2667ff;
+  border-color: #2667ff;
+}
+
+.pembelian .elementor-widget-container .step-num::before {
+  content: '';
+  position: absolute;
+  left: 9%;
+  width: 73%;
+  height: 3px;
+  background: #f44336;
+  top: 23px;
+}
+
+.pembelian .elementor-widget-container ul.step-num li.active .num-txt {
+  color: #f44336;
+}
+
+.pembelian .elementor-widget-container ul.step-num li:not(.active):hover .num-txt {
+  color: #5c6185;
+  font-weight: 400;
 }
 
 .cart .cart-item {
@@ -348,7 +392,7 @@
   border-color: red;
 }
 
-.konfirmasi .error-text {
+.pembelian .error-text {
   margin-top: 0.25rem;
   margin-bottom: 0;
 }
@@ -427,6 +471,48 @@
   opacity: 1;
   transition: visibility 0s linear 0s, opacity 300ms;
 }
+
+.pembayaran .empty-invoice {
+  text-align: center;
+}
+
+.pembayaran .empty-invoice .form-group {
+  padding: 14px 0;
+}
+
+.pembayaran .empty-invoice .form-control {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 0 2px #ccc;
+  margin: auto;
+  max-width: 300px;
+}
+
+.pembayaran .cari-invoice {
+  display: block;
+  text-decoration: none;
+  background-color: #ec5252;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  padding: 12px;
+  font-size: 18px;
+  transition: 0.2s;
+  cursor: pointer;
+  max-width: 150px;
+  margin: auto;
+}
+
+.pembayaran .cari-invoice:hover {
+  opacity: 0.7;
+}
+
+.form-control.error-form {
+  border-color: red!important;
+}
+
 
 @media only screen and (max-width: 992px) {
   .cart div.row > div {

@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
 import DatePicker from 'react-datepicker';
 import ClassNames from 'classnames';
-import { useParams } from 'react-router-dom';
-import { invoiceActions } from '../redux/reducers/invoice';
-import Loading from '../shared/loading';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -17,16 +13,7 @@ const mapStateToProps = (state) => ({
   carts: state.invoice.carts,
 });
 
-const mapActionToProps = (dispatch) =>
-  bindActionCreators(
-    {
-      reqInvoice: invoiceActions.reqInvoice,
-    },
-    dispatch
-  );
-
-function Confirmations({ reqInvoice, invoice, user, prices, carts }) {
-  const { invoiceId: invoiceIdParam } = useParams();
+function Confirmations({ invoice, user, prices, carts }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [date, setDate] = useState(new Date());
@@ -57,10 +44,6 @@ function Confirmations({ reqInvoice, invoice, user, prices, carts }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-
-  useEffect(() => {
-    reqInvoice({ invoice_id: invoiceIdParam });
-  }, [reqInvoice, invoiceIdParam]);
 
   useEffect(() => {
     if (user) {
@@ -155,8 +138,8 @@ function Confirmations({ reqInvoice, invoice, user, prices, carts }) {
     }
   }
 
-  return invoice && prices && carts && user ? (
-    <div className="container konfirmasi py-5">
+  return (
+    <div className="container konfirmasi pb-5">
       <div className="form-group row">
         <label className="col-sm-4 col-xs-12" htmlFor="name">
           Nama{' '}
@@ -551,19 +534,14 @@ function Confirmations({ reqInvoice, invoice, user, prices, carts }) {
         Konfirmasi
       </button>
     </div>
-  ) : (
-    <div className="container konfirmasi py-5">
-      <Loading />
-    </div>
   );
 }
 
 Confirmations.propTypes = {
-  reqInvoice: PropTypes.func,
   invoice: PropTypes.object,
   carts: PropTypes.array,
   prices: PropTypes.object,
   user: PropTypes.object,
 };
 
-export default connect(mapStateToProps, mapActionToProps)(Confirmations);
+export default connect(mapStateToProps)(Confirmations);

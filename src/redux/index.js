@@ -15,7 +15,7 @@ const persistConfig = {
   key: 'root',
   storage,
   stateReconciler: autoMergeLevel2,
-  whitelist: ['auth'],
+  whitelist: ['auth', 'invoice'],
   blacklist: [],
   transforms: [],
 };

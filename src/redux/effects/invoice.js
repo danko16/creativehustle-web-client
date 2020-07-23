@@ -23,7 +23,8 @@ function* addInvoice({ value }) {
       data: { data },
     } = yield call(invoiceApi.add, value);
     if (data) {
-      yield put(push(`/pembelian/bayar/${data.invoice_id}`));
+      yield put(invoiceActions.invoice(data));
+      yield put(push(`/pembelian/bayar`));
     }
   } catch (error) {
     yield put(invoiceActions.error(getErrorMessage(error)));
@@ -32,8 +33,10 @@ function* addInvoice({ value }) {
 
 function* invoiceSaga() {
   try {
-    yield all([takeLatest(INVOICE_ACTIONS.REQ_INVOICE, invoice)]);
-    yield all([takeLatest(INVOICE_ACTIONS.ADD_INVOICE, addInvoice)]);
+    yield all([
+      takeLatest(INVOICE_ACTIONS.REQ_INVOICE, invoice),
+      takeLatest(INVOICE_ACTIONS.ADD_INVOICE, addInvoice),
+    ]);
   } catch (error) {
     yield put(invoiceActions.error(getErrorMessage(error)));
   }

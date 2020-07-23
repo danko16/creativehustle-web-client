@@ -9,7 +9,7 @@ function Payment() {
   }, []);
 
   return (
-    <div className="container pembayaran py-5">
+    <div className="container pembayaran pb-5">
       <div className="row">
         <div className="col-lg-8 pl-0">
           <Invoice />
