@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import ClassNames from 'classnames';
+import { invoiceActions } from '../redux/reducers/invoice';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -13,16 +15,15 @@ const mapStateToProps = (state) => ({
   carts: state.invoice.carts,
 });
 
-function Confirmations({ invoice, user, prices, carts }) {
+const mapActionToProps = (dispatch) =>
+  bindActionCreators({ confirmInvoice: invoiceActions.confirmInvoice }, dispatch);
+
+function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [date, setDate] = useState(new Date());
-  const [payAmount, setPayAmount] = useState('');
-  const [bankReceiver, setBankReceiver] = useState({
-    bni: true,
-    mandiri: false,
-    btpn: false,
-  });
+  const [payAmount, setPayAmount] = useState(0);
+  const [bankReceiver, setBankReceiver] = useState('BNI');
   const [bankSender, setBankSender] = useState({
     name: '',
     rekening: '',
@@ -51,8 +52,8 @@ function Confirmations({ invoice, user, prices, carts }) {
       setEmail(user.email);
     }
 
-    if (invoice) {
-      setPayAmount(invoice.pay_amount);
+    if (invoice && user) {
+      setPayAmount(invoice.total_amount);
       setInvoiceId(invoice.id);
     }
   }, [user, invoice, prices, carts]);
@@ -125,14 +126,17 @@ function Confirmations({ invoice, user, prices, carts }) {
     }
 
     if (isValid) {
-      console.log(
-        name,
-        email,
-        date,
-        payAmount.replace(/\D/g, ''),
-        bankReceiver,
-        bankSender,
-        invoiceId,
+      confirmInvoice(
+        {
+          name,
+          email,
+          pay_date: date,
+          pay_amount: payAmount,
+          bank_destination: bankReceiver,
+          sender_account_name: bankSender.name,
+          sender_account: bankSender.rekening,
+          invoice_id: invoiceId,
+        },
         buktiPembayaran
       );
     }
@@ -273,7 +277,7 @@ function Confirmations({ invoice, user, prices, carts }) {
               className="form-check-input"
               type="radio"
               name="gridRadios"
-              value={bankReceiver.bni}
+              value={bankReceiver === 'BNI'}
               onChange={() => {
                 setBankReceiver({
                   bni: true,
@@ -281,15 +285,11 @@ function Confirmations({ invoice, user, prices, carts }) {
                   btpn: false,
                 });
               }}
-              checked={bankReceiver.bni}
+              checked={bankReceiver === 'BNI'}
             />
             <label
               onClick={() => {
-                setBankReceiver({
-                  bni: true,
-                  mandiri: false,
-                  btpn: false,
-                });
+                setBankReceiver('BNI');
               }}
               className="form-check-label"
             >
@@ -305,22 +305,14 @@ function Confirmations({ invoice, user, prices, carts }) {
               type="radio"
               name="gridRadios"
               onChange={() => {
-                setBankReceiver({
-                  bni: false,
-                  mandiri: true,
-                  btpn: false,
-                });
+                setBankReceiver('MANDIRI');
               }}
-              value={bankReceiver.mandiri}
-              checked={bankReceiver.mandiri}
+              value={bankReceiver === 'MANDIRI'}
+              checked={bankReceiver === 'MANDIRI'}
             />
             <label
               onClick={() => {
-                setBankReceiver({
-                  bni: false,
-                  mandiri: true,
-                  btpn: false,
-                });
+                setBankReceiver('MANDIRI');
               }}
               className="form-check-label"
             >
@@ -336,22 +328,14 @@ function Confirmations({ invoice, user, prices, carts }) {
               type="radio"
               name="gridRadios"
               onChange={() => {
-                setBankReceiver({
-                  bni: false,
-                  mandiri: false,
-                  btpn: true,
-                });
+                setBankReceiver('BTPN');
               }}
-              value={bankReceiver.btpn}
-              checked={bankReceiver.btpn}
+              value={bankReceiver === 'BTPN'}
+              checked={bankReceiver === 'BTPN'}
             />
             <label
               onClick={() => {
-                setBankReceiver({
-                  bni: false,
-                  mandiri: false,
-                  btpn: true,
-                });
+                setBankReceiver('BTPN');
               }}
               className="form-check-label"
             >
@@ -429,9 +413,10 @@ function Confirmations({ invoice, user, prices, carts }) {
         </div>
       </div>
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12" htmlFor="invoiceId">
-          No. Tagihan/Invoice{' '}
+        <label className="invoice-hint-trigger col-sm-4 col-xs-12" htmlFor="invoiceId">
+          No. Tagihan/Invoice <i className="fa fa-question-circle" aria-hidden="true"></i>
         </label>
+        <img className="invoice-hint" src="/assets/img/invoice_id.png" alt="invoice hint" />
         <div className="col-sm-4 col-xs-12">
           <div className="d-flex">
             <span
@@ -542,6 +527,7 @@ Confirmations.propTypes = {
   carts: PropTypes.array,
   prices: PropTypes.object,
   user: PropTypes.object,
+  confirmInvoice: PropTypes.func,
 };
 
-export default connect(mapStateToProps)(Confirmations);
+export default connect(mapStateToProps, mapActionToProps)(Confirmations);

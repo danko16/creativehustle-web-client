@@ -19,25 +19,25 @@ function JourneyPath() {
               </Link>
             </li>
             <li>
-              <Link href="#step2">
+              <Link to="#step2">
                 <span className="num">2</span>
                 <span className="num-txt">Pilih Kursus/kelas</span>
               </Link>
             </li>
             <li>
-              <Link href="#step3">
+              <Link to="#step3">
                 <span className="num">3</span>
                 <span className="num-txt">Melakukan Pembayaran</span>
               </Link>
             </li>
             <li>
-              <Link href="#step3">
+              <Link to="#step3">
                 <span className="num">4</span>
                 <span className="num-txt">Mulai Kursus</span>
               </Link>
             </li>
             <li>
-              <Link href="#step3">
+              <Link to="#step3">
                 <span className="num">5</span>
                 <span className="num-txt">Konsultasi Trainer</span>
               </Link>

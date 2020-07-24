@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { invoiceActions } from '../redux/reducers/invoice';
-import { isAuthenticated } from '../utils/auth';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
@@ -20,16 +19,23 @@ const mapActionToProps = (dispatch) =>
   bindActionCreators(
     {
       reqInvoice: invoiceActions.reqInvoice,
+      setData: invoiceActions.setData,
     },
     dispatch
   );
 
-function Invoice({ reqInvoice, invoice, user, prices, carts, message }) {
+function Invoice({ reqInvoice, invoice, user, prices, carts, setData, message }) {
   const divToPrint = useRef();
   const [error, setError] = useState({
     invoiceId: '',
   });
   const [invoiceId, setInvoiceId] = useState();
+
+  useEffect(() => {
+    return () => {
+      setData('message', '');
+    };
+  }, [setData]);
 
   useEffect(() => {
     if (message) {
@@ -262,6 +268,20 @@ function Invoice({ reqInvoice, invoice, user, prices, carts, message }) {
           <i className="fa fa-print" aria-hidden="true"></i>
           Print
         </div>
+
+        <div
+          className="btn btn-default"
+          onClick={() => {
+            setData('invoice', null);
+            setInvoiceId(null);
+          }}
+          style={{
+            marginLeft: 12,
+          }}
+        >
+          <i className="fa fa-search" aria-hidden="true"></i>
+          Cari Invoice
+        </div>
       </div>
     </>
   ) : (
@@ -271,8 +291,16 @@ function Invoice({ reqInvoice, invoice, user, prices, carts, message }) {
         masukan no invoice untuk melihat
         <br /> invoice anda
       </p>
-      <div className="form-group">
-        <label htmlFor="invoiceId">No Invoice </label>
+      <div
+        className="form-group"
+        style={{
+          position: 'relative',
+        }}
+      >
+        <label className="invoice-hint-trigger" htmlFor="invoiceId">
+          No Invoice <i className="fa fa-question-circle" aria-hidden="true"></i>
+        </label>
+        <img className="invoice-hint" src="/assets/img/invoice_id.png" alt="invoice hint" />
         <input
           onChange={(e) => {
             setInvoiceId(e.target.value);
@@ -296,27 +324,38 @@ function Invoice({ reqInvoice, invoice, user, prices, carts, message }) {
         </small>
       </div>
       <div
-        className="cari-invoice"
-        onClick={() => {
-          let isValid = true;
-          setError({
-            invoiceId: '',
-          });
-          if (!isAuthenticated()) {
-            isValid = false;
-            setError((state) => ({ ...state, invoiceId: 'Silahkan login/register' }));
-          }
-          if (!invoiceId) {
-            isValid = false;
-            setError((state) => ({ ...state, invoiceId: 'Tolong masukan invoice id' }));
-          }
-
-          if (isValid) {
-            reqInvoice({ invoice_id: invoiceId });
-          }
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
         }}
       >
-        Cari Invoice
+        <div
+          className="cari-invoice"
+          onClick={() => {
+            let isValid = true;
+            setError({
+              invoiceId: '',
+            });
+
+            if (!invoiceId) {
+              isValid = false;
+              setError((state) => ({ ...state, invoiceId: 'Tolong masukan invoice id' }));
+            }
+
+            if (isValid) {
+              reqInvoice({ invoice_id: invoiceId });
+            }
+          }}
+        >
+          Cari Invoice
+        </div>
+        <div
+          className="cari-invoice"
+          onClick={() => {}}
+          style={{ marginLeft: '20px', backgroundColor: '#38a2ff' }}
+        >
+          Lihat Daftar
+        </div>
       </div>
     </div>
   );
@@ -327,6 +366,8 @@ Invoice.propTypes = {
   invoice: PropTypes.object,
   carts: PropTypes.array,
   prices: PropTypes.object,
+  setData: PropTypes.func,
+  showModal: PropTypes.func,
   user: PropTypes.object,
   message: PropTypes.string,
 };

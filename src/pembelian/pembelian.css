@@ -472,15 +472,15 @@ a.tabbed-options {
   transition: visibility 0s linear 0s, opacity 300ms;
 }
 
-.pembayaran .empty-invoice {
+.pembelian .empty-invoice {
   text-align: center;
 }
 
-.pembayaran .empty-invoice .form-group {
+.pembelian .empty-invoice .form-group {
   padding: 14px 0;
 }
 
-.pembayaran .empty-invoice .form-control {
+.pembelian .empty-invoice .form-control {
   border: 1px solid #ccc;
   border-radius: 4px;
   background-color: #fff;
@@ -489,7 +489,7 @@ a.tabbed-options {
   max-width: 300px;
 }
 
-.pembayaran .cari-invoice {
+.pembelian .cari-invoice {
   display: block;
   text-decoration: none;
   background-color: #ec5252;
@@ -501,18 +501,65 @@ a.tabbed-options {
   font-size: 18px;
   transition: 0.2s;
   cursor: pointer;
-  max-width: 150px;
-  margin: auto;
+}
+.pembelian i.fa.fa-question-circle {
+  margin-top: 0px;
+  color: #ff5f5f;
 }
 
-.pembayaran .cari-invoice:hover {
+.pembelian .invoice-hint-trigger {
+  cursor: pointer;
+}
+
+.pembelian .invoice-hint {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  z-index: 50;
+  width: 16rem;
+  border: 1px solid #ccc;
+  border-radius: 9px;
+}
+
+.pembelian .invoice-hint-trigger:hover ~ .invoice-hint {
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0s linear 0s, opacity 300ms;
+}
+
+.pembelian .not-login {
+  text-align: center;
+}
+
+.pembelian .auth-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.pembelian .auth-invoice {
+  display: block;
+  width: 120px;
+  text-decoration: none;
+  background-color: #ec5252;
+  border-radius: 3px;
+  text-align: center;
+  font-weight: 600;
+  color: #fff;
+  padding: 8px 0;
+  font-size: 18px;
+  transition: 0.2s;
+  cursor: pointer;
+  max-width: 150px;
+}
+
+.pembelian .auth-invoice:hover, .pembelian .cari-invoice:hover {
   opacity: 0.7;
 }
 
 .form-control.error-form {
-  border-color: red!important;
+  border-color: red !important;
 }
-
 
 @media only screen and (max-width: 992px) {
   .cart div.row > div {

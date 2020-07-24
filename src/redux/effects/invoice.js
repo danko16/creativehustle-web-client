@@ -31,11 +31,28 @@ function* addInvoice({ value }) {
   }
 }
 
+function* confirm({ value, file }) {
+  try {
+    const formData = new FormData();
+    formData.append('file', file);
+    const {
+      data: { data },
+    } = yield call(invoiceApi.confirm, { payload: value, formData });
+    if (data) {
+      console.log(data);
+    }
+  } catch (error) {
+    console.log(getErrorMessage(error));
+    yield put(invoiceActions.error(getErrorMessage(error)));
+  }
+}
+
 function* invoiceSaga() {
   try {
     yield all([
       takeLatest(INVOICE_ACTIONS.REQ_INVOICE, invoice),
       takeLatest(INVOICE_ACTIONS.ADD_INVOICE, addInvoice),
+      takeLatest(INVOICE_ACTIONS.CONFIRM_INVOICE, confirm),
     ]);
   } catch (error) {
     yield put(invoiceActions.error(getErrorMessage(error)));

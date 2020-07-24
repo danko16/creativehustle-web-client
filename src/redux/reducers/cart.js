@@ -1,3 +1,4 @@
+import { AUTH_ACTIONS } from './auth';
 export const CART_ACTIONS = Object.freeze({
   SET_DATA: 'myapp/cart/set-data',
   REQ_CART: 'myapp/cart/req/cart',
@@ -84,6 +85,16 @@ const reducer = (state = initialState, { field, value, type }) => {
         is_error: false,
         loading: false,
       };
+    case AUTH_ACTIONS.LOGOUT:
+      return {
+        carts: [],
+        total_prices: {},
+        recently_added: null,
+        message: '',
+        is_error: false,
+        loading: false,
+      };
+
     default:
       return state;
   }

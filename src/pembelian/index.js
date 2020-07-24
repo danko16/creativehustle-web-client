@@ -1,10 +1,12 @@
 import React from 'react';
 import { useRouteMatch, Switch, Route, NavLink } from 'react-router-dom';
+import { isAuthenticated } from '../utils/auth';
 
 import Cart from './cart';
 import Payment from './payment';
 import Confirmations from './confirmations';
 import PembelianHead from './pembelian-head';
+import NotLogin from './not-login';
 import './pembelian.css';
 
 function Pembelian() {
@@ -51,10 +53,10 @@ function Pembelian() {
           <Cart />
         </Route>
         <Route path={`${path}/bayar`}>
-          <Payment />
+          {isAuthenticated() ? <Payment /> : <NotLogin type="bayar" />}
         </Route>
         <Route path={`${path}/konfirmasi`}>
-          <Confirmations />
+          {isAuthenticated() ? <Confirmations /> : <NotLogin type="konfirmasi" />}
         </Route>
       </Switch>
     </div>

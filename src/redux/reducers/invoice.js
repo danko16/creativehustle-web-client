@@ -3,6 +3,7 @@ export const INVOICE_ACTIONS = Object.freeze({
   REQ_INVOICE: 'myapp/invoice/req/invoice',
   INVOICE: 'myapp/invoice/invoice',
   ADD_INVOICE: 'myapp/invoice/add-invoice',
+  CONFIRM_INVOICE: 'myapp/invoice/confirm-invoice',
   ERROR: 'myapp/invoice/error',
   CLEAR_ERROR: 'myapp/invoice/clear-error',
 });
@@ -24,6 +25,11 @@ export const invoiceActions = Object.freeze({
   addInvoice: (value) => ({
     type: INVOICE_ACTIONS.ADD_INVOICE,
     value,
+  }),
+  confirmInvoice: (value, file) => ({
+    type: INVOICE_ACTIONS.CONFIRM_INVOICE,
+    value,
+    file,
   }),
   error: (value) => ({
     type: INVOICE_ACTIONS.ERROR,
@@ -52,6 +58,7 @@ const reducer = (state = initialState, { type, field, value }) => {
       };
     case INVOICE_ACTIONS.REQ_INVOICE:
     case INVOICE_ACTIONS.ADD_INVOICE:
+    case INVOICE_ACTIONS.CONFIRM_INVOICE:
       return {
         ...state,
         loading: true,
