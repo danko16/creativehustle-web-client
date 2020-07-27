@@ -108,11 +108,15 @@ h5.et_pb_text_0 {
 
 .elementor-widget-container ul.step-num li {
   font-size: 20px;
-  margin-right: 40px;
   text-align: center;
   z-index: 10;
   transition: 0.4s;
 }
+
+.elementor-widget-container ul.step-num li:not(:last-child) {
+  margin-right: 40px;
+}
+
 .elementor-widget-container ul.step-num li a {
   text-decoration: none;
   color: #5c6185;
@@ -158,4 +162,20 @@ h5.et_pb_text_0 {
   height: 3px;
   background: #1c4dbf;
   top: 23px;
+}
+
+.unpaid {
+  color: #ff2323;
+}
+
+.paid {
+  color: #33bb37;
+}
+
+.pending {
+  color: #5599ff;
+}
+
+.canceled {
+  color: #ff2323;
 }

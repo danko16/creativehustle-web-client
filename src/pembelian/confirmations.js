@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import DatePicker from 'react-datepicker';
 import ClassNames from 'classnames';
 import { invoiceActions } from '../redux/reducers/invoice';
+import ResponseMessage from '../shared/responseMessage';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
@@ -13,12 +14,26 @@ const mapStateToProps = (state) => ({
   invoice: state.invoice.invoice,
   prices: state.invoice.prices,
   carts: state.invoice.carts,
+  message: state.invoice.message,
+  is_error: state.invoice.is_error,
 });
 
 const mapActionToProps = (dispatch) =>
-  bindActionCreators({ confirmInvoice: invoiceActions.confirmInvoice }, dispatch);
+  bindActionCreators(
+    { confirmInvoice: invoiceActions.confirmInvoice, clearMsg: invoiceActions.clearError },
+    dispatch
+  );
 
-function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
+function Confirmations({
+  invoice,
+  user,
+  prices,
+  carts,
+  confirmInvoice,
+  clearMsg,
+  message,
+  is_error,
+}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [date, setDate] = useState(new Date());
@@ -41,6 +56,10 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
     invoiceId: '',
     image: '',
   });
+  const [notification, setNotification] = useState({
+    text: '',
+    isError: false,
+  });
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -57,6 +76,16 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
       setInvoiceId(invoice.id);
     }
   }, [user, invoice, prices, carts]);
+
+  useEffect(() => {
+    if (message) {
+      setNotification({
+        text: message,
+        isError: is_error,
+      });
+      clearMsg();
+    }
+  }, [is_error, message, clearMsg]);
 
   function handleImageChange(e) {
     setError((state) => ({ ...state, image: '' }));
@@ -144,11 +173,27 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
 
   return (
     <div className="container konfirmasi pb-5">
+      <div
+        style={{
+          maxWidth: '30rem',
+          margin: 'auto',
+        }}
+      >
+        {notification.text && (
+          <ResponseMessage
+            notification={notification}
+            onDismiss={() => {
+              setNotification({ text: '', isError: false });
+              clearMsg();
+            }}
+          />
+        )}
+      </div>
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12" htmlFor="name">
+        <label className="col-md-4 col-sm-12" htmlFor="name">
           Nama{' '}
         </label>
-        <div className="col-sm-4 col-xs-12">
+        <div className="col-md-4 col-sm-12">
           <input
             onInputCapture={() => {
               setError((prevState) => ({
@@ -164,6 +209,10 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
             autoComplete="name"
             value={name}
             className={ClassNames('form-control', { 'error-form': error.name })}
+            disabled
+            style={{
+              backgroundColor: '#eaeaea',
+            }}
           />
           <small
             className={ClassNames('error-text form-text d-none', {
@@ -175,10 +224,10 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
         </div>
       </div>
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12" htmlFor="email">
+        <label className="col-md-4 col-sm-12" htmlFor="email">
           Email{' '}
         </label>
-        <div className="col-sm-4 col-xs-12">
+        <div className="col-md-4 col-sm-12">
           <input
             onInputCapture={() => {
               setError((prevState) => ({
@@ -194,6 +243,10 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
             value={email}
             autoComplete="email"
             className={ClassNames('form-control', { 'error-form': error.email })}
+            disabled
+            style={{
+              backgroundColor: '#eaeaea',
+            }}
           />
           <small
             className={ClassNames('error-text form-text d-none', {
@@ -205,10 +258,10 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
         </div>
       </div>
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12" htmlFor="date">
+        <label className="col-md-4 col-sm-12" htmlFor="date">
           Tanggal Pembayaran{' '}
         </label>
-        <div className="col-sm-4 col-xs-12 d-flex">
+        <div className="col-md-4 col-sm-12 d-flex">
           <i className="label-bg fa fa-calendar" aria-hidden="true"></i>
           <DatePicker
             className={ClassNames('form-control with-label-bg', { 'error-form': error.date })}
@@ -229,10 +282,10 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
       </div>
 
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12" htmlFor="payAmmount">
+        <label className="col-md-4 col-sm-12" htmlFor="payAmmount">
           Jumlah Pembayaran{' '}
         </label>
-        <div className="col-sm-4 col-xs-12">
+        <div className="col-md-4 col-sm-12">
           <div className="d-flex">
             <span
               className="label-bg"
@@ -270,8 +323,8 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
         </div>
       </div>
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12">Bank Tujuan</label>
-        <div className="col-sm-4 col-xs-12">
+        <label className="col-md-4 col-sm-12">Bank Tujuan</label>
+        <div className="col-md-4 col-sm-12">
           <div className="form-check">
             <input
               className="form-check-input"
@@ -348,10 +401,10 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
         </div>
       </div>
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12" htmlFor="bankSenderRek">
+        <label className="col-md-4 col-sm-12" htmlFor="bankSenderRek">
           Nomor Rekening Pengirim{' '}
         </label>
-        <div className="col-sm-4 col-xs-12">
+        <div className="col-md-4 col-sm-12">
           <input
             onInputCapture={() => {
               setError((prevState) => ({
@@ -380,10 +433,10 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
         </div>
       </div>
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12" htmlFor="bankSenderName">
+        <label className="col-md-4 col-sm-12" htmlFor="bankSenderName">
           Nama Rekening Pengirim{' '}
         </label>
-        <div className="col-sm-4 col-xs-12">
+        <div className="col-md-4 col-sm-12">
           <input
             onInputCapture={() => {
               setError((prevState) => ({
@@ -413,11 +466,11 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
         </div>
       </div>
       <div className="form-group row">
-        <label className="invoice-hint-trigger col-sm-4 col-xs-12" htmlFor="invoiceId">
+        <label className="invoice-hint-trigger col-md-4 col-sm-12" htmlFor="invoiceId">
           No. Tagihan/Invoice <i className="fa fa-question-circle" aria-hidden="true"></i>
         </label>
         <img className="invoice-hint" src="/assets/img/invoice_id.png" alt="invoice hint" />
-        <div className="col-sm-4 col-xs-12">
+        <div className="col-md-4 col-sm-12">
           <div className="d-flex">
             <span
               className="label-bg"
@@ -455,10 +508,10 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
         </div>
       </div>
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12" htmlFor="additionalMessage">
+        <label className="col-md-4 col-sm-12" htmlFor="additionalMessage">
           Pesan Tambahan{' '}
         </label>
-        <div className="col-sm-4 col-xs-12">
+        <div className="col-md-4 col-sm-12">
           <textarea
             onChange={(e) => {
               setAdditionalMessage(e.target.value);
@@ -472,11 +525,11 @@ function Confirmations({ invoice, user, prices, carts, confirmInvoice }) {
         </div>
       </div>
       <div className="form-group row">
-        <label className="col-sm-4 col-xs-12" htmlFor="additionalMessage">
+        <label className="col-md-4 col-sm-12" htmlFor="additionalMessage">
           Bukti Transaksi{' '}
         </label>
 
-        <div className="input-group col-sm-4 col-xs-12" id="buktiUpload">
+        <div className="input-group col-md-4 col-sm-12" id="buktiUpload">
           <span className="input-group-btn">
             <label className="custom-file-upload browse btn btn-primary">
               <input
@@ -528,6 +581,9 @@ Confirmations.propTypes = {
   prices: PropTypes.object,
   user: PropTypes.object,
   confirmInvoice: PropTypes.func,
+  clearMsg: PropTypes.func,
+  message: PropTypes.string,
+  is_error: PropTypes.bool,
 };
 
 export default connect(mapStateToProps, mapActionToProps)(Confirmations);

@@ -5,6 +5,7 @@ import { Link, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { kelasSayaActions } from '../redux/reducers/kelas-saya';
 import { headerActions } from '../redux/reducers/header';
+import { formatNumber } from '../utils/format';
 
 import Loading from '../shared/loading';
 import { month } from '../utils/date';
@@ -60,10 +61,6 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
         {index + 1}. {val}
       </li>
     ));
-  }
-
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
   }
 
   function calcDuration() {

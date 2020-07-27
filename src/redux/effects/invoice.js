@@ -36,13 +36,12 @@ function* confirm({ value, file }) {
     const formData = new FormData();
     formData.append('file', file);
     const {
-      data: { data },
+      data: { data, message },
     } = yield call(invoiceApi.confirm, { payload: value, formData });
     if (data) {
-      console.log(data);
+      yield put(invoiceActions.setData('message', message));
     }
   } catch (error) {
-    console.log(getErrorMessage(error));
     yield put(invoiceActions.error(getErrorMessage(error)));
   }
 }

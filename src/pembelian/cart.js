@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { cartActions } from '../redux/reducers/cart';
 import { invoiceActions } from '../redux/reducers/invoice';
+import { formatNumber } from '../utils/format';
 
 const mapStateToProps = (state) => ({
   carts: state.cart.carts,
@@ -41,10 +42,6 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
         </Link>
       </div>
     );
-  }
-
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
   }
 
   function handleAddInvoice() {

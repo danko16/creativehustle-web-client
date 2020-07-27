@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 function JourneyPath() {
   return (
     <div
+      className="journey-path"
       style={{
         backgroundColor: 'rgba(15,219,255,0.09)',
         padding: '2%',

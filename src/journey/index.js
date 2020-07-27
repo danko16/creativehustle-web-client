@@ -24,7 +24,7 @@ function Journey() {
           backgroundPositionY: '40px',
         }}
       >
-        <div className="text-center py-4">
+        <div className="text-center p-4">
           <h1>
             <strong>5 Langkah Mulai Belajar di Creative Hustle</strong>
           </h1>

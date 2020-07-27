@@ -6,6 +6,7 @@ import PropTypes from 'prop-types';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { invoiceActions } from '../redux/reducers/invoice';
+import { formatNumber, convertStatus } from '../utils/format';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
@@ -44,25 +45,6 @@ function Invoice({ reqInvoice, invoice, user, prices, carts, setData, message })
       });
     }
   }, [message]);
-
-  function convertStatus(status) {
-    switch (status) {
-      case 'unpaid':
-        return 'Belum Terbayar';
-      case 'paid':
-        return 'Lunas';
-      case 'pending':
-        return 'Menunggu Konfirmasi';
-      case 'canceled':
-        return 'di Batalkan';
-      default:
-        return 'Menunggu Konfirmasi';
-    }
-  }
-
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-  }
 
   function convertDate(mode) {
     if (mode === 'date') {

@@ -305,22 +305,6 @@ a.tabbed-options {
   color: #000;
 }
 
-.unpaid {
-  color: #c00;
-}
-
-.paid {
-  color: #33bb37;
-}
-
-.pending {
-  color: #ffdd38;
-}
-
-.canceled {
-  color: #c00;
-}
-
 .invoice > div:nth-child(2) {
   display: flex;
   justify-content: space-between;
@@ -553,7 +537,8 @@ a.tabbed-options {
   max-width: 150px;
 }
 
-.pembelian .auth-invoice:hover, .pembelian .cari-invoice:hover {
+.pembelian .auth-invoice:hover,
+.pembelian .cari-invoice:hover {
   opacity: 0.7;
 }
 
@@ -616,6 +601,22 @@ a.tabbed-options {
   .cart-item img {
     max-width: 160px !important;
     padding: 0 12px 12px 12px;
+  }
+
+  .tabbed-options {
+    padding: 1rem 5px;
+  }
+
+  .tabbed-options span {
+    font-size: 16px;
+  }
+
+  .konfirmasi .form-group label {
+    text-align: left;
+  }
+
+  .konfirmasi .form-group .bank-wrapper img {
+    width: 240px;
   }
 }
 

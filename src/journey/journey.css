@@ -139,9 +139,23 @@ div.et_pb_section.et_pb_section_7 {
     flex-basis: 50%;
     margin-bottom: 15px;
   }
+
+  .journey .elementor-widget-container ul.step-num li {
+    font-size: 18px;
+  }
+
+  .journey .elementor-widget-container ul.step-num .num {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
 }
 
 @media only screen and (max-width: 768px) {
+  .journey-path {
+    display: none;
+  }
+  
   .jp_intro {
     flex-basis: 100%;
   }

@@ -15,7 +15,13 @@ function ResponseMessage(props) {
         'bg-success': !isError,
         'bg-gradient-danger': isError,
       })}
-      style={{ borderRadius: 4, position: 'relative', color: 'white', padding: 16 }}
+      style={{
+        borderRadius: 4,
+        position: 'relative',
+        color: 'white',
+        padding: 16,
+        textAlign: 'center',
+      }}
     >
       <p
         className="m-0"

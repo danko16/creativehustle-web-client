@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ClassNames from 'classnames';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { formatNumber } from '../utils/format';
 
 const mapStateToProps = (state) => ({
   kursus: state.kursus.kursus,
@@ -27,9 +28,7 @@ function KursusList({ kursus, loading, notFound }) {
       }));
     }
   }, [kursus, setActivePage, loading]);
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-  }
+
   function renderClass() {
     return kursusList.map((val, index) => {
       return (

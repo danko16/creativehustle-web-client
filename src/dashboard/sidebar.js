@@ -53,6 +53,17 @@ function Sidebar({ logout }) {
           </ul>
           <ul data-submenu-title="Akun Saya" className="mt-5">
             <li>
+              <NavLink
+                to="/dashboard/billing"
+                activeClassName="active-nav"
+                className="menu-peserta"
+              >
+                <img src="/assets/icon/icons8-receipt-80.png" data-sga="billing" alt="billing" />
+                {'  '}
+                Billing
+              </NavLink>
+            </li>
+            <li>
               <NavLink to="/dashboard/profil" activeClassName="active-nav" className="menu-peserta">
                 <img src="/assets/icon/account.png" data-sga="profil" alt="profile" /> Profil
               </NavLink>

@@ -7,6 +7,7 @@ import DetailDashboardSidebar from './kursus/detail-dashboard-sidebar';
 import Progress from './menu/progress';
 import Kursus from './menu/kursus';
 import Kelas from './menu/kelas';
+import Billing from './menu/billing';
 import Profile from './menu/profile';
 import Settings from './menu/settings';
 import DetailSidebar from './kursus/detail-sidebar';
@@ -48,6 +49,11 @@ function Dashboard() {
           <KelasDetailSidebar />
           <KelasDetailDashboardSidebar />
           <KelasDetail />
+        </Route>
+        <Route path={`${path}/billing`}>
+          <DashboardSidebar />
+          <Sidebar />
+          <Billing />
         </Route>
         <Route path={`${path}/profil`}>
           <DashboardSidebar />

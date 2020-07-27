@@ -11,6 +11,7 @@ import { isAuthenticated } from '../utils/auth';
 import Loading from '../shared/loading';
 import CartModal from '../shared/cart-modal';
 import YtPlayer from '../yt-player';
+import { formatNumber } from '../utils/format';
 import './detail-kursus.css';
 
 const mapStateToProps = (state) => ({
@@ -109,10 +110,6 @@ function DetailKursus({
       setShowCartModal(true);
     }
   }, [recently_added, detailKursus]);
-
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-  }
 
   function handleAddCart() {
     const isAuth = isAuthenticated();

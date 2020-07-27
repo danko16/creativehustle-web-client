@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { month } from '../utils/date';
 import ClassNames from 'classnames';
+import { formatNumber } from '../utils/format';
 
 const mapStateToProps = (state) => ({
   kelas: state.kelas.kelas,
@@ -17,10 +18,6 @@ function ClassList({ kelas, notFound }) {
     from: 0,
     to: 9,
   });
-
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-  }
 
   function convertDate(stringDate, withYear = false) {
     let date = stringDate.split('-');

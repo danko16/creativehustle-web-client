@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { formatNumber } from '../utils/format';
 
 const mapStateToProps = (state) => ({
   kursus: state.kursus.kursus,
@@ -15,9 +16,7 @@ function PopularClass({ kursus, loading }) {
       setCourses(kursus);
     }
   }, [kursus, loading]);
-  function formatNumber(num) {
-    return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.');
-  }
+
   function renderClass() {
     return courses.map((val) => (
       <div className="col-md-6 col-lg-4 mb-4" key={val.id}>
