@@ -17,3 +17,8 @@ export function convertDate(stringDate) {
   let date = stringDate.split('-');
   return `${date[0]} ${month[date[1]]} ${date[2]}`;
 }
+
+export function convertSlashDate(stringDate) {
+  let date = stringDate.substring(0, stringDate.indexOf(' ')).split('-');
+  return `${date[2]} ${month[date[1]]} ${date[0]}`;
+}

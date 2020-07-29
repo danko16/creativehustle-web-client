@@ -4,13 +4,31 @@ import { getErrorMessage } from '../../utils/api';
 import { invoiceActions, INVOICE_ACTIONS } from '../reducers/invoice';
 import invoiceApi from '../api/invoice';
 
-function* invoice({ value }) {
+function* invoices() {
+  try {
+    yield put(invoiceActions.setData('loading', true));
+    const {
+      data: { data },
+    } = yield call(invoiceApi.invoices);
+    if (data) {
+      yield put(invoiceActions.invoices(data));
+    }
+  } catch (error) {
+    yield put(invoiceActions.error(getErrorMessage(error)));
+  }
+}
+
+function* invoice({ value, mode }) {
   try {
     const {
       data: { data },
     } = yield call(invoiceApi.invoice, value);
     if (data) {
-      yield put(invoiceActions.invoice(data));
+      if (mode === 'recent') {
+        yield put(invoiceActions.invoice(data));
+      } else if (mode === 'detail') {
+        yield put(invoiceActions.detailInvoice(data));
+      }
     }
   } catch (error) {
     yield put(invoiceActions.error(getErrorMessage(error)));
@@ -39,7 +57,7 @@ function* confirm({ value, file }) {
       data: { data, message },
     } = yield call(invoiceApi.confirm, { payload: value, formData });
     if (data) {
-      yield put(invoiceActions.setData('message', message));
+      yield put(invoiceActions.confirmInvoice(message));
     }
   } catch (error) {
     yield put(invoiceActions.error(getErrorMessage(error)));
@@ -48,10 +66,11 @@ function* confirm({ value, file }) {
 
 function* invoiceSaga() {
   try {
+    yield call(invoices);
     yield all([
       takeLatest(INVOICE_ACTIONS.REQ_INVOICE, invoice),
       takeLatest(INVOICE_ACTIONS.ADD_INVOICE, addInvoice),
-      takeLatest(INVOICE_ACTIONS.CONFIRM_INVOICE, confirm),
+      takeLatest(INVOICE_ACTIONS.REQ_CONFIRM_INVOICE, confirm),
     ]);
   } catch (error) {
     yield put(invoiceActions.error(getErrorMessage(error)));

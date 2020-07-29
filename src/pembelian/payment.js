@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 
-import Invoice from './invoice';
+import RecentInvoice from './invoice';
 import BankList from './bank-list';
 
 function Payment() {
@@ -12,7 +12,7 @@ function Payment() {
     <div className="container pembayaran pb-5">
       <div className="row">
         <div className="col-lg-8 pl-0">
-          <Invoice />
+          <RecentInvoice />
         </div>
         <div className="col-lg-4">
           <BankList />

@@ -66,7 +66,7 @@ function BankList() {
       <div className="bank-wrapper">
         <div className="bank-logo">
           <img
-            src="/assets/img/logo_btpn.png"
+            src="/assets/img/logo_bank_btpn.png"
             alt="bca"
             style={{
               width: '100px',

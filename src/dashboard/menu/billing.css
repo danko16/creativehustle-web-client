@@ -45,9 +45,12 @@
   background-color: #d1deff87;
 }
 
+.billing .search-wrapper {
+  margin-top: 1rem;
+}
+
 .billing .input-group-prepend {
   height: 25px;
-  margin-left: auto;
 }
 
 .billing i.fa.fa-search {

@@ -179,3 +179,70 @@ h5.et_pb_text_0 {
 .canceled {
   color: #ff2323;
 }
+
+.invoice {
+  border: 1px solid #ccc;
+  padding: 25px;
+}
+
+.invoice-status {
+  text-transform: uppercase;
+  font-size: 24px;
+  font-weight: 700;
+  color: #000;
+}
+
+.invoice > div:nth-child(2) {
+  display: flex;
+  justify-content: space-between;
+}
+
+.panel-title {
+  padding: 10px;
+}
+
+.invoice-dp {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.invoice-dp .btn-default {
+  border: 1px solid;
+  transition: 0.2s;
+  margin-top: 12px;
+}
+
+.invoice-dp .btn-default i.fa {
+  padding-right: 10px;
+}
+
+.invoice-dp .btn-default:hover {
+  background-color: #616aff;
+  border: 1px solid #000;
+  color: #fff;
+}
+
+.invoice-dp .btn-default:nth-child(2) {
+  margin-left: 12px;
+}
+
+.invoice.pdf {
+  display: block;
+  width: 725px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem;
+  border: 1px solid #ccc;
+}
+
+.invoice .table tbody td {
+  width: auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .table {
+    display: block;
+    overflow: auto;
+  }
+}

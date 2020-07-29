@@ -1,8 +1,32 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
+import { convertStatus, formatNumber } from '../../utils/format';
+import { convertSlashDate } from '../../utils/date';
 import './billing.css';
-import { convertStatus } from '../../utils/format';
 
-function Billing() {
+const mapStateToProps = (state) => ({
+  invoices: state.invoice.invoices,
+});
+
+function Billing({ invoices, history }) {
+  function renderData() {
+    return invoices.map((val) => (
+      <tr
+        key={val.id}
+        onClick={() => {
+          history.push(`/dashboard/billing/${val.id}`);
+        }}
+      >
+        <th scope="row">{val.id}</th>
+        <td>{convertSlashDate(val.date)}</td>
+        <td>{convertSlashDate(val.expired)}</td>
+        <td>Rp. {formatNumber(val.total_amount)}</td>
+        <td className={val.status}>{convertStatus(val.status)}</td>
+      </tr>
+    ));
+  }
   return (
     <div className="dashboard-main">
       <div className="billing card-no-shadow">
@@ -10,7 +34,7 @@ function Billing() {
           <span>Invoices</span>
           <span>Invoice History</span>
         </div>
-        <div className="input-group">
+        <div className="input-group search-wrapper">
           <div className="input-group-prepend">
             <span className="input-group-text" id="basic-addon1">
               <i className="fa fa-search" aria-hidden="true"></i>
@@ -29,29 +53,7 @@ function Billing() {
                 <th scope="col">Status</th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>12/07/2020</td>
-                <td>12/07/2020</td>
-                <td>Rp. 200.000</td>
-                <td className="unpaid">{convertStatus('unpaid')}</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>12/07/2020</td>
-                <td>12/07/2020</td>
-                <td>Rp. 200.000</td>
-                <td className="paid">{convertStatus('paid')}</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>12/07/2020</td>
-                <td>12/07/2020</td>
-                <td>Rp. 200.000</td>
-                <td className="pending">{convertStatus('pending')}</td>
-              </tr>
-            </tbody>
+            <tbody>{renderData()}</tbody>
           </table>
         </div>
       </div>
@@ -59,4 +61,9 @@ function Billing() {
   );
 }
 
-export default Billing;
+Billing.propTypes = {
+  invoices: PropTypes.array,
+  history: PropTypes.object,
+};
+
+export default connect(mapStateToProps)(withRouter(Billing));

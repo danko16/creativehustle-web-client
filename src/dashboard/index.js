@@ -15,6 +15,7 @@ import DetailKursus from './kursus/detail-kursus';
 import KelasDetail from './kelas/detail-kelas';
 import KelasDetailSidebar from './kelas/detail-sidebar';
 import KelasDetailDashboardSidebar from './kelas/detail-dashboard-sidebar';
+import BillingDetail from './billing';
 import './dashboard.css';
 
 function Dashboard() {
@@ -50,10 +51,15 @@ function Dashboard() {
           <KelasDetailDashboardSidebar />
           <KelasDetail />
         </Route>
-        <Route path={`${path}/billing`}>
+        <Route exact path={`${path}/billing`}>
           <DashboardSidebar />
           <Sidebar />
           <Billing />
+        </Route>
+        <Route path={`${path}/billing/:invoiceId`}>
+          <DashboardSidebar />
+          <Sidebar />
+          <BillingDetail />
         </Route>
         <Route path={`${path}/profil`}>
           <DashboardSidebar />

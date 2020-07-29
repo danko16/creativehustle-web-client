@@ -11,29 +11,18 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 const mapStateToProps = (state) => ({
   user: state.auth.user,
-  invoice: state.invoice.invoice,
-  prices: state.invoice.prices,
-  carts: state.invoice.carts,
+  recent_invoice: state.invoice.recent_invoice,
   message: state.invoice.message,
   is_error: state.invoice.is_error,
 });
 
 const mapActionToProps = (dispatch) =>
   bindActionCreators(
-    { confirmInvoice: invoiceActions.confirmInvoice, clearMsg: invoiceActions.clearError },
+    { reqConfirmInvoice: invoiceActions.reqConfirmInvoice, clearMsg: invoiceActions.clearError },
     dispatch
   );
 
-function Confirmations({
-  invoice,
-  user,
-  prices,
-  carts,
-  confirmInvoice,
-  clearMsg,
-  message,
-  is_error,
-}) {
+function Confirmations({ user, recent_invoice, reqConfirmInvoice, clearMsg, message, is_error }) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [date, setDate] = useState(new Date());
@@ -71,11 +60,11 @@ function Confirmations({
       setEmail(user.email);
     }
 
-    if (invoice && user) {
-      setPayAmount(invoice.total_amount);
-      setInvoiceId(invoice.id);
+    if (recent_invoice && user) {
+      setPayAmount(recent_invoice.total_amount);
+      setInvoiceId(recent_invoice.id);
     }
-  }, [user, invoice, prices, carts]);
+  }, [user, recent_invoice]);
 
   useEffect(() => {
     if (message) {
@@ -91,10 +80,15 @@ function Confirmations({
     setError((state) => ({ ...state, image: '' }));
     if (e.target.files && e.target.files[0]) {
       let type = e.target.files[0].type.split('/')[1];
-      var isValid = /(jpe?g|png|gif|pdf)/i.test(type);
+      let size = e.target.files[0].size;
 
-      if (!isValid) {
+      if (!type || !type.match(/(jpe?g|png|gif|pdf)/)) {
         setError((state) => ({ ...state, image: 'file type harus jpg, png, gif atau pdf' }));
+        return;
+      }
+
+      if (size > 5000000) {
+        setError((state) => ({ ...state, image: 'file tidak boleh lebih dari 5mb' }));
         return;
       }
       setBuktiPembayaran(e.target.files[0]);
@@ -155,7 +149,7 @@ function Confirmations({
     }
 
     if (isValid) {
-      confirmInvoice(
+      reqConfirmInvoice(
         {
           name,
           email,
@@ -402,7 +396,7 @@ function Confirmations({
       </div>
       <div className="form-group row">
         <label className="col-md-4 col-sm-12" htmlFor="bankSenderRek">
-          Nomor Rekening Pengirim{' '}
+          Rekening Pengirim{' '}
         </label>
         <div className="col-md-4 col-sm-12">
           <input
@@ -434,7 +428,7 @@ function Confirmations({
       </div>
       <div className="form-group row">
         <label className="col-md-4 col-sm-12" htmlFor="bankSenderName">
-          Nama Rekening Pengirim{' '}
+          Nama Pengirim{' '}
         </label>
         <div className="col-md-4 col-sm-12">
           <input
@@ -576,11 +570,9 @@ function Confirmations({
 }
 
 Confirmations.propTypes = {
-  invoice: PropTypes.object,
-  carts: PropTypes.array,
-  prices: PropTypes.object,
+  recent_invoice: PropTypes.object,
   user: PropTypes.object,
-  confirmInvoice: PropTypes.func,
+  reqConfirmInvoice: PropTypes.func,
   clearMsg: PropTypes.func,
   message: PropTypes.string,
   is_error: PropTypes.bool,

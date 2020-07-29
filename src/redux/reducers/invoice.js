@@ -1,9 +1,12 @@
 export const INVOICE_ACTIONS = Object.freeze({
   SET_DATA: 'myapp/invoice/set-data',
+  INVOICES: 'myapp/invoice',
   REQ_INVOICE: 'myapp/invoice/req/invoice',
   INVOICE: 'myapp/invoice/invoice',
-  ADD_INVOICE: 'myapp/invoice/add-invoice',
-  CONFIRM_INVOICE: 'myapp/invoice/confirm-invoice',
+  DETAIL_INVOICE: 'myapp/invoice/detail',
+  ADD_INVOICE: 'myapp/invoice/add',
+  REQ_CONFIRM_INVOICE: 'myapp/invoice/req/confirm',
+  CONFIRM_INVOICE: 'myapp/invoice/confirm',
   ERROR: 'myapp/invoice/error',
   CLEAR_ERROR: 'myapp/invoice/clear-error',
 });
@@ -14,22 +17,35 @@ export const invoiceActions = Object.freeze({
     field,
     value,
   }),
-  reqInvoice: (value) => ({
+  invoices: (value) => ({
+    type: INVOICE_ACTIONS.INVOICES,
+    value,
+  }),
+  reqInvoice: (value, mode) => ({
     type: INVOICE_ACTIONS.REQ_INVOICE,
     value,
+    mode,
   }),
   invoice: (value) => ({
     type: INVOICE_ACTIONS.INVOICE,
+    value,
+  }),
+  detailInvoice: (value) => ({
+    type: INVOICE_ACTIONS.DETAIL_INVOICE,
     value,
   }),
   addInvoice: (value) => ({
     type: INVOICE_ACTIONS.ADD_INVOICE,
     value,
   }),
-  confirmInvoice: (value, file) => ({
-    type: INVOICE_ACTIONS.CONFIRM_INVOICE,
+  reqConfirmInvoice: (value, file) => ({
+    type: INVOICE_ACTIONS.REQ_CONFIRM_INVOICE,
     value,
     file,
+  }),
+  confirmInvoice: (value) => ({
+    type: INVOICE_ACTIONS.CONFIRM_INVOICE,
+    value,
   }),
   error: (value) => ({
     type: INVOICE_ACTIONS.ERROR,
@@ -41,9 +57,9 @@ export const invoiceActions = Object.freeze({
 });
 
 const initialState = {
-  carts: [],
-  prices: null,
-  invoice: null,
+  invoices: null,
+  recent_invoice: null,
+  detail_invoice: null,
   is_error: false,
   message: '',
   loading: false,
@@ -58,7 +74,7 @@ const reducer = (state = initialState, { type, field, value }) => {
       };
     case INVOICE_ACTIONS.REQ_INVOICE:
     case INVOICE_ACTIONS.ADD_INVOICE:
-    case INVOICE_ACTIONS.CONFIRM_INVOICE:
+    case INVOICE_ACTIONS.REQ_CONFIRM_INVOICE:
       return {
         ...state,
         loading: true,
@@ -66,12 +82,30 @@ const reducer = (state = initialState, { type, field, value }) => {
     case INVOICE_ACTIONS.INVOICE:
       return {
         ...state,
-        carts: value.carts_payload,
-        prices: value.prices,
-        invoice: value.invoice,
+        recent_invoice: value,
         is_error: false,
         loading: false,
         message: '',
+      };
+    case INVOICE_ACTIONS.DETAIL_INVOICE:
+      return {
+        ...state,
+        detail_invoice: value,
+        is_error: false,
+        loading: false,
+        message: '',
+      };
+    case INVOICE_ACTIONS.CONFIRM_INVOICE:
+      return {
+        ...state,
+        loading: false,
+        message: value,
+      };
+    case INVOICE_ACTIONS.INVOICES:
+      return {
+        ...state,
+        loading: false,
+        invoices: value,
       };
     case INVOICE_ACTIONS.ERROR:
       return {
