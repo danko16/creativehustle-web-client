@@ -1,31 +1,55 @@
 import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { Link, useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { kelasSayaActions } from '../redux/reducers/kelas-saya';
 import { headerActions } from '../redux/reducers/header';
-import { formatNumber } from '../utils/format';
-
-import Loading from '../shared/loading';
-import { month } from '../utils/date';
+import { cartActions } from '../redux/reducers/cart';
+import { invoiceActions } from '../redux/reducers/invoice';
 import { isAuthenticated } from '../utils/auth';
+import { formatNumber } from '../utils/format';
+import Loading from '../shared/loading';
+import CartModal from '../shared/cart-modal';
+import { month } from '../utils/date';
 import Title from '../shared/title';
 import './detail-kelas.css';
 
 const mapStateToProps = (state) => ({
   kelas: state.kelas.kelas,
   loading: state.kelas.loading,
+  carts: state.cart.carts,
+  recently_added: state.cart.recently_added,
 });
 
 const mapActionToProps = (dispatch) =>
   bindActionCreators(
-    { subscribe: kelasSayaActions.subscribe, showModal: headerActions.showModal },
+    {
+      showModal: headerActions.showModal,
+      addCart: cartActions.addCart,
+      setCart: cartActions.setData,
+      deleteCart: cartActions.deleteCart,
+      addInvoice: invoiceActions.addInvoice,
+      clearRecent: invoiceActions.setData,
+    },
     dispatch
   );
 
-function DetailKelas({ kelas, loading, subscribe, showModal }) {
+function DetailKelas({
+  kelas,
+  loading,
+  showModal,
+  addCart,
+  carts,
+  setCart,
+  recently_added,
+  addInvoice,
+  deleteCart,
+  clearRecent,
+}) {
+  const history = useHistory();
   const [kelasDetail, setKelasDetail] = useState(null);
+  const [showCartModal, setShowCartModal] = useState(false);
+  const [isCartExist, setIsCartExist] = useState(false);
   const { kelasId } = useParams();
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -33,12 +57,13 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
 
   useEffect(() => {
     return () => {
+      setCart('recently_added', null);
       showModal({
         show: false,
         type: null,
       });
     };
-  }, [showModal]);
+  }, [showModal, setCart]);
 
   useEffect(() => {
     if (!loading && kelas.length) {
@@ -49,6 +74,22 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
       });
     }
   }, [kelas, kelasId, loading]);
+
+  useEffect(() => {
+    if (carts.length && kelasDetail) {
+      carts.forEach((val) => {
+        if (val.class_id === kelasDetail.id) {
+          setIsCartExist(true);
+        }
+      });
+    }
+  }, [carts, kelasDetail]);
+
+  useEffect(() => {
+    if (kelasDetail && recently_added && recently_added.class_id === kelasDetail.id) {
+      setShowCartModal(true);
+    }
+  }, [recently_added, kelasDetail]);
 
   function convertDate(stringDate) {
     let date = stringDate.split('-');
@@ -86,10 +127,11 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
     return endHour + endMinutes - (startHour + startMinutes);
   }
 
-  function handleSubscribe() {
+  function handleAddCart() {
     const isAuth = isAuthenticated();
     if (isAuth) {
-      subscribe({
+      clearRecent('recent_invoice', null);
+      addCart({
         class_id: kelasDetail.id,
       });
     } else {
@@ -100,9 +142,19 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
     }
   }
 
+  function handlePayment() {
+    const courses_id = [],
+      classes_id = [parseInt(kelasId)];
+
+    deleteCart({ type: 'all', cart_id: null });
+    addInvoice({ courses_id, classes_id });
+    history.push('/pembelian/bayar');
+  }
+
   return kelasDetail ? (
     <div className="detail-kelas">
-      <Title />
+      <Title title={kelasDetail.title} />
+      {showCartModal && <CartModal setShowCartModal={setShowCartModal} detail={kelasDetail} />}
       <div className="container">
         <div className="row dk-thumbnail-wrapper">
           <div className="col-lg-6">
@@ -126,8 +178,37 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
               </h1>
             </div>
             <div className="btn-wrp">
-              <button onClick={handleSubscribe} className="subscribe-kelas">
-                <span>Daftar Kelas</span>
+              <button
+                onClick={() => {
+                  if (isCartExist) {
+                    history.push('/pembelian/keranjang');
+                  } else {
+                    handleAddCart();
+                  }
+                }}
+                style={{
+                  maxWidth: '250px',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  marginTop: 22,
+                }}
+                className="subscribe"
+              >
+                <span>{isCartExist ? 'Lihat' : 'Masukan'} Keranjang</span>
+                <i className="fa fa-angle-right" aria-hidden="true"></i>
+              </button>
+              <button
+                onClick={handlePayment}
+                className="subscribe"
+                style={{
+                  backgroundColor: '#ff6161',
+                  maxWidth: '250px',
+                  marginLeft: 'auto',
+                  marginRight: 'auto',
+                  marginTop: 22,
+                }}
+              >
+                <span>Beli Sekarang</span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </button>
             </div>
@@ -142,7 +223,7 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
             }}
           >
             <h3>
-              <strong>Tentang Kelas</strong>
+              <strong>Tentang Webinar</strong>
             </h3>
             <p>{kelasDetail.desc}</p>
             <h3>
@@ -150,77 +231,96 @@ function DetailKelas({ kelas, loading, subscribe, showModal }) {
             </h3>
             <ul>{renderSections(kelasDetail.sections)}</ul>
             <h3>
-              <strong>Mentor Kelas</strong>
+              <strong>Mentor Webinar</strong>
             </h3>
             <div className="row">
-              <div className="col-lg-6">
-                <img
-                  src="/assets/img/header-img.png"
-                  alt="header"
-                  style={{
-                    maxWidth: '100%',
-                    height: 'auto',
-                  }}
-                />
+              <div className="col-md-4">
+                <img src="/assets/img/header-img.png" alt="profile" width="100%" height="auto" />
               </div>
-              <div className="col-lg-6">
-                <h5>Reezky pradata</h5>
+              <div className="col-md-8">
+                <h5>{kelasDetail.teacher_name}</h5>
                 <h6
                   style={{
                     paddingTop: 10,
                     color: '#aaa',
                   }}
                 >
-                  Asik
+                  {kelasDetail.teacher_job}
                 </h6>
-                <p>
-                  Your content goes here. Edit or remove this text inline or in the module Content
-                  settings. You can also style every aspect of this content in the module Design
-                  settings and even apply custom CSS to this text in the module Advanced settings.
-                </p>
+                <p>{kelasDetail.teacher_biography}</p>
               </div>
             </div>
           </div>
-          <div className="col-lg-4">
-            <h3>
-              <strong>Investasi Mengikuti Kelas</strong>
-            </h3>
-            <div>
-              <h3>Rp. {formatNumber(kelasDetail.price)}/orang</h3>
-              <p className="akses font-weight-light">sekali bayar untuk selamanya</p>
+          <div className="col-lg-4 list-detail">
+            <div className="price">
+              {kelasDetail.promo_price && (
+                <h5>
+                  Rp. <strong>{formatNumber(kelasDetail.price)}</strong>
+                </h5>
+              )}
+              <h2>
+                <strong>
+                  Rp.{' '}
+                  {formatNumber(
+                    kelasDetail.promo_price ? kelasDetail.promo_price : kelasDetail.price
+                  )}
+                </strong>
+              </h2>
+              <p>Investasi mengikuti Webinar</p>
             </div>
-            <h3>
-              <strong>Jadwal dan Durasi</strong>
-            </h3>
-            <ul>
-              <li>
-                Tanggal : {convertDate(kelasDetail.start_date.date)} -{' '}
-                {convertDate(kelasDetail.end_date.date)}
-              </li>
-              <li>
-                Pukul : {kelasDetail.start_date.started_time} - {kelasDetail.start_date.ended_time}{' '}
-              </li>
-              <li>Durasi : {calcDuration()} Menit</li>
-            </ul>
+            <div className="desc">
+              <h3>
+                <strong>Detail Pelaksanaan Webinar</strong>
+              </h3>
+              <ul>
+                <li>
+                  <i className="fa fa-calendar" aria-hidden="true"></i>
+                  Tanggal : {convertDate(kelasDetail.start_date.date)} -{' '}
+                  {convertDate(kelasDetail.end_date.date)}
+                </li>
+                <li>
+                  <i className="fa fa-clock-o" aria-hidden="true"></i> Waktu :{' '}
+                  {kelasDetail.start_date.started_time} - {kelasDetail.start_date.ended_time}{' '}
+                </li>
+                <li>
+                  <i className="fa fa-hourglass-half" aria-hidden="true"></i>
+                  Durasi : {calcDuration()} Menit{' '}
+                </li>
+                <li>
+                  <i className="fa fa-check-square-o" aria-hidden="true"></i>
+                  Topik Webinar : {kelasDetail.topics}
+                </li>
+                <li>
+                  <i className="fa fa-users" aria-hidden="true"></i>
+                  Maksimal Peserta: 50 Orang
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
-      </div>
-      <div className="et_pb_row_2">
-        <h3
-          className="text-center"
-          style={{
-            color: '#fff',
-          }}
-        >
-          Ayo segera ikuti kelas ini untuk investasi ilmunya
-        </h3>
-        <button className="et_pb_button">
-          <Link to={`/kelas`} className="stretched-link">
-            <span className="sr-only">title for screen</span>
-          </Link>
-          <span>Lihat Kelas</span>
-          <i className="fa fa-angle-right" aria-hidden="true"></i>
-        </button>
+        <div className="et_pb_row_2 mb-5">
+          <h1
+            className="text-center"
+            style={{
+              color: '#fff',
+            }}
+          >
+            <strong>Segera Daftar Webinar ini</strong>
+          </h1>
+          <p
+            className="text-center"
+            style={{
+              color: '#fff',
+              marginBottom: ' 2.75%',
+            }}
+          >
+            Investasi murah ! Kuota terbatas ! Ya kali nanti-nanti daftarnya, keburu penuh kuotanya
+          </p>
+          <button className="et_pb_button" onClick={handlePayment}>
+            <span>Beli Sekarang</span>
+            <i className="fa fa-angle-right" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </div>
   ) : (
@@ -233,6 +333,13 @@ DetailKelas.propTypes = {
   loading: PropTypes.bool,
   subscribe: PropTypes.func,
   showModal: PropTypes.func,
+  recently_added: PropTypes.object,
+  addInvoice: PropTypes.func,
+  deleteCart: PropTypes.func,
+  clearRecent: PropTypes.func,
+  carts: PropTypes.array,
+  addCart: PropTypes.func,
+  setCart: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapActionToProps)(DetailKelas);

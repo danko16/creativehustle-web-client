@@ -1,5 +1,6 @@
 button.et_pb_button {
   position: relative;
+  cursor: pointer;
   display: flex;
   margin-left: auto;
   margin-right: auto;
@@ -16,9 +17,9 @@ button.et_pb_button {
 }
 
 button.et_pb_button:hover {
-  color: #ffffff !important;
-  background-image: initial !important;
-  background-color: #151363 !important;
+  color: #ffffff;
+  background-image: initial;
+  background-color: #151363;
 }
 
 button.et_pb_button i.fa-angle-right {
@@ -37,11 +38,10 @@ button.et_pb_button:hover i.fa-angle-right {
 
 .et_pb_row_2 {
   display: flex;
-  background-image: url(/assets/img/cta-bg.png);
+  background-image: url(/assets/img/affiliate-cta-bg.jpg);
   overflow: hidden;
-  height: 10rem;
   margin-top: 1.5rem;
-  padding: 1.5rem 0;
+  padding: 50px 0;
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -238,6 +238,117 @@ h5.et_pb_text_0 {
 
 .invoice .table tbody td {
   width: auto;
+}
+
+button.subscribe {
+  display: flex;
+  width: 100%;
+  border-radius: 20px;
+  justify-items: center;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: all 300ms ease 0ms;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  align-items: center;
+  padding: 0.3em 1em;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.7em !important;
+  transition: 0.2s;
+  color: #ffffff;
+  background-color: #3874ff;
+  margin-top: 24px;
+}
+
+button.subscribe i.fa-angle-right {
+  transition: all 300ms ease 0ms;
+  font-size: 30px;
+  margin-left: -8px;
+  opacity: 0;
+  visibility: hidden;
+}
+
+button.subscribe:hover i.fa-angle-right {
+  visibility: visible;
+  opacity: 1;
+  margin-left: 8px;
+}
+
+.list-detail {
+  background-color: #f4f8fd;
+  border-radius: 25px 25px 25px 25px;
+  overflow: hidden;
+  padding-top: 20px;
+  padding-right: 20px;
+  padding-bottom: 20px;
+  padding-left: 20px;
+  height: max-content;
+}
+
+.list-detail .price {
+  text-align: center;
+  border-bottom: 1px solid #2667ff;
+  padding-bottom: 15px;
+}
+
+.list-detail .price h5 {
+  margin: 0;
+  text-decoration: line-through;
+  font-size: 16px;
+}
+
+.list-detail .price p:last-child {
+  font-style: italic;
+  font-size: 14px;
+  margin: 0;
+}
+
+.list-detail .price h2 {
+  color: #3874ff;
+  font-size: 40px;
+}
+
+.list-detail .desc {
+  padding-top: 15px;
+}
+
+.list-detail .desc h3 {
+  font-size: 20px;
+  padding-bottom: 12px;
+}
+
+.list-detail .desc ul {
+  list-style: none;
+  padding-left: 0;
+  line-height: 2;
+}
+
+.list-detail .desc ul li {
+  display: flex;
+  padding-bottom: 10px;
+  font-size: 15px;
+}
+
+.list-detail .desc ul li *:first-child {
+  font-size: 20px;
+  padding-right: 10px;
+  color: #3874ff;
+  align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.detail-kursus .et_pb_row_2,
+.detail-kelas .et_pb_row_2 {
+  border-radius: 15px;
+}
+
+.detail-kursus button.et_pb_button:hover,
+.detail-kelas button.et_pb_button:hover {
+  background-color: rgb(255, 97, 97);
 }
 
 @media only screen and (max-width: 768px) {

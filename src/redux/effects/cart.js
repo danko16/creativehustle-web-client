@@ -35,8 +35,8 @@ function* deleteCart({ value }) {
   try {
     const {
       data: { data },
-    } = yield call(cartApi.delete, { cart_id: value.cart_id });
-    if (data) {
+    } = yield call(cartApi.delete, { type: value.type, cart_id: value.cart_id });
+    if (data.ok) {
       yield call(cart);
     }
   } catch (error) {

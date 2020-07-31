@@ -50,43 +50,6 @@
   width: 100px;
 }
 
-.detail-kursus button.subscribe-Kursus {
-  display: flex;
-  width: 100%;
-  border-radius: 20px;
-  justify-items: center;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  transition: all 300ms ease 0ms;
-  cursor: pointer;
-  outline: none;
-  border: none;
-  align-items: center;
-  padding: 0.3em 1em;
-  font-size: 20px;
-  font-weight: 500;
-  line-height: 1.7em !important;
-  transition: 0.2s;
-  color: #ffffff;
-  background-color: #3874ff;
-  margin-top: 24px;
-}
-
-.detail-kursus button.subscribe-Kursus i.fa-angle-right {
-  transition: all 300ms ease 0ms;
-  font-size: 30px;
-  margin-left: -8px;
-  opacity: 0;
-  visibility: hidden;
-}
-
-.detail-kursus button.subscribe-Kursus:hover i.fa-angle-right {
-  visibility: visible;
-  opacity: 1;
-  margin-left: 8px;
-}
-
 .materi-kelas-public {
   max-height: 46px;
   transition: max-height 1.5s ease-out;
@@ -144,73 +107,6 @@
 
 .mentor-profile .mentor-detail {
   padding-left: 30px;
-}
-
-.kursus-benefit {
-  background-color: #f4f8fd;
-  border-radius: 25px 25px 25px 25px;
-  overflow: hidden;
-  padding-top: 20px;
-  padding-right: 20px;
-  padding-bottom: 20px;
-  padding-left: 20px;
-}
-
-.kursus-benefit .price {
-  text-align: center;
-  border-bottom: 1px solid #2667ff;
-  padding-bottom: 15px;
-}
-
-.kursus-benefit .price h5 {
-  margin: 0;
-  text-decoration: line-through;
-  font-size: 16px;
-}
-
-.kursus-benefit .price p:last-child {
-  font-style: italic;
-  font-size: 14px;
-  margin: 0;
-}
-
-.kursus-benefit .price h2 {
-  color: #3874ff;
-  font-size: 40px;
-}
-
-.kursus-benefit .desc {
-  padding-top: 15px;
-}
-
-.kursus-benefit .desc h3 {
-  font-size: 20px;
-  padding-bottom: 12px;
-}
-
-.kursus-benefit .desc ul {
-  list-style: none;
-  padding-left: 0;
-}
-
-.kursus-benefit .desc ul li {
-  display: flex;
-  padding-bottom: 10px;
-  font-size: 15px;
-}
-
-.kursus-benefit .desc ul li *:first-child {
-  font-size: 20px;
-  padding-right: 10px;
-  color: #3874ff;
-  align-items: center;
-}
-
-@media only screen and (max-width: 992px) {
-  .kursus-benefit {
-    margin-top: 1.5rem;
-    padding-left: 0;
-  }
 }
 
 @media only screen and (max-width: 768px) {

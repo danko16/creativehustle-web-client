@@ -42,6 +42,7 @@ function* addInvoice({ value }) {
     } = yield call(invoiceApi.add, value);
     if (data) {
       yield put(invoiceActions.invoice(data));
+      yield call(invoices);
       yield put(push(`/pembelian/bayar`));
     }
   } catch (error) {
@@ -57,6 +58,7 @@ function* confirm({ value, file }) {
       data: { data, message },
     } = yield call(invoiceApi.confirm, { payload: value, formData });
     if (data) {
+      yield call(invoices);
       yield put(invoiceActions.confirmInvoice(message));
     }
   } catch (error) {

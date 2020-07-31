@@ -47,7 +47,7 @@ function Sidebar({ logout }) {
             </li>
             <li>
               <NavLink to="/dashboard/kelas" activeClassName="active-nav" className="menu-peserta">
-                <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Kelas Saya
+                <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Webinar
               </NavLink>
             </li>
           </ul>

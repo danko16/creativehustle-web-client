@@ -1,5 +1,4 @@
 import { put, call, takeLatest, all } from 'redux-saga/effects';
-import { push } from 'connected-react-router';
 import { getErrorMessage } from '../../utils/api';
 import { kelasSayaActions, KELAS_SAYA_ACTIONS } from '../reducers/kelas-saya';
 import kelasSayaApi from '../api/kelas-saya';
@@ -30,26 +29,10 @@ function* schedules({ value }) {
   }
 }
 
-function* subscribe({ value }) {
-  try {
-    const { data } = yield call(kelasSayaApi.subscribe, value);
-    if (data) {
-      yield call(kelas);
-      yield put(push('/dashboard/kelas'));
-    }
-  } catch (error) {
-    alert(getErrorMessage(error));
-    yield put(kelasSayaActions.error(getErrorMessage(error)));
-  }
-}
-
 function* kelasSayaSaga() {
   try {
     yield call(kelas);
-    yield all([
-      takeLatest(KELAS_SAYA_ACTIONS.SUBSCRIBE, subscribe),
-      takeLatest(KELAS_SAYA_ACTIONS.REQ_SCHEDULES, schedules),
-    ]);
+    yield all([takeLatest(KELAS_SAYA_ACTIONS.REQ_SCHEDULES, schedules)]);
   } catch (error) {
     yield put(kelasSayaActions.error(getErrorMessage(error)));
   }

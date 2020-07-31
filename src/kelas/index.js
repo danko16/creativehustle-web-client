@@ -36,7 +36,7 @@ function Kelas({ reqCariKelas }) {
       >
         <div className="kelas-head container d-flex py-4">
           <h1 className="text-center" style={{ color: '#fff' }}>
-            <strong>Kelas Online Live bersama Instruktur</strong>
+            <strong>Webinar Live bersama Instruktur</strong>
           </h1>
           <p
             className="text-center"
@@ -45,7 +45,7 @@ function Kelas({ reqCariKelas }) {
             }}
           >
             Dapatkan kesempatan untuk bisa belajar bareng instruktur di Creaitve Hustle id secara
-            live di Kelas Online.
+            live dengan Webinar.
           </p>
           <div className="input-group mt-3">
             <div className="input-group-prepend" onClick={handleSearch}>
@@ -64,7 +64,7 @@ function Kelas({ reqCariKelas }) {
                 SetKeywords(e.target.value);
               }}
               className="form-control"
-              placeholder="Cari kelas"
+              placeholder="Cari Webinar"
               aria-label="kelas"
               aria-describedby="basic-addon1"
               style={{ maxWidth: 400 }}
@@ -85,7 +85,7 @@ function Kelas({ reqCariKelas }) {
         <div className="row">
           <div className="col-lg-6">
             <h2 className="mb-4">
-              <strong>Bingung Cara ikut Kelas Online ?</strong>
+              <strong>Bingung Cara ikut Webinar Online ?</strong>
             </h2>
             <p className="mb-4">
               Kami membuat cara paling mudah untuk teman-teman belajar di Creative Hustle. Hanya

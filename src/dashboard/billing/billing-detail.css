@@ -2,3 +2,74 @@
   max-width: 750px;
   margin: auto;
 }
+
+.billing .table td,
+.billing .table th {
+  border: 1px solid #dee2e6;
+}
+
+.billing .page-link {
+  position: relative;
+  display: block;
+  padding: 5px 10px;
+  margin-left: -1px;
+  line-height: 1.25;
+  color: #007bff;
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+  font-size: 14px;
+}
+
+.billing .pagination-wrapper {
+  display: flex;
+  margin: 16px 0px;
+}
+
+.billing .view-count {
+  position: relative;
+  padding: 2px 5px;
+  border: 1px solid #000;
+  margin: 0px 6px;
+  cursor: default;
+  width: fit-content;
+}
+
+.billing .view-count-wrapper {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+}
+
+.billing .view-count-list {
+  position: absolute;
+  list-style: none;
+  padding: 0;
+  border: 1px solid #000;
+  background-color: #fff;
+  left: -1px;
+  top: 26px;
+  visibility: hidden;
+}
+
+.billing .view-count-list.open {
+  visibility: visible;
+}
+
+
+.billing .pagination-wrapper nav {
+  width: fit-content;
+  margin-left: auto;
+}
+
+.billing .pagination {
+  margin: 0;
+}
+
+.billing .view-count-list li {
+  padding: 0px 16px 0px 6px;
+}
+
+.billing .view-count-list li.active {
+  background-color: #4083ff;
+  color: #fff;
+}

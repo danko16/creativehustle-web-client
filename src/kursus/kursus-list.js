@@ -45,14 +45,14 @@ function KursusList({ kursus, loading, notFound }) {
             <img src={val.thumbnail} alt="thumbnail kelas" className="img img__cover" />
             <div className="card-body">
               <div className="row no-gutters justify-content-between">
-                <p className="student-subscr m-0">124 Siswa</p>
+                <p className="student-subscr m-0">{val.participant} Siswa</p>
                 <div className="col-auto d-flex align-items-center">
-                  <span className="rating fa fa-star checked"></span>
-                  <span className="rating fa fa-star checked"></span>
-                  <span className="rating fa fa-star checked"></span>
-                  <span className="rating fa fa-star checked"></span>
                   <span className="rating fa fa-star"></span>
-                  <span className="rating-vote text-gray-500">(123)</span>
+                  <span className="rating fa fa-star"></span>
+                  <span className="rating fa fa-star"></span>
+                  <span className="rating fa fa-star"></span>
+                  <span className="rating fa fa-star"></span>
+                  <span className="rating-vote text-gray-500">({val.rating.reviewer})</span>
                 </div>
               </div>
               <h6 className="kursus-title line-height-1">{val.title}</h6>

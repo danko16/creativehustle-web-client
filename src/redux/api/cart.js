@@ -8,5 +8,11 @@ export default Object.freeze({
         'Content-Type': 'application/json',
       },
     }),
-  delete: ({ cart_id }) => Api.delete(`/cart/${cart_id}`),
+  delete: ({ type, cart_id }) =>
+    Api.delete(`/cart`, {
+      params: {
+        type,
+        cart_id,
+      },
+    }),
 });

@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { useParams, Link, withRouter } from 'react-router-dom';
+import { useParams, withRouter } from 'react-router-dom';
 import Title from '../shared/title';
 import PropTypes from 'prop-types';
 import { kursusActions } from '../redux/reducers/kursus';
 import { headerActions } from '../redux/reducers/header';
 import { cartActions } from '../redux/reducers/cart';
+import { invoiceActions } from '../redux/reducers/invoice';
 import { isAuthenticated } from '../utils/auth';
 import Loading from '../shared/loading';
 import CartModal from '../shared/cart-modal';
@@ -31,6 +32,9 @@ const mapActionToProps = (dispatch) =>
       showModal: headerActions.showModal,
       addCart: cartActions.addCart,
       setCart: cartActions.setData,
+      deleteCart: cartActions.deleteCart,
+      addInvoice: invoiceActions.addInvoice,
+      clearRecent: invoiceActions.setData,
     },
     dispatch
   );
@@ -46,6 +50,9 @@ function DetailKursus({
   setCart,
   history,
   recently_added,
+  addInvoice,
+  deleteCart,
+  clearRecent,
   contents,
   loading,
 }) {
@@ -114,6 +121,7 @@ function DetailKursus({
   function handleAddCart() {
     const isAuth = isAuthenticated();
     if (isAuth) {
+      clearRecent('recent_invoice', null);
       addCart({
         course_id: detailKursus.id,
       });
@@ -125,7 +133,14 @@ function DetailKursus({
     }
   }
 
-  function handlePayment() {}
+  function handlePayment() {
+    const courses_id = [parseInt(kursusId)],
+      classes_id = [];
+
+    deleteCart({ type: 'all', cart_id: null });
+    addInvoice({ courses_id, classes_id });
+    history.push('/pembelian/bayar');
+  }
 
   function renderSections() {
     return detailSections.map((val) => {
@@ -160,12 +175,25 @@ function DetailKursus({
     });
   }
 
+  function convertLevel(level) {
+    switch (level) {
+      case 'all':
+        return 'SEMUA LEVEL';
+      case 'beginner':
+        return 'PEMULA';
+      case 'intermediate':
+        return 'MENENGAH';
+      case 'expert':
+        return 'EXPERT';
+      default:
+        return 'SEMUA LEVEL';
+    }
+  }
+
   return detailKursus && detailContent ? (
     <div className="detail-kursus">
       <Title title={detailKursus.title} />
-      {showCartModal && (
-        <CartModal setShowCartModal={setShowCartModal} detailKursus={detailKursus} />
-      )}
+      {showCartModal && <CartModal setShowCartModal={setShowCartModal} detail={detailKursus} />}
       <div className="title">
         <div>
           <h1 className="text-center">
@@ -187,25 +215,25 @@ function DetailKursus({
               <h6 className="et_pb_module_header">
                 <span>Total Peserta</span>
               </h6>
-              <p>1.000</p>
+              <p>{detailKursus.participant}</p>
             </div>
             <div className="col-md-6 col-lg-3 p-0">
               <h6 className="et_pb_module_header">
                 <span>Level</span>
               </h6>
-              <p>SEMUA LEVEL</p>
+              <p style={{ textTransform: 'uppercase' }}>{convertLevel(detailKursus.level)}</p>
             </div>
             <div className="col-md-6 col-lg-3 p-0">
               <h6 className="et_pb_module_header">
                 <span>Topik Kursus</span>
               </h6>
-              <p>MICROSTOCK</p>
+              <p style={{ textTransform: 'uppercase' }}>{detailKursus.topics}</p>
             </div>
             <div className="col-md-6 col-lg-3 p-0">
               <h6 className="et_pb_module_header">
                 <span>Tipe</span>
               </h6>
-              <p>PREMIUM</p>
+              <p style={{ textTransform: 'uppercase' }}>{detailKursus.type}</p>
             </div>
           </div>
         </div>
@@ -223,11 +251,11 @@ function DetailKursus({
           </div>
 
           <div className="col-lg-4">
-            <div className="kursus-benefit">
+            <div className="list-detail">
               <div className="price">
                 {detailKursus.promo_price && (
                   <h5>
-                    Rp. <strong>{formatNumber(detailKursus.promo_price)}</strong>
+                    Rp. <strong>{formatNumber(detailKursus.price)}</strong>
                   </h5>
                 )}
                 <h2>
@@ -273,14 +301,14 @@ function DetailKursus({
                       handleAddCart();
                     }
                   }}
-                  className="subscribe-Kursus"
+                  className="subscribe"
                 >
                   <span>{isCartExist ? 'Lihat' : 'Masukan'} Keranjang</span>
                   <i className="fa fa-angle-right" aria-hidden="true"></i>
                 </button>
                 <button
                   onClick={handlePayment}
-                  className="subscribe-Kursus"
+                  className="subscribe"
                   style={{
                     backgroundColor: '#ff6161',
                     marginTop: 10,
@@ -306,11 +334,11 @@ function DetailKursus({
             <h3 className="mb-4">
               <strong>Mentor Kursus</strong>
             </h3>
-            <div className="mentor-profile">
-              <div className="mentor-photo">
-                <img src="/assets/img/header-img.png" alt="profile" />
+            <div className="row">
+              <div className="col-md-4">
+                <img src="/assets/img/header-img.png" alt="profile" width="100%" height="auto" />
               </div>
-              <div className="mentor-detail">
+              <div className="col-md-8">
                 <h5>{detailKursus.teacher_name}</h5>
                 <h6
                   style={{
@@ -318,35 +346,38 @@ function DetailKursus({
                     color: '#aaa',
                   }}
                 >
-                  Asik
+                  {detailKursus.teacher_job}
                 </h6>
-                <p>
-                  Your content goes here. Edit or remove this text inline or in the module Content
-                  settings. You can also style every aspect of this content in the module Design
-                  settings and even apply custom CSS to this text in the module Advanced settings.
-                </p>
+                <p>{detailKursus.teacher_biography}</p>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      <div className="et_pb_row_2">
-        <h3
-          className="text-center"
-          style={{
-            color: '#fff',
-          }}
-        >
-          Ayo segera ikuti kursus ini untuk investasi ilmunya
-        </h3>
-        <button className="et_pb_button">
-          <Link to={`/kursus`} className="stretched-link">
-            <span className="sr-only">title for screen</span>
-          </Link>
-          <span>Lihat Kursus</span>
-          <i className="fa fa-angle-right" aria-hidden="true"></i>
-        </button>
+        <div className="et_pb_row_2 mt-5">
+          <h5
+            className="text-center"
+            style={{
+              textTransform: 'uppercase',
+              color: '#3bed9a',
+            }}
+          >
+            <strong>Tunggu Apa Lagi ?</strong>
+          </h5>
+          <h2
+            className="text-center"
+            style={{
+              color: '#fff',
+              marginBottom: '2.75%',
+            }}
+          >
+            <strong> Ayo segera ikuti kursus ini untuk investasi ilmunya</strong>
+          </h2>
+          <button className="et_pb_button" onClick={handlePayment}>
+            <span>Beli Sekarang</span>
+            <i className="fa fa-angle-right" aria-hidden="true"></i>
+          </button>
+        </div>
       </div>
     </div>
   ) : (
@@ -363,6 +394,9 @@ DetailKursus.propTypes = {
   setCart: PropTypes.func,
   history: PropTypes.object,
   recently_added: PropTypes.object,
+  addInvoice: PropTypes.func,
+  deleteCart: PropTypes.func,
+  clearRecent: PropTypes.func,
   carts: PropTypes.array,
   setData: PropTypes.func,
   showModal: PropTypes.func,

@@ -68,13 +68,13 @@ function Kelas({ kelas, loading }) {
         <div className="row mb-4">
           <div className="col-12">
             <div className="card-no-shadow py-5 text-center">
-              <h2 className="card-title">Anda Belum Memiliki Kelas</h2>
-              <p>Silahkan Cari Kelas Melalui Link di Bawah Ini</p>
+              <h2 className="card-title">Anda Belum Memiliki Webinar</h2>
+              <p>Silahkan Cari Webinar Melalui Link di Bawah Ini</p>
               <button className="et_pb_button">
                 <Link to={`/kelas`} className="stretched-link">
                   <span className="sr-only">title for screen</span>
                 </Link>
-                <span>Lihat Kelas</span>
+                <span>Lihat Webinar</span>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </button>
             </div>

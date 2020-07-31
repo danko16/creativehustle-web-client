@@ -58,6 +58,14 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
     addInvoice({ courses_id, classes_id });
   }
 
+  function getType(cart) {
+    if (cart.type === 'course') {
+      return 'Kursus';
+    } else {
+      return 'Webinar';
+    }
+  }
+
   function renderCartItems() {
     return carts.map((val) => (
       <div key={val.cart_id} className="cart-item">
@@ -78,12 +86,14 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
             <span className="sr-only">title for screen</span>
           </Link>
           <p>
-            <strong>{val.title}</strong>
+            <strong>
+              {val.title} - {getType(val)}*
+            </strong>
           </p>
           <p>By {val.teacher_name}</p>
         </div>
         <div>
-          <p style={{ color: '#f44336' }}>
+          <p style={{ color: '#f44336', width: ' max-content' }}>
             <strong>
               Rp. {formatNumber(val.promo_price ? val.promo_price : val.price)}{' '}
               <i className="fa fa-tag" aria-hidden="true"></i>
@@ -104,6 +114,7 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
             className="remove-cart-item"
             onClick={() => {
               deleteCart({
+                type: 'single',
                 cart_id: val.cart_id,
               });
             }}

@@ -112,6 +112,7 @@ a.tabbed-options {
 }
 
 .cart-item > div:last-child p {
+  width: max-content;
   cursor: pointer;
 }
 

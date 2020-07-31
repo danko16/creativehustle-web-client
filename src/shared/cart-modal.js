@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './cart-modal.css';
 
-function CartModal({ setShowCartModal, detailKursus, history }) {
+function CartModal({ setShowCartModal, detail, history }) {
   function handleClick(event) {
     if (event.target.className === 'cart-modal') {
       setShowCartModal(false);
@@ -29,7 +29,7 @@ function CartModal({ setShowCartModal, detailKursus, history }) {
         </div>
         <div className="cart-modal-item">
           <img
-            src={detailKursus.thumbnail}
+            src={detail.thumbnail}
             alt="thumbnail"
             style={{
               maxWidth: '130px',
@@ -38,12 +38,12 @@ function CartModal({ setShowCartModal, detailKursus, history }) {
           />
           <div>
             <p style={{ fontSize: 14 }}>
-              <strong>{detailKursus.title} </strong>
+              <strong>{detail.title} </strong>
             </p>
-            <p style={{ fontSize: 12 }}>By {detailKursus.teacher_name}</p>
+            <p style={{ fontSize: 12 }}>By {detail.teacher_name}</p>
           </div>
           <div
-            style={{ fontSize: 14 }}
+            style={{ fontSize: 14, textAlign: 'center' }}
             onClick={() => {
               history.push('/pembelian/keranjang');
             }}
@@ -58,7 +58,7 @@ function CartModal({ setShowCartModal, detailKursus, history }) {
 
 CartModal.propTypes = {
   setShowCartModal: PropTypes.func,
-  detailKursus: PropTypes.object,
+  detail: PropTypes.object,
   history: PropTypes.object,
 };
 

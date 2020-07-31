@@ -102,7 +102,7 @@ function Invoice({
         </tr>
       ) : (
         <tr key={val.class_id}>
-          <td>{val.title} - Kelas *</td>
+          <td>{val.title} - Webinar *</td>
           <td className="text-center">Rp. {formatNumber(val.price)}</td>
         </tr>
       )

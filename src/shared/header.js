@@ -232,7 +232,7 @@ function Header({ style, user, logout, modal, loading, carts, history }) {
               </li>
               <li className="nav-item">
                 <NavLink className="nav-link" activeStyle={{ color: '#2ea3f2' }} to="/kelas">
-                  Kelas
+                  Webinar
                 </NavLink>
               </li>
               <li className="nav-item">
