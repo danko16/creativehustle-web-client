@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function LearningPath() {
   return (
-    <div className="border-top lp-landing">
+    <div className="border-top lp-landing fs-18">
       <div className="container">
         <div className="row">
           <div
@@ -14,7 +14,7 @@ function LearningPath() {
             }}
           >
             <img
-              src="/assets/img/ezgif-6-61036b878dfe.png"
+              src="/assets/img/okex2.jpg"
               alt="642-scaled"
               style={{
                 width: '100%',
@@ -71,8 +71,8 @@ function LearningPath() {
             }}
           >
             <img
-              src="/assets/img/ezgif-2-9bf76f018835.png"
-              alt="ezgif-2-9bf76f018835"
+              src="/assets/img/Wait-for-it-2.jpg"
+              alt="Wait-for-it-2"
               style={{
                 width: '100%',
                 height: '100%',

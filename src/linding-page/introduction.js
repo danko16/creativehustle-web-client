@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Introduction() {
   return (
     <>
-      <section className="container pt-4 pb-4">
+      <section className="container pt-4 pb-4 fs-18">
         <div className="row mt-5 justify-content-center">
           <div className="col-lg-6 mb-4">
             <h5 className="et_pb_text_0">SELAMAT DATANG DI CREATIVE HUSTLE</h5>
@@ -57,7 +57,7 @@ function Introduction() {
           </div>
           <div className="col-lg-6">
             <img
-              src="/assets/img/header-img.png"
+              src="/assets/img/Home1.png"
               alt="header"
               style={{
                 maxWidth: '100%',

@@ -79,7 +79,7 @@ function Kursus({ reqCariKursus }) {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="row">
+        <div className="row fs-18">
           <div
             className="col-lg-6"
             style={{
@@ -88,8 +88,8 @@ function Kursus({ reqCariKursus }) {
             }}
           >
             <img
-              src="/assets/img/ezgif-6-61036b878dfe.png"
-              alt="ezgif-6-61036b878dfe"
+              src="/assets/img/Wait-for-it-2.jpg"
+              alt="Wait-for-it-2"
               style={{
                 width: '100%',
                 height: '100%',

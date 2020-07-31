@@ -28,7 +28,9 @@ function Journey() {
           <h1>
             <strong>5 Langkah Mulai Belajar di Creative Hustle</strong>
           </h1>
-          <p>Kami membuat cara paling mudah untuk teman-teman belajar di Creative Hustle</p>
+          <p className="fs-18">
+            Kami membuat cara paling mudah untuk teman-teman belajar di Creative Hustle
+          </p>
         </div>
         <div className="container">
           <img

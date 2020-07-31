@@ -25,12 +25,12 @@ function JourneyDetail({ showRegister, history }) {
     };
   }, [showRegister]);
   return (
-    <div className="container journey-detail">
+    <div className="container journey-detail fs-18">
       <div className="row row_rvrs">
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
-            src="/assets/img/ezgif-2-d540788c4e50.png"
-            alt="ezgif-2-d540788c4e50"
+            src="/assets/img/pendaftaran.png"
+            alt="pendaftaran"
             style={{
               width: '100%',
               height: '100%',
@@ -88,8 +88,8 @@ function JourneyDetail({ showRegister, history }) {
         </div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
-            src="/assets/img/ezgif-1-9f67bd320d15.png"
-            alt="ezgif-1-9f67bd320d15"
+            src="/assets/img/pxas.png"
+            alt="pexas"
             style={{
               width: '100%',
               height: '100%',
@@ -162,8 +162,8 @@ function JourneyDetail({ showRegister, history }) {
         </div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
-            src="/assets/img/wczVgW3nQyRqPUCDTI7FIKl8SoDZLPdBVCniIPho-980x735.png"
-            alt="wczVgW3nQyRqPUCDTI7FIKl8SoDZLPdBVCniIPho-980x735"
+            src="/assets/img/Home1.png"
+            alt="Home1"
             style={{
               width: '100%',
               height: '100%',

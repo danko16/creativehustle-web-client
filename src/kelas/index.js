@@ -82,7 +82,7 @@ function Kelas({ reqCariKelas }) {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="row">
+        <div className="row fs-18">
           <div className="col-lg-6">
             <h2 className="mb-4">
               <strong>Bingung Cara ikut Webinar Online ?</strong>
@@ -108,8 +108,8 @@ function Kelas({ reqCariKelas }) {
             }}
           >
             <img
-              src="/assets/img/ezgif-6-61036b878dfe.png"
-              alt="642-scaled"
+              src="/assets/img/Wait-for-it-2.jpg"
+              alt="Wait-for-it-2"
               style={{
                 width: '100%',
                 height: '100%',
