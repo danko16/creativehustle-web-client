@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-export const SERVER_DOMAIN = 'http://localhost:3000';
-export const CLIENT_DOMAIN = 'http://localhost:3006';
+export const SERVER_DOMAIN =
+  process.env.NODE_ENV === 'production' ? 'https://api.creativehustle.id' : 'http://localhost:3000';
+export const CLIENT_DOMAIN =
+  process.env.NODE_ENV === 'production' ? 'https://creativehustle.id' : 'http://localhost:3006';
 
 export const Api = axios.create({
   baseURL: SERVER_DOMAIN,
