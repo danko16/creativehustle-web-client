@@ -1,5 +1,5 @@
 export NODE_ENV=production
-react-scripts build
+/home/danang/.nvm/versions/node/v12.18.0/bin/npm run build
 rm -rf /var/www/creativehustle.id/html/*
 cp -R build/* /var/www/creativehustle.id/html/
 nginx -t
