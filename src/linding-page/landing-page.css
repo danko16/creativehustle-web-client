@@ -75,20 +75,6 @@ section .thumbnail a {
   cursor: pointer;
 }
 
-section.footer .sitemap {
-  color: #a8a8a8;
-  margin-top: 5px;
-}
-
-section.footer .sitemap li {
-  line-height: 2;
-}
-
-section.footer .sitemap a {
-  font-weight: 300;
-  color: inherit;
-}
-
 .img__contain {
   object-fit: contain;
   width: 100%;
@@ -160,13 +146,21 @@ section.footer .sitemap a {
 
 .hdr_img > div {
   display: flex;
-  flex-direction: column;
-  align-items: center;
+}
+
+.hdr_img_text {
+  padding-left: 18px;
 }
 
 .hdr_img div span {
+  font-size: 20px;
   font-weight: 600;
   color: #0c1460;
+}
+
+.hdr_img_text p {
+  margin-top: 6px;
+  line-height: 1.8;
 }
 
 .intro.btn-wrapper > div {
@@ -182,9 +176,11 @@ section.footer .sitemap a {
   color: #ffffff;
   border-width: 0px;
   border-radius: 9px;
-  padding: 8px 20px;
-  font-size: 20px;
+  font-size: 18px;
   transition: all 300ms ease 0ms;
+  align-items: center;
+  text-transform: uppercase;
+  font-weight: 600;
 }
 
 .find-class.btn {
@@ -202,7 +198,6 @@ section.footer .sitemap a {
   background-color: #151363 !important;
   background-image: initial !important;
   color: #fff;
-  padding: 8px 24px;
 }
 
 .find-course.btn i.fa-angle-right,
@@ -256,6 +251,8 @@ ul.benefit-list {
 
 ul.benefit-list li {
   display: flex;
+  align-items: center;
+  margin-bottom: 20px;
 }
 
 ul.benefit-list li i.fa.fa-check-circle {
@@ -265,6 +262,8 @@ ul.benefit-list li i.fa.fa-check-circle {
 
 ul.benefit-list li p {
   padding-left: 20px;
+  margin-bottom: 0;
+  line-height: 1.5;
 }
 
 @media only screen and (max-width: 992px) {

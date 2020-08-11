@@ -55,7 +55,7 @@ function PopularClass({ kursus, loading }) {
     ));
   }
   return (
-    <section className="py-3 container--light-blue border-top">
+    <section className="py-3 border-top">
       <div className="mt-5">
         <div className="heading text-center">
           <h2 className="mb-3">

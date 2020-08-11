@@ -566,6 +566,13 @@ a.tabbed-options {
   }
 }
 
+@media only screen and (max-width: 768px) {
+  .pembelian .invoice-hint {
+    width: 12rem;
+    left: 16px;
+  }
+}
+
 @media only screen and (max-width: 519px) {
   .cart-item > div:nth-child(2) {
     margin-right: 53px;
