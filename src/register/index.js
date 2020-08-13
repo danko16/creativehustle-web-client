@@ -22,6 +22,10 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [repeatPassword, setRepeatPassword] = useState('');
+  const [showPassword, setShowPassword] = useState({
+    password: false,
+    repeatPassword: false,
+  });
   const [error, setError] = useState({
     name: '',
     email: '',
@@ -239,7 +243,7 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
             </label>
             <i className="material-icons mr-2">lock</i>
             <input
-              type="password"
+              type={showPassword.password ? 'text' : 'password'}
               name="password"
               required=""
               autoComplete="current-password"
@@ -258,6 +262,16 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
                 setPassword(e.target.value);
               }}
             />
+            <i
+              onClick={() => {
+                setShowPassword((prevState) => ({
+                  ...prevState,
+                  password: !prevState.password,
+                }));
+              }}
+              className={`fa fa-eye${showPassword.password ? '' : '-slash'}`}
+              aria-hidden="true"
+            ></i>
           </div>
           <small
             className={ClassNames('error-text form-text d-none', {
@@ -272,7 +286,7 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
             </label>
             <i className="material-icons mr-2">lock</i>
             <input
-              type="password"
+              type={showPassword.repeatPassword ? 'text' : 'password'}
               name="password_confirmation"
               required=""
               autoComplete="current-password"
@@ -291,6 +305,16 @@ function Register({ setDisplayModal, auth, register, clearMsg }) {
                 setRepeatPassword(e.target.value);
               }}
             />
+            <i
+              onClick={() => {
+                setShowPassword((prevState) => ({
+                  ...prevState,
+                  repeatPassword: !prevState.repeatPassword,
+                }));
+              }}
+              className={`fa fa-eye${showPassword.repeatPassword ? '' : '-slash'}`}
+              aria-hidden="true"
+            ></i>
           </div>
           <small
             className={ClassNames('error-text form-text d-none', {

@@ -26,7 +26,8 @@ function JourneyDetail({ showRegister, history }) {
   }, [showRegister]);
   return (
     <div className="container journey-detail fs-18">
-      <div className="row row_rvrs">
+      <div className="row">
+        <div id="step1" className="anchor"></div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
             src="/assets/img/pendaftaran.png"
@@ -66,25 +67,36 @@ function JourneyDetail({ showRegister, history }) {
           </button>
         </div>
       </div>
-      <div className="row">
+      <div className="row row_rvrs">
+        <div id="step2" className="anchor"></div>
         <div className="col-lg-6">
           <div className="et_pb_text_6 et_pb_text">
             <p className="m-0">Langkah 2</p>
           </div>
           <h2 className="et_pb_head_2 mb-4">
-            <strong>Pilih Kursus/Kelas</strong>
+            <strong>Pilih Kursus/Webinar</strong>
           </h2>
           <p className="mb-4">
             Terdapat berbagai kursus dan kelas yang dapat diambil di Creative Hustle. Semua kursus
             dan kelas kami jamin kualitasnya agar teman-teman mendapatkan ilmu setelah mengikutinya.{' '}
           </p>
-          <button className="to-learn-path">
-            <Link to={`/kursus`} className="stretched-link">
-              <span className="sr-only">title for screen</span>
-            </Link>
-            <span className="et_pb_button_2">Lihat Pilihan Kursus</span>
-            <i className="fa fa-angle-right" aria-hidden="true"></i>
-          </button>
+          <div className="to-learn-path-wrapper">
+            <button className="to-learn-path">
+              <Link to={`/kursus`} className="stretched-link">
+                <span className="sr-only">title for screen</span>
+              </Link>
+              <span className="et_pb_button_2">Lihat Pilihan Kursus</span>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+
+            <button className="to-learn-path">
+              <Link to={`/kelas`} className="stretched-link">
+                <span className="sr-only">title for screen</span>
+              </Link>
+              <span className="et_pb_button_2">Lihat Jadwal Webinar</span>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
@@ -97,7 +109,8 @@ function JourneyDetail({ showRegister, history }) {
           />
         </div>
       </div>
-      <div className="row row_rvrs">
+      <div className="row">
+        <div id="step3" className="anchor"></div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
             src="/assets/img/ezgif-1-42777db772fd.png"
@@ -129,7 +142,8 @@ function JourneyDetail({ showRegister, history }) {
           </button>
         </div>
       </div>
-      <div className="row">
+      <div className="row row_rvrs">
+        <div id="step4" className="anchor"></div>
         <div className="col-lg-6">
           <div className="et_pb_text_6 et_pb_text">
             <p className="m-0">Langkah 4</p>
@@ -171,7 +185,8 @@ function JourneyDetail({ showRegister, history }) {
           />
         </div>
       </div>
-      <div className="row row_rvrs">
+      <div className="row">
+        <div id="step5" className="anchor"></div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
             src="/assets/img/ezgif-2-c0a66fc9be92.png"
@@ -191,16 +206,10 @@ function JourneyDetail({ showRegister, history }) {
           </h2>
           <p className="mb-4">
             Setelah selesai kelas banyak pertanyaan dan pemikiran yang ingin disampaikan ke
-            instruktur ? Tenang, Creative Hustle membuat forum telegram untuk setiap alumni kursus
-            dan kelas bersama mentor agar dapat bertanya langsung dengan para mentor.
+            instruktur ? Tenang, Creative Hustle membuat forum telegram bersama mentor untuk setiap
+            user yang membeli kursus agar dapat bertanya langsung dengan para mentor dan Kesempatan
+            tanya jawab langsung dalam program Webinar
           </p>
-          <button className="to-learn-path">
-            <Link to={`/kursus`} className="stretched-link">
-              <span className="sr-only">title for screen</span>
-            </Link>
-            <span className="et_pb_button_2">Lihat Pilihan Kursus</span>
-            <i className="fa fa-angle-right" aria-hidden="true"></i>
-          </button>
         </div>
       </div>
     </div>

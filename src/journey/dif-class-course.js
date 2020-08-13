@@ -1,8 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 function DifClassCourse() {
   return (
-    <div className="et_pb_section et_pb_section_7">
+    <div className="et_pb_section et_pb_section_7 fs-18">
       <div className="container">
         <div className="text-center et_pb_row">
           <h2
@@ -13,8 +14,8 @@ function DifClassCourse() {
             <strong>Perbedaan Fitur Kursus dan Kelas Online ?</strong>
           </h2>
           <p>
-            Buat teman-teman yang bingung apa sih perbedaan Kursus dan Kelas Online di Creative
-            Hustle id coba lihat perbedaanya dibawah
+            Buat teman-teman yang bingung apa sih perbedaan Kursus dan Webinar <br /> premium di
+            Creative Hustle id coba lihat perbedaanya.
           </p>
         </div>
         <div className="row et_pb_row">
@@ -22,45 +23,47 @@ function DifClassCourse() {
             <div className="et_pb_column_19">
               <div className="et_pb_text_19">
                 <h3 className="text-center">
-                  <strong>Kursus</strong>
+                  <strong>Kursus Premium</strong>
                 </h3>
               </div>
               <ul>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Harga mulai Rp. 150.000
+                  <p>Investasi mulai Rp. 150.000</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Berlangsung secara tidak langsung
+                  <p>Berlangsung secara tidak langsung</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Konsultasi dengan instruktur
+                  <p>Durasi kursus minimal 45 menit</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Durasi kursus minimal 45 menit
+                  <p>Mendapatkan bahan belajar</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Mendapatkan materi tambahan pada kursus
+                  <p>Video dapat didownload offline</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Dapat didownload offline
+                  <p>Peserta tidak terbatas dalam satu kursus</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Peserta tidak terbatas dalam satu kursus
+                  <p>Video berkualitas HD</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Video berkualitas HD
+                  <p> Mendapatkan e-sertifikat kursus</p>
                 </li>
                 <li>
-                  <i className="fa fa-check" aria-hidden="true"></i>
-                  Mendapatkan e-sertifikat kursus
+                  <Link className="fitur-link" to="/footer/fitur-kursus">
+                    <span>Lihat Fitur Kursus</span>
+                    <i className="fa fa-angle-right" aria-hidden="true"></i>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -69,45 +72,47 @@ function DifClassCourse() {
             <div className="et_pb_column_19">
               <div className="et_pb_text_19">
                 <h3 className="text-center">
-                  <strong>Kelas Online</strong>
+                  <strong>Webinar Premium</strong>
                 </h3>
               </div>
               <ul>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Harga mulai Rp. 100.000
+                  <p>Investasi mulai Rp. 50.000</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Berlangsung secara live
+                  <p>Berlangsung secara live</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Konsultasi langsung dengan instruktur
+                  <p>Durasi Webinar minimal 60 menit</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Durasi kelas online selama 1 jam
+                  <p>Mendapatkan bahan belajar</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Mendapatkan materi kelas online
+                  <p>Mendapatkan sekilas rekaman webinar</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Rekaman kelas dapat diunduh
+                  <p>Peserta maksimal hanya 50 orang persesi</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Peserta maksimal hanya 50 orang dalam kelas online
+                  <p>Live video berkualitas HD</p>
                 </li>
                 <li>
                   <i className="fa fa-check" aria-hidden="true"></i>
-                  Live video berkualitas HD
+                  <p>Mendapatkan e-sertifikat webinar</p>
                 </li>
                 <li>
-                  <i className="fa fa-check" aria-hidden="true"></i>
-                  Mendapatkan e-sertifikat kelas online
+                  <Link className="fitur-link" to="/footer/fitur-webinar">
+                    <span>Lihat Fitur Webinar</span>
+                    <i className="fa fa-angle-right" aria-hidden="true"></i>
+                  </Link>
                 </li>
               </ul>
             </div>

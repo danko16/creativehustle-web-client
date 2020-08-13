@@ -78,7 +78,7 @@ function Introduction() {
             </h2>
           </div>
 
-          <div className="hdr_img row" style={{ marginBottom: 18 }}>
+          <div className="hdr_img row">
             <div className="col-md-6 col-lg-4">
               <img
                 className="mb-3"
@@ -118,8 +118,7 @@ function Introduction() {
                 <p>Akses kursus yang telah dibeli untuk selamanya.</p>
               </div>
             </div>
-          </div>
-          <div className="hdr_img row">
+
             <div className="col-md-6 col-lg-4">
               <img
                 className="mb-3"

@@ -1,0 +1,23 @@
+.cara-pembayaran .head-bg {
+  background: url(/assets/img/ezgif-6-4a95546824ef.png) 0% 0% / cover;
+  padding: 54px 0px;
+  text-align: center;
+  background-size: initial;
+  background-position: top center;
+  background-position-x: center;
+  background-position-y: top;
+  background-repeat: no-repeat;
+}
+
+.cara-pembayaran .head-bg > * {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.cara-pembayaran .head-bg p:first-child {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 4px;
+  color: #2667ff;
+}

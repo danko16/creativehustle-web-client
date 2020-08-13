@@ -1,5 +1,10 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PropTypes from 'prop-types';
+import { isAuthenticated } from '../utils/auth';
+import { headerActions } from '../redux/reducers/header';
+
 import Header from '../shared/header';
 import Footer from '../shared/footer';
 import JourneyPath from './journey-path';
@@ -8,10 +13,28 @@ import DifClassCourse from './dif-class-course';
 import HintDropdown from './hint-dropdown';
 import './journey.css';
 
-function Journey() {
+const mapActionToProps = (dispatch) =>
+  bindActionCreators(
+    {
+      showModal: headerActions.showModal,
+    },
+    dispatch
+  );
+
+function Journey({ showModal }) {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    return () => {
+      showModal({
+        show: false,
+        type: null,
+      });
+    };
+  }, [showModal]);
+
   return (
     <div className="journey">
       <Header />
@@ -25,7 +48,7 @@ function Journey() {
         }}
       >
         <div className="text-center p-4">
-          <h1>
+          <h1 style={{ fontSize: 34 }}>
             <strong>5 Langkah Mulai Belajar di Creative Hustle</strong>
           </h1>
           <p className="fs-18">
@@ -54,7 +77,7 @@ function Journey() {
           padding: '54px 0',
         }}
       >
-        <div className="container">
+        <div className="container fs-18">
           <div
             className="text-center py-4"
             style={{
@@ -80,11 +103,25 @@ function Journey() {
             >
               Tidak perlu download / kartu kredit. Cukup daftar langsung belajar.
             </p>
-            <button className="et_pb_button">
-              <Link to={`/kursus`} className="stretched-link">
-                <span className="sr-only">title for screen</span>
-              </Link>
-              <span>Lihat Kursus</span>
+            <button
+              className="et_pb_button"
+              onClick={() => {
+                if (!isAuthenticated()) {
+                  showModal({
+                    show: true,
+                    type: 'register',
+                  });
+                }
+              }}
+            >
+              <span
+                style={{
+                  textTransform: 'uppercase',
+                  fontWeight: 600,
+                }}
+              >
+                Daftar Akun
+              </span>
               <i className="fa fa-angle-right" aria-hidden="true"></i>
             </button>
           </div>
@@ -95,4 +132,8 @@ function Journey() {
   );
 }
 
-export default Journey;
+Journey.propTypes = {
+  showModal: PropTypes.func,
+};
+
+export default connect(null, mapActionToProps)(Journey);

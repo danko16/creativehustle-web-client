@@ -280,6 +280,7 @@ h5.et_pb_text_0 {
   text-decoration: none;
   color: #5c6185;
   font-weight: 400;
+  transition: all 300ms ease 0s;
 }
 
 .elementor-widget-container ul.step-num .num {
@@ -298,6 +299,7 @@ h5.et_pb_text_0 {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  transition: all 300ms ease 0s;
 }
 
 .elementor-widget-container ul.step-num li.active .num,

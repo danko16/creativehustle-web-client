@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 function JourneyPath() {
   return (
@@ -13,35 +12,35 @@ function JourneyPath() {
       <div className="container">
         <div className="elementor-widget-container">
           <ul className="step-num">
-            <li className="active">
-              <Link to="/pembelian/keranjang">
+            <li>
+              <a href="#step1">
                 <span className="num">1</span>
                 <span className="num-txt">Membuat Akun</span>
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="#step2">
+              <a href="#step2">
                 <span className="num">2</span>
                 <span className="num-txt">Pilih Kursus/kelas</span>
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="#step3">
+              <a href="#step3">
                 <span className="num">3</span>
                 <span className="num-txt">Melakukan Pembayaran</span>
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="#step3">
+              <a href="#step4">
                 <span className="num">4</span>
                 <span className="num-txt">Mulai Kursus</span>
-              </Link>
+              </a>
             </li>
             <li>
-              <Link to="#step3">
+              <a href="#step5">
                 <span className="num">5</span>
                 <span className="num-txt">Konsultasi Trainer</span>
-              </Link>
+              </a>
             </li>
           </ul>
         </div>

@@ -19,6 +19,7 @@ function Login({ setDisplayModal, displayModal, auth, clearMsg, login }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [rememberMe, setRememberMe] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
   const [notification, setNotification] = useState({
     text: '',
     isError: false,
@@ -156,12 +157,19 @@ function Login({ setDisplayModal, displayModal, auth, clearMsg, login }) {
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
-              type="password"
+              type={showPassword ? 'text' : 'password'}
               name="password"
               autoComplete="current-password"
               className={ClassNames('form-control', { 'error-form': error.password })}
               placeholder="Password"
             />
+            <i
+              onClick={() => {
+                setShowPassword(!showPassword);
+              }}
+              className={`fa fa-eye${showPassword ? '' : '-slash'}`}
+              aria-hidden="true"
+            ></i>
           </div>
           <small
             className={ClassNames('error-text form-text d-none', {

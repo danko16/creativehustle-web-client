@@ -146,6 +146,7 @@ section .thumbnail a {
 
 .hdr_img > div {
   display: flex;
+  margin-bottom: 22px;
 }
 
 .hdr_img_text {

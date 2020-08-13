@@ -31,15 +31,15 @@ function Footer() {
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/footer/fitur">Fitur Kursus</Link>
+                <Link to="/footer/fitur-kursus">Fitur Kursus</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/">Fitur Webinar</Link>
+                <Link to="/footer/fitur-webinar">Fitur Webinar</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/">Cara Pembayaran</Link>
+                <Link to="/footer/cara-pembayaran">Cara Pembayaran</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>

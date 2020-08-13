@@ -130,24 +130,36 @@ function HintDropdown() {
             </div>
           </div>
         </div>
-        <div className="text-center et_pb_row">
+        <div className="text-center et_pb_row fs-18">
+          <p>Pertanyaanmu masih belum terjawab melalui informasi diatas ?</p>
           <span>
-            Pertanyaanmu masih belum terjawab melalui informasi diatas ? Jangan sungkan untuk
-            bertanya melalui
+            Jangan sungkan untuk bertanya melalui{' '}
+            <button
+              className="to-learn-path ml-2"
+              style={{
+                fontSize: 18,
+              }}
+            >
+              <Link to={`/footer/kontak-kami`} className="stretched-link">
+                <span className="sr-only">title for screen</span>
+              </Link>
+              <span>kontak kami</span>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
+            </button>{' '}
+            atau lihat{' '}
+            <button
+              className="to-learn-path ml-2"
+              style={{
+                fontSize: 18,
+              }}
+            >
+              <Link to={`/footer/bantuan`} className="stretched-link">
+                <span className="sr-only">title for screen</span>
+              </Link>
+              <span>Pusat Bantuan</span>
+              <i className="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
           </span>
-          <button
-            className="to-learn-path ml-2"
-            style={{
-              fontSize: 16,
-              fontWeight: 400,
-            }}
-          >
-            <Link to={`/journey`} className="stretched-link">
-              <span className="sr-only">title for screen</span>
-            </Link>
-            <span>kontak kami</span>
-            <i className="fa fa-angle-right" aria-hidden="true"></i>
-          </button>
         </div>
       </div>
     </div>
