@@ -1,6 +1,6 @@
 .cara-pembayaran .head-bg {
   background: url(/assets/img/ezgif-6-4a95546824ef.png) 0% 0% / cover;
-  padding: 54px 0px;
+  padding: 30px 0 0 0;
   text-align: center;
   background-size: initial;
   background-position: top center;
@@ -20,4 +20,114 @@
   font-size: 14px;
   letter-spacing: 4px;
   color: #2667ff;
+}
+
+.cara-pembayaran .elementor-widget-container .step-num::before {
+  left: 10%;
+  width: 76%;
+}
+
+.cara-pembayaran .container > div.row {
+  margin-top: 2%;
+  padding: 4% 0;
+  position: relative;
+}
+
+.cara-pembayaran div.anchor {
+  position: absolute;
+  visibility: hidden;
+  top: -80px;
+}
+
+.cara-pembayaran .et_pb_text_6.et_pb_text {
+  color: #2667ff !important;
+}
+
+.cara-pembayaran .et_pb_text_6 {
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 4px;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+.cara-pembayaran .to-learn-path {
+  cursor: pointer;
+}
+
+.cara-pembayaran .cta-bg {
+  background-image: url(/assets/img/cta-bg.png);
+  padding: 54px 0px;
+  text-align: center;
+}
+
+.cara-pembayaran .cta-bg p {
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #3bed9a;
+  margin-bottom: 5px;
+}
+
+.cara-pembayaran .cta-bg h2 {
+  font-weight: 600;
+  font-size: 34px;
+  color: #ffffff;
+}
+
+.cara-pembayaran .et_pb_button_wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.cara-pembayaran .et_pb_button_wrapper button.et_pb_button:not(:last-child) {
+  margin: 0;
+}
+
+.cara-pembayaran .et_pb_button_wrapper button.et_pb_button:last-child {
+  margin: 0 0 0 75px;
+  background-color: #3bed9a;
+}
+
+@media only screen and (max-width: 992px) {
+  .cara-pembayaran .container > div.row.row_rvrs {
+    flex-direction: column-reverse;
+  }
+
+  .cara-pembayaran .elementor-widget-container ul.step-num li {
+    font-size: 18px;
+  }
+
+  .cara-pembayaran .elementor-widget-container ul.step-num .num {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
+  }
+
+  .cara-pembayaran .cta-bg {
+    margin-top: 3rem;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .cara-pembayaran .journey-path {
+    display: none;
+  }
+
+  .cara-pembayaran .et_pb_button_wrapper {
+    flex-direction: column;
+  }
+
+  .cara-pembayaran .et_pb_button_wrapper button.et_pb_button:not(:last-child) {
+    width: max-content;
+    justify-content: center;
+    margin: auto;
+  }
+
+  .cara-pembayaran .et_pb_button_wrapper button.et_pb_button:last-child {
+    width: max-content;
+    margin: 24px auto 0 auto;
+    justify-content: center;
+  }
 }

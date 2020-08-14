@@ -86,7 +86,7 @@ function Footer() {
                 <i className="fa fa-youtube-play" aria-hidden="true"></i>
                 <a
                   rel="noopener noreferrer"
-                  href="https://www.instagram.com/creativehustle.id/"
+                  href="https://www.youtube.com/channel/UCBTdM9L7Ixmou4vsL5gGDtA?view_as=subscriber"
                   target="_blank"
                 >
                   Youtube
@@ -96,7 +96,7 @@ function Footer() {
                 <i className="fa fa-linkedin" aria-hidden="true"></i>
                 <a
                   rel="noopener noreferrer"
-                  href="https://www.instagram.com/creativehustle.id/"
+                  href="https://www.linkedin.com/company/creativehustle"
                   target="_blank"
                 >
                   Linkedin

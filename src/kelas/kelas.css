@@ -34,3 +34,9 @@
   overflow: hidden;
   text-align: center;
 }
+
+@media only screen and (max-width: 992px) {
+  .kelas .row.row_rvrs {
+    flex-direction: column-reverse;
+  }
+}

@@ -1,0 +1,41 @@
+.bottom_reg {
+  background-image: url(/assets/img/cta-bg.png);
+  padding: 54px 0;
+}
+
+.bottom_reg .container > div {
+  width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  color: #fff;
+}
+
+.bottom_reg .container > div h2 {
+  font-weight: 600;
+  font-size: 34px;
+  color: #fff;
+}
+
+.bottom_reg .container > div p {
+  margin-bottom: 28px;
+}
+
+@media only screen and (max-width: 768px) {
+  .bottom_reg .container > div {
+    width: 100%;
+  }
+
+  .bottom_reg .container > div h2 {
+    font-size: 28px;
+    line-height: 1.4;
+    margin-bottom: 15px;
+  }
+
+  .bottom_reg .container > div p {
+    font-size: 16px;
+  }
+
+  .bottom_reg .container > div button.et_pb_button span {
+    font-size: 18px;
+  }
+}

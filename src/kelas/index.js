@@ -39,7 +39,7 @@ function Kelas({ reqCariKelas }) {
             <strong>Webinar Live bersama Instruktur</strong>
           </h1>
           <p
-            className="text-center"
+            className="text-center fs-18"
             style={{
               color: '#fefefe',
             }}
@@ -82,7 +82,7 @@ function Kelas({ reqCariKelas }) {
           backgroundRepeat: 'no-repeat',
         }}
       >
-        <div className="row fs-18">
+        <div className="row row_rvrs fs-18">
           <div className="col-lg-6">
             <h2 className="mb-4">
               <strong>Bingung Cara ikut Webinar Online ?</strong>

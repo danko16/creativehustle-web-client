@@ -75,7 +75,7 @@ h7,
 }
 
 .container--light-blue {
-  background-color:#f8f9fb!important;
+  background-color: #f8f9fb !important;
 }
 
 .course-card.card {
@@ -200,7 +200,7 @@ button.et_pb_button:hover i.fa-angle-right {
   background-image: url(/assets/img/affiliate-cta-bg.jpg);
   overflow: hidden;
   margin-top: 1.5rem;
-  padding: 50px 0;
+  padding: 50px 10px;
   background-size: cover;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -515,12 +515,38 @@ button.subscribe:hover i.fa-angle-right {
 .fs-18 {
   font-size: 18px;
   line-height: 1.8;
-  font-weight: 600;
+  font-weight: 500;
+}
+
+@media only screen and (max-width: 1250px) {
+  br.xl {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  br.lg {
+    display: none;
+  }
+
+  .list-detail {
+    margin-bottom: 3rem;
+  }
 }
 
 @media only screen and (max-width: 768px) {
   .table {
     display: block;
     overflow: auto;
+  }
+
+  br.md {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 560px) {
+  br.sm {
+    display: none;
   }
 }

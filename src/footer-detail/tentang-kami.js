@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import BottomToCourse from '../shared/bottom-to-course';
+import BottomToRegister from '../shared/bottom-to-register';
 
 function TentangKami() {
   useEffect(() => {
@@ -57,7 +57,7 @@ function TentangKami() {
         </div>
       </div>
 
-      <BottomToCourse />
+      <BottomToRegister />
     </div>
   );
 }

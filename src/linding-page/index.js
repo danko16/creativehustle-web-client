@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Header from '../shared/header';
 import Footer from '../shared/footer';
-import BottomToCourse from '../shared/bottom-to-course';
+import BottomToRegister from '../shared/bottom-to-register';
 import Introduction from './introduction';
 import PopularClass from './popular-class';
 import LearningPath from './learning-path';
@@ -18,7 +18,7 @@ function LandingPage() {
       <Introduction />
       <PopularClass />
       <LearningPath />
-      <BottomToCourse />
+      <BottomToRegister />
       <Footer />
     </div>
   );

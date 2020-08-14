@@ -326,12 +326,12 @@ function DetailKursus({
             <h3 className="mb-4">
               <strong>Tentang Kursus</strong>
             </h3>
-            <p className="mb-4">{detailKursus.desc}</p>
+            <p className="mb-5">{detailKursus.desc}</p>
             <h3 className="mb-4">
               <strong>Materi Kursus</strong>
             </h3>
             {renderSections()}
-            <h3 className="mb-4">
+            <h3 className="mb-4 mt-5">
               <strong>Mentor Kursus</strong>
             </h3>
             <div className="row">
@@ -368,7 +368,7 @@ function DetailKursus({
             className="text-center"
             style={{
               color: '#fff',
-              marginBottom: '2.75%',
+              marginBottom: '2rem',
             }}
           >
             <strong> Ayo segera ikuti kursus ini untuk investasi ilmunya</strong>

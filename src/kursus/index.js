@@ -29,7 +29,7 @@ function Kursus({ reqCariKursus }) {
       <div
         className="py-4"
         style={{
-          backgroundImage: 'url(/assets/img/cta-bg.png)',
+          backgroundImage: 'url(/assets/img/affiliate-cta-bg.jpg)',
         }}
       >
         <div className="kursus-head container d-flex py-4">
@@ -37,12 +37,12 @@ function Kursus({ reqCariKursus }) {
             <strong>Pilihan Kursus di Creative Hustle</strong>
           </h1>
           <p
-            className="text-center"
+            className="text-center fs-18"
             style={{
               color: '#fefefe',
             }}
           >
-            Bingung mulai dari mana, cari kursusmu di bawah ini
+            Belajar mulai hulu ke hilir tentang cara menghasilkan uang tambahan melalui kursus.
           </p>
           <div className="input-group mt-3">
             <div className="input-group-prepend" onClick={handleSearch}>

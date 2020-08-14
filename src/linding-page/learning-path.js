@@ -27,9 +27,9 @@ function LearningPath() {
               <strong>Lengkap dengan Webinar</strong>
             </h2>
             <p className="mb-4">
-              Creative Hustle tidak hanya membuat kursus <br /> tetapi juga menghadirkan Webinar
-              bersama <br /> para mentor untuk memberikan pengalaman <br /> penyajian langsung untuk
-              para Huslter.
+              Creative Hustle tidak hanya membuat kursus <br className="lg" /> tetapi juga
+              menghadirkan Webinar bersama <br className="lg" /> para mentor untuk memberikan
+              pengalaman <br className="lg" /> penyajian langsung untuk para Huslter.
             </p>
             <button className="to-learn-path">
               <Link to="/kelas" className="stretched-link">
@@ -51,9 +51,9 @@ function LearningPath() {
               <strong>Dengan kemudahan Belajar</strong>
             </h2>
             <p className="mb-4">
-              Kami membuat cara paling mudah untuk teman-teman belajar di Creative Hustle. Hanya
-              perlu melalui 5 proses <br /> untuk dapat langsung mulai belajar bersama instruktur
-              berpengalaman.
+              Kami membuat cara paling mudah untuk teman-teman <br className="xl" />
+              belajar di Creative Hustle. Hanya perlu melalui 5 proses <br className="xl" /> untuk
+              dapat langsung mulai belajar bersama instruktur berpengalaman.
             </p>
             <button className="to-learn-path">
               <Link to={`/journey`} className="stretched-link">

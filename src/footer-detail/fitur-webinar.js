@@ -1,31 +1,10 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './fitur-kursus.css';
-
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-}
 
 function FiturWebinar() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  function ShowWindowDimensions() {
-    const [width] = useWindowSize();
-    if (width < 992) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 
   return (
     <div className="fitur-kursus pt-5 fs-18">
@@ -36,10 +15,10 @@ function FiturWebinar() {
             marginBottom: 40,
           }}
         >
-          <div className="col-md-5">
+          <div className="col-lg-5">
             <img src="/assets/img/177-980x551.jpg" alt="177-980x551" width="100%" height="auto" />
           </div>
-          <div className="col-md-7">
+          <div className="col-lg-7">
             <p className="et_pb_txt_0">FITUR WEBINAR</p>
             <h1>
               <strong>Belajar Bersama Mentor di Webinar</strong>
@@ -52,7 +31,7 @@ function FiturWebinar() {
           </div>
         </div>
         <div className="row" style={{ paddingTop: 45, fontWeight: 400 }}>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <div style={{ height: 60, marginBottom: 30 }}>
               <img src="/assets/icon/box_check.png" alt="box check" width="60" height="auto" />
             </div>
@@ -60,11 +39,12 @@ function FiturWebinar() {
               <strong>Webinar berkualitas</strong>
             </h3>
             <p>
-              Materi Webinar di Creative Hustle dibuat oleh mentor <br /> dengan memadatkan
-              pengalaman serta topik bukan <br /> hanya berdasarkan teori namun juga case study.
+              Materi Webinar di Creative Hustle dibuat oleh mentor <br className="xl" /> dengan
+              memadatkan pengalaman serta topik bukan <br className="xl" /> hanya berdasarkan teori
+              namun juga case study.
             </p>
           </div>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <div style={{ height: 60, marginBottom: 30 }}>
               <img src="/assets/icon/credit_card.png" alt="credit card" width="60" height="auto" />
             </div>
@@ -73,13 +53,13 @@ function FiturWebinar() {
             </h3>
             <p>
               Ketika teman-teman mendaftar jadwal webinar, maka investasi biaya yang dibayarkan akan
-              dapat diakses selamanya termasuk apabila nantinya materi dalam <br /> kursus diupdate
-              ke versi terbaru.
+              dapat diakses selamanya termasuk apabila nantinya materi dalam <br className="xl" />{' '}
+              kursus diupdate ke versi terbaru.
             </p>
           </div>
         </div>
         <div className="row" style={{ paddingTop: 45, fontWeight: 400, marginBottom: 40 }}>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <div style={{ height: 60, marginBottom: 30 }}>
               <img
                 src="/assets/icon/online-class-1.png"
@@ -93,11 +73,11 @@ function FiturWebinar() {
             </h3>
             <p>
               Sering merasa susah berinteraksi akibat webinar terlalu banyak orang ? tenang, kami
-              membuat webinar bersifat ekslusif yang hanya 50 orang untuk webinar premium <br /> dan
-              100 untuk webinar gratis.
+              membuat webinar bersifat ekslusif yang hanya 50 orang untuk webinar premium{' '}
+              <br className="xl" /> dan 100 untuk webinar gratis.
             </p>
           </div>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <div style={{ height: 60, marginBottom: 30 }}>
               <img src="/assets/icon/webinar.png" alt="webinar" width="60" height="auto" />
             </div>
@@ -124,7 +104,7 @@ function FiturWebinar() {
             </h1>
             <p>
               Buat teman-teman yang bingung apa sih perbedaan webinar gratis dan premium di{' '}
-              {ShowWindowDimensions() && <br />} Creative Hustle id coba lihat perbedaanya.
+              {<br className="xl" />} Creative Hustle id coba lihat perbedaanya.
             </p>
           </div>
           <div className="row">

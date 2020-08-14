@@ -172,6 +172,7 @@ function Header({ style, user, logout, modal, loading, carts, history }) {
         <li className="nav-item btn">
           <div
             className="p-2"
+            style={{ width: '100%' }}
             onClick={() => {
               setDisplayModal({
                 show: true,

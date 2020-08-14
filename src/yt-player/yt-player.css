@@ -86,3 +86,13 @@
   width: 0;
   z-index: 2;
 }
+
+@media only screen and (max-width: 600px) {
+  .youtube-wrapper {
+    height: auto;
+  }
+
+  .detail-kursus .youtube-intro {
+    height: 250px;
+  }
+}

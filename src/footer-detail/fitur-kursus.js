@@ -1,31 +1,10 @@
-import React, { useLayoutEffect, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './fitur-kursus.css';
-
-function useWindowSize() {
-  const [size, setSize] = useState([0, 0]);
-  useLayoutEffect(() => {
-    function updateSize() {
-      setSize([window.innerWidth, window.innerHeight]);
-    }
-    window.addEventListener('resize', updateSize);
-    updateSize();
-    return () => window.removeEventListener('resize', updateSize);
-  }, []);
-  return size;
-}
 
 function FiturKursus() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  function ShowWindowDimensions() {
-    const [width] = useWindowSize();
-    if (width < 992) {
-      return false;
-    } else {
-      return true;
-    }
-  }
 
   return (
     <div className="fitur-kursus pt-5 fs-18">
@@ -36,10 +15,10 @@ function FiturKursus() {
             marginBottom: 40,
           }}
         >
-          <div className="col-md-5">
+          <div className="col-lg-5">
             <img src="/assets/img/197.jpg" alt="197" width="100%" height="auto" />
           </div>
-          <div className="col-md-7">
+          <div className="col-lg-7">
             <p className="et_pb_txt_0">Fitur Kursus</p>
             <h1>
               <strong>Fitur dan Kualitas Kursus</strong>
@@ -52,7 +31,7 @@ function FiturKursus() {
           </div>
         </div>
         <div className="row" style={{ paddingTop: 45, fontWeight: 400 }}>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <div style={{ height: 60, marginBottom: 30 }}>
               <img src="/assets/icon/box_check.png" alt="box check" width="60" height="auto" />
             </div>
@@ -60,13 +39,13 @@ function FiturKursus() {
               <strong>Kurikulum Berkualitas</strong>
             </h3>
             <p>
-              Kurikulum Kursus di Creative Hustle memiliki standar <br /> dalam pembuatannya
-              sehingga teman-teman yang belajar <br /> akan mudah memahami mulai dari pemahaman
-              sektor <br />
+              Kurikulum Kursus di Creative Hustle memiliki standar <br className="xl" /> dalam
+              pembuatannya sehingga teman-teman yang belajar <br className="xl" />
+              akan mudah memahami mulai dari pemahaman sektor <br className="xl" />
               bisnis, kempuan teknis, cara menghasilkan uang, dan kesempatan lainnya.
             </p>
           </div>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <div style={{ height: 60, marginBottom: 30 }}>
               <img src="/assets/icon/credit_card.png" alt="credit card" width="60" height="auto" />
             </div>
@@ -81,7 +60,7 @@ function FiturKursus() {
           </div>
         </div>
         <div className="row" style={{ paddingTop: 45, fontWeight: 400, marginBottom: 40 }}>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <div style={{ height: 60, marginBottom: 30 }}>
               <img
                 src="/assets/icon/cloud_download.png"
@@ -90,16 +69,17 @@ function FiturKursus() {
                 height="auto"
               />
             </div>
-            <h3 className="mb-3">
+            <h3 className="lg-3">
               <strong>Offline Download</strong>
             </h3>
             <p>
               Habis paket internet karena mengakses kursus ? Creative Hustle memberikan kesempatan
-              untuk pembeli kursus <br /> untuk dapat mendowload materi video kursus yang <br />{' '}
-              diambil. Jadi teman-teman dapat mempelajari <br /> walau tanpa koneksi.
+              untuk pembeli kursus <br className="xl" /> untuk dapat mendowload materi video kursus
+              yang <br className="xl" /> diambil. Jadi teman-teman dapat mempelajari{' '}
+              <br className="xl" /> walau tanpa koneksi.
             </p>
           </div>
-          <div className="col-md-6">
+          <div className="col-lg-6">
             <div style={{ height: 60, marginBottom: 30 }}>
               <img
                 src="/assets/icon/group_people.png"
@@ -132,7 +112,7 @@ function FiturKursus() {
             </h1>
             <p>
               Buat teman-teman yang bingung apa sih perbedaan kursus gratis dan premium di{' '}
-              {ShowWindowDimensions() && <br />} Creative Hustle id coba lihat perbedaanya.
+              <br className="xl" /> Creative Hustle id coba lihat perbedaanya.
             </p>
           </div>
           <div className="row">

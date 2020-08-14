@@ -109,8 +109,24 @@
   padding-left: 30px;
 }
 
+@media only screen and (max-width: 992px) {
+  .detail-kursus .title {
+    padding: 50px 0;
+  }
+
+  .detail-kursus .title > div:last-child .info > * p {
+    margin-bottom: 2rem;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   .mentor-profile > div {
     flex-basis: 100%;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .detail-kursus .container .row:first-child .col-lg-8:first-child {
+    padding: 0;
   }
 }
