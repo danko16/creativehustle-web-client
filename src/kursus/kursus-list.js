@@ -29,7 +29,7 @@ function KursusList({ kursus, loading, notFound }) {
     }
   }, [kursus, setActivePage, loading]);
 
-  function renderClass() {
+  function renderKursus() {
     return kursusList.map((val, index) => {
       return (
         <div
@@ -42,11 +42,12 @@ function KursusList({ kursus, loading, notFound }) {
             <Link to={`/kursus/${val.id}`} className="stretched-link">
               <span className="sr-only">title for screen</span>
             </Link>
-            <img src={val.thumbnail} alt="thumbnail kelas" className="img img__cover" />
+            <img src={val.thumbnail} alt="thumbnail webinar" className="img img__cover" />
             <div className="card-body">
               <div className="row no-gutters justify-content-between">
-                <p className="student-subscr m-0">{val.participant} Siswa</p>
+                <p className="student-subscr m-0">{val.participant} Peserta</p>
                 <div className="col-auto d-flex align-items-center">
+                  {/*add class checked to mark star*/}
                   <span className="rating fa fa-star"></span>
                   <span className="rating fa fa-star"></span>
                   <span className="rating fa fa-star"></span>
@@ -67,10 +68,12 @@ function KursusList({ kursus, loading, notFound }) {
               <hr />
               <div className="row align-items-center no-gutters">
                 <div className="col-auto d-flex justify-items-center">
-                  <span style={{ textDecoration: 'line-through' }}>
-                    Rp {formatNumber(val.price)}
+                  <span style={val.promo_price ? { textDecoration: 'line-through' } : null}>
+                    {val.type === 'free' ? 'Gratis' : `Rp ${formatNumber(val.price)}`}
                   </span>
-                  <h6 className="ml-2 line-height-1">Rp {formatNumber(val.promo_price)}</h6>
+                  {val.promo_price && (
+                    <h6 className="ml-2 line-height-1">Rp {formatNumber(val.promo_price)}</h6>
+                  )}
                 </div>
               </div>
             </div>
@@ -111,7 +114,7 @@ function KursusList({ kursus, loading, notFound }) {
   return (
     <div className="py-5 container">
       <div id="load-more-wrapper" className="row justify-content-center">
-        {renderClass()}
+        {renderKursus()}
       </div>
 
       {!kursus.length && (

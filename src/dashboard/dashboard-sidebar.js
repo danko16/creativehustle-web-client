@@ -53,17 +53,18 @@ function DashboardSidebar({ logout }) {
           </li>
           <li className="active">
             <NavLink to="/dashboard/progress" activeClassName="active-nav" className="menu-peserta">
-              <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Progress Belajar
+              <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="webinar" /> Progress
+              Belajar
             </NavLink>
           </li>
           <li className="active">
             <NavLink to="/dashboard/kursus" activeClassName="active-nav" className="menu-peserta">
-              <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Kursus Saya
+              <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="webinar" /> Kursus Saya
             </NavLink>
           </li>
           <li className="active">
-            <NavLink to="/dashboard/kelas" activeClassName="active-nav" className="menu-peserta">
-              <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Webinar
+            <NavLink to="/dashboard/webinar" activeClassName="active-nav" className="menu-peserta">
+              <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="webinar" /> Webinar
             </NavLink>
           </li>
           <li>

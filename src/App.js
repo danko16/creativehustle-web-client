@@ -18,17 +18,23 @@ import GoogleAuth from './auth/googleAuth';
 
 import './app.css';
 
-const Kelas = React.lazy(() => import('./kelas'));
+const Webinar = React.lazy(() => import('./webinar'));
 const Dashboard = React.lazy(() => import('./dashboard'));
 const Kursus = React.lazy(() => import('./kursus'));
 const Journey = React.lazy(() => import('./journey'));
 const DetailKursus = React.lazy(() => import('./detail-kursus'));
-const DetailKelas = React.lazy(() => import('./detail-kelas'));
+const DetailWebinar = React.lazy(() => import('./detail-webinar'));
 const ForgotPassword = React.lazy(() => import('./auth/forgotPassword'));
 const ResetPassword = React.lazy(() => import('./auth/resetPassword'));
-const FooterDetail = React.lazy(() => import('./footer-detail'));
 const Pembelian = React.lazy(() => import('./pembelian'));
 const NoMatch = React.lazy(() => import('./nomatch'));
+
+const TentangKami = React.lazy(() => import('./extra-pages/tentang-kami'));
+const FiturKursus = React.lazy(() => import('./extra-pages/fitur-kursus'));
+const FiturWebinar = React.lazy(() => import('./extra-pages/fitur-webinar'));
+const CaraPembayaran = React.lazy(() => import('./extra-pages/cara-pembayaran'));
+const Bantuan = React.lazy(() => import('./extra-pages/bantuan'));
+const KontakKami = React.lazy(() => import('./extra-pages/kontak-kami'));
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
@@ -110,13 +116,13 @@ function App({ authFlow }) {
                 <DetailKursus />
                 <Footer />
               </Route>
-              <Route exact path="/kelas">
-                <Title title="Kelas" />
-                <Kelas />
+              <Route exact path="/webinar">
+                <Title title="Webinar" />
+                <Webinar />
               </Route>
-              <Route path="/kelas/:kelasId">
+              <Route path="/webinar/:webinarId">
                 <Header />
-                <DetailKelas />
+                <DetailWebinar />
                 <Footer />
               </Route>
               <Route path="/journey">
@@ -142,9 +148,40 @@ function App({ authFlow }) {
                 <Footer />
               </Route>
               <Route exact path="/google-auth" component={GoogleAuth} />
-              <Route path="/footer">
+              <Route path="/tentang">
                 <Header />
-                <FooterDetail />
+                <Title title="Tentang Kami" />
+                <TentangKami />
+                <Footer />
+              </Route>
+              <Route path="/fitur-kursus">
+                <Header />
+                <Title title="Fitur Kursus" />
+                <FiturKursus />
+                <Footer />
+              </Route>
+              <Route path="/fitur-webinar">
+                <Header />
+                <Title title="Fitur Webinar" />
+                <FiturWebinar />
+                <Footer />
+              </Route>
+              <Route path="/cara-pembayaran">
+                <Header />
+                <Title title="Cara Pembayaran" />
+                <CaraPembayaran />
+                <Footer />
+              </Route>
+              <Route path="/kontak-kami">
+                <Header />
+                <Title title="Kontak Kami" />
+                <KontakKami />
+                <Footer />
+              </Route>
+              <Route path="/bantuan">
+                <Header />
+                <Title title="Pusat Bantuan" />
+                <Bantuan />
                 <Footer />
               </Route>
               <PrivateRoute path="/dashboard">

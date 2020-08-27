@@ -82,14 +82,15 @@ function Progress({ kursus, contents, rekomendasi, loading }) {
           <img src={val.thumbnail} alt="default" />
           <div className="kursus-body">
             <div className="row no-gutters justify-content-between">
-              <p className="student-subscr m-0">124 Siswa</p>
+              <p className="student-subscr m-0">{val.participant} Peserta</p>
+              {/*add class checked to mark star*/}
               <div className="col-auto d-flex align-items-center">
-                <span className="rating fa fa-star checked"></span>
-                <span className="rating fa fa-star checked"></span>
-                <span className="rating fa fa-star checked"></span>
-                <span className="rating fa fa-star checked"></span>
                 <span className="rating fa fa-star"></span>
-                <span className="rating-vote text-gray-500">(123)</span>
+                <span className="rating fa fa-star"></span>
+                <span className="rating fa fa-star"></span>
+                <span className="rating fa fa-star"></span>
+                <span className="rating fa fa-star"></span>
+                <span className="rating-vote text-gray-500">({val.rating.reviewer})</span>
               </div>
             </div>
             <h6>{val.title}</h6>

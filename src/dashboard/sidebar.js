@@ -36,18 +36,22 @@ function Sidebar({ logout }) {
                 activeClassName="active-nav"
                 className="menu-peserta"
               >
-                <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Progress
+                <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="webinar" /> Progress
                 <span> Belajar</span>
               </NavLink>
             </li>
             <li>
               <NavLink to="/dashboard/kursus" activeClassName="active-nav" className="menu-peserta">
-                <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Kursus Saya
+                <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="webinar" /> Kursus Saya
               </NavLink>
             </li>
             <li>
-              <NavLink to="/dashboard/kelas" activeClassName="active-nav" className="menu-peserta">
-                <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="kelas" /> Webinar
+              <NavLink
+                to="/dashboard/webinar"
+                activeClassName="active-nav"
+                className="menu-peserta"
+              >
+                <img src="/assets/icon/cv.png" data-sga="pendaftaran" alt="webinar" /> Webinar
               </NavLink>
             </li>
           </ul>

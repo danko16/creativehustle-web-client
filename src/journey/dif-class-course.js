@@ -11,7 +11,7 @@ function DifClassCourse() {
               fontSize: 26,
             }}
           >
-            <strong>Perbedaan Fitur Kursus dan Kelas Online ?</strong>
+            <strong>Perbedaan Fitur Kursus dan Webinar Online ?</strong>
           </h2>
           <p>
             Buat teman-teman yang bingung apa sih perbedaan Kursus dan Webinar <br /> premium di

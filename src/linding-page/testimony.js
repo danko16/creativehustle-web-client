@@ -7,7 +7,7 @@ function Testimony() {
         <div className="row mb-5">
           <div className="col-12 text-center">
             <h2 className="mb-3">
-              <strong>Testimoni Siswa</strong>
+              <strong>Testimoni Peserta</strong>
             </h2>
             <p>Dengar apa kata mereka tentang belajar di sini</p>
           </div>

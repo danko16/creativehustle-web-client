@@ -50,25 +50,25 @@
   width: 100px;
 }
 
-.materi-kelas-public {
+.materi-webinar-public {
   max-height: 46px;
   transition: max-height 1.5s ease-out;
   margin-bottom: 20px;
   overflow: hidden;
 }
 
-.materi-kelas-public.active {
+.materi-webinar-public.active {
   max-height: 1000px;
 }
 
-.materi-kelas-public ul {
+.materi-webinar-public ul {
   list-style: none;
   padding: 0 20px;
   margin-top: 20px;
 }
 
-.materi-kelas-public .content,
-.materi-kelas-public .parent-content {
+.materi-webinar-public .content,
+.materi-webinar-public .parent-content {
   position: relative;
   padding: 10px 20px;
   margin-bottom: 10px;
@@ -78,7 +78,7 @@
   border-radius: 4px;
 }
 
-.materi-kelas-public .parent-content .fa {
+.materi-webinar-public .parent-content .fa {
   position: absolute;
   font-size: 20px;
   top: 50%;
@@ -87,7 +87,7 @@
   color: #226ff7;
 }
 
-.materi-kelas-public .content .fa.fa-lock {
+.materi-webinar-public .content .fa.fa-lock {
   color: #a1a1a1;
   margin-right: 10px;
 }

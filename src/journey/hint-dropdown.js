@@ -40,7 +40,7 @@ function HintDropdown() {
               </h4>
               <div className="et_pb_toggle_content">
                 <p>
-                  Teman-teman dapat melihat sekilas materi yang ada dalam <br /> kelas online dan
+                  Teman-teman dapat melihat sekilas materi yang ada dalam <br /> Webinar online dan
                   video trailer.
                 </p>
               </div>
@@ -55,7 +55,7 @@ function HintDropdown() {
               }}
             >
               <h4 className="et_pb_toggle_title  m-0">
-                <p className="m-0"> Apakah bisa mengikuti Kursus dan Kelas Online bersamaan ?</p>
+                <p className="m-0"> Apakah bisa mengikuti Kursus dan Webinar Online bersamaan ?</p>
                 <i
                   className={`fa fa-${togglePb.et_pb_toggle_2 ? 'minus' : 'plus'}-circle`}
                   aria-hidden="true"
@@ -63,8 +63,8 @@ function HintDropdown() {
               </h4>
               <div className="et_pb_toggle_content">
                 <p>
-                  Teman-teman dapat mengambil sebanyak mungkin kursus dan kelas Online pada Creative
-                  Hustle.
+                  Teman-teman dapat mengambil sebanyak mungkin kursus dan Webinar Online pada
+                  Creative Hustle.
                 </p>
               </div>
             </div>
@@ -88,17 +88,17 @@ function HintDropdown() {
               </h4>
               <div className="et_pb_toggle_content">
                 <p>
-                  Sertifikat kelulusan setiap kelas yang kamu ikuti bisa <br /> didapatkan dengan
+                  Sertifikat kelulusan setiap Webinar yang kamu ikuti bisa <br /> didapatkan dengan
                   menekan tombol<span>&nbsp;</span>
                   <strong>
                     SELESAI <br /> BELAJAR
                   </strong>
-                  <span>&nbsp;</span>pada halaman kelas.
+                  <span>&nbsp;</span>pada halaman Webinar.
                 </p>
                 <p>
                   Kamu juga dapat melihat laporan belajar pada halaman<span>&nbsp;</span>
                   <strong>Progress Belajar</strong>
-                  <span>&nbsp;</span>dan jika ada kelas yang telah <br /> selesai maka kamu bisa
+                  <span>&nbsp;</span>dan jika ada Webinar yang telah <br /> selesai maka kamu bisa
                   menekan tombol<span>&nbsp;</span>
                   <strong>AMBIL SERTIFIKAT</strong>
                   <span>&nbsp;</span>secara langsung.
@@ -115,7 +115,7 @@ function HintDropdown() {
               }}
             >
               <h4 className="et_pb_toggle_title  m-0">
-                <p className="m-0"> Apakah ada kelas dan kursus Gratisan ?</p>
+                <p className="m-0"> Apakah ada Webinar dan kursus Gratisan ?</p>
                 <i
                   className={`fa fa-${togglePb.et_pb_toggle_4 ? 'minus' : 'plus'}-circle`}
                   aria-hidden="true"
@@ -123,7 +123,7 @@ function HintDropdown() {
               </h4>
               <div className="et_pb_toggle_content">
                 <p>
-                  Tentu ada, akan ada beberapa kelas dan kursus yang dapat diikuti secara gratis
+                  Tentu ada, akan ada beberapa Webinar dan kursus yang dapat diikuti secara gratis
                   untuk teman-teman.
                 </p>
               </div>

@@ -5,6 +5,7 @@ import { useParams, withRouter } from 'react-router-dom';
 import Title from '../shared/title';
 import PropTypes from 'prop-types';
 import { kursusActions } from '../redux/reducers/kursus';
+import { kursusSayaAction } from '../redux/reducers/kursus-saya';
 import { headerActions } from '../redux/reducers/header';
 import { cartActions } from '../redux/reducers/cart';
 import { invoiceActions } from '../redux/reducers/invoice';
@@ -35,6 +36,7 @@ const mapActionToProps = (dispatch) =>
       deleteCart: cartActions.deleteCart,
       addInvoice: invoiceActions.addInvoice,
       clearRecent: invoiceActions.setData,
+      free: kursusSayaAction.free,
     },
     dispatch
   );
@@ -54,6 +56,7 @@ function DetailKursus({
   deleteCart,
   clearRecent,
   contents,
+  free,
   loading,
 }) {
   const { kursusId } = useParams();
@@ -119,7 +122,13 @@ function DetailKursus({
   }, [recently_added, detailKursus]);
 
   function handleAddCart() {
+    if (isCartExist) {
+      history.push('/pembelian/keranjang');
+      return;
+    }
+
     const isAuth = isAuthenticated();
+
     if (isAuth) {
       clearRecent('recent_invoice', null);
       addCart({
@@ -135,11 +144,24 @@ function DetailKursus({
 
   function handlePayment() {
     const courses_id = [parseInt(kursusId)],
-      classes_id = [];
+      webinars_id = [];
 
     deleteCart({ type: 'all', cart_id: null });
-    addInvoice({ courses_id, classes_id });
+    addInvoice({ courses_id, webinars_id });
     history.push('/pembelian/bayar');
+  }
+
+  function handleFree() {
+    const isAuth = isAuthenticated();
+
+    if (isAuth) {
+      free({ course_id: detailKursus.id });
+    } else {
+      showModal({
+        show: true,
+        type: 'login',
+      });
+    }
   }
 
   function renderSections() {
@@ -147,7 +169,7 @@ function DetailKursus({
       const collapseName = `section${val.id}`;
       const sectionContents = detailContents.filter((ct) => ct.section_id === val.id);
       return (
-        <div key={val.id} className={`materi-kelas-public ${toggler[collapseName] && 'active'}`}>
+        <div key={val.id} className={`materi-webinar-public ${toggler[collapseName] && 'active'}`}>
           <div
             className="parent-content"
             onClick={() => {
@@ -260,10 +282,11 @@ function DetailKursus({
                 )}
                 <h2>
                   <strong>
-                    Rp.{' '}
-                    {formatNumber(
-                      detailKursus.promo_price ? detailKursus.promo_price : detailKursus.price
-                    )}
+                    {detailKursus.type === 'free'
+                      ? 'Gratis'
+                      : `Rp. ${formatNumber(
+                          detailKursus.promo_price ? detailKursus.promo_price : detailKursus.price
+                        )}`}
                   </strong>
                 </h2>
                 <p>Investasi sekali untuk selamanya</p>
@@ -294,29 +317,29 @@ function DetailKursus({
                   </li>
                 </ul>
                 <button
-                  onClick={() => {
-                    if (isCartExist) {
-                      history.push('/pembelian/keranjang');
-                    } else {
-                      handleAddCart();
-                    }
-                  }}
+                  onClick={detailKursus.type !== 'free' ? handleAddCart : handleFree}
                   className="subscribe"
                 >
-                  <span>{isCartExist ? 'Lihat' : 'Masukan'} Keranjang</span>
+                  {detailKursus.type !== 'free' ? (
+                    <span>{isCartExist ? 'Lihat' : 'Masukan'} Keranjang</span>
+                  ) : (
+                    <span>Ikuti Kursus</span>
+                  )}
                   <i className="fa fa-angle-right" aria-hidden="true"></i>
                 </button>
-                <button
-                  onClick={handlePayment}
-                  className="subscribe"
-                  style={{
-                    backgroundColor: '#ff6161',
-                    marginTop: 10,
-                  }}
-                >
-                  <span>Beli Sekarang</span>
-                  <i className="fa fa-angle-right" aria-hidden="true"></i>
-                </button>
+                {detailKursus.type !== 'free' && (
+                  <button
+                    onClick={handlePayment}
+                    className="subscribe"
+                    style={{
+                      backgroundColor: '#ff6161',
+                      marginTop: 10,
+                    }}
+                  >
+                    <span>Beli Sekarang</span>
+                    <i className="fa fa-angle-right" aria-hidden="true"></i>
+                  </button>
+                )}
               </div>
             </div>
           </div>
@@ -373,8 +396,11 @@ function DetailKursus({
           >
             <strong> Ayo segera ikuti kursus ini untuk investasi ilmunya</strong>
           </h2>
-          <button className="et_pb_button" onClick={handlePayment}>
-            <span>Beli Sekarang</span>
+          <button
+            className="et_pb_button"
+            onClick={detailKursus.type !== 'free' ? handlePayment : handleFree}
+          >
+            {detailKursus.type !== 'free' ? <span>Beli Sekarang</span> : <span>Ikuti Kursus</span>}
             <i className="fa fa-angle-right" aria-hidden="true"></i>
           </button>
         </div>
@@ -400,6 +426,7 @@ DetailKursus.propTypes = {
   carts: PropTypes.array,
   setData: PropTypes.func,
   showModal: PropTypes.func,
+  free: PropTypes.func,
   loading: PropTypes.bool,
 };
 

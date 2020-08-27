@@ -4,8 +4,8 @@ export default Object.freeze({
   kursusSaya: () => Api.get('/kursus-saya'),
   contents: ({ course_id }) => Api.get(`/kursus-saya/${course_id}/contents`),
   rekomendasi: () => Api.get('/kursus-saya/rekomendasi'),
-  subscribe: (payload) =>
-    Api.post('/kursus-saya/subscribe', payload, {
+  free: (payload) =>
+    Api.post('/kursus-saya/free', payload, {
       headers: {
         'Content-Type': 'application/json',
       },

@@ -29,7 +29,7 @@ function Introduction() {
               </li>
               <li>
                 <i className="fa fa-check-circle" aria-hidden="true"></i>
-                <p>Kesempatan belajar langsung via kelas online</p>
+                <p>Kesempatan belajar langsung via webinar online</p>
               </li>
               <li>
                 <i className="fa fa-check-circle" aria-hidden="true"></i>
@@ -48,7 +48,7 @@ function Introduction() {
               </div>
               <div>
                 <button className="find-class btn">
-                  <Link to={`/kelas`} className="stretched-link">
+                  <Link to={`/webinar`} className="stretched-link">
                     <span className="sr-only">title for screen</span>
                   </Link>
                   <span>Ikut Webinar</span>
@@ -59,7 +59,7 @@ function Introduction() {
           </div>
           <div className="col-lg-6">
             <img
-              src="/assets/img/Home1.png"
+              src="/assets/img/Home1.jpeg"
               alt="header"
               style={{
                 maxWidth: '100%',
@@ -155,7 +155,7 @@ function Introduction() {
               />
               <div className="hdr_img_text">
                 <span>Offline download</span>
-                <p>Takut kuota habis ? Tenang, kursus dan kelas dapat diunduh.</p>
+                <p>Takut kuota habis ? Tenang, kursus dan webinar dapat diunduh.</p>
               </div>
             </div>
           </div>

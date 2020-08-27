@@ -46,9 +46,9 @@ function JourneyDetail({ showRegister, history }) {
             <strong>Membuat Akun</strong>
           </h2>
           <p className="mb-4">
-            Langkah paling awal untuk dapat mengikuti kursus atau kelas dari Creative Hustle adalah
-            membuat akun terlebih dahulu. Tidak perlu kwatir, pembuatan akun gratis tanpa biaya
-            apapun.
+            Langkah paling awal untuk dapat mengikuti kursus atau webinar dari Creative Hustle
+            adalah membuat akun terlebih dahulu. Tidak perlu kwatir, pembuatan akun gratis tanpa
+            biaya apapun.
           </p>
           <button
             className="to-learn-path"
@@ -77,8 +77,9 @@ function JourneyDetail({ showRegister, history }) {
             <strong>Pilih Kursus/Webinar</strong>
           </h2>
           <p className="mb-4">
-            Terdapat berbagai kursus dan kelas yang dapat diambil di Creative Hustle. Semua kursus
-            dan kelas kami jamin kualitasnya agar teman-teman mendapatkan ilmu setelah mengikutinya.{' '}
+            Terdapat berbagai kursus dan webinar yang dapat diambil di Creative Hustle. Semua kursus
+            dan webinar kami jamin kualitasnya agar teman-teman mendapatkan ilmu setelah
+            mengikutinya.{' '}
           </p>
           <div className="to-learn-path-wrapper">
             <button className="to-learn-path">
@@ -90,7 +91,7 @@ function JourneyDetail({ showRegister, history }) {
             </button>
 
             <button className="to-learn-path">
-              <Link to={`/kelas`} className="stretched-link">
+              <Link to={`/webinar`} className="stretched-link">
                 <span className="sr-only">title for screen</span>
               </Link>
               <span className="et_pb_button_2">Lihat Jadwal Webinar</span>
@@ -129,9 +130,9 @@ function JourneyDetail({ showRegister, history }) {
             <strong>Melakukan Pembayaran</strong>
           </h2>
           <p className="mb-4">
-            Setelah selesai memilih kursus atau kelas yang ingin ikuti, lakukan pembayaran dengan
+            Setelah selesai memilih kursus atau webinar yang ingin ikuti, lakukan pembayaran dengan
             mudah melalui sistem yang kami buat dengan mengedepankan keamanan dalam pembayaran.
-            Sstt.. tidak semua kursus dan kelas berbayar, ada yang gratis.
+            Sstt.. tidak semua kursus dan webinar berbayar, ada yang gratis.
           </p>
           <button className="to-learn-path">
             <Link to={`/kursus`} className="stretched-link">
@@ -149,12 +150,12 @@ function JourneyDetail({ showRegister, history }) {
             <p className="m-0">Langkah 4</p>
           </div>
           <h2 className="et_pb_head_2 mb-4">
-            <strong>Mulai Kursus/Kelas</strong>
+            <strong>Mulai Kursus/Webinar</strong>
           </h2>
           <p className="mb-4">
-            Setelah selesai memilih kelas atau kursus serta melakukan pembayaran, teman-teman dapat
-            segera mulai untuk belajar dalam dasboard yang kami design khusus agar nyaman dan mudah
-            ketika menyimak video.
+            Setelah selesai memilih webinar atau kursus serta melakukan pembayaran, teman-teman
+            dapat segera mulai untuk belajar dalam dasboard yang kami design khusus agar nyaman dan
+            mudah ketika menyimak video.
           </p>
           <button
             className="to-learn-path"
@@ -176,7 +177,7 @@ function JourneyDetail({ showRegister, history }) {
         </div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
-            src="/assets/img/Home1.png"
+            src="/assets/img/Home1.jpeg"
             alt="Home1"
             style={{
               width: '100%',
@@ -205,7 +206,7 @@ function JourneyDetail({ showRegister, history }) {
             <strong>Konsultasi Trainer</strong>
           </h2>
           <p className="mb-4">
-            Setelah selesai kelas banyak pertanyaan dan pemikiran yang ingin disampaikan ke
+            Setelah selesai webinar banyak pertanyaan dan pemikiran yang ingin disampaikan ke
             instruktur ? Tenang, Creative Hustle membuat forum telegram bersama mentor untuk setiap
             user yang membeli kursus agar dapat bertanya langsung dengan para mentor dan Kesempatan
             tanya jawab langsung dalam program Webinar

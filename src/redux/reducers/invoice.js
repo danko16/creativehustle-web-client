@@ -1,3 +1,5 @@
+import { AUTH_ACTIONS } from './auth';
+
 export const INVOICE_ACTIONS = Object.freeze({
   SET_DATA: 'myapp/invoice/set-data',
   INVOICES: 'myapp/invoice',
@@ -121,6 +123,16 @@ const reducer = (state = initialState, { type, field, value }) => {
         is_error: false,
         loading: false,
       };
+    case AUTH_ACTIONS.LOGOUT:
+      return {
+        invoices: null,
+        recent_invoice: null,
+        detail_invoice: null,
+        is_error: false,
+        message: '',
+        loading: false,
+      };
+
     default:
       return state;
   }

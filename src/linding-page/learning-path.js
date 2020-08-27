@@ -32,7 +32,7 @@ function LearningPath() {
               pengalaman <br className="lg" /> penyajian langsung untuk para Huslter.
             </p>
             <button className="to-learn-path">
-              <Link to="/kelas" className="stretched-link">
+              <Link to="/webinar" className="stretched-link">
                 <span className="sr-only">title for screen</span>
               </Link>
               <span className="et_pb_button_2">Ikuti Webinar</span>

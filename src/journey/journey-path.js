@@ -21,7 +21,7 @@ function JourneyPath() {
             <li>
               <a href="#step2">
                 <span className="num">2</span>
-                <span className="num-txt">Pilih Kursus/kelas</span>
+                <span className="num-txt">Pilih Kursus/Webinar</span>
               </a>
             </li>
             <li>

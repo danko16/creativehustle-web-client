@@ -46,16 +46,16 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
 
   function handleAddInvoice() {
     const courses_id = [],
-      classes_id = [];
+      webinars_id = [];
     carts.forEach((val) => {
       if (val.type === 'course') {
         courses_id.push(val.course_id);
-      } else if (val.type === 'class') {
-        classes_id.push(val.class_id);
+      } else if (val.type === 'webinar') {
+        webinars_id.push(val.webinar_id);
       }
     });
 
-    addInvoice({ courses_id, classes_id });
+    addInvoice({ courses_id, webinars_id });
   }
 
   function getType(cart) {
@@ -80,7 +80,7 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
         />
         <div>
           <Link
-            to={val.type === 'course' ? `/kursus/${val.course_id}` : `/kelas/${val.class_id}`}
+            to={val.type === 'course' ? `/kursus/${val.course_id}` : `/webinar/${val.webinar_id}`}
             className="stretched-link"
           >
             <span className="sr-only">title for screen</span>
@@ -95,8 +95,10 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
         <div>
           <p style={{ color: '#f44336', width: ' max-content' }}>
             <strong>
-              Rp. {formatNumber(val.promo_price ? val.promo_price : val.price)}{' '}
-              <i className="fa fa-tag" aria-hidden="true"></i>
+              {val.type === 'free'
+                ? 'Gratis'
+                : `Rp. ${formatNumber(val.promo_price ? val.promo_price : val.price)}`}
+              <i style={{ marginLeft: 6 }} className="fa fa-tag" aria-hidden="true"></i>
             </strong>
           </p>
           {val.promo_price && (
@@ -133,15 +135,11 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
         <div className="col-lg-4 pr-0">
           <div className="cart-total card-no-shadow">
             <p className="total-label">Total: </p>
-            <h2 className="total-price">
-              <strong>
-                Rp{' '}
-                {formatNumber(
-                  total_prices.total_promo_price
-                    ? total_prices.total_promo_price
-                    : total_prices.total_price
-                )}
-              </strong>
+            <h2
+              className="total-price"
+              style={total_prices.total_promo_price === 0 ? { marginBottom: 22 } : null}
+            >
+              <strong>Rp {formatNumber(total_prices.final_price)}</strong>
             </h2>
             {total_prices.total_promo_price !== 0 && (
               <p className="total-promo-price">Rp {formatNumber(total_prices.total_price)}</p>

@@ -31,15 +31,15 @@ function Footer() {
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/footer/fitur-kursus">Fitur Kursus</Link>
+                <Link to="/fitur-kursus">Fitur Kursus</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/footer/fitur-webinar">Fitur Webinar</Link>
+                <Link to="/fitur-webinar">Fitur Webinar</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/footer/cara-pembayaran">Cara Pembayaran</Link>
+                <Link to="/cara-pembayaran">Cara Pembayaran</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
@@ -52,7 +52,7 @@ function Footer() {
             <ul className="list-unstyled sitemap">
               <h2 className="footer-head">Company</h2>
               <li>
-                <Link to="/footer/tentang">Tentang Kami</Link>
+                <Link to="/tentang">Tentang Kami</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>

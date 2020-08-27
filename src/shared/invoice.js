@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+import disableScroll from 'disable-scroll';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { formatNumber, convertStatus } from '../utils/format';
@@ -73,6 +74,7 @@ function Invoice({
   function converToPdf(mode) {
     const input = divToPrint.current.cloneNode(true);
 
+    disableScroll.on();
     input.classList.add('pdf');
     document.body.append(input);
 
@@ -90,6 +92,7 @@ function Invoice({
       }
       window.open(pdf.output('bloburl'), '_blank');
       document.body.removeChild(input);
+      disableScroll.off();
     });
   }
 
@@ -101,13 +104,14 @@ function Invoice({
           <td className="text-center">Rp. {formatNumber(val.price)}</td>
         </tr>
       ) : (
-        <tr key={val.class_id}>
+        <tr key={val.webinar_id}>
           <td>{val.title} - Webinar *</td>
           <td className="text-center">Rp. {formatNumber(val.price)}</td>
         </tr>
       )
     );
   }
+
   return invoice && user ? (
     <div>
       <div ref={divToPrint} className="invoice">
@@ -210,13 +214,13 @@ function Invoice({
                       Rp. {formatNumber(invoice.total_price)}
                     </td>
                   </tr>
-                  {invoice.total_promo_price && (
+                  {invoice.total_promo_price !== 0 && (
                     <tr>
                       <td className="total-row text-right">
                         <strong>Diskon {Math.round(invoice.percentage)}%</strong>
                       </td>
                       <td className="total-row text-center">
-                        Rp. {formatNumber(invoice.total_price - invoice.total_promo_price)}
+                        Rp. {formatNumber(invoice.total_promo_price)}
                       </td>
                     </tr>
                   )}
@@ -225,10 +229,7 @@ function Invoice({
                       <strong>Total</strong>
                     </td>
                     <td className="total-row text-center">
-                      Rp{' '}
-                      {formatNumber(
-                        invoice.total_promo_price ? invoice.total_promo_price : invoice.total_price
-                      )}
+                      Rp {formatNumber(invoice.final_price)}
                     </td>
                   </tr>
                 </tbody>

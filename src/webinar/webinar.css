@@ -1,0 +1,42 @@
+.webinar .webinar-head {
+  flex-direction: column;
+  min-height: 200px;
+  align-items: center;
+  justify-content: center;
+}
+
+.webinar .webinar-head .input-group {
+  justify-content: center;
+}
+
+.webinar .pagination {
+  display: flex;
+  justify-content: center;
+}
+
+.webinar .pagination .page-item {
+  cursor: pointer;
+}
+
+.tanggal-webinar {
+  background-color: #6f69f1;
+  font-size: 16px;
+  color: #fff;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: auto;
+  right: 0;
+  border-radius: 8px 8px 0 0;
+  line-height: 40px;
+  font-weight: 600;
+  height: 40px;
+  overflow: hidden;
+  text-align: center;
+}
+
+@media only screen and (max-width: 992px) {
+  .webinar .row.row_rvrs {
+    flex-direction: column-reverse;
+  }
+}

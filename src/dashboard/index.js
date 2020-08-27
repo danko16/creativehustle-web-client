@@ -6,15 +6,15 @@ import DashboardSidebar from './dashboard-sidebar';
 import DetailDashboardSidebar from './kursus/detail-dashboard-sidebar';
 import Progress from './menu/progress';
 import Kursus from './menu/kursus';
-import Kelas from './menu/kelas';
+import Webinar from './menu/webinar';
 import Billing from './menu/billing';
 import Profile from './menu/profile';
 import Settings from './menu/settings';
 import DetailSidebar from './kursus/detail-sidebar';
 import DetailKursus from './kursus/detail-kursus';
-import KelasDetail from './kelas/detail-kelas';
-import KelasDetailSidebar from './kelas/detail-sidebar';
-import KelasDetailDashboardSidebar from './kelas/detail-dashboard-sidebar';
+import WebinarDetail from './webinar/detail-webinar';
+import WebinarDetailSidebar from './webinar/detail-sidebar';
+import WebinarDetailDashboardSidebar from './webinar/detail-dashboard-sidebar';
 import BillingDetail from './billing';
 import './dashboard.css';
 
@@ -41,15 +41,15 @@ function Dashboard() {
           <DetailDashboardSidebar />
           <DetailKursus />
         </Route>
-        <Route exact path={`${path}/kelas`}>
+        <Route exact path={`${path}/webinar`}>
           <DashboardSidebar />
           <Sidebar />
-          <Kelas />
+          <Webinar />
         </Route>
-        <Route path={`${path}/kelas/:kelasId/:no`}>
-          <KelasDetailSidebar />
-          <KelasDetailDashboardSidebar />
-          <KelasDetail />
+        <Route path={`${path}/webinar/:webinarId/:no`}>
+          <WebinarDetailSidebar />
+          <WebinarDetailDashboardSidebar />
+          <WebinarDetail />
         </Route>
         <Route exact path={`${path}/billing`}>
           <DashboardSidebar />

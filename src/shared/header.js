@@ -78,7 +78,7 @@ function Header({ style, user, logout, modal, loading, carts, history }) {
           <ul className="user-menu-small-nav">
             <li>
               <Link to="/dashboard/progress">
-                <img src="/assets/icon/cv.png" width="24" height="24" alt="kelas" /> Progress
+                <img src="/assets/icon/cv.png" width="24" height="24" alt="webinar" /> Progress
                 Belajar
               </Link>
             </li>
@@ -232,7 +232,7 @@ function Header({ style, user, logout, modal, loading, carts, history }) {
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" activeStyle={{ color: '#2ea3f2' }} to="/kelas">
+                <NavLink className="nav-link" activeStyle={{ color: '#2ea3f2' }} to="/webinar">
                   Webinar
                 </NavLink>
               </li>

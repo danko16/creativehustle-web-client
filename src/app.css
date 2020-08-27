@@ -151,7 +151,7 @@ h1.merriweather {
   color: #0c1460;
 }
 
-.img__cover_kelas {
+.img__cover_webinar {
   width: 100%;
   object-fit: cover;
   height: 100%;
@@ -503,12 +503,12 @@ button.subscribe:hover i.fa-angle-right {
 }
 
 .detail-kursus .et_pb_row_2,
-.detail-kelas .et_pb_row_2 {
+.detail-webinar .et_pb_row_2 {
   border-radius: 15px;
 }
 
 .detail-kursus button.et_pb_button:hover,
-.detail-kelas button.et_pb_button:hover {
+.detail-webinar button.et_pb_button:hover {
   background-color: rgb(255, 97, 97);
 }
 

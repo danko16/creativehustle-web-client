@@ -3,7 +3,7 @@ import Header from '../shared/header';
 import Footer from '../shared/footer';
 import BottomToRegister from '../shared/bottom-to-register';
 import Introduction from './introduction';
-import PopularClass from './popular-class';
+import PopularCourse from './popular-course';
 import LearningPath from './learning-path';
 
 import './landing-page.css';
@@ -16,7 +16,7 @@ function LandingPage() {
     <div className="landing-page">
       <Header />
       <Introduction />
-      <PopularClass />
+      <PopularCourse />
       <LearningPath />
       <BottomToRegister />
       <Footer />

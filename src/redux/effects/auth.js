@@ -6,8 +6,8 @@ import authApi from '../api/auth';
 import { AUTH_ACTIONS, authActions } from '../reducers/auth';
 import kursusSayaSaga from './kursus-saya';
 import kursusSaga from './kursus';
-import kelasSaga from './kelas';
-import kelasSayaSaga from './kelas-saya';
+import webinarSaga from './webinar';
+import webinarSayaSaga from './webinar-saya';
 import cartSaga from './cart';
 import invoiceSaga from './invoice';
 
@@ -177,7 +177,7 @@ function* authorizedTsk() {
 function* authFlow() {
   while (true) {
     yield fork(kursusSaga);
-    yield fork(kelasSaga);
+    yield fork(webinarSaga);
     yield fork(unAuthorizedTsk);
     const isAuthorized = yield call(isAllow);
     if (!isAuthorized) {
@@ -187,13 +187,13 @@ function* authFlow() {
 
     const authorizedTask = yield fork(authorizedTsk);
     const kursusSayaTask = yield fork(kursusSayaSaga);
-    const kelasSayaTask = yield fork(kelasSayaSaga);
+    const webinarSayaTask = yield fork(webinarSayaSaga);
     const cartTask = yield fork(cartSaga);
     const invoiceTask = yield fork(invoiceSaga);
 
     console.log('wait for logout');
     yield take(AUTH_ACTIONS.LOGOUT);
-    yield cancel([authorizedTask, kursusSayaTask, kelasSayaTask, cartTask, invoiceTask]);
+    yield cancel([authorizedTask, kursusSayaTask, webinarSayaTask, cartTask, invoiceTask]);
   }
 }
 
