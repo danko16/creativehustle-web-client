@@ -33,7 +33,7 @@ const TentangKami = React.lazy(() => import('./extra-pages/tentang-kami'));
 const FiturKursus = React.lazy(() => import('./extra-pages/fitur-kursus'));
 const FiturWebinar = React.lazy(() => import('./extra-pages/fitur-webinar'));
 const CaraPembayaran = React.lazy(() => import('./extra-pages/cara-pembayaran'));
-const Bantuan = React.lazy(() => import('./extra-pages/bantuan'));
+const Bantuan = React.lazy(() => import('./extra-pages/bantuan/index'));
 const KontakKami = React.lazy(() => import('./extra-pages/kontak-kami'));
 
 const mapStateToProps = (state) => ({

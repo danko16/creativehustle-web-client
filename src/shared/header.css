@@ -278,8 +278,8 @@ ul.user-menu-small-nav li a:hover {
     display: none;
   }
 
-  .collapse.navbar-collapse,
-  .collapsing {
+  .header .collapse.navbar-collapse,
+  .header .collapsing {
     position: absolute;
     top: 58px;
     background-color: rgb(255, 255, 255);

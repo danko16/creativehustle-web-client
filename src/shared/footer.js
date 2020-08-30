@@ -43,7 +43,7 @@ function Footer() {
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/">Bantuan</Link>
+                <Link to="/bantuan">Bantuan</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
             </ul>

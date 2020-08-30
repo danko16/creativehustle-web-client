@@ -60,7 +60,7 @@ function DifClassCourse() {
                   <p> Mendapatkan e-sertifikat kursus</p>
                 </li>
                 <li>
-                  <Link className="fitur-link" to="/footer/fitur-kursus">
+                  <Link className="fitur-link" to="/fitur-kursus">
                     <span>Lihat Fitur Kursus</span>
                     <i className="fa fa-angle-right" aria-hidden="true"></i>
                   </Link>
@@ -109,7 +109,7 @@ function DifClassCourse() {
                   <p>Mendapatkan e-sertifikat webinar</p>
                 </li>
                 <li>
-                  <Link className="fitur-link" to="/footer/fitur-webinar">
+                  <Link className="fitur-link" to="/fitur-webinar">
                     <span>Lihat Fitur Webinar</span>
                     <i className="fa fa-angle-right" aria-hidden="true"></i>
                   </Link>

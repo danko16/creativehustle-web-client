@@ -518,6 +518,11 @@ button.subscribe:hover i.fa-angle-right {
   font-weight: 500;
 }
 
+a,
+a:hover {
+  text-decoration: none;
+}
+
 @media only screen and (max-width: 1250px) {
   br.xl {
     display: none;

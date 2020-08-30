@@ -1,0 +1,195 @@
+.bantuan {
+  background: #ffffff;
+}
+
+.bantuan .header {
+  background-image: url(/assets/img/affiliate-cta-bg.jpg);
+  background-position: 50% center;
+  background-size: cover;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.bantuan .bantuan-wrapper {
+  display: flex;
+  position: relative;
+  padding: 4rem 0px;
+}
+
+.bantuan .header .input-group {
+  justify-content: center;
+}
+
+.bantuan .header p {
+  font-weight: 600;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  color: #3bed9a !important;
+}
+
+.bantuan .header h1 {
+  color: #ffffff;
+}
+
+.bantuan .sidebar {
+  width: 233px;
+  transition: all 400ms linear;
+}
+
+.bantuan .sidebar .main-menu {
+  font-weight: 700;
+  margin: 0;
+  color: #0f1b41;
+}
+
+.bantuan .sidebar ul {
+  list-style: none;
+  margin-top: 28px;
+  padding: 0;
+}
+
+.bantuan .sidebar ul .nav-item {
+  display: flex;
+  height: 60px;
+  width: 233px;
+  color: #a4adc8;
+  cursor: pointer;
+  align-items: center;
+  text-decoration: none;
+}
+
+.bantuan .sidebar ul .nav-item.active {
+  background: #2f3ced;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.bantuan .sidebar ul .nav-item img {
+  width: 28px;
+  margin: 0 20px 0 30px;
+  height: auto;
+}
+
+.bantuan .sidebar ul .nav-item.active img {
+  filter: brightness(0) invert(1);
+}
+
+.bantuan .content {
+  margin-left: 3rem;
+  width: 100%;
+}
+
+.bantuan .content ul {
+  list-style: none;
+  padding: 0;
+}
+
+.bantuan .content ul .accordion_item {
+  position: relative;
+  border-radius: 20px 20px 20px 20px;
+  overflow: hidden;
+  border-width: 0px;
+  /*box-shadow: 6px 6px 18px 0px rgba(0, 0, 0, 0.09);*/
+  /*background-color: #f4f4f4;*/
+  border: 1px solid #d9d9d9;
+  cursor: pointer;
+  padding: 14px 20px;
+  margin-bottom: 2rem;
+}
+
+.bantuan .content ul .accordion_item p {
+  font-weight: 700;
+  color: rgb(92, 97, 133);
+  margin: 0;
+  margin-right: 22px;
+}
+
+.bantuan .content ul .accordion_item i.fa {
+  position: absolute;
+  right: 25px;
+  color: #226ff7;
+  font-size: 20px;
+  top: 20px;
+}
+
+.bantuan .content ul .accordion_item .content-text {
+  visibility: collapse;
+  max-height: 0;
+  transition: all 400ms linear;
+}
+
+.bantuan .content ul .accordion_item.active .content-text {
+  visibility: visible;
+  padding: 20px 0;
+  max-height: 25rem;
+}
+
+@media only screen and (max-width: 991px) {
+  .bantuan .sidebar {
+    width: 60px;
+  }
+
+  .bantuan .sidebar ul .nav-item {
+    width: 60px;
+  }
+
+  .bantuan .sidebar ul {
+    margin-top: 0;
+  }
+
+  .bantuan .sidebar .main-menu {
+    display: none;
+  }
+
+  .bantuan .sidebar ul .nav-item span {
+    display: none;
+  }
+
+  .bantuan .sidebar ul .nav-item img {
+    margin: auto;
+  }
+
+  .bantuan .bantuan-wrapper {
+    padding: 4rem 10px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .bantuan .sidebar {
+    width: 100%;
+  }
+
+  .bantuan .sidebar ul {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .bantuan .content {
+    margin-left: 0;
+  }
+
+  .bantuan .bantuan-wrapper {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 540px) {
+  .bantuan .content ul .accordion_item.desc-lg .content-text {
+    transition: all 800ms linear;
+  }
+
+  .bantuan .content ul .accordion_item.desc-lg.active .content-text {
+    max-height: 48rem;
+  }
+
+  .bantuan .content ul .accordion_item.desc-sm.active .content-text {
+    max-height: 30rem;
+  }
+}
+
+@media only screen and (max-width: 340px) {
+  .bantuan .content ul {
+    font-size: 15px;
+  }
+}
