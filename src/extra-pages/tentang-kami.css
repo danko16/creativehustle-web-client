@@ -1,3 +1,33 @@
 .about-us {
-    padding: 3rem 0;
+  padding: 3rem 0;
+}
+
+.about-us .row.our-curiculum div:first-child {
+  margin: auto;
+}
+
+.about-us .row.our-curiculum div:first-child p {
+  margin-top: 1rem;
+  max-width: 32rem;
+  padding: 0 1.5rem;
+}
+
+.about-us .row.our-curiculum-desc div[class*='col-'] {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+
+.about-us .row.our-curiculum-desc i.fa {
+  font-size: 60px;
+  color: #2667ff;
+}
+
+.about-us .row.our-curiculum-desc p {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  color: #000000;
+  margin-top: 1rem;
 }

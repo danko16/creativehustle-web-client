@@ -1,0 +1,121 @@
+.kontak-kami .head {
+  background-size: contain;
+  background-image: url(/assets/img/ezgif-6-4a95546824ef.png) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.kontak-kami .head p {
+  max-width: 40rem;
+  margin: auto;
+}
+
+.kontak-kami form {
+  padding: 2.5rem 0;
+}
+
+.kontak-kami form .row {
+  margin-bottom: 2rem;
+}
+
+.kontak-kami form input,
+.kontak-kami form select,
+.kontak-kami form textarea {
+  padding: 16px;
+}
+
+.kontak-kami select.form-control:not([size]):not([multiple]) {
+  height: auto;
+}
+
+.kontak-kami form textarea {
+  min-height: 150px;
+}
+
+.kontak-kami .form-control {
+  color: #000000;
+}
+
+.kontak-kami form .input-group input {
+  margin-left: 15px;
+  display: block;
+  width: 4rem;
+  flex: none;
+  border-radius: 0.25rem !important;
+}
+
+.kontak-kami form .input-group span {
+  margin: auto;
+}
+
+.kontak-kami form .send-wrapper {
+  position: relative;
+  display: flex;
+  margin-left: auto;
+  padding: 0 14px;
+}
+
+.kontak-kami form .send {
+  background: #0089ff;
+  margin-left: 30px;
+  padding: 5px 24px;
+  border-radius: 5px;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all 300ms ease;
+  cursor: pointer;
+  border: none;
+}
+
+.kontak-kami form .send:hover {
+  opacity: 0.75;
+}
+
+.kontak-kami form .send-confirm {
+  padding: 10px;
+}
+
+.kontak-kami input::-webkit-outer-spin-button,
+.kontak-kami input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.kontak-kami input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+.kontak-kami .error-text {
+  margin-top: 0.25rem;
+  margin-bottom: 0;
+}
+
+.kontak-kami .response-wrapper {
+  max-width: 24rem;
+  padding: 0 16px;
+  margin: auto;
+}
+
+@media only screen and (max-width: 767px) {
+  .kontak-kami .col-md-6:first-child .form-control {
+    margin-bottom: 2rem;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .kontak-kami form .send-confirm {
+    padding: 4px;
+  }
+  .kontak-kami form .input-group input {
+    margin-left: 6px;
+    width: 3rem;
+  }
+
+  .kontak-kami form .send {
+    padding: 4px 24px;
+    margin-left: 15px;
+  }
+}

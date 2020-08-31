@@ -8,8 +8,13 @@ function TentangKami() {
   }, []);
   return (
     <div>
-      <div className="container about-us">
-        <div className="row">
+      <div className="container about-us fs-18">
+        <div
+          className="row"
+          style={{
+            borderBottom: '2px solid #0c71c3',
+          }}
+        >
           <div
             className="col-lg-5"
             style={{
@@ -31,27 +36,73 @@ function TentangKami() {
               padding: '3rem 1.5rem',
             }}
           >
-            <h5 className="et_pb_text_0">CREATIVE HUSTLE VISION</h5>
+            <h5 className="et_pb_text_0">
+              <strong>CREATIVE HUSTLE VISION</strong>
+            </h5>
             <h1
               style={{
                 marginBottom: '2rem',
               }}
             >
-              <strong>Empower Indonesian People for Digital Creative Economy</strong>
+              <strong>Empower Indonesian People for Creative Economy</strong>
             </h1>
             <div>
               <p>
-                Creative Hustle id founded by Reezky Pradata and Danang Eko Yudanto in Klaten
-                City.&nbsp; we’ve seen again and again how the seemingly simple act of creating can
-                be a force for growth, change, and discovery in people’s lives. We want to inspire
-                and multiply the kind of creative exploration that furthers expression, learning and
-                application.
+                Creative Hustle id is an online learning community to learning about how to create
+                side hustle in creative ways, on topics including illustration, design, photography,
+                video, freelancing, and more.
               </p>
               <p>
-                Creative Hustle id is an online learning community with thousands of webinars for
-                creative and curious people, on topics including illustration, design, photography,
-                video, freelancing, and more. On Creative Hustlse, millions of members come together
-                to find inspiration and take the next step in their creative journey.
+                Creative Hustle id founded by Reezky Pradata and Danang Eko in Klaten City. they
+                seen that side hustle with creative ways so really help to fight pandemic or bad
+                economical situation. So they inisiate to create simple platform to learning about
+                how to create new revenue streams with creative way. Connect between expert and
+                people who want learn. Inspire and multiply the kind of creative exploration that
+                furthers expression, learning and application.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div
+          style={{
+            padding: '3.5rem 0',
+          }}
+        >
+          <div className="row our-curiculum">
+            <div className="text-center">
+              <h1>
+                <strong>Our Curiculum</strong>
+              </h1>
+              <p>
+                We believe to understanding about how to start side hustle is to master this 4
+                points and we build our curriculum both <br className="xl" />
+                on course and webinar with this points
+              </p>
+            </div>
+          </div>
+          <div className="row no-gutters our-curiculum-desc">
+            <div className="col-md-6 col-lg-3">
+              <i className="fa fa-check-circle" aria-hidden="true"></i>
+              <p>
+                Understanding <br /> Business
+              </p>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <i className="fa fa-check-circle" aria-hidden="true"></i>
+              <p>
+                Understanding <br /> Technical
+              </p>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <i className="fa fa-check-circle" aria-hidden="true"></i>
+              <p>
+                Understanding <br /> Revenue Works
+              </p>
+            </div>
+            <div className="col-md-6 col-lg-3">
+              <i className="fa fa-check-circle" aria-hidden="true"></i>
+              <p>
+                Understanding <br /> Opportunity
               </p>
             </div>
           </div>

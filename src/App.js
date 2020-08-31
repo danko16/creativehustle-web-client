@@ -148,7 +148,7 @@ function App({ authFlow }) {
                 <Footer />
               </Route>
               <Route exact path="/google-auth" component={GoogleAuth} />
-              <Route path="/tentang">
+              <Route path="/tentang-kami">
                 <Header />
                 <Title title="Tentang Kami" />
                 <TentangKami />

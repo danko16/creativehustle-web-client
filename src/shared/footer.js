@@ -52,11 +52,11 @@ function Footer() {
             <ul className="list-unstyled sitemap">
               <h2 className="footer-head">Company</h2>
               <li>
-                <Link to="/tentang">Tentang Kami</Link>
+                <Link to="/tentang-kami">Tentang Kami</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/">Hubungi Kami</Link>
+                <Link to="/kontak-kami">Hubungi Kami</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
