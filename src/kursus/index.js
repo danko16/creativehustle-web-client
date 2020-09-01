@@ -4,8 +4,6 @@ import { bindActionCreators } from 'redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { kursusActions } from '../redux/reducers/kursus';
-import Header from '../shared/header';
-import Footer from '../shared/footer';
 import KursusList from './kursus-list';
 import './kursus.css';
 
@@ -25,7 +23,6 @@ function Kursus({ reqCariKursus }) {
   }
   return (
     <div className="kursus">
-      <Header />
       <div
         className="py-4"
         style={{
@@ -115,7 +112,6 @@ function Kursus({ reqCariKursus }) {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

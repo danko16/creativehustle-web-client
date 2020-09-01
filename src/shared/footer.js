@@ -60,7 +60,7 @@ function Footer() {
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/">Mentor Kami</Link>
+                <Link to="/mentor-kami">Mentor Kami</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>

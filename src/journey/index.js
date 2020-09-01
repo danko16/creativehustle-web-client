@@ -1,7 +1,5 @@
 import React, { useEffect } from 'react';
 
-import Header from '../shared/header';
-import Footer from '../shared/footer';
 import BottomToRegister from '../shared/bottom-to-register';
 import JourneyPath from './journey-path';
 import JourneyDetail from './journey-detail';
@@ -16,7 +14,6 @@ function Journey() {
 
   return (
     <div className="journey">
-      <Header />
       <div
         className="py-4 mb-5"
         style={{
@@ -51,7 +48,6 @@ function Journey() {
       <DifClassCourse />
       <HintDropdown />
       <BottomToRegister />
-      <Footer />
     </div>
   );
 }

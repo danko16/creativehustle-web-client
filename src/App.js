@@ -35,6 +35,7 @@ const FiturWebinar = React.lazy(() => import('./extra-pages/fitur-webinar'));
 const CaraPembayaran = React.lazy(() => import('./extra-pages/cara-pembayaran'));
 const Bantuan = React.lazy(() => import('./extra-pages/bantuan/index'));
 const KontakKami = React.lazy(() => import('./extra-pages/kontak-kami'));
+const MentorKami = React.lazy(() => import('./extra-pages/mentor-kami'));
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
@@ -104,12 +105,16 @@ function App({ authFlow }) {
           <div className="App">
             <Switch>
               <Route exact path="/">
+                <Header />
                 <Title />
                 <LandingPage />
+                <Footer />
               </Route>
               <Route exact path="/kursus">
+                <Header />
                 <Title title="Kursus" />
                 <Kursus />
+                <Footer />
               </Route>
               <Route path="/kursus/:kursusId">
                 <Header />
@@ -117,8 +122,10 @@ function App({ authFlow }) {
                 <Footer />
               </Route>
               <Route exact path="/webinar">
+                <Header />
                 <Title title="Webinar" />
                 <Webinar />
+                <Footer />
               </Route>
               <Route path="/webinar/:webinarId">
                 <Header />
@@ -126,8 +133,10 @@ function App({ authFlow }) {
                 <Footer />
               </Route>
               <Route path="/journey">
+                <Header />
                 <Title title="Cara Belajar" />
                 <Journey />
+                <Footer />
               </Route>
               <Route exact path="/forgot-password">
                 <Title title="Lupa Password" />
@@ -176,6 +185,12 @@ function App({ authFlow }) {
                 <Header />
                 <Title title="Kontak Kami" />
                 <KontakKami />
+                <Footer />
+              </Route>
+              <Route path="/mentor-kami">
+                <Header />
+                <Title title="Mentor Kami" />
+                <MentorKami />
                 <Footer />
               </Route>
               <Route path="/bantuan">

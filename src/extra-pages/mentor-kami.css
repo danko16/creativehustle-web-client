@@ -1,0 +1,50 @@
+.mentor-kami .head {
+  background-size: contain;
+  background-image: url(/assets/img/ezgif-6-4a95546824ef.png) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.mentor-kami .head p {
+  max-width: 42rem;
+  margin: auto;
+}
+
+.mentor-kami .head p:first-child {
+  color: #3874ff;
+  text-transform: uppercase;
+}
+
+.mentor-kami .mentor {
+  padding: 60px 0;
+}
+
+.mentor-kami .mentor img {
+  width: 100%;
+  height: auto;
+}
+
+.mentor-kami .mentor .mentor-name {
+  font-size: 20px;
+  margin-top: 14px;
+}
+
+.mentor-kami .mentor .mentor-job {
+  color: #aaa;
+  text-align: center;
+  max-width: 20rem;
+}
+
+.mentor-kami .mentor .mentor-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .mentor-kami .mentor .mentor-wrapper {
+    margin-bottom: 2rem;
+  }
+}

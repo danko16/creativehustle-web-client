@@ -10,6 +10,7 @@ import webinarSaga from './webinar';
 import webinarSayaSaga from './webinar-saya';
 import cartSaga from './cart';
 import invoiceSaga from './invoice';
+import mentorSaga from './mentor';
 
 function* register({ value }) {
   try {
@@ -178,6 +179,7 @@ function* authFlow() {
   while (true) {
     yield fork(kursusSaga);
     yield fork(webinarSaga);
+    yield fork(mentorSaga);
     yield fork(unAuthorizedTsk);
     const isAuthorized = yield call(isAllow);
     if (!isAuthorized) {

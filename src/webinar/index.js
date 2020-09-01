@@ -5,8 +5,6 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { webinarActions } from '../redux/reducers/webinar';
 
-import Header from '../shared/header';
-import Footer from '../shared/footer';
 import WebinarList from './webinar-list';
 import './webinar.css';
 
@@ -27,7 +25,6 @@ function Webinar({ reqCariWebinar }) {
   }
   return (
     <div className="webinar">
-      <Header />
       <div
         className="py-4"
         style={{
@@ -118,7 +115,6 @@ function Webinar({ reqCariWebinar }) {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

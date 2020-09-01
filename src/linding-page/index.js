@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import Header from '../shared/header';
-import Footer from '../shared/footer';
 import BottomToRegister from '../shared/bottom-to-register';
 import Introduction from './introduction';
 import PopularCourse from './popular-course';
@@ -14,12 +12,10 @@ function LandingPage() {
   }, []);
   return (
     <div className="landing-page">
-      <Header />
       <Introduction />
       <PopularCourse />
       <LearningPath />
       <BottomToRegister />
-      <Footer />
     </div>
   );
 }

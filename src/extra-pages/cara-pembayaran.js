@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import BottomToCw from '../shared/bottom-to-cw';
 import './cara-pembayaran.css';
 
 function CaraPembayaran() {
@@ -156,40 +157,7 @@ function CaraPembayaran() {
           </div>
         </div>
       </div>
-      <div className="cta-bg">
-        <div className="container">
-          <p>SUDAH TIDAK SABAR UNTUK MULAI KURSUS DI CREATIVE HUSTLE ?</p>
-          <h2>
-            <strong>Ayo segera ikut kursus dan webinar yang tersedia!</strong>
-          </h2>
-        </div>
-        <div className="et_pb_button_wrapper">
-          <button className="et_pb_button">
-            <Link className="stretched-link" to="/kursus" />
-            <span
-              style={{
-                textTransform: 'uppercase',
-                fontWeight: 600,
-              }}
-            >
-              Lihat Kursus
-            </span>
-            <i className="fa fa-angle-right" aria-hidden="true"></i>
-          </button>
-          <button className="et_pb_button">
-            <Link className="stretched-link" to="/webinar" />
-            <span
-              style={{
-                textTransform: 'uppercase',
-                fontWeight: 600,
-              }}
-            >
-              Lihat Webinar
-            </span>
-            <i className="fa fa-angle-right" aria-hidden="true"></i>
-          </button>
-        </div>
-      </div>
+      <BottomToCw backgroundImage="url(/assets/img/cta-bg.png)" />
     </div>
   );
 }
