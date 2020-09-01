@@ -83,7 +83,7 @@
   margin-top: 3rem;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .fitur-kursus section:first-child .row:first-child .col-lg-7 {
     padding-top: 45px;
   }

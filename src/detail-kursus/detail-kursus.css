@@ -109,7 +109,7 @@
   padding-left: 30px;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .detail-kursus .title {
     padding: 50px 0;
   }
@@ -119,7 +119,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .mentor-profile > div {
     flex-basis: 100%;
   }

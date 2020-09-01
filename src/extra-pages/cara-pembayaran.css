@@ -56,7 +56,7 @@
   cursor: pointer;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .cara-pembayaran .container > div.row.row_rvrs {
     flex-direction: column-reverse;
   }

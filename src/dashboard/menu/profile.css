@@ -23,7 +23,7 @@
   border: 1px solid #5d69d8;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .profile {
     justify-content: flex-start;
   }

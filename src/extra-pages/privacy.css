@@ -1,0 +1,30 @@
+.privacy {
+  padding: 4rem 6rem;
+}
+
+.privacy .head {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.privacy .head p {
+  font-style: italic;
+}
+
+.privacy .matter h4 {
+  margin-bottom: 1rem;
+}
+
+.privacy .matter > * {
+  margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 991px) {
+  .privacy {
+    padding: 4rem 1rem;
+  }
+
+  .privacy .matter ul {
+    padding-left: 1rem;
+  }
+}

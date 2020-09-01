@@ -39,7 +39,7 @@
   line-height: 1.75;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .detail-webinar .dk-content-wrapper {
     flex-direction: column-reverse;
   }

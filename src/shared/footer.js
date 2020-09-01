@@ -64,7 +64,7 @@ function Footer() {
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
               <li>
-                <Link to="/">Jadi Mentor</Link>
+                <Link to="/jadi-mentor">Jadi Mentor</Link>
                 <i className="fa fa-angle-right" aria-hidden="true"></i>
               </li>
             </ul>
@@ -109,11 +109,16 @@ function Footer() {
           <span className="copyright" style={{ marginLeft: 0 }}>
             Copyright © 2020. Creative Hustle. All rights reserved. Made in Klaten
           </span>
-          <div>
-            <Link className="copyright" to="/">
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+            }}
+          >
+            <Link className="copyright" to="/verifikasi-sertifikat" style={{ margin: 0 }}>
               Verifikasi Sertifikat
             </Link>
-            <Link className="copyright" to="/">
+            <Link className="copyright" to="/kebijakan-privasi">
               Kebijakan Privasi
             </Link>
           </div>

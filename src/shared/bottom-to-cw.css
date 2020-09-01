@@ -31,7 +31,7 @@
   background-color: #3bed9a;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .btcw.cta-bg {
     margin-top: 3rem;
   }

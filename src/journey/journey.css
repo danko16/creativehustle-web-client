@@ -173,7 +173,7 @@
   max-height: 20rem;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .journey .container.journey-detail .row .col-lg-6 {
     padding-bottom: 40px;
   }
@@ -206,7 +206,7 @@
   }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .journey .journey-path {
     display: none;
   }

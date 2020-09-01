@@ -27,7 +27,7 @@
     background-image: none;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .settings-container {
     width: 500px;
   }

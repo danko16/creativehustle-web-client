@@ -36,6 +36,9 @@ const CaraPembayaran = React.lazy(() => import('./extra-pages/cara-pembayaran'))
 const Bantuan = React.lazy(() => import('./extra-pages/bantuan/index'));
 const KontakKami = React.lazy(() => import('./extra-pages/kontak-kami'));
 const MentorKami = React.lazy(() => import('./extra-pages/mentor-kami'));
+const JadiMentor = React.lazy(() => import('./extra-pages/jadi-mentor'));
+const VerifikasiSertifikat = React.lazy(() => import('./extra-pages/verifikasi-sertifikat'));
+const PrivacyPolicy = React.lazy(() => import('./extra-pages/privacy'));
 
 const mapStateToProps = (state) => ({
   auth: state.auth,
@@ -191,6 +194,24 @@ function App({ authFlow }) {
                 <Header />
                 <Title title="Mentor Kami" />
                 <MentorKami />
+                <Footer />
+              </Route>
+              <Route path="/jadi-mentor">
+                <Header />
+                <Title title="Jadi Mentor" />
+                <JadiMentor />
+                <Footer />
+              </Route>
+              <Route path="/verifikasi-sertifikat">
+                <Header />
+                <Title title="Verifikasi Sertifikat" />
+                <VerifikasiSertifikat />
+                <Footer />
+              </Route>
+              <Route path="/kebijakan-privasi">
+                <Header />
+                <Title title="Kebijakan Privasi" />
+                <PrivacyPolicy />
                 <Footer />
               </Route>
               <Route path="/bantuan">

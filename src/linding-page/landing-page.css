@@ -267,7 +267,7 @@ ul.benefit-list li p {
   line-height: 1.5;
 }
 
-@media only screen and (max-width: 992px) {
+@media only screen and (max-width: 991px) {
   .mentor-assign {
     border-right: none;
     border-bottom: 1px solid #dedfe0;

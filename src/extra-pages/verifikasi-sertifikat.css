@@ -1,0 +1,53 @@
+.verifikasi-sertifikat .head {
+  background-size: contain;
+  background-image: url(/assets/img/ezgif-6-4a95546824ef.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 6rem 1rem;
+  text-align: center;
+}
+
+.verifikasi-sertifikat .head h1 {
+  font-size: 45px;
+}
+
+.verifikasi-sertifikat .head p {
+  max-width: 42rem;
+  margin: auto;
+}
+
+.verifikasi-sertifikat .head p:first-child {
+  color: #3874ff;
+  text-transform: uppercase;
+  font-size: 15px;
+}
+
+.verifikasi-sertifikat .search-wrapper {
+  display: flex;
+  max-width: 40rem;
+  margin: auto;
+  margin-top: 2rem;
+}
+
+.verifikasi-sertifikat .search-wrapper input.search-input {
+  border-color: #0062d4;
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.verifikasi-sertifikat .search-wrapper button.search-button {
+  outline: none;
+  border: 1px solid #0062d4;
+  color: #fff;
+  cursor: pointer;
+  background: #0062d4;
+  border-top-right-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.verifikasi-sertifikat button.et_pb_button {
+  background-color: #0062d4;
+  color: #fff;
+  margin-top: 2rem;
+}

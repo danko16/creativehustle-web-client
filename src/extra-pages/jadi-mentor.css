@@ -1,0 +1,86 @@
+.jadi-mentor .head {
+  background-size: contain;
+  background-image: url(/assets/img/ezgif-6-4a95546824ef.png) !important;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 60px 24px;
+  text-align: center;
+}
+
+.jadi-mentor .head p {
+  max-width: 42rem;
+  margin: auto;
+}
+
+.jadi-mentor div.row {
+  padding: 3.5rem 0;
+  justify-content: center;
+}
+
+.jadi-mentor .head p:first-child {
+  color: #3874ff;
+  text-transform: uppercase;
+}
+
+.jadi-mentor .benefit-as-mentor {
+  display: flex;
+  margin-bottom: 1.5rem;
+}
+
+.jadi-mentor .benefit-as-mentor i.fa {
+  font-size: 2rem;
+  color: #2667ff;
+}
+
+.jadi-mentor .benefit-as-mentor div {
+  padding-left: 15px;
+}
+
+.jadi-mentor .benefit-as-mentor div h5 {
+  font-weight: 600;
+}
+
+.jadi-mentor .row .col-lg-6:first-child {
+  padding: 0px 2rem 0px 0px;
+}
+
+.jadi-mentor .row .be-mentor-title {
+  margin-top: 2rem;
+}
+
+.jadi-mentor .bottom-to-contact-us {
+  background-image: url(/assets/img/affiliate-cta-bg.jpg) !important;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 60px 24px;
+  text-align: center;
+  color: #fff;
+}
+
+.jadi-mentor .bottom-to-contact-us h5 {
+  text-transform: uppercase;
+  font-size: 15px;
+  color: #38fbff !important;
+}
+
+.jadi-mentor .bottom-to-contact-us h1 {
+  color: #fff;
+  max-width: 38rem;
+  margin: 0 auto 1rem auto;
+}
+
+.jadi-mentor .bottom-to-contact-us p {
+  max-width: 40rem;
+  margin: auto;
+}
+
+@media only screen and (max-width: 991px) {
+  .jadi-mentor .row .col-lg-6:first-child {
+    padding: 0 15px;
+  }
+
+  .jadi-mentor .row .col-lg-6:first-child img {
+    margin-bottom: 4rem;
+  }
+}
