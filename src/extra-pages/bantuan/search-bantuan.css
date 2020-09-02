@@ -1,0 +1,10 @@
+.search-bantuan .emtpy-searched {
+  padding: 2rem;
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.search-bantuan nav {
+  display: flex;
+  justify-content: center;
+}
