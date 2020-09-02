@@ -105,7 +105,7 @@ function Webinar({ reqCariWebinar }) {
             }}
           >
             <img
-              src="/assets/img/Wait-for-it-2.jpg"
+              src="/assets/img/Wait-for-it-2.jpeg"
               alt="Wait-for-it-2"
               style={{
                 width: '100%',

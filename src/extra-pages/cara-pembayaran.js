@@ -60,7 +60,7 @@ function CaraPembayaran() {
           <div id="step1" className="anchor"></div>
           <div className="col-lg-6" style={{ padding: '0 60px' }}>
             <img
-              src="/assets/img/pendaftaran.png"
+              src="/assets/img/pendaftaran.jpeg"
               alt="pendaftaran"
               style={{
                 width: '100%',
@@ -124,7 +124,7 @@ function CaraPembayaran() {
           <div id="step3" className="anchor"></div>
           <div className="col-lg-6" style={{ padding: '0 60px' }}>
             <img
-              src="/assets/img/pendaftaran.png"
+              src="/assets/img/pendaftaran.jpeg"
               alt="pendaftaran"
               style={{
                 width: '100%',

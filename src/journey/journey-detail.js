@@ -30,7 +30,7 @@ function JourneyDetail({ showRegister, history }) {
         <div id="step1" className="anchor"></div>
         <div className="col-lg-6" style={{ padding: '0 60px' }}>
           <img
-            src="/assets/img/pendaftaran.png"
+            src="/assets/img/pendaftaran.jpeg"
             alt="pendaftaran"
             style={{
               width: '100%',

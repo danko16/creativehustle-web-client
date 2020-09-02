@@ -22,7 +22,7 @@ function TentangKami() {
             }}
           >
             <img
-              src="/assets/img/sa.jpg"
+              src="/assets/img/sa.jpeg"
               alt="sa"
               className="img__cover"
               style={{

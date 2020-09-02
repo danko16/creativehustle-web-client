@@ -359,7 +359,7 @@ function DetailKursus({
             </h3>
             <div className="row">
               <div className="col-md-4">
-                <img src="/assets/img/header-img.png" alt="profile" width="100%" height="auto" />
+                <img src="/assets/img/header-img.jpeg" alt="profile" width="100%" height="auto" />
               </div>
               <div className="col-md-8">
                 <h5>{detailKursus.teacher_name}</h5>

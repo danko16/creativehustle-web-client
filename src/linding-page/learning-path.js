@@ -14,7 +14,7 @@ function LearningPath() {
             }}
           >
             <img
-              src="/assets/img/okex2.jpg"
+              src="/assets/img/okex2.jpeg"
               alt="642-scaled"
               style={{
                 width: '100%',
@@ -71,7 +71,7 @@ function LearningPath() {
             }}
           >
             <img
-              src="/assets/img/Wait-for-it-2.jpg"
+              src="/assets/img/Wait-for-it-2.jpeg"
               alt="Wait-for-it-2"
               style={{
                 width: '100%',
