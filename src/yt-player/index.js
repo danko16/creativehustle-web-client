@@ -203,6 +203,7 @@ function YtPlayer({ detailContent }) {
   return (
     <div className="youtube-wrapper">
       <div
+        style={{ marginBottom: '-4px' }}
         onDoubleClick={handleFullScreen}
         onClick={() => {
           if (player.current) {

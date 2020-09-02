@@ -18,6 +18,13 @@
   cursor: pointer;
 }
 
+.webinar .button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 20rem;
+  flex-wrap: wrap;
+}
+
 .tanggal-webinar {
   background-color: #6f69f1;
   font-size: 16px;

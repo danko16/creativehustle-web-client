@@ -17,3 +17,10 @@
 .kursus .pagination .page-item {
   cursor: pointer;
 }
+
+.kursus .button-wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 20rem;
+  flex-wrap: wrap;
+}

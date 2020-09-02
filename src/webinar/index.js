@@ -89,13 +89,23 @@ function Webinar({ reqCariWebinar }) {
               perlu melalui 5 proses untuk dapat langsung mulai belajar bersama instruktur
               berpengalaman.
             </p>
-            <button className="to-learn-path">
-              <Link to={`/journey`} className="stretched-link">
-                <span className="sr-only">title for screen</span>
-              </Link>
-              <span className="et_pb_button_2">Lihat Cara Belajar</span>
-              <i className="fa fa-angle-right" aria-hidden="true"></i>
-            </button>
+            <div className="button-wrapper">
+              <button className="to-learn-path" style={{ marginRight: '1rem' }}>
+                <Link to={`/journey`} className="stretched-link">
+                  <span className="sr-only">title for screen</span>
+                </Link>
+                <span className="et_pb_button_2">Lihat Cara Belajar</span>
+                <i className="fa fa-angle-right" aria-hidden="true"></i>
+              </button>
+
+              <button className="to-learn-path">
+                <Link to={`/fitur-webinar`} className="stretched-link">
+                  <span className="sr-only">title for screen</span>
+                </Link>
+                <span className="et_pb_button_2">Fitur Webinar</span>
+                <i className="fa fa-angle-right" aria-hidden="true"></i>
+              </button>
+            </div>
           </div>
           <div
             className="col-lg-6"

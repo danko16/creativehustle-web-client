@@ -173,7 +173,7 @@ function DetailWebinar({
   }
 
   return webinarDetail ? (
-    <div className="detail-webinar">
+    <div className="detail-webinar fs-18">
       <Title title={webinarDetail.title} />
       {showCartModal && <CartModal setShowCartModal={setShowCartModal} detail={webinarDetail} />}
       <div className="container">

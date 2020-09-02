@@ -51,20 +51,22 @@
 }
 
 .materi-webinar-public {
-  max-height: 46px;
-  transition: max-height 1.5s ease-out;
-  margin-bottom: 20px;
   overflow: hidden;
-}
-
-.materi-webinar-public.active {
-  max-height: 1000px;
 }
 
 .materi-webinar-public ul {
   list-style: none;
   padding: 0 20px;
-  margin-top: 20px;
+  margin-top: 0;
+  max-height: 0;
+  transition: all 500ms linear;
+  visibility: collapse;
+}
+
+.materi-webinar-public.active ul {
+  max-height: 20rem;
+  margin: 1rem 0 2rem 0;
+  visibility: visible;
 }
 
 .materi-webinar-public .content,

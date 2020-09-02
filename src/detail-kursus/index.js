@@ -213,7 +213,7 @@ function DetailKursus({
   }
 
   return detailKursus && detailContent ? (
-    <div className="detail-kursus">
+    <div className="detail-kursus fs-18">
       <Title title={detailKursus.title} />
       {showCartModal && <CartModal setShowCartModal={setShowCartModal} detail={detailKursus} />}
       <div className="title">
