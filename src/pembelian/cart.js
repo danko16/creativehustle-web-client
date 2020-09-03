@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { cartActions } from '../redux/reducers/cart';
@@ -10,6 +11,9 @@ import { formatNumber } from '../utils/format';
 const mapStateToProps = (state) => ({
   carts: state.cart.carts,
   total_prices: state.cart.total_prices,
+  coupons: state.cart.coupons,
+  message: state.cart.message,
+  isError: state.cart.is_error,
 });
 
 const mapActionToProps = (dispatch) =>
@@ -17,14 +21,38 @@ const mapActionToProps = (dispatch) =>
     {
       addInvoice: invoiceActions.addInvoice,
       deleteCart: cartActions.deleteCart,
+      reqCoupon: cartActions.reqCoupon,
+      clearMsg: cartActions.clearError,
+      setCoupon: cartActions.coupon,
     },
     dispatch
   );
 
-function Cart({ carts, total_prices, addInvoice, deleteCart }) {
+function Cart({
+  carts,
+  total_prices,
+  addInvoice,
+  message,
+  isError,
+  clearMsg,
+  deleteCart,
+  coupons,
+  reqCoupon,
+  setCoupon,
+}) {
+  const [couponName, setCouponName] = useState('');
+  const [couponError, setCouponError] = useState('');
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  useEffect(() => {
+    if (message && isError) {
+      setCouponError(message);
+      clearMsg();
+    }
+  }, [message, isError, clearMsg]);
 
   function renderEmptyCart() {
     return (
@@ -64,6 +92,35 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
     } else {
       return 'Webinar';
     }
+  }
+
+  function renderCoupons() {
+    return coupons.map((coupon) => (
+      <li key={coupon.id} style={{ marginBottom: 10 }}>
+        <i
+          onClick={() => {
+            const newCoupons = coupons.filter((val) => val.id !== coupon.id);
+            const finalPrice = total_prices.final_price + coupon.discounts;
+            const totalPromoPrice = total_prices.total_promo_price - coupon.discounts;
+            let percentage = 0;
+            if (totalPromoPrice !== 0) {
+              percentage = (totalPromoPrice / total_prices.total_price) * 100;
+            }
+            const newPrices = {
+              final_price: finalPrice,
+              percentage: Math.round(percentage),
+              total_price: total_prices.total_price,
+              total_promo_price: totalPromoPrice,
+            };
+
+            setCoupon({ coupons: newCoupons, total_prices: newPrices });
+          }}
+          className="fa fa-times"
+          aria-hidden="true"
+        ></i>{' '}
+        <strong>{coupon.name}</strong> di pakai
+      </li>
+    ));
   }
 
   function renderCartItems() {
@@ -128,6 +185,15 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
     ));
   }
 
+  function handleReqCoupon() {
+    if (!couponName) {
+      setCouponError('Kupon tidak di temukan');
+      return;
+    }
+
+    reqCoupon({ coupon_name: couponName });
+  }
+
   function renderCart() {
     return (
       <div className="row">
@@ -152,8 +218,25 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
             </div>
             <div className="coupon">
               <div className="input-group mb-3">
-                <input type="text" className="form-control" placeholder="Masukan Kupon" />
-                <div className="input-group-prepend">
+                <input
+                  type="text"
+                  className={ClassNames('form-control', {
+                    'error-form': couponError.length > 0,
+                  })}
+                  onChange={(e) => {
+                    setCouponName(e.target.value);
+                  }}
+                  onKeyPress={(e) => {
+                    if (e.key === 'Enter') {
+                      handleReqCoupon();
+                    }
+                  }}
+                  onInputCapture={() => {
+                    setCouponError('');
+                  }}
+                  placeholder="Masukan Kupon"
+                />
+                <div className="input-group-prepend" onClick={handleReqCoupon}>
                   <span
                     className="input-group-text"
                     style={{
@@ -164,12 +247,15 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
                   </span>
                 </div>
               </div>
-              <ul>
-                <li>
-                  <i className="fa fa-times" aria-hidden="true"></i> <strong>LEARNNOW</strong> di
-                  pakai
-                </li>
-              </ul>
+              <small
+                className={ClassNames('error-text form-text d-none', {
+                  'd-block': couponError,
+                })}
+                style={{ marginBottom: '1rem', marginTop: '-0.8rem' }}
+              >
+                {couponError}
+              </small>{' '}
+              <ul>{renderCoupons()}</ul>
             </div>
           </div>
         </div>
@@ -184,8 +270,14 @@ function Cart({ carts, total_prices, addInvoice, deleteCart }) {
 Cart.propTypes = {
   carts: PropTypes.array,
   total_prices: PropTypes.object,
+  coupons: PropTypes.array,
   addInvoice: PropTypes.func,
   deleteCart: PropTypes.func,
+  reqCoupon: PropTypes.func,
+  message: PropTypes.string,
+  isError: PropTypes.bool,
+  clearMsg: PropTypes.func,
+  setCoupon: PropTypes.func,
 };
 
 export default connect(mapStateToProps, mapActionToProps)(Cart);

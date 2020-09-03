@@ -1,4 +1,4 @@
-import { put, call, all, takeLatest } from 'redux-saga/effects';
+import { put, call, all, select, takeLatest } from 'redux-saga/effects';
 import { cartActions, CART_ACTIONS } from '../reducers/cart';
 import cartApi from '../api/cart';
 import { getErrorMessage } from '../../utils/api';
@@ -11,6 +11,51 @@ function* cart() {
     if (data) {
       const { carts_payload, prices } = data;
       yield put(cartActions.cart({ carts_payload, prices }));
+    }
+  } catch (error) {
+    yield put(cartActions.error(getErrorMessage(error)));
+  }
+}
+
+function* coupon({ value }) {
+  try {
+    const {
+      cart: { coupons, total_prices },
+    } = yield select();
+    const {
+      data: { data },
+    } = yield call(cartApi.coupon, value);
+    if (data) {
+      const newCoupons = [...coupons];
+      let isExist = false;
+
+      coupons.forEach((coupon) => {
+        if (coupon.id === data.id) {
+          isExist = true;
+        }
+      });
+
+      if (!isExist) {
+        newCoupons.push(data);
+
+        const finalPrice = total_prices.final_price - data.discounts;
+        const totalPromoPrice = total_prices.total_promo_price + data.discounts;
+
+        let percentage = 0;
+
+        if (totalPromoPrice !== 0) {
+          percentage = (totalPromoPrice / total_prices.total_price) * 100;
+        }
+
+        const newTotalPrices = {
+          total_price: total_prices.total_price,
+          total_promo_price: totalPromoPrice,
+          final_price: finalPrice,
+          percentage: Math.round(percentage),
+        };
+
+        yield put(cartActions.coupon({ coupons: newCoupons, total_prices: newTotalPrices }));
+      }
     }
   } catch (error) {
     yield put(cartActions.error(getErrorMessage(error)));
@@ -50,6 +95,7 @@ function* cartSaga() {
     yield all([
       takeLatest(CART_ACTIONS.ADD_CART, addCart),
       takeLatest(CART_ACTIONS.DELETE_CART, deleteCart),
+      takeLatest(CART_ACTIONS.REQ_COUPON, coupon),
     ]);
   } catch (error) {
     yield put(cartActions.error(getErrorMessage(error)));

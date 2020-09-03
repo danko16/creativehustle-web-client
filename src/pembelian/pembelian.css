@@ -172,8 +172,8 @@ a.tabbed-options {
 }
 
 .cart-total > div.coupon {
-  margin-top: 12px;
-  padding-top: 12px;
+  margin-top: 18px;
+  padding-top: 18px;
   border-top: 1px solid #cacaca;
 }
 
@@ -215,6 +215,10 @@ a.tabbed-options {
   font-size: 18px;
   transition: 0.2s;
   cursor: pointer;
+}
+
+.cart .form-control {
+  border: 1px solid #bfbfbf;
 }
 
 .pembayaran .bank-list {

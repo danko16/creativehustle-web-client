@@ -15,4 +15,10 @@ export default Object.freeze({
         cart_id,
       },
     }),
+  coupon: ({ coupon_name }) =>
+    Api.get('/cart/coupon', {
+      params: {
+        coupon_name,
+      },
+    }),
 });
