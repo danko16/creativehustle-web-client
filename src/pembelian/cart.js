@@ -74,7 +74,8 @@ function Cart({
 
   function handleAddInvoice() {
     const courses_id = [],
-      webinars_id = [];
+      webinars_id = [],
+      coupons_id = [];
     carts.forEach((val) => {
       if (val.type === 'course') {
         courses_id.push(val.course_id);
@@ -83,7 +84,11 @@ function Cart({
       }
     });
 
-    addInvoice({ courses_id, webinars_id });
+    coupons.forEach((val) => {
+      coupons_id.push(val.id);
+    });
+
+    addInvoice({ courses_id, webinars_id, coupons_id });
   }
 
   function getType(cart) {
