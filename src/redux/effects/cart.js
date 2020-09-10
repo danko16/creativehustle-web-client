@@ -6,11 +6,40 @@ import { getErrorMessage } from '../../utils/api';
 function* cart() {
   try {
     const {
+      cart: { coupons },
+    } = yield select();
+
+    const {
       data: { data },
     } = yield call(cartApi.cart);
     if (data) {
       const { carts_payload, prices } = data;
-      yield put(cartActions.cart({ carts_payload, prices }));
+      let isHaveCoupons = false;
+      const pricesWithCoupon = {};
+
+      if (coupons.length) {
+        let discounts = 0;
+        coupons.forEach((coupon) => (discounts += coupon.discounts));
+
+        const finalPrice = prices.final_price - discounts;
+        const totalPromoPrice = prices.total_promo_price + discounts;
+
+        let percentage = 0;
+
+        if (totalPromoPrice !== 0) {
+          percentage = (totalPromoPrice / prices.total_price) * 100;
+        }
+
+        pricesWithCoupon['total_price'] = prices.total_price;
+        pricesWithCoupon['total_promo_price'] = totalPromoPrice;
+        pricesWithCoupon['final_price'] = finalPrice;
+        pricesWithCoupon['percentage'] = Math.round(percentage);
+
+        isHaveCoupons = true;
+      }
+      yield put(
+        cartActions.cart({ carts_payload, prices: isHaveCoupons ? pricesWithCoupon : prices })
+      );
     }
   } catch (error) {
     yield put(cartActions.error(getErrorMessage(error)));

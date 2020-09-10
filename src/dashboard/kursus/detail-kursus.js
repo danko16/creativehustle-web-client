@@ -7,6 +7,9 @@ import { useParams, Link } from 'react-router-dom';
 import Loading from '../../shared/loading';
 import { kursusSayaAction } from '../../redux/reducers/kursus-saya';
 
+import ReviewModal from './review-modal';
+import './detail-kursus.css';
+
 const mapStateToProps = (state) => ({
   contents: state.kursusSaya.contents,
   kursus: state.kursusSaya.kursus,
@@ -36,6 +39,7 @@ function DetailKursus({
   const [contentSaya, setContentSaya] = useState(null);
   const [materiTambahan, setMateriTambahan] = useState([]);
   const [telGroup, setTelGroup] = useState('');
+  const [showReview, setShowReview] = useState(false);
   const [nextId, setNextId] = useState();
 
   useEffect(() => {
@@ -124,12 +128,23 @@ function DetailKursus({
     );
   } else {
     return contentSaya ? (
-      <div className="dashboard-main">
+      <div className="dashboard-main detail-kursus">
+        {showReview && <ReviewModal kursusId={kursusId} setShowReview={setShowReview} />}
         <div className="row mb-4">
           <div className="col-12">
             <div className="card-no-shadow">
-              <h4 className="card-title">{contentSaya.title}</h4>
-              <p>Materi bagian: {contentSaya.section_title}</p>
+              <div>
+                <h4 className="card-title">{contentSaya.title}</h4>
+                <p>Materi bagian: {contentSaya.section_title}</p>
+              </div>
+              <button
+                onClick={() => {
+                  setShowReview(true);
+                }}
+                className="give-review"
+              >
+                Beri Review Kursus
+              </button>
             </div>
           </div>
         </div>
@@ -193,6 +208,7 @@ DetailKursus.propTypes = {
   rekomendasi: PropTypes.array,
   materi_tambahan: PropTypes.array,
   tel_group: PropTypes.string,
+  review: PropTypes.object,
   loading: PropTypes.bool,
 };
 

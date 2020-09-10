@@ -1,0 +1,115 @@
+.review-modal .modal-content {
+  max-width: 35rem;
+  min-height: 15rem;
+}
+
+.review-modal .modal-content.edit-review .head-wrapper,
+.review-modal .modal-content.current-review .head-wrapper {
+  margin: 0;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.review-modal .modal-content.edit-review .head-wrapper {
+  border-bottom: 1px solid #c5c5c5;
+}
+
+.review-modal .modal-content.current-review .head-wrapper div {
+  display: flex;
+  align-items: center;
+}
+
+.review-modal .modal-content.current-review .head-wrapper h5 {
+  margin-left: 16px;
+}
+
+.review-modal .modal-content.edit-review i.fa.fa-times,
+.review-modal .modal-content.current-review i.fa.fa-times {
+  cursor: pointer;
+}
+
+.review-modal .modal-content.edit-review .star-wrapper {
+  padding: 15px 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
+
+.review-modal .modal-content.edit-review i.fa.fa-star {
+  font-size: 28px;
+  margin: 0 5px;
+  cursor: pointer;
+  transition: all 100ms ease;
+}
+
+.review-modal .modal-content.edit-review textarea {
+  margin: 12px 0 23px 0;
+  min-height: 7rem;
+  padding: 12px;
+  outline: none;
+  border: 1px solid #0c1460;
+}
+
+.review-modal .modal-content.edit-review .button-wrapper,
+.review-modal .modal-content.current-review .button-wrapper {
+  display: flex;
+  border-top: 1px solid #c5c5c5;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.review-modal .modal-content.edit-review .btn-cancel,
+.review-modal .modal-content.edit-review .btn-submit,
+.review-modal .modal-content.current-review .btn-delete,
+.review-modal .modal-content.current-review .btn-edit {
+  cursor: pointer;
+  border: none;
+  padding: 4px 14px;
+  color: #fff;
+  border-radius: 4px;
+  transition: all 200ms ease;
+}
+
+.review-modal .modal-content.edit-review .btn-cancel,
+.review-modal .modal-content.current-review .btn-delete {
+  margin-left: auto;
+  background-color: #ff5a5a;
+}
+.review-modal .modal-content.edit-review .btn-cancel:hover,
+.review-modal .modal-content.current-review .btn-delete:hover {
+  background-color: #da2d2d;
+}
+.review-modal .modal-content.edit-review .btn-submit,
+.review-modal .modal-content.current-review .btn-edit {
+  margin-left: 14px;
+  background-color: #5aafff;
+}
+
+.review-modal .modal-content.edit-review .btn-submit:hover,
+.review-modal .modal-content.current-review .btn-edit:hover {
+  background-color: #3989d4;
+}
+
+.review-modal .modal-content.current-review .avatar-circle {
+  width: 45px;
+  height: auto;
+  border-radius: 50%;
+  background-size: cover;
+  object-fit: cover;
+}
+
+.review-modal .modal-content.current-review .star-wrapper {
+  display: flex;
+  align-items: center;
+  margin: 12px 0;
+}
+
+.review-modal .modal-content.current-review .star-wrapper p {
+  font-size: 13px;
+  margin: 0 12px;
+}
+
+.review-modal .modal-content.current-review .message {
+  min-height: 6rem;
+}

@@ -6,6 +6,10 @@ export const KURSUS_SAYA_ACTION = Object.freeze({
   KURSUS: 'myapp/kursus-saya/kursus',
   CONTENTS: 'myapp/kursus-saya/contents',
   REKOMENDASI: 'myapp/kursus-saya/rekomendasi',
+  REQ_CREATE_REVIEW: 'myapp/kursus-saya/req/create-review',
+  REQ_DELETE_REVIEW: 'myapp/kursus-saya/req/delete-review',
+  CREATE_REVIEW: 'myapp/kursus-saya/create-review',
+  DELETE_REVIEW: 'myapp/kursus-saya/delete-review',
   FREE: 'myapp/kursus-saya/free',
   DONE: 'myapp/kursus-saya/done',
   ERROR: 'myapp/kursus-saya/error',
@@ -40,6 +44,21 @@ export const kursusSayaAction = Object.freeze({
     type: KURSUS_SAYA_ACTION.REKOMENDASI,
     value,
   }),
+  reqCreateReview: (value) => ({
+    type: KURSUS_SAYA_ACTION.REQ_CREATE_REVIEW,
+    value,
+  }),
+  reqDeleteReview: (value) => ({
+    type: KURSUS_SAYA_ACTION.REQ_DELETE_REVIEW,
+    value,
+  }),
+  createReview: (value) => ({
+    type: KURSUS_SAYA_ACTION.CREATE_REVIEW,
+    value,
+  }),
+  deleteReview: () => ({
+    type: KURSUS_SAYA_ACTION.DELETE_REVIEW,
+  }),
   free: (value) => ({
     type: KURSUS_SAYA_ACTION.FREE,
     value,
@@ -63,6 +82,7 @@ const initialState = {
   contents: [],
   materi_tambahan: [],
   rekomendasi: [],
+  review: null,
   tel_group: '',
   message: '',
   is_error: false,
@@ -81,6 +101,8 @@ const reducer = (state = initialState, { type, field, value }) => {
     case KURSUS_SAYA_ACTION.REQ_REKOMENDASI:
     case KURSUS_SAYA_ACTION.REQ_KURSUS:
     case KURSUS_SAYA_ACTION.REQ_CONTENTS:
+    case KURSUS_SAYA_ACTION.REQ_CREATE_REVIEW:
+    case KURSUS_SAYA_ACTION.REQ_DELETE_REVIEW:
       return {
         ...state,
         loading: true,
@@ -100,6 +122,23 @@ const reducer = (state = initialState, { type, field, value }) => {
         contents: value.contents,
         materi_tambahan: value.materi_tambahan,
         tel_group: value.tel_group,
+        review: value.review,
+        message: '',
+        is_error: false,
+        loading: false,
+      };
+    case KURSUS_SAYA_ACTION.CREATE_REVIEW:
+      return {
+        ...state,
+        review: value,
+        message: '',
+        is_error: false,
+        loading: false,
+      };
+    case KURSUS_SAYA_ACTION.DELETE_REVIEW:
+      return {
+        ...state,
+        review: null,
         message: '',
         is_error: false,
         loading: false,

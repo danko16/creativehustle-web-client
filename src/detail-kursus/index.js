@@ -144,10 +144,11 @@ function DetailKursus({
 
   function handlePayment() {
     const courses_id = [parseInt(kursusId)],
-      webinars_id = [];
+      webinars_id = [],
+      coupons_id = [];
 
     deleteCart({ type: 'all', cart_id: null });
-    addInvoice({ courses_id, webinars_id });
+    addInvoice({ courses_id, webinars_id, coupons_id });
     history.push('/pembelian/bayar');
   }
 

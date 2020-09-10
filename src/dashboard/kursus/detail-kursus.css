@@ -1,0 +1,22 @@
+.detail-kursus .card-no-shadow {
+  display: flex;
+  justify-content: space-between;
+}
+
+.detail-kursus .give-review {
+  height: max-content;
+  padding: 10px 22px;
+  margin: auto 0;
+  cursor: pointer;
+  border-radius: 5px;
+  background-color: #5cd496;
+  border: 1px solid #dadada;
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  transition: all 400ms ease;
+}
+
+.detail-kursus .give-review:hover {
+  background-color: #40ad75;
+}

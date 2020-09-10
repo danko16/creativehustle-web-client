@@ -11,7 +11,7 @@ const mapActionToProps = (dispatch) =>
   bindActionCreators({ reqCariKursus: kursusActions.reqCariKursus }, dispatch);
 
 function Kursus({ reqCariKursus }) {
-  const [keywords, SetKeywords] = useState('');
+  const [keywords, setKeywords] = useState('');
   const [notFound, setNotFound] = useState('');
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -55,7 +55,7 @@ function Kursus({ reqCariKursus }) {
                 }
               }}
               onChange={(e) => {
-                SetKeywords(e.target.value);
+                setKeywords(e.target.value);
               }}
               className="form-control"
               placeholder="Cari Kursus"

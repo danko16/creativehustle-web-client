@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
+import ClassNames from 'classnames';
 import PropTypes from 'prop-types';
 import './kursus.css';
 
@@ -23,6 +24,7 @@ function Kursus({ kursus, contents, loading }) {
     return kursusSaya.map((val) => {
       const kursusId = val.id;
       const contentId = val.first_content;
+      const { star } = val.rating;
       return (
         <div key={val.id} className="col-sm-6 col-lg-4 col-xxl-3 mb-4">
           <Link className="kursus-card card" to={`/dashboard/kursus/${kursusId}/${contentId}`}>
@@ -32,12 +34,32 @@ function Kursus({ kursus, contents, loading }) {
                 <p className="student-subscr m-0">{val.participant} Peserta</p>
                 <div className="col-auto d-flex align-items-center">
                   {/*add class checked to mark star*/}
-                  <span className="rating fa fa-star"></span>
-                  <span className="rating fa fa-star"></span>
-                  <span className="rating fa fa-star"></span>
-                  <span className="rating fa fa-star"></span>
-                  <span className="rating fa fa-star"></span>
-                  <span className="rating-vote text-gray-500">({val.rating.reviewer})</span>
+                  <span
+                    className={ClassNames('rating fa fa-star', {
+                      checked: star >= 1,
+                    })}
+                  ></span>
+                  <span
+                    className={ClassNames('rating fa fa-star', {
+                      checked: star >= 2,
+                    })}
+                  ></span>
+                  <span
+                    className={ClassNames('rating fa fa-star', {
+                      checked: star >= 3,
+                    })}
+                  ></span>
+                  <span
+                    className={ClassNames('rating fa fa-star', {
+                      checked: star >= 4,
+                    })}
+                  ></span>
+                  <span
+                    className={ClassNames('rating fa fa-star', {
+                      checked: star >= 5,
+                    })}
+                  ></span>
+                  <span className="rating-vote text-gray-500">({star})</span>
                 </div>
               </div>
               <h6>{val.title}</h6>

@@ -23,13 +23,14 @@ function* contents({ value }) {
       data: { data },
     } = yield call(kursusSayaApi.contents, value);
     if (data) {
-      const { sections, contents, materi_tambahan, tel_group } = data;
+      const { sections, contents, materi_tambahan, tel_group, review } = data;
       yield put(
         kursusSayaAction.contents({
           sections,
           contents,
           materi_tambahan,
           tel_group,
+          review,
         })
       );
     }
@@ -85,6 +86,28 @@ function* free({ value }) {
   }
 }
 
+function* addReview({ value }) {
+  try {
+    const {
+      data: { data },
+    } = yield call(kursusSayaApi.addReview, value);
+    if (data) {
+      yield put(kursusSayaAction.createReview(data));
+    }
+  } catch (error) {
+    yield put(kursusSayaAction.error(getErrorMessage(error)));
+  }
+}
+
+function* deleteReview({ value }) {
+  try {
+    yield call(kursusSayaApi.deleteReview, value);
+    yield put(kursusSayaAction.deleteReview());
+  } catch (error) {
+    yield put(kursusSayaAction.error(getErrorMessage(error)));
+  }
+}
+
 function* kursusSayaSaga() {
   try {
     yield call(kursusSaya);
@@ -93,6 +116,8 @@ function* kursusSayaSaga() {
       takeLatest(KURSUS_SAYA_ACTION.REQ_CONTENTS, contents),
       takeLatest(KURSUS_SAYA_ACTION.DONE, done),
       takeLatest(KURSUS_SAYA_ACTION.FREE, free),
+      takeLatest(KURSUS_SAYA_ACTION.REQ_CREATE_REVIEW, addReview),
+      takeLatest(KURSUS_SAYA_ACTION.REQ_DELETE_REVIEW, deleteReview),
     ]);
   } catch (error) {
     yield put(kursusSayaAction.error(getErrorMessage(error)));

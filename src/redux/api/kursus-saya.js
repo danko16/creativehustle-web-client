@@ -16,4 +16,16 @@ export default Object.freeze({
         'Content-Type': 'application/json',
       },
     }),
+  addReview: (payload) =>
+    Api.post('/kursus-saya/review', payload, {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }),
+  deleteReview: ({ course_id }) =>
+    Api.delete('/kursus-saya/review', {
+      params: {
+        course_id,
+      },
+    }),
 });
