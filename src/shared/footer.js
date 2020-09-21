@@ -107,7 +107,10 @@ function Footer() {
         </div>
         <div className="row copyright-wrapper">
           <span className="copyright" style={{ marginLeft: 0 }}>
-            Copyright © 2020. Creative Hustle. All rights reserved. Made in Klaten
+            Copyright © 2020. Creative Hustle. All rights reserved. Made by{' '}
+            <a href="https://github.com/danko16" target="_blank" rel="noopener noreferrer">
+              github.com/danko16
+            </a>
           </span>
           <div
             style={{

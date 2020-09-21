@@ -77,6 +77,10 @@ section.footer .copyright-wrapper {
   margin-top: 40px;
 }
 
+section.footer .copyright-wrapper > span {
+  color: #272727;
+}
+
 @media only screen and (max-width: 991px) {
   section.footer .row [class*='col-']:first-child {
     text-align: center;
@@ -99,9 +103,5 @@ section.footer .copyright-wrapper {
 
   section.footer .copyright-wrapper > div:last-child {
     margin-bottom: 15px;
-  }
-
-  section.footer .copyright-wrapper > span {
-    color: #272727;
   }
 }
