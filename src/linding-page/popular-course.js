@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -8,17 +8,43 @@ import { formatNumber } from '../utils/format';
 const mapStateToProps = (state) => ({
   kursus: state.kursus.kursus,
   loading: state.kursus.loading,
+  categories: state.category.categories,
 });
 
-function PopularCourse({ kursus, loading }) {
+function PopularCourse({ kursus, categories, loading }) {
   const [courses, setCourses] = useState([]);
+  const [activeCategory, setActiveCategory] = useState(0);
+  const scrollOffset = useRef();
+
   useEffect(() => {
     if (!loading && kursus.length) {
       setCourses(kursus);
     }
   }, [kursus, loading]);
 
-  function renderClass() {
+  function renderCategory() {
+    return categories.slice(0, 6).map((category, index) => {
+      return (
+        <li
+          key={category.id}
+          className={ClassNames({
+            active: activeCategory === index,
+          })}
+        >
+          <div
+            className="category-item"
+            onClick={() => {
+              setActiveCategory(index);
+            }}
+          >
+            {category.name}
+          </div>
+        </li>
+      );
+    });
+  }
+
+  function renderCourse() {
     return courses.map((val) => {
       const { star } = val.rating;
       return (
@@ -86,8 +112,9 @@ function PopularCourse({ kursus, loading }) {
       );
     });
   }
+
   return (
-    <section className="py-3 border-top">
+    <section className="py-3 border-top popular-course">
       <div className="mt-5">
         <div className="heading text-center">
           <h2 className="mb-3">
@@ -101,7 +128,26 @@ function PopularCourse({ kursus, loading }) {
 
         <div className="row mt-5 justify-content-center">
           <div className="container">
-            <div className="row justify-content-center">{renderClass()}</div>
+            <div className="category-wrapper">
+              <i
+                className="fa fa-angle-left"
+                aria-hidden="true"
+                onClick={() => {
+                  scrollOffset.current.scrollLeft += -160;
+                }}
+              ></i>
+              <i
+                className="fa fa-angle-right"
+                aria-hidden="true"
+                onClick={() => {
+                  scrollOffset.current.scrollLeft += 160;
+                }}
+              ></i>
+              <ul className="category-list" ref={scrollOffset}>
+                {renderCategory()}
+              </ul>
+            </div>
+            <div className="row">{renderCourse()}</div>
           </div>
         </div>
       </div>
@@ -111,6 +157,7 @@ function PopularCourse({ kursus, loading }) {
 
 PopularCourse.propTypes = {
   kursus: PropTypes.array,
+  categories: PropTypes.array,
   loading: PropTypes.bool,
 };
 

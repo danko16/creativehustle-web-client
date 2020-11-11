@@ -267,6 +267,56 @@ ul.benefit-list li p {
   line-height: 1.5;
 }
 
+.popular-course .category-wrapper {
+  position: relative;
+  margin: 0 16px 24px 16px;
+  border-bottom: 1px solid #dcdacb;
+}
+
+.popular-course ul.category-list {
+  margin: 0;
+  list-style: none;
+  display: flex;
+  padding: 0;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.popular-course ul.category-list li {
+  padding-right: 2rem;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.popular-course ul.category-list li div.category-item {
+  position: relative;
+  padding-bottom: 10px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.popular-course ul.category-list li.active div.category-item {
+  color: #007bff;
+  font-weight: bold;
+  border-bottom: 2px solid;
+}
+
+.popular-course .category-wrapper .fa[class*='fa-angle'] {
+  display: none;
+  position: absolute;
+  font-size: 32px;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.popular-course .category-wrapper .fa.fa-angle-left {
+  left: 0;
+}
+
+.popular-course .category-wrapper .fa.fa-angle-right {
+  right: 0;
+}
+
 @media only screen and (max-width: 991px) {
   .mentor-assign {
     border-right: none;
@@ -284,6 +334,15 @@ ul.benefit-list li p {
 
   .lp-landing .lp-title-left {
     background-size: cover;
+  }
+
+  .popular-course .category-wrapper .fa[class*='fa-angle'] {
+    display: block;
+  }
+
+  .popular-course ul.category-list {
+    margin: 0 auto;
+    width: 92%;
   }
 }
 

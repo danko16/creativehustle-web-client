@@ -10,6 +10,7 @@ import webinarSaya from './webinar-saya';
 import cart from './cart';
 import invoice from './invoice';
 import mentor from './mentor';
+import category from './category';
 
 const createRootReducer = (history) => {
   return combineReducers({
@@ -23,6 +24,7 @@ const createRootReducer = (history) => {
     cart,
     invoice,
     mentor,
+    category,
   });
 };
 
